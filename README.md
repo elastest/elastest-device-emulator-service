@@ -10,7 +10,7 @@ Copyright © 2017-2019 [Universidad Rey Juan Carlos]. Licensed under
 elastest-device-emulator-service
 ==============================
 
-ElasTest Device-emulator Service (EUS) REST API.
+ElasTest Device-emulator Service (EDS) REST API.
 
 What is ElasTest
 -----------------
