@@ -1,4 +1,4 @@
-# elastest-device-emulator-service
+
 [![License badge](https://img.shields.io/badge/license-Apache2-orange.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Documentation badge](https://img.shields.io/badge/docs-latest-brightgreen.svg)](http://elastest.io/docs/)
 
@@ -10,7 +10,7 @@ Copyright © 2017-2019 [Universidad Rey Juan Carlos]. Licensed under
 elastest-device-emulator-service
 ==============================
 
-ElasTest User-emulator Service (EUS) REST API.
+ElasTest Device-emulator Service (EUS) REST API.
 
 What is ElasTest
 -----------------
