@@ -30,8 +30,8 @@ node('docker'){
                 usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                 sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
                 eds_image.push()
-                #spark_master_image.push()
-                #spark_worker_image.push()
+                //spark_master_image.push()
+                //spark_worker_image.push()
              }
         }
 }
