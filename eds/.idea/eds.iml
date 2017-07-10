@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/futile/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/openmtc/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/openmtc/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/openmtc-app/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/openmtc-gevent/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/openmtc-scl/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/openmtc-cse/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/openmtc-etsi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ZigBeeIPE/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/server/openmtc-ngsi/openmtc-ngsi-pylibs/flask/testsuite/templates" />
+      </list>
+    </option>
+  </component>
+  <component name="TestRunnerService">
+    <option name="projectConfiguration" value="Nosetests" />
+    <option name="PROJECT_TEST_RUNNER" value="Nosetests" />
+  </component>
+</module>

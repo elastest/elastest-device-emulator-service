@@ -14,19 +14,15 @@ ElasTest Device-emulator Service (EDS) is responsible for emulation of device(se
 
 Clone the Project
 -----------------
-'''
-<<<<<<< HEAD
-# Clone the project to your system
-# Alternatively, you can download the zip file from Github and unzip it
-=======
-#Clone the project to your system
-#Alternatively, you can download the zip file from Github and unzip it
->>>>>>> 988ca9320afe0ae6360ad3ef489a5c7fbaed95e6
+``
+Clone the project to your system
+Alternatively, you can download the zip file from Github and unzip it
 git clone git@github.com:elastest/elastest-device-emulator-service.git
 
-##Change working directory to main project folder
+Change working directory to main project folder
 cd elastest-bigdata-service
-'''
+
+
 What is ElasTest
 -----------------
 
