@@ -10,7 +10,17 @@ Copyright © 2017-2019 [Universidad Rey Juan Carlos]. Licensed under
 elastest-device-emulator-service
 ==============================
 
-ElasTest Device-emulator Service (EDS) REST API.
+ElasTest Device-emulator Service (EDS) is responsible for emulation of device(sensor, actuator and smart devices) behaviors.
+
+Clone the Project
+-----------------
+
+# Clone the project to your system
+# Alternatively, you can download the zip file from Github and unzip it
+git clone git@github.com:elastest/elastest-device-emulator-service.git
+
+# Change working directory to main project folder
+cd elastest-bigdata-service
 
 What is ElasTest
 -----------------
