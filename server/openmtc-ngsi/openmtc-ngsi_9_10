@@ -1,0 +1,10 @@
+#! /bin/sh
+
+cd `dirname $0`
+path=`pwd`
+export PYTHONPATH=$path/lib:$path/src
+
+echo PYTHONPATH: ${PYTHONPATH}
+./sub_eventservice &
+cd lib
+exec python -m openmtc_ngsi.wsgi_flask
