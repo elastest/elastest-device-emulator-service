@@ -20,7 +20,7 @@ Clone the Project
 git clone git@github.com:elastest/elastest-device-emulator-service.git
 
 #Change working directory to main project folder
-cd elastest-bigdata-service
+cd elastest-device-emulator-service
 ```
 What is ElasTest
 -----------------
