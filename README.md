@@ -22,6 +22,18 @@ git clone git@github.com:elastest/elastest-device-emulator-service.git
 #Change working directory to main project folder
 cd elastest-device-emulator-service
 ```
+
+Installation of Basic Software
+-------------------------------
+
+```  
+sudo apt-get install -y python-pip python-dev
+
+# Install dependent Python packages for OpenMTC Gateway
+pip install -r openmtc-gevent/dependencies.txt
+
+```
+
 What is ElasTest
 -----------------
 
