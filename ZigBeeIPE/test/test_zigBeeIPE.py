@@ -1,6 +1,8 @@
-#from unittest import TestCase
+from openmtc_app.onem2m import XAE
+from openmtc_onem2m.exc import CSENotFound
+from openmtc_onem2m.model import Container
 from zigbeeipe.zig_bee_ipe import ZigBeeIPE
-from zigbeeipe.zig_bee_coordinator import *
+from zigbeeipe.zig_bee_coordinator import ZigBeeCoordinator
 
 
 class TestZigBeeIPE():
