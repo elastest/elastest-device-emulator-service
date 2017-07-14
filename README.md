@@ -35,15 +35,28 @@ pip install -r openmtc-gevent/dependencies.txt
 ```
 Test Environment Setup
 ----------------------
-In order to test the services/application under EDS (SuT) we use **nose** for unit testing and **tox** for integration testing. the directory configuration is as follows
+In order to test the services/application under EDS (SuT) we use **nose** for unit testing and **tox** for integration testing. the directory configuration is as follows:
 ```  
   eds: 
      -ipes:
           -ZigBeeIPE:
                    -test:
-                    -test_zigbeeIPE.py                            
+                     test_zigbeeIPE.py                            
 
 ```  
+
+Creating Docker Image
+---------------------
+For our service we have containerized setup. Therefore, for each service we have separate docker image and Dockerfile. 
+In order to create a docker image for each service we need to as follow:
+```  
+#cd eds
+#./create-binary-docker  zigbeeipe
+```  
+Please note that all the Dockerfile for our service is named after the micro-services/applications. For example-
+Instead of having one Dockerfile we have zigbeeipe-amd64. All the docker files resides under _../eds/docker/docker-files_.
+
+  
 
 
 
