@@ -1,0 +1,12 @@
+# Set the base image to use openmtc/base
+FROM openmtc/base-amd64:latest
+
+ENV OPENMTC_HOME=/usr/local/src/openmtc-python/
+
+RUN mkdir -p $OPENMTC_HOME
+WORKDIR $OPENMTC_HOME
+
+ADD . $OPENMTC_HOME
+RUN chmod +x $OPENMTC_HOME/exec-builder.sh
+
+ENTRYPOINT $OPENMTC_HOME/exec-builder.sh $NAME

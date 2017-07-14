@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+CONFIG_FILE="/etc/openmtc/zigbeeipe/config.json"
+
+NAME=${NAME-"ZigBeeIPE"}
+EP=${EP-"http://localhost:8000"}
+CSE_BASE=${CSE_BASE-"onem2m"}
+HOST=${HOST-"auto"}
+PORT=${PORT-6070}
+SIM=${SIM-false}
+SIM_PERIOD=${SIM_PERIOD-300}
+USB_DEVICE=${USB_DEVICE-"/dev/ttyACM0"}
+
+# defaults logging
+LOGGING_FILE=${LOGGING_FILE-"/var/log/openmtc/zigbeeipe.log"}
+LOGGING_LEVEL=${LOGGING_LEVEL-"ERROR"}
+
+# ensure correct level
+case ${LOGGING_LEVEL} in
+    FATAL|ERROR|WARN|INFO|DEBUG)
+    ;;
+    *)
+    LOGGING_LEVEL="DEBUG"
+    ;;
+esac
+
+# Configuration of the service.
+CONFIG_TEMP=${CONFIG_FILE}".tmp"
+echo -n "Configuring M2M zigbeeipe..."
+JQ_STRING='.'
+
+# basics
+JQ_STRING=${JQ_STRING}' |
+    .usb_device = "'${USB_DEVICE}'" |
+    .name = "'${NAME}'" |
+    .ep = "'${EP}'" |
+    .cse_base = "'${CSE_BASE}'" |
+    .host = "'${HOST}'" |
+    .port = "'${PORT}'" |
+    .sim = '${SIM}' |
+    .sim_period = "'${SIM_PERIOD}'" |
+    .logging.file |= "'${LOGGING_FILE}'" |
+    .logging.level |= "'${LOGGING_LEVEL}'"
+'
+
+cat ${CONFIG_FILE} | jq -M "${JQ_STRING}"> ${CONFIG_TEMP}
+mv ${CONFIG_TEMP} ${CONFIG_FILE}
+
+echo "done"
+
+exec python -m zigbeeipe $@
