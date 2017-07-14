@@ -33,6 +33,19 @@ sudo apt-get install -y python-pip python-dev
 pip install -r openmtc-gevent/dependencies.txt
 
 ```
+Test Environment Setup
+----------------------
+In order to test the services/application under EDS (SuT) we use **nose** for unit testing and **tox** for integration testing. the directory configuration is as follows
+```  
+  eds: 
+     -ipes:
+          -ZigBeeIPE:
+                   -test:
+                    -test_zigbeeIPE.py                            
+
+```  
+
+
 
 What is ElasTest
 -----------------
