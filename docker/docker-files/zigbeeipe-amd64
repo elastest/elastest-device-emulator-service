@@ -1,0 +1,29 @@
+############################################################
+# Dockerfile to run openmtc zigbeeipe binary
+############################################################
+
+# Set the base image to use openmtc/sdk
+FROM openmtc/sdk-amd64:latest
+
+# Set the file maintainer
+MAINTAINER rst/hsa
+
+# install openmtc dependencies
+COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
+RUN pip install --upgrade --requirement /tmp/requirements.txt
+
+# install openmtc-zigbeeipe
+COPY tmp/openmtc-zigbeeipe.tar.gz /tmp/openmtc-zigbeeipe.tar.gz
+RUN tar xzf /tmp/openmtc-zigbeeipe.tar.gz -C / \
+    --owner root --group root --no-same-owner --no-overwrite-dir \
+    --transform 's/json\.dist/json/' --show-transformed
+
+RUN mkdir -p /var/log/openmtc
+
+# add change config
+COPY scripts/configure-zigbeeipe-and-start \
+    /usr/local/bin/configure-zigbeeipe-and-start
+
+# entry point
+ENTRYPOINT ["/usr/local/bin/configure-zigbeeipe-and-start"]
+CMD [""]

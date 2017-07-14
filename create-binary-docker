@@ -1,0 +1,290 @@
+#!/usr/bin/env bash
+
+. ./util/shell-utils.sh
+
+#base_path=$(dirname $(readlink -f "${0}"))
+base_path=$(dirname $(get_realpath "${0}"))
+
+usage () {
+printf "Usage: $0 gateway|backend|APP_MODULE_NAME|help amd64|arm\n"
+}
+
+separator_line () {
+counter=${1-80}
+printf '%'${counter}'s\n' | tr ' ' '#'
+}
+
+if [ "x" == "x$1" ]; then
+    usage
+    exit 1
+fi
+
+# get arch
+case $2 in
+amd64)
+    machine="amd64"
+    arch="x86_64"
+    ;;
+arm)
+    machine="arm"
+    arch="armv7l"
+    if [ $(uname -m) == "x86_64" ];then
+        printf "check qemu"
+        qemu_bin=$(which qemu-arm-static)
+        if [ -z "$qemu_bin" ];then
+            printf "Package qemu-user-static not found"
+            printf "Script is exiting now.\n"
+            exit 1
+        fi
+    fi
+    ;;
+*)
+    case $(uname -m) in
+    x86_64)
+        machine="amd64"
+        arch="x86_64"
+        ;;
+    armv6l|armv7l)
+        machine="arm"
+        arch="armv7l"
+        ;;
+    *)
+        printf "Platform %s is not supported!\n" $(uname -m)
+        printf "Script is exiting now.\n"
+        exit 1
+        ;;
+    esac
+esac
+
+# get docker image to build
+case $1 in
+backend|be)
+    name="backend"
+    setup_file="setup-gevent-all.py"
+    binary_prefix="openmtc-all"
+    ;;
+gateway|gw)
+    name="gateway"
+    setup_file="setup-gevent-all.py"
+    binary_prefix="openmtc-all"
+    ;;
+help)
+    usage
+    exit 0
+    ;;
+*) # other images will be detected by scanning setup files
+    name="$1"
+    setup_file="setup-${name}.py"
+    binary_prefix="openmtc-${name}"
+    ;;
+esac
+
+export_image=${3-false}
+
+# docker variables
+docker_prefix="openmtc/"
+docker_path="${base_path}/docker"
+docker_tmp="${docker_path}/tmp"
+docker_files="${docker_path}/docker-files"
+base_docker_file="${docker_files}/base-${machine}"
+base_docker_name="${docker_prefix}base-${machine}"
+build_docker_file="${docker_files}/builder-${machine}"
+build_docker_name="${docker_prefix}builder-${machine}"
+docker_container_name="${docker_prefix}${name}-${machine}"
+docker_file="${docker_files}/${name}-${machine}"
+docker_dist="${base_path}/dist/docker"
+
+# script variables
+setup_file="${base_path}/${setup_file}"
+binary_link="${docker_tmp}/${binary_prefix}.tar.gz"
+
+# check if possible
+if ! ([ -f "${setup_file}" ] && [ -f "${docker_file}" ]); then
+    if ! [ -f "${setup_file}" ]; then
+        printf "${setup_file} not existing\n"
+    fi
+    if ! [ -f "${docker_file}" ]; then
+        printf "${docker_file} not existing\n"
+    fi
+    printf "Script is exiting now.\n"
+    exit 1
+fi
+
+separator_line
+printf "### Building docker image for %s-%s...\n" ${name} ${machine}
+
+# run sdk before if necessary
+if [ "${name}" != "sdk" ]; then
+    separator_line
+    printf "### Need to build SDK before.\n"
+    $0 sdk ${machine} false
+    if [ $? -gt 0 ]; then
+        exit 1
+    fi
+    separator_line
+    printf "### Continuing %s-%s...\n" ${name} ${machine}
+fi
+
+################################################################################
+# set docker command
+# only sudo if not root and not in docker group
+if [ $(id -u) -eq 0 ] || id -nG | grep -qw "docker"; then
+    docker_cmd=$(which docker)
+else
+    docker_cmd="sudo "$(which docker)
+fi
+
+remove_container () {
+printf "### remove builder container...\n"
+${docker_cmd} rm ${build_container_name}
+if [ $? -gt 0 ]; then
+    printf "### Deletion of builder container failed. Exiting now.\n"
+    exit 1
+fi
+printf "### Deletion of builder container successful.\n"
+}
+
+################################################################################
+# build base docker container
+separator_line
+printf "### Building base container...\n"
+${docker_cmd} build -t ${base_docker_name} -f ${base_docker_file} ${docker_path}
+if [ $? -gt 0 ]; then
+    printf "### Building base container failed. Exiting now.\n"
+    exit 1
+fi
+printf "### Base container built successfully.\n"
+
+################################################################################
+# build container to run setup script
+separator_line
+printf "### Building build container...\n"
+${docker_cmd} build -t ${build_docker_name} -f ${build_docker_file} .
+if [ $? -gt 0 ]; then
+    printf "### Building build container failed. Exiting now.\n"
+    exit 1
+fi
+printf "### Build container built successfully.\n"
+
+################################################################################
+# create the build container to run the script
+separator_line
+printf "### Create build container %s.\n" ${name}
+build_container_name="build-container"
+${docker_cmd} create --name ${build_container_name} \
+    --env NAME="${name}" ${build_docker_name}
+if [ $? -gt 0 ]; then
+    printf "### Creating build container failed. Exiting now.\n"
+    exit 1
+fi
+printf "### Creating build container successfully.\n"
+
+################################################################################
+# starting container interactive to wait for finishing the script
+separator_line
+printf "### Starting build container...\n"
+${docker_cmd} start -i ${build_container_name}
+if [ $? -gt 0 ]; then
+    printf "### Starting build container failed. Exiting now.\n"
+    separator_line
+    remove_container
+    exit 1
+fi
+printf "### Starting build container successful.\n"
+
+################################################################################
+# copy the file
+separator_line
+printf "### Copy tar file...\n"
+mkdir -p ${docker_tmp}
+binary_archive="${binary_prefix}.docker.tar.gz"
+binary_archive="/usr/local/src/openmtc-python/dist/${binary_archive}"
+${docker_cmd} cp ${build_container_name}:${binary_archive} ${binary_link}
+if [ $? -gt 0 ]; then
+    printf "### Copy tar failed. Exiting now.\n"
+    separator_line
+    remove_container
+    exit 1
+fi
+printf "### Copying tar successful.\n"
+
+################################################################################
+# remove the container again
+separator_line
+remove_container
+
+################################################################################
+# copy requirements
+get_requirements_from_setup_file ()
+{
+# Each setup file is assumed to hold ".py" suffix, this gets
+# removed here
+local file_name=$(basename ${setup_file})
+local module_name=${file_name%.py}
+
+cd ${base_path}
+python - << END_OF_PYTHON
+from importlib import import_module
+from re import sub
+setup = import_module('${module_name}', '${module_name}')
+print('\n'.join(map(lambda x: sub('[\s+]', '', x),
+                   setup.SETUP_INSTALL_REQUIRES)))
+END_OF_PYTHON
+}
+
+printf "%s\n" $(get_requirements_from_setup_file) | tr " " "\n" > \
+    "${docker_tmp}/${name}-dependencies.txt"
+
+################################################################################
+# build docker container
+separator_line
+printf "### Building %s-%s container...\n" ${name} ${machine}
+${docker_cmd} build -t ${docker_container_name} -f ${docker_file} ${docker_path}
+if [ $? -gt 0 ]; then
+    printf "### Building %s-%s container failed. Exiting now.\n" ${name} ${machine}
+    exit 1
+fi
+printf "### Base %s-%s container built successfully.\n" ${name} ${machine}
+
+# cleanup
+separator_line
+printf "### Cleaning..."
+rm ${binary_link}
+rm "${docker_tmp}/${name}-dependencies.txt"
+printf "done\n"
+
+# remove dangling images
+separator_line
+printf "### Removing dangled images..."
+for image in $(${docker_cmd} images -qa -f "dangling=true"); do
+    ${docker_cmd} rmi -f ${image} > /dev/null
+done
+printf "done\n"
+
+# example to run the docker file
+#${docker_cmd} run --name test -d \
+#    -p 0.0.0.0:5001:5001 \
+#    -e "APP_PORT=5001" \
+#    -e "EXTERNAL_IP=$(ip r get 8.8.8.8 | awk 'NR==1 {print $NF}')" \
+#    ${docker_container_name}
+
+# test with curl
+#curl $(ip r get 8.8.8.8 | awk 'NR==1 {print $NF}'):5001/m2m
+
+# stop and remove container again
+#${docker_cmd} stop test && ${docker_cmd} rm test
+
+# export docker image
+if ${export_image}; then
+    separator_line
+    printf "### Exporting the image..."
+    mkdir -p ${docker_dist}
+    # change / in docker_container_name to -
+    docker_dist_file="${docker_dist}/${docker_container_name//\//-}.tar.gz"
+    ${docker_cmd} save ${docker_container_name} | gzip -c > ${docker_dist_file}
+    printf "done\n"
+fi
+
+# import docker image
+#zcat ${docker_container_name}.tar.gz | ${docker_cmd} load
+
