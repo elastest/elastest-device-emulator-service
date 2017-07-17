@@ -1,4 +1,0 @@
-
-
-class TestDevice():
-    pass
