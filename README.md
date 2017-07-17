@@ -54,9 +54,9 @@ In order to create a docker image for each service we need to as follow:
 #./create-binary-docker  zigbeeipe
 ```  
 Please note that all the Dockerfile for our service is named after the micro-services/applications. For example-
-Instead of having one Dockerfile we have zigbeeipe-amd64. All the docker files resides under _../eds/docker/docker-files_.
+Instead of having one Dockerfile we have zigbeeipe-amd64, memsipe-. All the docker files resides under _../eds/docker/docker-files_.
 
-  
+
 
 
 
