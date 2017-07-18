@@ -2,887 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="615c8dcd-7df3-4c9a-8e00-768137e5daff" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/dist/UNKNOWN-0.0.0.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/.tox-config1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/activate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/activate.csh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/activate.fish" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/activate_this.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/easy_install" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/easy_install-2.7" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/pip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/pip2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/pip2.7" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/python" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/python-config" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/python2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/python2.7" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/bin/wheel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/include/python2.7" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/UserDict.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/_abcoll.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/_weakrefset.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/abc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/codecs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/copy_reg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/distutils/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/distutils/distutils.cfg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/encodings" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/fnmatch.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/genericpath.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/lib-dynload" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/linecache.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/locale.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/no-global-site-packages.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/ntpath.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/orig-prefix.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/os.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/posixpath.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/re.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/easy_install.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/INSTALLER" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/METADATA" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/RECORD" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/WHEEL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/entry_points.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/metadata.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip-9.0.1.dist-info/top_level.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/__main__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/appdirs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/_cmd.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/adapter.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/cache.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/caches/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/caches/file_cache.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/caches/redis_cache.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/controller.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/filewrapper.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/heuristics.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/serialize.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/cachecontrol/wrapper.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/colorama/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/colorama/ansi.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/colorama/ansitowin32.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/colorama/initialise.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/colorama/win32.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/colorama/winterm.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/_backport/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/_backport/misc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/_backport/shutil.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/_backport/sysconfig.cfg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/_backport/sysconfig.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/_backport/tarfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/database.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/index.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/locators.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/manifest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/markers.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/metadata.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/resources.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/scripts.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/t32.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/t64.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/version.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/w32.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/w64.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distlib/wheel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/distro.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_ihatexml.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_inputstream.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_tokenizer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_trie/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_trie/_base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_trie/datrie.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_trie/py.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/_utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/alphabeticalattributes.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/inject_meta_charset.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/optionaltags.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/sanitizer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/whitespace.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/html5parser.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treeadapters/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treeadapters/genshi.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treeadapters/sax.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treebuilders/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treebuilders/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treebuilders/dom.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treebuilders/etree.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treebuilders/etree_lxml.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/dom.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/etree.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/etree_lxml.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/genshi.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/ipaddress.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/lockfile/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/lockfile/linklockfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/lockfile/mkdirlockfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/lockfile/pidlockfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/lockfile/sqlitelockfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/lockfile/symlinklockfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/ordereddict.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/__about__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/_compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/_structures.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/markers.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/requirements.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/specifiers.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/packaging/version.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/pkg_resources/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/progress/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/progress/bar.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/progress/counter.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/progress/helpers.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/progress/spinner.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/pyparsing.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/re-vendor.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/adapters.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/api.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/auth.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/cacert.pem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/certs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/cookies.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/exceptions.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/hooks.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/big5freq.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/big5prober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/chardetect.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/chardistribution.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/charsetgroupprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/charsetprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/codingstatemachine.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/constants.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/cp949prober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/escprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/escsm.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/eucjpprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/euckrfreq.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/euckrprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/euctwfreq.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/euctwprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/gb2312freq.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/gb2312prober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/hebrewprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/jisfreq.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/jpcntx.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/langbulgarianmodel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/langcyrillicmodel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/langgreekmodel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/langhebrewmodel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/langhungarianmodel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/langthaimodel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/latin1prober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/mbcharsetprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/mbcsgroupprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/mbcssm.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/sbcharsetprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/sbcsgroupprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/sjisprober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/universaldetector.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/chardet/utf8prober.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/_collections.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/connection.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/connectionpool.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/contrib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/contrib/appengine.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/contrib/ntlmpool.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/contrib/pyopenssl.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/contrib/socks.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/exceptions.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/fields.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/filepost.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/packages/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/packages/ordered_dict.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/packages/six.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/poolmanager.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/request.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/response.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/connection.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/request.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/response.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/retry.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/timeout.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/url.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/sessions.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/status_codes.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/structures.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/requests/utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/retrying.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/six.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/webencodings/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/webencodings/labels.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/webencodings/mklabels.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/webencodings/tests.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/_vendor/webencodings/x_user_defined.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/basecommand.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/baseparser.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/cmdoptions.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/check.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/completion.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/download.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/freeze.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/hash.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/help.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/install.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/list.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/search.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/show.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/uninstall.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/commands/wheel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/compat/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/compat/dictconfig.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/download.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/exceptions.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/index.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/locations.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/models/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/models/index.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/operations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/operations/check.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/operations/freeze.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/pep425tags.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/req/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/req/req_file.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/req/req_install.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/req/req_set.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/req/req_uninstall.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/status_codes.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/appdirs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/build.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/deprecation.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/encoding.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/filesystem.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/glibc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/hashes.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/logging.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/outdated.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/packaging.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/setuptools_build.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/utils/ui.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/vcs/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/vcs/bazaar.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/vcs/git.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/vcs/mercurial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/vcs/subversion.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pip/wheel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/appdirs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/__about__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/_compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/_structures.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/markers.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/requirements.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/specifiers.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/packaging/version.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/pyparsing.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/_vendor/six.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/pkg_resources/extern/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/INSTALLER" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/METADATA" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/RECORD" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/WHEEL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/dependency_links.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/entry_points.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/metadata.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/top_level.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools-36.0.1.dist-info/zip-safe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/archive_util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/cli-32.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/cli-64.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/cli.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/alias.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/bdist_egg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/bdist_rpm.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/bdist_wininst.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/build_clib.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/build_ext.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/build_py.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/develop.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/easy_install.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/egg_info.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/install.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/install_egg_info.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/install_lib.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/install_scripts.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/launcher manifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/py36compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/register.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/rotate.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/saveopts.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/sdist.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/setopt.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/upload.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/command/upload_docs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/config.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/dep_util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/depends.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/dist.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/extension.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/extern/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/glob.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/gui-32.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/gui-64.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/gui.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/launch.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/lib2to3_ex.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/monkey.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/msvc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/namespaces.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/package_index.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/py26compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/py27compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/py31compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/py33compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/py36compat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/sandbox.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/script (dev).tmpl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/script.tmpl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/site-patch.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/ssl_support.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/unicode_utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/version.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/setuptools/windows_support.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/INSTALLER" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/METADATA" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/RECORD" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/WHEEL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/entry_points.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/metadata.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel-0.29.0.dist-info/top_level.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/__main__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/archive.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/bdist_wheel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/decorator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/egg2wheel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/eggnames.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/install.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/metadata.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/paths.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/pep425tags.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/pkginfo.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/signatures/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/signatures/djbec.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/signatures/ed25519py.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/signatures/keys.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/complex-dist/complexdist/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/complex-dist/setup.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/headers.dist/header.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/headers.dist/headersdist.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/headers.dist/setup.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/pydist-schema.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/simple.dist/setup.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/simple.dist/simpledist/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test-1.0-py2.py3-none-win32.whl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_basic.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_install.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_keys.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_paths.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_ranking.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_signatures.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_tagopt.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_tool.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/test/test_wheelfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/tool/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site-packages/wheel/wininst2wheel.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/site.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/sre.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/sre_compile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/sre_constants.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/sre_parse.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/stat.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/types.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/lib/python2.7/warnings.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/local/bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/local/include" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/local/lib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/local/log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/log/py27-0.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/log/py27-1.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/log/py27-2.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/log/py27-3.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.tox/py27/pip-selfcheck.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/apoc_server" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/notification_server" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/notification_server_coap" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/.settings/org.eclipse.core.resources.prefs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/accessRight.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/accessRightAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/accessRights.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/application.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/applicationAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/applications.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/attachedDevice.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/attachedDevices.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/bootstrapParamSet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/common.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/commonDM.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/commonSecurity.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/connectionParamSet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/container.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/containerAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/containers.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/contentInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/contentInstances.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/discovery.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/errorInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiAnpPolicy.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiAreaNwkDeviceInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiAreaNwkDeviceInfoInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiAreaNwkInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiAreaNwkInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiBattery.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiBatteryInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiCapabilityAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiCapabilityInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiDeviceCapability.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiDeviceInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiFirmware.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiFirmwareAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiFirmwareInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiM2mSpPolicy.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiMemory.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiPerfLogAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiPerformanceLog.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiReboot.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiRebootAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiSafPolicySet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiSclMo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiSclMoAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiSoftware.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiSoftwareAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiSoftwareInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiTrapEvent.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiTrapEventAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/etsiTrapInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/execInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/execInstances.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/group.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/groupAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/groups.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/locationContainer.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/locationContainerAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/m2mPoc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/m2mPocs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/membersContent.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/mgmtCmd.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/mgmtObj.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/mgmtObjs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/notificationChannel.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/notificationChannels.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/notify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/parameters.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/responseNotify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/scl.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/sclBase.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/scls.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/subscription.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v111/subscriptions.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/accessRight.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/accessRightAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/accessRights.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/application.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/applicationAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/applications.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/attachedDevice.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/attachedDevices.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/bootstrapParamSet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/common.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/commonDM.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/commonSecurity.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/communicationChannel.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/communicationChannels.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/connectionParamSet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/container.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/containerAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/containers.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/contentInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/contentInstances.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/discovery.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/errorInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiAnpPolicy.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiAreaNwkDeviceInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiAreaNwkDeviceInfoInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiAreaNwkInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiAreaNwkInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiBattery.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiBatteryInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiCapabilityAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiCapabilityInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiDeviceCapability.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiDeviceInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiFirmware.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiFirmwareAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiFirmwareInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiM2mSpPolicy.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiMemory.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiPerfLogAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiPerformanceLog.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiRcatParamList.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiReboot.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiRebootAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiSafPolicySet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiSclMo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiSclMoAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiSoftware.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiSoftwareAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiSoftwareInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiTrapEvent.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiTrapEventAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/etsiTrapInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/execInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/execInstances.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/group.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/groupAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/groups.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/locationContainer.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/locationContainerAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/m2mPoc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/m2mPocs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/membersContent.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/mgmtCmd.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/mgmtObj.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/mgmtObjs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/notificationChannel.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/notificationChannels.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/notify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/notifyCollection.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/notifyCollectionResponse.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/parameters.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/requestNotify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/responseNotify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/scl.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/sclAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/sclAnncs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/sclBase.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/scls.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/subcontainers.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/subscription.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/doc/xsd/v211/subscriptions.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/client/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/client/coap/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/client/http.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/client/util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/exc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/mapper/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/model.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/response.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/scl.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/DictSerializer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/impl/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/json/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/json/exc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/binding/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/binding/_binding.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/binding/_xmlmime.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/binding/helper.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/binding/helper2.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/binding/helper3.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/exc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/accessRight.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/accessRightAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/accessRights.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/application.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/applicationAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/applications.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/attachedDevice.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/attachedDevices.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/bootstrapParamSet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/common.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/commonDM.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/commonSecurity.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/communicationChannel.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/communicationChannels.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/connectionParamSet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/container.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/containerAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/containers.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/contentInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/contentInstances.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/discovery.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/errorInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiAnpPolicy.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiAreaNwkDeviceInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiAreaNwkDeviceInfoInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiAreaNwkInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiAreaNwkInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiBattery.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiBatteryInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiCapabilityAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiCapabilityInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiDeviceCapability.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiDeviceInfo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiFirmware.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiFirmwareAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiFirmwareInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiM2mSpPolicy.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiMemory.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiPerfLogAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiPerformanceLog.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiRcatParamList.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiReboot.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiRebootAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiSafPolicySet.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiSclMo.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiSclMoAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiSoftware.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiSoftwareAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiSoftwareInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiTrapEvent.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiTrapEventAction.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/etsiTrapInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/execInstance.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/execInstances.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/group.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/groupAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/groups.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/locationContainer.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/locationContainerAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/m2mPoc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/m2mPocs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/membersContent.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/mgmtCmd.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/mgmtObj.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/mgmtObjs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/notificationChannel.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/notificationChannels.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/notify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/notifyCollection.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/notifyCollectionResponse.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/parameters.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/requestNotify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/responseNotify.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/scl.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/sclAnnc.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/sclAnncs.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/sclBase.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/scls.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/subcontainers.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/subscription.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/serializer/xml/xsd/subscriptions.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-etsi/src/openmtc_etsi/util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-AE-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-AEAnnc-v0_6_2.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-CSEBase-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-commonTypes-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-container-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-containerAnnc-v0_6_2.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-contentInstance-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-contentInstanceAnnc-v0_6_2.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-discovery-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-enumerationTypes-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-node-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-notification-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-remoteCSE-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.6.2/CDT-subscription-v0_6_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-AE-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-AEAnnc-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-CSEBase-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-accessControlPolicy-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-accessControlPolicyAnnc-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-battery-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-commonTypes-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-container-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-containerAnnc-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-contentInstance-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-contentInstanceAnnc-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-deviceCapability-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-deviceInfo-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-discovery-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-dmServerInfo-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-enumerationTypes-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-mgmtObj-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-node-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-notification-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-pollingChannel-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-pollingChannelURI-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-remoteCSE-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-remoteCSEAnnc-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v0.7.1/CDT-subscription-v0_7_1.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-AE-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-CSEBase-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-accessControlPolicy-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-activeCmdhPolicy-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-areaNwkDeviceInfo-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-areaNwkInfo-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-battery-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhBuffer-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhDefEcValue-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhDefaults-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhEcDefParamValues-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhLimits-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhNetworkAccessRules-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhNwAccessRule-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-cmdhPolicy-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-commonTypes-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-container-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-contentInstance-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-delivery-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-deviceCapability-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-deviceInfo-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-enumerationTypes-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-eventConfig-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-eventLog-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-execInstance-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-firmware-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-group-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-locationPolicy-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-m2mServiceSubscriptionProfile-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-memory-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-mgmtCmd-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-node-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-notification-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-pollingChannel-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-reboot-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-remoteCSE-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-request-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-requestPrimitive-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-responsePrimitive-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-schedule-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-serviceSubscribedAppRule-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-serviceSubscribedNode-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-software-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-statsCollect-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-statsConfig-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/doc/xsd/v1.0.0/CDT-subscription-v1_0_0.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/client/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/client/http.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/client/mqtt.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/exc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/mapper/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/model.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/serializer/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/serializer/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/serializer/impl/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/serializer/json/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/serializer/util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc-onem2m/src/openmtc_onem2m/transport.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/aplus/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/ContentInstances_Test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/DA_app.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/NA_app.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/SimpleTestClient.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/SimpleTestClient_etsi_m2m_subscribe.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapurl.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapurl.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/coapy/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/coapy/connection.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/coapy/constants.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/coapy/dmServer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/coapy/link.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/coapy/options.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/coapy/server.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/examples/coapget.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/coapy/examples/coapput.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/dmClient.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/measurement_tools/CoapMeasurements.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/measurement_tools/dm_rtt_script/rttscript.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/coap/measurement_tools/plot.gnu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/api/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/data_model/ClientsCollection.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/data_model/ObjectsCollection.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/data_model/ParseQueryPayload.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/data_model/ResourcesCollection.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/data_model/ResourcesList.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/data_model/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/data_model/mgmt_objects.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/import_common_libs.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/Create.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/Discovery.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/EventDispatcher.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/Execution.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/GenericOperation.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/ObservationNotification.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/OperationRequest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/Read.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/Registration.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/Write.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/WriteAttributes.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/lwm2m_lib/operations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/mqtt/client.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/lib/pyio.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/exc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/mapper/TestMapper.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/mapper/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/mapper/exc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/mapper/session/Session.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/mapper/session/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/mapper/session/test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/mapper/test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/model/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/model/exc.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/util.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc/version.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc_utils/APocServer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc_utils/CoapNotificationServer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc_utils/NotificationServer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/openmtc/src/openmtc_utils/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/prep-env.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/bin/openmtc-zig-bee-ipe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/config.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/etc/conf/config.json.dist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/src/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/src/zigbeeipe/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/src/zigbeeipe/__main__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/src/zigbeeipe/devices.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/src/zigbeeipe/zig_bee_coordinator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/src/zigbeeipe/zig_bee_ipe.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/test/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/test/test_zigBeeCoordinator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/ZigBeeIPE/test/test_zigBeeIPE.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ipes/__init__.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -901,11 +22,101 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Jenkinsfile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Jenkinsfile">
+      <file leaf-file-name="create-binary-docker" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/create-binary-docker">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup-gevent-all.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/setup-gevent-all.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup-sdk.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/setup-sdk.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exec-builder.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/exec-builder.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup-zigbeeipe.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/setup-zigbeeipe.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tox.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/tox.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mount.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eds/futile/src/futile/os/mount.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -935,6 +146,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/eds/ipes/ZigBeeIPE/test/test_zigBeeIPE.py" />
         <option value="$PROJECT_DIR$/eds/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
       </list>
     </option>
   </component>
@@ -991,6 +203,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elastest-device-emulator-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elastest-device-emulator-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ipes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -1008,6 +238,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/eds" />
+      <recent name="$PROJECT_DIR$/eds/docker" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -1308,8 +539,8 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3840" y="24" width="1920" height="1176" extended-state="7" />
-    <editor active="false" />
+    <frame x="3840" y="24" width="1920" height="1176" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1319,7 +550,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298479" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6238095" sideWeight="0.49573106" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26307365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26307365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1393,6 +624,7 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="357">
             <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1410,6 +642,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,6 +658,7 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="357">
             <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1438,13 +672,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup-sdk.py" />
-    <entry file="file://$PROJECT_DIR$/tox.ini" />
+    <entry file="file://$PROJECT_DIR$/eds/setup-sdk.py" />
+    <entry file="file://$PROJECT_DIR$/eds/tox.ini" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="357">
             <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1455,16 +690,13 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup-sdk.py" />
-    <entry file="file://$PROJECT_DIR$/utils.py" />
-    <entry file="file://$PROJECT_DIR$/tox.ini" />
     <entry file="file://$PROJECT_DIR$/Dockerfile" />
-    <entry file="file://$PROJECT_DIR$/exec-builder.sh" />
     <entry file="file://$PROJECT_DIR$/eds/ipes/ZigBeeIPE/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1477,6 +709,7 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="357">
             <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1484,6 +717,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1492,13 +726,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1520,14 +747,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eds/openmtc-gevent/bin/openmtc-gscl-gevent">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eds/futile/src/futile/os/mount.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1595,6 +814,94 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/create-binary-docker">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/setup-gevent-all.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/setup-sdk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/exec-builder.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/setup-zigbeeipe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/tox.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eds/futile/src/futile/os/mount.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
           <folding />
         </state>
       </provider>
