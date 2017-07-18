@@ -12,8 +12,7 @@ services:
       - 5001:5001
     networks:
       - build-image-network
-    volumes:
-     - .:/eds
+
  
 networks:
   build-image-network:
