@@ -1,45 +1,49 @@
 node('docker'){
     stage "Container Prep"
         echo("the node is up")
-        def mycontainer = docker.image('gtunon/docker-in-docker:latest')
+        def mycontainer = docker.image('elastest/docker-in-docker:latest')
         mycontainer.pull() // make sure we have the latest available from Docker Hub
+
         mycontainer.inside("-u jenkins -v /var/run/docker.sock:/var/run/docker.sock:rw") {
             git 'https://github.com/elastest/elastest-device-emulator-service.git'
             
-            // stage "Test"
-            //     sh 'ls -la'
-            //     echo ("Starting maven tests")
+            stage "Unit Tests"
+                 sh 'ls -la'
+                 echo ("Starting unit tests")
             //     echo ("No tests yet, but these would be integration at least")
-            //     sh 'which docker'
+                 sh 'which docker'
                 
-            stage "Build Spark Base image - Package"
-                echo ("building..")
+            stage "Build image - Package"
+                echo ("Building  Docker image..")
                 //need to be corrected to the organization because at the moment elastestci can't create new repositories in the organization
-                def eds_image = docker.build("elastest/elastest-device-emulator-service")
+                def eds_image = docker.build("elastest/elastest-device-emulator-service", " ./eds/docker/docker-files")
 
-            stage "Build Spark Master image - Package"
-                echo ("building..")
+           // stage "Build Master image - Package"
+             //   echo ("building..")
                 //need to be corrected to the organization because at the moment elastestci can't create new repositories in the organization
-                def eds_image = docker.build("elastest/elastest-device-emulator-service")
+               // def eds_image = docker.build("elastest/elastest-device-emulator-service")
 
-            stage "Build Spark Worker image - Package"
-                echo ("building..")
+           // stage "Build Spark Worker image - Package"
+              //  echo ("building..")
                 //need to be corrected to the organization because at the moment elastestci can't create new repositories in the organization
-                def eds_image = docker.build("elastest/elastest-device-emulator-service")
+                //def eds_image = docker.build("elastest/elastest-device-emulator-service")
 
             stage "Run image"
-            //    myimage.run()
                 echo ("running..")
+                myimage.run()
+
+            stage "Integration tests"
+                echo ("Starting integration tests...")
+                echo ("No integration tests yet")
                 
             stage "publish"
-                echo ("publishing..")
+                echo ("publishing as all tests succeeded..")
             // //this is work arround as withDockerRegistry is not working properly 
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sgioldasis-dockerhub',
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'elastestci-dockerhub',
                 usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                 sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
-                spark_base_image.push()
-                spark_master_image.push()
-                spark_worker_image.push()
+                myimage.push()
+
              }
         }
 }

@@ -1,9 +1,20 @@
-version: '2'
+version: '2.1'
 services:
   zigbeeipe:
-    build: .
+    container_name: zigbeeipe
+    image: elastest/elastest-device-emulator-service
+    build:
+      context: ./docker/docker-files
+      dockerfile: zigbeeipe-amd64
+    expose:
+      - 5001
     ports:
-     - "5000:5000"
+      - 5001:5001
+    networks:
+      - build-image-network
     volumes:
      - .:/eds
  
+networks:
+  build-image-network:
+    driver: bridge
