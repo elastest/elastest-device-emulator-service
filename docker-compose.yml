@@ -4,7 +4,7 @@ services:
     container_name: zigbeeipe
     image: elastest/elastest-device-emulator-service
     build:
-      context: eds/docker/docker-files
+      context: ./docker/docker-files
       dockerfile: zigbeeipe-amd64
     expose:
       - 5001
