@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenMTC Gateway Service Capability Layer
+Documentation=http://www.openmtc.org
+After=network.target
+Wants=ntp.service
+
+[Service]
+User=openmtc
+Group=openmtc
+ExecStart=/usr/local/bin/openmtc-gscl-gevent
+
+[Install]
+WantedBy=multi-user.target
