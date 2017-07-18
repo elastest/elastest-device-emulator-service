@@ -16,7 +16,7 @@ node('docker'){
             stage "Build image - Package"
                 echo ("Building  Docker image..")
                 //need to be corrected to the organization because at the moment elastestci can't create new repositories in the organization
-                def eds_image = docker.build("elastest/elastest-device-emulator-service", " /eds/docker/docker-files")
+                def eds_image = docker.build("elastest/elastest-device-emulator-service", " ./docker/docker-files")
 
            // stage "Build Master image - Package"
              //   echo ("building..")
