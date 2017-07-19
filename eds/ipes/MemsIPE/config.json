@@ -1,0 +1,11 @@
+{
+    "name": "MemsIPE",
+    "ep": "http://10.147.175.171:8000",
+    "cse_base": "onem2m",
+    "host": "auto",
+    "port": 5050,
+    "logging": {
+        "level": "DEBUG",
+        "file": null
+    }
+}
