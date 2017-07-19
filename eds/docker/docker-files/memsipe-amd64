@@ -1,0 +1,30 @@
+############################################################
+# Dockerfile to run openmtc memsipe binary
+############################################################
+
+# Set the base image to use openmtc/sdk
+FROM openmtc/sdk-amd64:latest
+
+# Set the file maintainer
+MAINTAINER rst/tgu
+
+# install openmtc dependencies
+COPY tmp/memsipe-dependencies.txt /tmp/requirements.txt
+RUN pip install --upgrade --requirement /tmp/requirements.txt
+
+# install openmtc-memsipe
+COPY tmp/openmtc-memsipe.tar.gz /tmp/openmtc-memsipe.tar.gz
+RUN tar xzf /tmp/openmtc-memsipe.tar.gz -C / \
+    --owner root --group root --no-same-owner --no-overwrite-dir \
+    --transform 's/json\.dist/json/' --show-transformed
+
+RUN mkdir -p /var/log/openmtc
+
+# add change config
+COPY scripts/configure-memsipe-and-start \
+    /usr/local/bin/configure-memsipe-and-start
+RUN chmod +x /usr/local/bin/configure-memsipe-and-start
+
+# entry point
+ENTRYPOINT ["/usr/local/bin/configure-memsipe-and-start"]
+CMD [""]
