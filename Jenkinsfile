@@ -13,16 +13,16 @@ node('docker'){
             //     echo ("No tests yet, but these would be integration at least")
                  sh 'which docker'
 
-            stage "Build project"
-                echo ("Building .. ")
+            //stage "Build project"
+             //   echo ("Building .. ")
                 //Build project its done in the dockerfiles.
 
             stage "docker-compose"
-                sh 'docker-compose --build -d blabla...'
+                sh 'docker-compose --build -d blabla'
                 sh 'docker exec'
 
-            stage "push miniservice 1"
-                def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f eds/docker/docker-files/zigbeeipe-amd64")
+            stage "push eds-zigbeeipe"
+                def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f .eds/docker/docker-files/zigbeeipe-amd64")
                 zigbeeipe_image.pull()
             //this is work arround as withDockerRegistry is not working properly
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'elastestci-dockerhub',
