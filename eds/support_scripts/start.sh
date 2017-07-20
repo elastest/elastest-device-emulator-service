@@ -1,0 +1,1 @@
+sudo chmod a+rwx -R support_scripts/*
