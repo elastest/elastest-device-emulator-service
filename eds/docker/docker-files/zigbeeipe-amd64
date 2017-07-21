@@ -2,6 +2,7 @@
 # Dockerfile to run openmtc zigbeeipe binary
 ############################################################
 
+sudo chmod a+rwx -R ./docker/docker-files/sdk-amd64
 # Set the base image to use openmtc/sdk
 FROM openmtc/sdk-amd64:latest
 
