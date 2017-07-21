@@ -1,1 +1,1 @@
-sudo chmod a+rwx -R support_scripts/*
+sudo chmod a+rwx -R ./docker/docker-files/sdk-amd64
