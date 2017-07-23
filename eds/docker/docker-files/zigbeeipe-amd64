@@ -42,9 +42,9 @@ USER root
 
 # install openmtc-zigbeeipe
 #COPY tmp/openmtc-zigbeeipe.tar.gz /tmp/openmtc-zigbeeipe.tar.gz
-RUN tar xzf /tmp/openmtc-zigbeeipe.tar.gz -C / \
-    --owner root --group root --no-same-owner --no-overwrite-dir \
-    --transform 's/json\.dist/json/' --show-transformed
+#RUN tar xzf /tmp/openmtc-zigbeeipe.tar.gz -C / \
+ #   --owner root --group root --no-same-owner --no-overwrite-dir \
+  #  --transform 's/json\.dist/json/' --show-transformed
 
 RUN mkdir -p /var/log/openmtc
 
