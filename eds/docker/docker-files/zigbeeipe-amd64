@@ -34,14 +34,14 @@ USER root
 
 
 # install openmtc dependencies
-COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
+#COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
 RUN pip install --upgrade --requirement /tmp/requirements.txt
 
 
 
 
 # install openmtc-zigbeeipe
-COPY tmp/openmtc-zigbeeipe.tar.gz /tmp/openmtc-zigbeeipe.tar.gz
+#COPY tmp/openmtc-zigbeeipe.tar.gz /tmp/openmtc-zigbeeipe.tar.gz
 RUN tar xzf /tmp/openmtc-zigbeeipe.tar.gz -C / \
     --owner root --group root --no-same-owner --no-overwrite-dir \
     --transform 's/json\.dist/json/' --show-transformed
