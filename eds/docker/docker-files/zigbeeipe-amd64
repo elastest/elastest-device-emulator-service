@@ -10,7 +10,6 @@ FROM debian:jessie
 # Set the file maintainer
 MAINTAINER rst/hsa
 
-
 # install packages and clean up
 RUN printf "Starting update...\n" && \
     apt-get update -qq && \
