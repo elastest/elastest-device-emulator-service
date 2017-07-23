@@ -3,58 +3,29 @@
 ############################################################
 
 # Set the base image to use openmtc/sdk
-#FROM openmtc/sdk-amd64:latest
-FROM ubuntu:16.04
+FROM openmtc/sdk-amd64:latest
 
 
 # Set the file maintainer
 MAINTAINER rst/hsa
 
-#install packages and clean up
-RUN printf "Starting update...\n" && \
-    apt-get update -qq && \
-    printf "Update finished.\n" && \
-    printf "Starting dist-upgrade...\n" && \
-    apt-get dist-upgrade -y > /dev/null && \
-    printf "Upgrade finished.\n" && \
-    printf "Starting install...\n" && \
-    apt-get install -y \
-    build-essential \
-    netbase \
-    iproute2 \
-    python-pip \
-    python-dev \
-    jq > /dev/null && \
-    apt-get clean && \
-    printf "Installation and cleanup finished.\n"
-
-
-   # set user
-USER root
-
-
 # install openmtc dependencies
-#COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
-#RUN pip install --upgrade --requirement /tmp/requirements.txt
-
-
-
+COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
+RUN pip install --upgrade --requirement /tmp/requirements.txt
 
 # install openmtc-zigbeeipe
-#COPY tmp/openmtc-zigbeeipe.tar.gz /tmp/openmtc-zigbeeipe.tar.gz
-#RUN tar xzf /tmp/openmtc-zigbeeipe.tar.gz -C / \
- #   --owner root --group root --no-same-owner --no-overwrite-dir \
-  #  --transform 's/json\.dist/json/' --show-transformed
+COPY tmp/openmtc-zigbeeipe.tar.gz /tmp/openmtc-zigbeeipe.tar.gz
+RUN tar xzf /tmp/openmtc-zigbeeipe.tar.gz -C / \
+   --owner root --group root --no-same-owner --no-overwrite-dir \
+    --transform 's/json\.dist/json/' --show-transformed
 
 RUN mkdir -p /var/log/openmtc
 
 # add change config
-#COPY scripts/configure-zigbeeipe-and-start \
- #   /usr/local/bin/configure-zigbeeipe-and-start
+COPY scripts/configure-zigbeeipe-and-start \
+    /usr/local/bin/configure-zigbeeipe-and-start
 
 # entry point
-#ENTRYPOINT ["/usr/local/bin/configure-zigbeeipe-and-start"]
-#CMD [""]
-# entry point
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/configure-zigbeeipe-and-start"]
 CMD [""]
+

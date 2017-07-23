@@ -274,7 +274,7 @@ printf "done\n"
 # stop and remove container again
 #${docker_cmd} stop test && ${docker_cmd} rm test
 
-''# export docker image
+# export docker image
 if ${export_image}; then
     separator_line
     printf "### Exporting the image..."
