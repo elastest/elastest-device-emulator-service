@@ -4,12 +4,13 @@
 
 # Set the base image to use openmtc/sdk
 #FROM openmtc/sdk-amd64:latest
-FROM debian:jessie
+FROM ubuntu:16.04
+
 
 # Set the file maintainer
 MAINTAINER rst/hsa
 
-# install packages and clean up
+#install packages and clean up
 RUN printf "Starting update...\n" && \
     apt-get update -qq && \
     printf "Update finished.\n" && \
@@ -27,9 +28,17 @@ RUN printf "Starting update...\n" && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
 
+
+   # set user
+USER root
+
+
 # install openmtc dependencies
 COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
 RUN pip install --upgrade --requirement /tmp/requirements.txt
+
+
+
 
 # install openmtc-zigbeeipe
 COPY tmp/openmtc-zigbeeipe.tar.gz /tmp/openmtc-zigbeeipe.tar.gz
@@ -45,4 +54,7 @@ COPY scripts/configure-zigbeeipe-and-start \
 
 # entry point
 ENTRYPOINT ["/usr/local/bin/configure-zigbeeipe-and-start"]
+#CMD [""]
+# entry point
+#ENTRYPOINT ["/bin/bash"]
 CMD [""]
