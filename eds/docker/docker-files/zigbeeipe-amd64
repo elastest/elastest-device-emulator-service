@@ -49,8 +49,8 @@ USER root
 RUN mkdir -p /var/log/openmtc
 
 # add change config
-COPY scripts/configure-zigbeeipe-and-start \
-    /usr/local/bin/configure-zigbeeipe-and-start
+#COPY scripts/configure-zigbeeipe-and-start \
+ #   /usr/local/bin/configure-zigbeeipe-and-start
 
 # entry point
 ENTRYPOINT ["/usr/local/bin/configure-zigbeeipe-and-start"]
