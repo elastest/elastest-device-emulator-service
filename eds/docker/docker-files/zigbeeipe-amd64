@@ -35,7 +35,7 @@ USER root
 
 # install openmtc dependencies
 #COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
-RUN pip install --upgrade --requirement /tmp/requirements.txt
+#RUN pip install --upgrade --requirement /tmp/requirements.txt
 
 
 
