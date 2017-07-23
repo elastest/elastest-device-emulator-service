@@ -53,8 +53,8 @@ RUN mkdir -p /var/log/openmtc
  #   /usr/local/bin/configure-zigbeeipe-and-start
 
 # entry point
-ENTRYPOINT ["/usr/local/bin/configure-zigbeeipe-and-start"]
+#ENTRYPOINT ["/usr/local/bin/configure-zigbeeipe-and-start"]
 #CMD [""]
 # entry point
-#ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash"]
 CMD [""]
