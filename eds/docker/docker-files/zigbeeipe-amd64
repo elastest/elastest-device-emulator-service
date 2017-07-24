@@ -4,7 +4,6 @@
 
 # Set the base image to use openmtc/sdk
 FROM openmtc/sdk-amd64:latest
-FROM debian:jessie
 
 
 # Set the file maintainer
