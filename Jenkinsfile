@@ -13,9 +13,29 @@ node('docker'){
          //sh 'exec unitary tests' ==> OBVIOUSLY this doesn't work you should use the command you would use in a normal bash
          //if you execute tests you can delete the following line it is not delete as it isn't allowed empty stages.
          sh 'which docker'
-    stage "build image"
+  //  stage "build base image"
          //here we use only the build for zigbeeip
-          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/docker/docker-files/zigbeeipe-amd64")
-     stage "push image"
-          zigbeeipe_image.push()
+        //  def base_image = docker.build("elastest/eds-zigbeeipe -f ./eds/docker/docker-files/base-amd64")
+    //stage "build sdk image"
+         //here we use only the build for zigbeeip
+      //    def sdk_image = docker.build("elastest/eds-zigbeeipe -f ./eds/docker/docker-files/sdk-amd64")
+
+    stage "build zigbee image"
+         //here we use only the build for zigbeeip
+        def zigbeeipe_image= sh 'cd eds && ./create-binary-docker zigbeeipe'
+          //def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/docker/docker-files/zigbeeipe-amd64")
+    stage "publish"
+          echo ("publishing..")
+          withCredentials([[
+            $class: 'UsernamePasswordMultiBinding',
+                credentialsId: 'elastestci-dockerhub',
+                usernameVariable: 'USERNAME',
+                passwordVariable: 'PASSWORD']]) {
+                 sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
+                        //here your code
+                // def zigbeeipe_image= docker.image(' elastest/eds-zigbeeipe  -f openmtc/zigbeeipe-amd64')
+                 zigbeeipe_image.push()
+                    }
+
+
 }
