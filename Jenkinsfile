@@ -22,8 +22,8 @@ node('docker'){
 
     stage "build zigbee image"
          //here we use only the build for zigbeeip
-        def zigbeeipe_image= sh 'cd eds && ./create-binary-docker zigbeeipe'
-          //def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/docker/docker-files/zigbeeipe-amd64")
+          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ipes/ZigBeeIPE/Dockerfile")
+
     stage "publish"
           echo ("publishing..")
           withCredentials([[
@@ -33,7 +33,6 @@ node('docker'){
                 passwordVariable: 'PASSWORD']]) {
                  sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
                         //here your code
-                // def zigbeeipe_image= docker.image(' elastest/eds-zigbeeipe  -f openmtc/zigbeeipe-amd64')
                  zigbeeipe_image.push()
                     }
 
