@@ -31,6 +31,8 @@ RUN printf "Starting update...\n" && \
 # set user
 USER root
 
+#create a folder /tmp
+RUN mkdir  /docker/tmp
 
 # install openmtc dependencies
 COPY tmp/zigbeeipe-dependencies.txt /tmp/requirements.txt
