@@ -1,0 +1,4 @@
+eds/build/
+eds/dist/
+.idea/
+*.pyc
