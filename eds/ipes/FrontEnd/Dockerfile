@@ -47,6 +47,6 @@ RUN mkdir -p /var/log/eds
 
 
 # entry point
-ENTRYPOINT ["/usr/local/bin/eds"]
+ENTRYPOINT ["/bin/bash"]
 CMD [""]
 
