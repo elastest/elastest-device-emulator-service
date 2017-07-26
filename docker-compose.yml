@@ -10,6 +10,16 @@ services:
     networks:
       - build-image-network
 
+  zigbeeipe:
+    container_name: frontend
+    image: elastest/eds-frontend
+    expose:
+      - 6065
+    ports:
+      - 6065:6065
+    networks:
+      - build-image-network
+
 networks:
   build-image-network:
     driver: bridge
