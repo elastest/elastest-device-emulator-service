@@ -1,0 +1,36 @@
+.traffic-light {
+  width: 100%;
+}
+
+.off {
+  background-color: transparent!important;
+}
+
+.traffic-light {
+  margin: 0 auto;
+  width: 10%;
+  min-width: 180px;
+  border: 5px solid black;
+}
+
+.traffic-light div {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  border: 5px solid black;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}

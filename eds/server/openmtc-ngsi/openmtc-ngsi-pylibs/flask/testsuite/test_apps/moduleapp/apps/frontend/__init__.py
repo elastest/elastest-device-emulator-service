@@ -6,4 +6,4 @@ frontend = Module(__name__)
 
 @frontend.route('/')
 def index():
-    return render_template('frontend/motor.html')
+    return render_template('FrontEnd/motor.html')

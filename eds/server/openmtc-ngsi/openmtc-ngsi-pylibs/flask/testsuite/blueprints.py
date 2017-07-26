@@ -54,7 +54,7 @@ class ModuleTestCase(FlaskTestCase):
     @emits_module_deprecation_warning
     def test_default_endpoint_name(self):
         app = flask.Flask(__name__)
-        mod = flask.Module(__name__, 'frontend')
+        mod = flask.Module(__name__, 'FrontEnd')
         def index():
             return 'Awesome'
         mod.add_url_rule('/', view_func=index)
@@ -62,7 +62,7 @@ class ModuleTestCase(FlaskTestCase):
         rv = app.test_client().get('/')
         self.assert_equal(rv.data, b'Awesome')
         with app.test_request_context():
-            self.assert_equal(flask.url_for('frontend.index'), '/')
+            self.assert_equal(flask.url_for('FrontEnd.index'), '/')
 
     @emits_module_deprecation_warning
     def test_request_processing(self):
@@ -257,15 +257,15 @@ class ModuleTestCase(FlaskTestCase):
 class BlueprintTestCase(FlaskTestCase):
 
     def test_blueprint_specific_error_handling(self):
-        frontend = flask.Blueprint('frontend', __name__)
+        frontend = flask.Blueprint('FrontEnd', __name__)
         backend = flask.Blueprint('backend', __name__)
         sideend = flask.Blueprint('sideend', __name__)
 
         @frontend.errorhandler(403)
         def frontend_forbidden(e):
-            return 'frontend says no', 403
+            return 'FrontEnd says no', 403
 
-        @frontend.route('/frontend-no')
+        @frontend.route('/FrontEnd-no')
         def frontend_no():
             flask.abort(403)
 
@@ -292,7 +292,7 @@ class BlueprintTestCase(FlaskTestCase):
 
         c = app.test_client()
 
-        self.assert_equal(c.get('/frontend-no').data, b'frontend says no')
+        self.assert_equal(c.get('/FrontEnd-no').data, b'FrontEnd says no')
         self.assert_equal(c.get('/backend-no').data, b'backend says no')
         self.assert_equal(c.get('/what-is-a-sideend').data, b'application itself says no')
 
@@ -318,7 +318,7 @@ class BlueprintTestCase(FlaskTestCase):
         self.assert_equal(c.get('/2/bar').data, b'19')
 
     def test_blueprint_url_processors(self):
-        bp = flask.Blueprint('frontend', __name__, url_prefix='/<lang_code>')
+        bp = flask.Blueprint('FrontEnd', __name__, url_prefix='/<lang_code>')
 
         @bp.url_defaults
         def add_language_code(endpoint, values):
@@ -418,10 +418,10 @@ class BlueprintTestCase(FlaskTestCase):
         from blueprintapp import app
         templates = sorted(app.jinja_env.list_templates())
         self.assert_equal(templates, ['admin/motor.html',
-                                     'frontend/motor.html'])
+                                     'FrontEnd/motor.html'])
 
     def test_dotted_names(self):
-        frontend = flask.Blueprint('myapp.frontend', __name__)
+        frontend = flask.Blueprint('myapp.FrontEnd', __name__)
         backend = flask.Blueprint('myapp.backend', __name__)
 
         @frontend.route('/fe')
@@ -434,7 +434,7 @@ class BlueprintTestCase(FlaskTestCase):
 
         @backend.route('/be')
         def backend_index():
-            return flask.url_for('myapp.frontend.frontend_index')
+            return flask.url_for('myapp.FrontEnd.frontend_index')
 
         app = flask.Flask(__name__)
         app.register_blueprint(frontend)
