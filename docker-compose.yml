@@ -10,7 +10,7 @@ services:
     networks:
       - build-image-network
 
-  zigbeeipe:
+  frontend:
     container_name: frontend
     image: elastest/eds-frontend
     expose:
