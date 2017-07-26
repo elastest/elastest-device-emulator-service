@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type='text/css'>
+
+        .traffic-light {
+            width: 100%;
+        }
+
+        .off {
+            background-color: transparent!important;
+        }
+
+        .traffic-light {
+            margin: 0 auto;
+            width: 10%;
+            min-width: 180px;
+            border: 5px solid black;
+        }
+
+        /*create three circles for red, yellow and green traffic lights respectively */
+        .traffic-light div {
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            border: 5px solid black;
+            border-radius: 50%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* define background color for each circle */
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Traffic Lights Controller</title>
+
+
+    <script type="text/javascript">
+
+        function trafficLights()
+
+        {
+            // var signals = [ [ 5, 1, 0, 0 ], [ 2, 1, 1, 0 ], [ 5, 0, 0, 1 ], [ 3, 0, 1, 0 ]  ];
+            var signals = [ 'red' ,  'green' , 'yellow', 'Pearl beige' ];
+            var lights = [];
+            var index = 0;
+
+            for( var i = 0; ( elemId = arguments[ i ] ); i++ )
+                lights[ i ] = document.getElementById( elemId );
+            function display()
+
+            {
+                if( index >= signals.length )
+                    index = 0;
+
+                for( var i = 0; i<lights.length; i++ )
+                    lights[ i ].style.backgroundColor = ( signals[index][i+1] ? lights[ i ].id.toString():'#A9A9A9');
+
+                setTimeout( display, signals[ index++][0] * 1000 );
+
+
+            }
+
+            display();
+        }
+
+
+        window.onload = function(){
+            trafficLights( "red-light", "yellow-light", "green-light" );
+        };
+    </script>
+
+
+</head>
+
+
+<body >
+<div id="wrapper" class="traffic-light">
+    <h1>Status</h1>
+    <div id="red-light"></div>
+    <div id="yellow-light"></div>
+    <div id="green-light"></div>
+</div>
+
+
+
+</body>
+</html>

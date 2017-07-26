@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Motor Demo Dashboard</title>
+    <script src="/static/js/socket.io.js"></script>
+    <script src="/static/js/jquery-3.1.0.min.js"></script>
+    <script src="/static/js/chart-2.2.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Custom styling plus plugins -->
+    <!--  <link href="/static/css/custom.min.css" rel="stylesheet"> -->
+    <style>
+
+
+    </style>
+
+
+
+
+</head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var socket = io();
+        var known_nodes_humi = [];
+        var known_nodes_temp = [];
+        var headline = document.getElementById("headline");
+        var redraw_speed = 300; // time the animation takes to update the chart
+
+        socket.on('connect', function () {
+            socket.emit('get_history');
+            console.log("socket connected");
+        });
+
+        socket.on('disconnect', function () {
+            console.log("socket disconnected");
+        });
+
+        socket.on('temperature', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_temp.includes(data.node))
+                init_node_temp(data);
+            // update the chartdata
+            updateChartJS_temp(data);
+            // redraw the chart
+            chart_temp.update(redraw_speed);
+        });
+
+        socket.on('rel-humidity', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_humi.includes(data.node))
+                init_node_humi(data);
+            // update the chartdata
+            updateChartJS_humi(data);
+            // redraw the chart
+            chart_humi.update(redraw_speed);
+        });
+
+
+        socket.on('history', function (history) {
+            console.log("history received");
+            console.log(history);
+
+            // reset vars justs in case
+            known_nodes_humi = [];
+            known_nodes_temp = [];
+            data_humi.datasets = [];
+            data_temp.datasets = [];
+            data_humi.labels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            data_temp.labels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            // iterate through history data sets
+            var data;
+            for (var i = 0; i < history.length; i++) {
+
+                // name history item
+                data = history[i];
+
+                // if temperature data set
+                if (data.sensor.valueOf() == "temperature") {
+
+                    // if node is unknown, initialize dataset
+                    if (!known_nodes_temp.includes(data.node))
+                        init_node_temp(data);
+
+                    // update the chartdata
+                    updateChartJS_temp(data);
+
+                    // if humidity data set
+                } else if (data.sensor.valueOf() == "rel-humidity") {
+
+                    // if node is unknown, initialize dataset
+                    if (!known_nodes_humi.includes(data.node))
+                        init_node_humi(data);
+                    // update the chartdata
+                    updateChartJS_humi(data);
+
+                } else {
+                    console.log("unknown sensor type");
+                }
+            }
+            // redraw the charts fast
+            chart_temp.update(0, false);
+            chart_humi.update(0, false);
+
+            console.log("history done");
+        });
+
+        var colors_temp = ["#00008B", "#0000FF", "#1E90FF", "#00BFFF", "#87CEFA"];
+        var colors_humi = ["#008080", "#20B2AA", "#40E0D0", "#00FFFF", "#7FFFD4"];
+
+        var options_humi = {
+            responsive: false, // Resizes when the canvas container does.
+            title: {
+                display: true,
+                fontSize: 16,
+                text: 'PLC DATA'
+            }
+        };
+
+        var options_temp = {
+            responsive: false, // Resizes when the canvas container does.
+            title: {
+                display: true,
+                fontSize: 16,
+                text: 'MEMS DATA'
+            }
+        };
+
+
+        var data_humi = {
+            labels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            datasets: []
+        };
+
+        var data_temp = {
+            labels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            datasets: []
+        };
+
+        var ctx_humi = document.getElementById("canvas_plc").getContext("2d");
+        var chart_humi = new Chart(ctx_humi, {
+            type: 'line',
+            data: data_humi,
+            options: options_humi
+        });
+
+        var ctx_temp = document.getElementById("canvas_mems").getContext("2d");
+        var chart_temp = new Chart(ctx_temp, {
+            type: 'line',
+            data: data_temp,
+            options: options_temp
+        });
+
+
+
+        function trafficLights() {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+            //  ctx.rect(0, 0, 150, 500);
+            //ctx.fillStyle = "grey";
+            //ctx.fill();
+
+            var signals = ['red', 'green', 'yellow', 'Pearl beige'];
+
+            var current = signals[0];
+
+            function offlight(a1) {
+                ctx.beginPath();
+                ctx.arc(95, a1, 50, 10, 12 * Math.PI);
+                ctx.fillStyle = "grey";
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            function drawLight(a1, fillParam) {
+                ctx.beginPath();
+                ctx.arc(95, a1, 50, 10, 12 * Math.PI);
+                ctx.fillStyle = fillParam;
+                ctx.fill();
+                ctx.stroke();
+            }
+
+
+            function changelight() {
+                if (current == signals[0]) {
+                    drawLight(50, "red");
+                    offlight(150);
+                    offlight(250);
+                    current = signals[4]
+                } else if (current == signals[4]) {
+                    drawLight(50, "red");
+                    drawLight(150, "yellow");
+                    offlight(250);
+                    current = signals[2]
+                } else if (current == signals[2]) {
+                    offlight(50);
+                    offlight(150);
+                    drawLight(250, "green");
+                    current = signals[1]
+                } else if (current == signals[1]) {
+                    offlight(50);
+                    drawLight(150, "yellow");
+                    offlight(250);
+                    current = signals[0]
+                }
+
+            }
+            setInterval(changelight, 1000);
+
+        }
+
+        window.onload = function(){
+            trafficLights( );
+        };
+
+        //create button for activate and deactivate
+        function createButton(context, func){
+            var button = document.createElement("input");
+            button.type = "button";
+            button.value = "im a button";
+            button.onclick = func;
+            context.appendChild(button);
+        }
+
+
+
+
+
+        function init_node_humi(data) {
+            var index = known_nodes_humi.length;
+            data_humi.datasets[index] = {
+                label: data.node,
+                data: [0.01, 0.20, -0.003, 0.89, 0.290, 0, 0, 0, 0, 0],
+                fill: false,
+                lineTension: 0.3,
+                pointBorderWidth: 3,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 3,
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                borderColor: colors_humi[index],
+                pointBorderColor: colors_humi[index],
+                pointBackgroundColor: colors_humi[index],
+                pointHoverBackgroundColor: colors_humi[index],
+                pointHoverBorderColor: colors_humi[index]
+            };
+            known_nodes_humi.push(data.node);
+        }
+
+        function init_node_temp(data) {
+            var index = known_nodes_temp.length;
+            data_temp.datasets[index] = {
+                label: data.node,
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                fill: false,
+                lineTension: 0.3,
+                pointBorderWidth: 3,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 3,
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                borderColor: colors_temp[index],
+                pointBorderColor: colors_temp[index],
+                pointBackgroundColor: colors_temp[index],
+                pointHoverBackgroundColor: colors_temp[index],
+                pointHoverBorderColor: colors_temp[index]
+            };
+            known_nodes_temp.push(data.node);
+        }
+
+
+        function updateChartJS_humi(data) {
+            var index = known_nodes_humi.indexOf(data.node);
+            // update date in document headline
+            var time = moment(data.date.substring(0, 19), 'YYYY-MM-DD hh:mm:ss');
+            headline.innerHTML = "MotorGUI - ".concat(time.format('DD.MM.YYYY'));
+            // drop oldest label and insert newest one
+            data_humi.labels.shift();
+            data_humi.labels.push(time.format('hh:mm:ss'));
+            // shift all the data points and duplicate last entry
+            for (var i = 0; i < known_nodes_humi.length; i++) {
+                data_humi.datasets[i].data.shift();
+                data_humi.datasets[i].data.push(_.last(data_humi.datasets[i].data));
+            }
+            // insert the new value for the node
+            data_humi.datasets[index].data[data_humi.datasets[index].data.length - 1] = data.value;
+        }
+
+
+
+    });
+
+
+
+
+</script>
+
+<body>
+<nav class="navbar navbar-default">
+
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Control Panel (Motor Demo)</a>
+        </div>
+
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4"  style="background-color:#bebe;" border="5px;">
+            <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+            <div class="widget">
+
+                <div class="widget-header" style="background:#bebe; height:30px;">
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+
+
+                    <canvas class="mems" id="canvas_mems" width="500" height="300" chart-data="data"
+                            chart-labels="labels" chart-series="series" chart-options="options"
+                            chart-dataset-override="datasetOverride" ></canvas>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="span6">
+
+                <div class="widget">
+
+                    <div class="widget-header">
+                        <i class="icon-line-chart"></i>
+                    </div>
+                    <!-- /widget-header -->
+                    <div class="widget-content">
+
+
+                        <canvas class="plc" id="canvas_plc" width="500" height="300" chart-data="data"
+                                chart-labels="labels" chart-series="series" chart-options="options"
+                                chart-dataset-override="datasetOverride"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="span6">
+            <div class="widget">
+                <div class="widget-header">
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+
+                    <canvas id="myCanvas" width="150" height="400"></canvas>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+

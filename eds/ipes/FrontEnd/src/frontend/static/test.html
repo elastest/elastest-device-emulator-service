@@ -1,0 +1,217 @@
+
+        var socket = io();
+        var known_nodes_plc = [];
+        var known_nodes_temp = [];
+        var headline = document.getElementById("headline");
+        var redraw_speed = 300; // time the animation takes to update the chart
+
+        socket.on('connect', function () {
+            socket.emit('get_history');
+            console.log("socket connected");
+        });
+
+        socket.on('disconnect', function () {
+            console.log("socket disconnected");
+        });
+
+        socket.on('temperature', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_temp.includes(data.node))
+                init_node_temp(data);
+            // update the chartdata
+            updateChartJS_temp(data);
+            // redraw the chart
+            chart_temp.update(redraw_speed);
+        });
+
+        socket.on('plc', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_plc.includes(data.node))
+                init_node_plc(data);
+            // update the chartdata
+            updateChartJS_plc(data);
+            // redraw the chart
+            chart_plc.update(redraw_speed);
+        });
+
+
+        socket.on('history', function (history) {
+            console.log("history received");
+            console.log(history);
+
+            // reset vars justs in case
+            known_nodes_plc = [];
+            known_nodes_temp = [];
+            data_plc.datasets = [];
+            data_temp.datasets = [];
+            data_plc.labels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            data_temp.labels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            // iterate through history data sets
+            var data;
+            for (var i = 0; i < history.length; i++) {
+
+                // name history item
+                data = history[i];
+
+                // if temperature data set
+                if (data.sensor.valueOf() == "mems") {
+
+                    // if node is unknown, initialize dataset
+                    if (!known_nodes_temp.includes(data.node))
+                        init_node_temp(data);
+
+                    // update the chartdata
+                    updateChartJS_temp(data);
+
+                    // if humidity data set
+                } else if (data.sensor.valueOf() == "plc") {
+
+                    // if node is unknown, initialize dataset
+                    if (!known_nodes_plc.includes(data.node))
+                        init_node_plc(data);
+                    // update the chartdata
+                    updateChartJS_plc(data);
+
+                } else {
+                    console.log("unknown sensor type");
+                }
+            }
+            // redraw the charts fast
+            chart_temp.update(0, false);
+            chart_plc.update(0, false);
+
+            console.log("history done");
+        });
+
+        var colors_temp = ["#00008B", "#0000FF", "#1E90FF", "#00BFFF", "#87CEFA"];
+        var colors_plc = ["#008080", "#20B2AA", "#40E0D0", "#00FFFF", "#7FFFD4"];
+
+        var options_plc = {
+            responsive: false, // Resizes when the canvas container does.
+            title: {
+                display: true,
+                fontSize: 16,
+                text: 'PLC DATA'
+            }
+        };
+// MEMS DATA
+        var options_mems = {
+            responsive: false, // Resizes when the canvas container does.
+            title: {
+                display: true,
+                fontSize: 16,
+                text: ''
+            }
+        };
+
+
+        var data_plc = {
+            labels: [1490170297.690, 1490170297.600, 1490170227.690, 1490170297.000, 1490170200.000, 1490170297.223],
+            datasets: []
+        };
+
+        var data_temp = {
+            labels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            datasets: []
+        };
+
+        var ctx_plc = document.getElementById("canvas_plc").getContext("2d");
+        var chart_plc = new Chart(ctx_plc, {
+            type: 'line',
+            data: data_plc,
+            options: options_plc
+        });
+
+        var ctx_temp = document.getElementById("canvas_mems").getContext("2d");
+        var chart_temp = new Chart(ctx_temp, {
+            type: 'line',
+            data: data_temp,
+            options: options_temp
+        });
+
+        function init_node_plc(data) {
+            var index = known_nodes_plc.length;
+            data_plc.datasets[index] = {
+                label: data.node,
+                data: [0.01, 0.20, -0.003, -0.89, 0.290, 1.2, 1.30],
+                fill: false,
+                lineTension: 0.3,
+                pointBorderWidth: 3,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 3,
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                borderColor: colors_plc[index],
+                pointBorderColor: colors_plc[index],
+                pointBackgroundColor: colors_plc[index],
+                pointHoverBackgroundColor: colors_plc[index],
+                pointHoverBorderColor: colors_plc[index]
+            };
+            known_nodes_plc.push(data.node);
+        }
+
+        function init_node_temp(data) {
+            var index = known_nodes_temp.length;
+            data_temp.datasets[index] = {
+                label: data.node,
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                fill: false,
+                lineTension: 0.3,
+                pointBorderWidth: 3,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 3,
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                borderColor: colors_temp[index],
+                pointBorderColor: colors_temp[index],
+                pointBackgroundColor: colors_temp[index],
+                pointHoverBackgroundColor: colors_temp[index],
+                pointHoverBorderColor: colors_temp[index]
+            };
+            known_nodes_temp.push(data.node);
+        }
+
+
+
+       function init_node_plc(data){
+            var index = known_nodes_plc.length;
+            data_plc.datasets[index] = {
+               labels: ["January", "February", "March", "April", "May", "June", "July"],
+               datasets: [
+                   {
+                       label: "My First dataset",
+                       fillColor: "rgba(220,220,220,0.2)",
+                       strokeColor: "rgba(220,220,220,1)",
+                       pointColor: "rgba(220,220,220,1)",
+                       pointStrokeColor: "#fff",
+                       pointHighlightFill: "#fff",
+                       pointHighlightStroke: "rgba(220,220,220,1)",
+                       data: [65, 59, 80, 81, 56, 55, 40]
+                   }
+                     ]
+  };
+
+                   function updateChartJS_plc(data) {
+                       var index = known_nodes_plc.indexOf(data.node);
+                       // update date in document headline
+                       var time = moment(data.date.substring(0, 19), 'YYYY-MM-DD hh:mm:ss');
+                       headline.innerHTML = "MotorGUI - ".concat(time.format('DD.MM.YYYY'));
+                       // drop oldest label and insert newest one
+                       data_plc.labels.shift();
+                       data_plc.labels.push(time.format('hh:mm:ss'));
+                       // shift all the data points and duplicate last entry
+                       for (var i = 0; i < known_nodes_plc.length; i++) {
+                           data_plc.datasets[i].data.shift();
+                           data_plc.datasets[i].data.push(_.last(data_plc.datasets[i].data));
+                       }
+                       // insert the new value for the node
+                       data_plc.datasets[index].data[data_plc.datasets[index].data.length - 1] = data.value;
+                   }
+
+
+               //draw a graph from json data
+
+
+
+
+           }
+       });

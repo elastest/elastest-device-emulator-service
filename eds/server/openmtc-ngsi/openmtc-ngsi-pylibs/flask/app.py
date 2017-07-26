@@ -108,7 +108,7 @@ class Flask(_PackageBoundObject):
         an SQL query in debug mode.  If the import name is not properly set
         up, that debugging information is lost.  (For example it would only
         pick up SQL queries in `yourapplication.app` and not
-        `yourapplication.views.frontend`)
+        `yourapplication.views.FrontEnd`)
 
     .. versionadded:: 0.7
        The `static_url_path`, `static_folder`, and `template_folder`

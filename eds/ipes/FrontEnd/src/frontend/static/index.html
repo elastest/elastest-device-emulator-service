@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Motor Demo Dashboard</title>
+    <script src="/static/js/socket.io.js"></script>
+    <script src="/static/js/jquery-3.1.0.min.js"></script>
+    <script src="/static/js/moment.js"></script>
+    <script src="/static/js/underscore.js"></script>
+    <script src="/static/js/chart-2.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js" ></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+    <style id="jsbin-css">
+        body {
+            margin-top: 0px;
+        }
+
+        .stat_1{
+            background-color: darkgrey;
+            width: 300px;
+            height: 400px;
+
+        }
+
+        .widget {
+
+            position: relative;
+            clear: both;
+            width: auto;
+            margin-bottom: 3em;
+            overflow: hidden;
+            border: 10px solid grey;
+        }
+
+        .widget-header {
+
+            position: relative;
+
+            height: 40px;
+            line-height: 40px;
+
+            background: #f9f6f1;
+            background:-moz-linear-gradient(top, #f9f6f1 0%, #f2efea 100%); /* FF3.6+ */
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f6f1), color-stop(100%,#f2efea)); /* Chrome,Safari4+ */
+            background:-webkit-linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* Chrome10+,Safari5.1+ */
+            background:-o-linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* Opera11.10+ */
+            background:-ms-linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* IE10+ */
+            background:linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f6f1', endColorstr='#f2efea');
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f6f1', endColorstr='#f2efea')";
+
+
+            border: 1px solid #d6d6d6;
+
+
+            -webkit-background-clip: padding-box;
+        }
+
+
+
+    </style>
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var socket = io();
+        var known_nodes_mems = [];
+        var known_nodes_plc = [];
+        var headline = document.getElementById("headline");
+        var redraw_speed = 100; // time the animation takes to update the chart
+
+        socket.on('connect', function () {
+            socket.emit('get_history');
+            console.log("socket connected");
+        });
+
+        socket.on('disconnect', function () {
+            console.log("socket disconnected");
+        });
+
+        socket.on('actual_speed', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_plc.includes(data.n))
+                init_node_plc(data);
+            // update the chartdata
+            updateChartJS_plc(data);
+            // redraw the chart
+            chart_plc.update(redraw_speed);
+        });
+
+        socket.on('x', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_mems.includes(data.n))
+                init_node_mems(data);
+            // update the chartdata
+            updateChartJS_mems(data);
+            // redraw the chart
+            chart_mems.update(redraw_speed);
+        });
+
+
+        socket.on('y', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_mems.includes(data.n))
+                init_node_mems(data);
+            // update the chartdata
+            updateChartJS_mems(data);
+            // redraw the chart
+            chart_mems.update(redraw_speed);
+        });
+
+        socket.on('z', function (data) {
+            // if node is unknown, initialize dataset
+            if (!known_nodes_mems.includes(data.n))
+                init_node_mems(data);
+            // update the chartdata
+            updateChartJS_mems(data);
+            // redraw the chart
+            chart_mems.update(redraw_speed);
+        });
+
+        socket.on('MachineStatusLED', function(data){
+            trafficLights(data)
+        });
+
+        socket.on('history', function (history) {
+            console.log("history received");
+            console.log(history);
+
+            // reset vars justs in case
+            known_nodes_mems = [];
+            known_nodes_plc = [];
+            data_mems.datasets = [];
+            data_plc.datasets = [];
+            data_mems.labels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            data_plc.labels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+            // iterate through history data sets
+            var data;
+            for (var i = 0; i < history.length; i++) {
+
+                // name history item
+                data = history[i];
+
+                // if temperature data set
+                if (data.n.valueOf() == "actual_speed") {
+
+                    // if node is unknown, initialize dataset
+
+                    if (!known_nodes_plc.includes(data.n))
+                        init_node_plc(data);
+                    // if humidity data set
+                } else if (data.n.valueOf() == "x") {
+
+                    // if node is unknown, initialize dataset
+                    if (!known_nodes_mems.includes(data.n))
+                        init_node_mems(data);
+                    // update the chartdata
+                }else if (data.n.valueOf() == "y") {
+
+                    // if node is unknown, initialize dataset
+                    if (!known_nodes_mems.includes(data.n))
+                        init_node_mems(data);
+                    // update the chartdata
+                }
+
+                else if (data.n.valueOf() == "z") {
+
+                    // if node is unknown, initialize dataset
+                    if (!known_nodes_mems.includes(data.n))
+                        init_node_mems(data);
+                    // update the chartdata
+                }
+
+                else if (data.n.valueOf() == "MachineStatusLED"){
+
+                    trafficLights(data)
+
+                } else {
+                    console.log("unknown sensor type");
+                }
+            }
+            // redraw the charts fast
+            chart_plc.update(0, false);
+            chart_mems.update(0, false);
+
+            console.log("history done");
+        });
+
+        var colors_plc = ["#00008B", "#0000FF", "#1E90FF", "#00BFFF", "#87CEFA"];
+        var colors_mems = ["#008080", "#20B2AA", "#40E0D0", "#00FFFF", "#7FFFD4"];
+
+        var options_mems = {
+            responsive: true, // Resizes when the canvas container does.
+            title: {
+                display: true,
+                fontSize: 16,
+                text: 'Acceleration[g]'
+            },
+            animation: false,
+            scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        beginAtZero: true, 
+                        steps : 0.1,
+                        max : 0.5,
+                        min: -0.5,
+                        maxRotation : 0,
+                        minRotation: 0
+                    }
+                }]
+            }
+        };
+
+        var options_plc = {
+            responsive: true, // Resizes when the canvas container does.
+            title: {
+                display: true,
+                fontSize: 16,
+                text: 'PLC Data '
+            },
+             scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        beginAtZero: true, 
+                        steps : 50,
+                        max : 500,
+                        min: -500,
+                        maxRotation : 0,
+                        minRotation: 0
+                    }
+                }]
+            },
+            animation: false
+        };
+
+        var data_mems = {
+            labels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            datasets: []
+        };
+
+        var data_plc = {
+            labels: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            datasets: []
+        };
+
+        var ctx_mems = document.getElementById("canvas_mems").getContext("2d");
+        var chart_mems = new Chart(ctx_mems, {
+            type: 'line',
+            data: data_mems,
+            options: options_mems
+        });
+
+        var ctx_plc = document.getElementById("canvas_plc").getContext("2d");
+        var chart_plc = new Chart(ctx_plc, {
+            type: 'line',
+            data: data_plc,
+            options: options_plc
+        });
+
+        function init_node_mems(data) {
+            var index = known_nodes_mems.length;
+            data_mems.datasets[index] = {
+
+                label: data.n,
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                fill: false,
+                lineTension: 0.3,
+                pointBorderWidth: 3,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 3,
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                borderColor: colors_mems[index],
+                pointBorderColor: colors_mems[index],
+                pointBackgroundColor: colors_mems[index],
+                pointHoverBackgroundColor: colors_mems[index],
+                pointHoverBorderColor: colors_mems[index]
+            };
+            known_nodes_mems.push(data.n);
+        }
+
+
+        function init_node_plc(data) {
+            var index = known_nodes_plc.length;
+            data_plc.datasets[index] = {
+                label: data.n,
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                fill: false,
+                lineTension: 0.3,
+                pointBorderWidth: 3,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 3,
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                borderColor: colors_plc[index],
+                pointBorderColor: colors_plc[index],
+                pointBackgroundColor: colors_plc[index],
+                pointHoverBackgroundColor: colors_plc[index],
+                pointHoverBorderColor: colors_plc[index]
+            };
+            known_nodes_plc.push(data.n);
+        }
+
+
+        function updateChartJS_mems(data) {
+            var index = known_nodes_mems.indexOf(data.n);
+
+            // update date in document headline
+            var time = moment.unix(data.t.substring(0, 10));
+            //headline.innerHTML = "MotorGUI - ".concat(time.format('DD.MM.YYYY'));
+            //// drop oldest label and insert newest one
+            data_mems.labels.shift();
+            data_mems.labels.push(time.format('hh:mm:ss'));
+            // shift all the data points and duplicate last entry
+            for (var i = 0; i < known_nodes_mems.length; i++) {
+                data_mems.datasets[i].data.shift();
+                data_mems.datasets[i].data.push(_.last(data_mems.datasets[i].data));
+            }
+            // insert the new value for the node
+            data_mems.datasets[index].data[data_mems.datasets[index].data.length - 1] = data.v;
+        }
+
+
+        function updateChartJS_plc(data) {
+            var index = known_nodes_plc.indexOf(data.n);
+            // update date in document headline
+            var time = moment.unix(data.t.substring(0, 10));
+            //headline.innerHTML = "MotorGUI - ".concat(time.format('DD.MM.YYYY'));
+            // drop oldest label and insert newest one
+            data_plc.labels.shift();
+            data_plc.labels.push(time.format('hh:mm:ss'));
+            // shift all the data points
+            for (var i = 0; i < known_nodes_plc.length; i++) {
+                data_plc.datasets[i].data.shift();
+                data_plc.datasets[i].data.push(_.last(data_plc.datasets[i].data));
+            }
+            // insert the new value for the node
+            data_plc.datasets[index].data[data_plc.datasets[index].data.length - 1] = data.v;
+
+        }
+
+
+
+        //mems data
+
+
+        $("#btnAdd1").on('click',function() {
+            console.log("Motor Started");
+            socket.emit("motor_start")
+
+
+        });
+        $("#btnAdd2").on('click',function() {
+            console.log("Motor Stopped");
+            socket.emit("motor_stop")
+        });
+
+    });
+
+
+    function trafficLights(data) {
+        console.log(data.v-1)
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        //  var signals = [1, 2, 3]
+        //var value = signals[0];
+        var signals = ['green', 'yellow', 'red', 'Pearl beige'];
+
+        var current = signals[(data.v)-1];
+
+        function offlight(a1) {
+            ctx.beginPath();
+            ctx.arc(125, a1, 40, 10, 12 * Math.PI);
+            ctx.fillStyle = "grey";
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        function drawLight(a1, fillParam) {
+            ctx.beginPath();
+            ctx.arc(125, a1, 40, 10, 12 * Math.PI);
+            ctx.fillStyle = fillParam;
+            ctx.fill();
+            ctx.stroke();
+        }
+
+
+
+        function changelight() {
+            if (current == signals[0]) {
+                drawLight(50, "green");
+                offlight(150);
+                offlight(250);
+
+            } else if (current == signals[4]) {
+                drawLight(50, "red");
+                drawLight(150, "yellow");
+                offlight(250);
+
+            } else if (current == signals[2]) {
+                offlight(50);
+                offlight(150);
+                drawLight(250, "red");
+
+            } else if (current == signals[1]) {
+                offlight(50);
+                drawLight(150, "yellow");
+                offlight(250);
+
+            }
+
+        }
+
+        changelight();
+
+    }
+
+</script>
+
+
+<body>
+
+<nav class="navbar navbar-default">
+
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Control Panel (Motor Demo)</a>
+        </div>
+
+
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="main" >
+    <div class="container-fluid" style="background-color: whitesmoke;">
+
+        <div class="row">
+            <div id="mems" class="col-lg-10 col-md-10 col-sm-10" >
+                <div class="widget">
+
+                    <div class="widget-header">
+                        <i class="icon-signal"></i><h3>MEMS DATA</h3>
+                    </div>
+                    <!-- /widget-header -->
+                    <div class="widget-content">
+
+                        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+
+                        <canvas class="mems" id="canvas_mems" width="1000" height="277"  >
+
+                        </canvas>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+            <div id="status" class="col-lg-2 col-md-2 col-sm-2 ">
+                <div class="widget">
+                    <div class="widget-header"><h4>Status</h4></i>
+
+                    </div>
+
+                    <!-- /widget-header -->
+                    <div class="widget-content">
+                        <div class="stat_1"  width="300" height="400">
+                            <canvas id="myCanvas" width="300" height="300"></canvas>
+                        </div>
+                        <div><input type="button" id="btnAdd1" value="Activate">
+                            <input type="button" id="btnAdd2" value="Stop">   </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="row">
+
+            <div id="plc" class="col-lg-10  col-md-10 col-sm-10 ">
+
+                <div class="widget">
+
+                    <div class="widget-header">
+                        <i class="icon-signal"></i><span><h2>PLC DATA</h2></span>
+                    </div>
+                    <!-- /widget-header -->
+                    <div class="widget-content">
+
+                        <canvas class="plc" id="canvas_plc" width="1000" height="275">
+
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
