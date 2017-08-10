@@ -3,7 +3,7 @@
     "ep": "http://localhost:8000",
     "cse_base": "onem2m",
     "host": "auto",
-    "port": 6065,
+    "port": 5001,
     "usb_device": "/dev/ttyUSB0",
     "sim": true,
     "sim_period": 3,
