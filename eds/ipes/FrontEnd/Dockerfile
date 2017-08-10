@@ -3,7 +3,7 @@
 ############################################################
 
 # Set the base image to use
-FROM debian:jessie
+FROM ubuntu:16.04
 
 
 # Set the file maintainer
