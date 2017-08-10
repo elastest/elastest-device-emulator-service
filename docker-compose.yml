@@ -24,7 +24,7 @@ services:
     container_name: memsipe
     image: elastest/eds-memsipe
     expose:
-      - 6066
+      - 5050
     ports:
       - 5050:5050
     networks:
