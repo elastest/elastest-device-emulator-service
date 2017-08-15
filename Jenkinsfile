@@ -24,6 +24,16 @@ node('docker'){
          //here we use only the build for zigbeeip
           def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ipes/ZigBeeIPE/Dockerfile")
 
+
+     stage "build memsipe image"
+         //here we use only the build for zigbeeip
+          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ipes/MemsIPE/Dockerfile")
+
+
+      stage "build frontend image"
+         //here we use only the build for zigbeeip
+          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ipes/FrontEnd/Dockerfile")
+
     stage "publish"
           echo ("publishing..")
           withCredentials([[
