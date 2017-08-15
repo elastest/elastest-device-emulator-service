@@ -1,0 +1,217 @@
+{
+    "global": {
+        "etsi_version": "2.1.1",
+        "etsi_compatibility": "1.1",
+        "ignore_extra_attributes": false,
+        "disable_retargeting": false,
+        "scl_type": "GSCL",
+        "scl_id": "gscl",
+        "scl_base": "http://localhost:5000/m2m",
+        "default_lifetime": 2000,
+        "additional_hostnames": [
+            "10.0.0.16",
+            "10.0.0.17:1234"
+        ],
+        "aPocHandling": "DEEP",
+        "require_auth": false
+    },
+    "database": {
+        "driver": "pyscl.methoddomain.db.nodb2.NoDB2"
+    },
+    "logging": {
+        "level": "INFO",
+        "file": null
+    },
+    "plugins": [
+        {
+            "name": "HTTPTransportPlugin",
+            "package": "pyscl.plugins.transport_gevent_http",
+            "config": {
+                "endpoints": [
+                    {
+                        "personality": "dIa",
+                        "interface": "",
+                        "port": 4000,
+                        "host": "localhost"
+                    },
+                    {
+                        "personality": "mId",
+                        "interface": "0.0.0.0",
+                        "port": 5000,
+                        "host": "localhost"
+                    },
+                    {
+                        "personality": "mId",
+                        "interface": "0.0.0.0",
+                        "port": 6000,
+                        "key": "certs/server.key",
+                        "crt": "certs/server.crt",
+                        "host": "localhost"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "COAPTransportPlugin",
+            "package": "pyscl.plugins.transport_gevent_coap",
+            "disabled": true,
+            "config": {
+                "client-port": 5684,
+                "endpoints": [
+                    {
+                        "personality": "dIa",
+                        "interface": "",
+                        "port": 4000
+                    },
+                    {
+                        "personality": "mId",
+                        "interface": "",
+                        "port": 5000
+                    },
+                    {
+                        "personality": "mId",
+                        "interface": "",
+                        "port": 6000,
+                        "key": "certs/CA_and_certs/pydtls/server/server-keycert.pem",
+                        "crt": "certs/CA_and_certs/pydtls/server/server-cert.pem",
+                        "cacrt": "certs/CA_and_certs/pydtls/ca/ca-cert.pem"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ExpirationTimeHandler",
+            "package": "pyscl.plugins.ExpirationTimeHandler",
+            "disabled": false,
+            "config": {
+                "default_lifetime": 10000
+            }
+        },
+        {
+            "name": "NotificationHandler",
+            "package": "pyscl.plugins.notificationhandler",
+            "disabled": false
+        },
+        {
+            "name": "NotifyAggregator",
+            "package": "pyscl.plugins.notify_aggregator",
+            "disabled": false
+        },
+        {
+            "name": "AnnouncementHandler",
+            "package": "pyscl.plugins.announcement_handler",
+            "disabled": false,
+            "config": {
+                "auto_announce": true
+            }
+        },
+        {
+            "name": "NotificationChannelHandler",
+            "disabled": false,
+            "config": {
+                "long_polling_timeout": 60
+            }
+        },
+        {
+            "name": "GSCLRegistrationPlugin",
+            "disabled": false,
+            "config": {
+                "scl_type": "GSCL",
+                "gscl_id": "gscl",
+                "link": "http://localhost:5000/m2m",
+                "nscl_uri": "http://localhost:15000/m2m",
+                "nscl_id": "nscl",
+                "interval": 1000,
+                "offset": 1000,
+                "subscription_id": "001011234567890"
+            }
+        },
+        {
+            "name": "NetworkManager",
+            "package": "pyscl.plugins.networkmanager",
+            "config": {}
+        },
+        {
+            "name": "lwm2m_Client",
+            "disabled": true,
+            "config": {
+                "lwm2m_server_ip": "localhost",
+                "lwm2m_server_port": "5684",
+                "test": {
+                    "path": "rd",
+                    "endpoint": "node2",
+                    "lifetime": "2000",
+                    "version": "5",
+                    "binding": "U",
+                    "sms": "ABC123",
+                    "payload": "3/1/1, 3/1/2"
+                }
+            }
+        }
+    ],
+    "transport": {
+        "ocsp_enabled": false,
+        "etsiSclMo": {
+            "safPolicySetCollection": [
+                {
+                    "policyScope": [
+                        "default"
+                    ],
+                    "m2mSpPolicy": {
+                        "defaultRcatValue": 0,
+                        "rcatParamListCollection": [
+                            {
+                                "rcatValue": 0,
+                                "anSelList": [],
+                                "maxPendReq": 10,
+                                "maxPendData": 10000
+                            },
+                            {
+                                "rcatValue": 1,
+                                "anSelList": [],
+                                "maxPendReq": 20,
+                                "maxPendData": 20000
+                            },
+                            {
+                                "rcatValue": 2,
+                                "anSelList": [],
+                                "maxPendReq": 30,
+                                "maxPendData": 30000
+                            },
+                            {
+                                "rcatValue": 3,
+                                "anSelList": [],
+                                "maxPendReq": 40,
+                                "maxPendData": 40000
+                            },
+                            {
+                                "rcatValue": 4,
+                                "anSelList": [],
+                                "maxPendReq": 50,
+                                "maxPendData": 50000
+                            },
+                            {
+                                "rcatValue": 5,
+                                "anSelList": [],
+                                "maxPendReq": 60,
+                                "maxPendData": 60000
+                            },
+                            {
+                                "rcatValue": 6,
+                                "anSelList": [],
+                                "maxPendReq": 70,
+                                "maxPendData": 70000
+                            },
+                            {
+                                "rcatValue": 7,
+                                "anSelList": [],
+                                "maxPendReq": 80,
+                                "maxPendData": 80000
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

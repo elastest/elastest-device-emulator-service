@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AirBaseSensor>
+    <id>603</id>
+    <Serial>355839041457690</Serial>
+    <ver>6</ver>
+    <HGVer>1.0.74.1</HGVer>
+    <time>1391421224</time>
+    <iQ100>17608 206555 2573 3488 15 12 109 0 0 0</iQ100>
+    <sharp-Gp2y1010>0</sharp-Gp2y1010>
+    <SM50_>Error</SM50_>
+    <noise>65</noise>
+    <RHT03>33.0999985,22.2000008</RHT03>
+    <GPS>Error</GPS>
+    <CO2>11</CO2>
+</AirBaseSensor>
