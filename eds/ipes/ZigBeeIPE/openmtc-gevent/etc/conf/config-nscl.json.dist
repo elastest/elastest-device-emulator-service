@@ -1,0 +1,283 @@
+{
+    "global": {
+        "ignore_extra_attributes": true,
+        "disable_retargeting": false,
+        "default_lifetime": 2000,
+        "additional_hostnames": [],
+        "aPocHandling": "DEEP",
+        "require_auth": false,
+        "default_content_type": "application/json"
+    },
+    "database": {
+        "driver": "openmtc_server.db.nodb2.NoDB2",
+        "_driver": "openmtc_server.db.db_gevent_sql.GEventSQLDBAdapter",
+        "dropDB": true,
+        "backend": "sqlite3",
+        "connectionstring": "/tmp/nscl.db",
+        "concurrency": 1
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "/var/log/openmtc/nscl.log"
+    },
+    "etsi": {
+        "scl_base": "m2m",
+        "mIa": {
+        },
+        "mId": {
+        },
+        "etsi_version": "2.1.1",
+        "etsi_compatibility": "1.1",
+        "scl_type": "NSCL",
+        "scl_id": "nscl",
+        "scl_base_uri": "http://localhost:15000/m2m",
+        "default_content_type": "application/json"
+    },
+    "onem2m": {
+        "sp_id": "openmtc.org",
+        "cse_type": "IN-CSE",
+        "cse_id": "in-cse-1",
+        "cse_base": "onem2m",
+        "interfaces": [
+            {
+                "personality": "dIa",
+                "endpoints": "*"
+            }
+        ]
+    },
+    "plugins": {
+        "openmtc_server": [
+            {
+                "name": "HTTPTransportPlugin",
+                "package": "openmtc_server.plugins.transport_gevent_http",
+                "disabled": true,
+                "config": {
+                    "connectors": [
+                        {
+                            "interface": "",
+                            "host": "localhost",
+                            "port": 14000,
+                            "is_wan": false
+                        },
+                        {
+                            "interface": "",
+                            "host": "localhost",
+                            "port": 15000,
+                            "is_wan": true
+                        },
+                        {
+                            "interface": "",
+                            "host": "localhost",
+                            "port": 16000,
+                            "is_wan": true,
+                            "key": "certs/CA_signed_certs/http_server_localhost/server-keycert.pem",
+                            "crt": "certs/CA_signed_certs/http_server_localhost/server-cert.pem"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "COAPTransportPlugin",
+                "package": "openmtc_server.plugins.transport_gevent_coap",
+                "disabled": true,
+                "config": {
+                    "client-port": 6684,
+                    "connectors": [
+                        {
+                            "interface": "",
+                            "host": "localhost",
+                            "port": 14000,
+                            "is_wan": false
+                        },
+                        {
+                            "interface": "",
+                            "host": "localhost",
+                            "port": 15000,
+                            "is_wan": true
+                        },
+                        {
+                            "interface": "",
+                            "port": 16000,
+                            "is_wan": true,
+                            "key": "certs/CA_signed_certs/dtls_server/server-keycert.pem",
+                            "crt": "certs/CA_signed_certs/dtls_server/server-cert.pem"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "ExpirationTimeHandler",
+                "package": "openmtc_server.plugins.expiration_time_handler",
+                "disabled": true,
+                "config": {
+                    "default_lifetime": 10000
+                }
+            }
+        ],
+        "openmtc_scl": [
+            {
+                "name": "NotificationHandler",
+                "package": "openmtc_scl.plugins.notification_handler",
+                "disabled": true
+            },
+            {
+                "name": "RegistrationHandler",
+                "package": "openmtc_scl.plugins.registration_handler",
+                "disabled": true,
+                "config": {
+                    "nscl_uri": "http://127.0.0.1:15000/m2m",
+                    "nscl_id": "nscl",
+                    "interval": 3600,
+                    "offset": 3600,
+                    "subscription_id": "001011234567890"
+                }
+            },
+            {
+                "name": "RetargetingHandler",
+                "package": "openmtc_scl.plugins.retargeting_handler",
+                "disabled": true
+            },
+            {
+                "name": "AnnouncementHandler",
+                "package": "openmtc_scl.plugins.announcement_handler",
+                "disabled": true,
+                "config": {
+                    "auto_announce": false
+                }
+            },
+            {
+                "name": "SocketIOTransportPlugin",
+                "package": "openmtc_scl.plugins.transport_gevent_socketio",
+                "disabled": true
+            },
+            {
+                "name": "NotificationChannelHandler",
+                "package": "openmtc_scl.plugins.NotificationChannelHandler",
+                "disabled": true,
+                "config": {
+                    "long_polling_timeout": 60
+                }
+            },
+            {
+                "name": "CoAPRetargetingHandler",
+                "package": "openmtc_scl.plugins.coap_retargeting_handler",
+                "disabled": true
+            },
+            {
+                "name": "NSCLm2mPocHandler",
+                "package": "openmtc_scl.plugins.NSCLm2mPocHandler",
+                "disabled": true,
+                "config": {
+                }
+            },
+            {
+                "name": "lwm2m_dm_client",
+                "package": "openmtc_scl.plugins.lwm2m_dm_client",
+                "disabled": true,
+                "config": {
+                    "lwm2m_dm_server_ip": "127.0.0.1",
+                    "lwm2m_dm_server_port": 5684,
+                    "blacklist_interfaces": [],
+                    "local_listener_port": 42000,
+                    "local_client_port": 30000,
+                    "endpoint_name": "",
+                    "objects": "",
+                    "resources": {
+                        "life_time": 86400,
+                        "version": 1.0,
+                        "sms_num": "12AB",
+                        "binding": "U"
+                    }
+                }
+            }
+        ],
+        "openmtc_cse": [
+            {
+                "name": "HTTPTransportPlugin",
+                "package": "openmtc_cse.plugins.transport_gevent_http",
+                "disabled": false,
+                "config": {
+                    "interface": "::",
+                    "port": 18000
+                }
+            },
+            {
+                "name": "NotificationHandler",
+                "package": "openmtc_cse.plugins.notification_handler",
+                "disabled": true
+            },
+            {
+                "name": "AnnouncementHandler",
+                "package": "openmtc_cse.plugins.announcement_handler",
+                "disabled": true,
+                "config": {
+                    "auto_announce": false
+                }
+            }
+        ]
+    },
+    "transport": {
+        "etsiSclMo": {
+            "safPolicySetCollection": [
+                {
+                    "policyScope": [
+                        "default"
+                    ],
+                    "m2mSpPolicy": {
+                        "defaultRcatValue": 0,
+                        "rcatParamListCollection": [
+                            {
+                                "rcatValue": 0,
+                                "anSelList": [],
+                                "maxPendReq": 10,
+                                "maxPendData": 10000
+                            },
+                            {
+                                "rcatValue": 1,
+                                "anSelList": [],
+                                "maxPendReq": 20,
+                                "maxPendData": 20000
+                            },
+                            {
+                                "rcatValue": 2,
+                                "anSelList": [],
+                                "maxPendReq": 30,
+                                "maxPendData": 30000
+                            },
+                            {
+                                "rcatValue": 3,
+                                "anSelList": [],
+                                "maxPendReq": 40,
+                                "maxPendData": 40000
+                            },
+                            {
+                                "rcatValue": 4,
+                                "anSelList": [],
+                                "maxPendReq": 50,
+                                "maxPendData": 50000
+                            },
+                            {
+                                "rcatValue": 5,
+                                "anSelList": [],
+                                "maxPendReq": 60,
+                                "maxPendData": 60000
+                            },
+                            {
+                                "rcatValue": 6,
+                                "anSelList": [],
+                                "maxPendReq": 70,
+                                "maxPendData": 70000
+                            },
+                            {
+                                "rcatValue": 7,
+                                "anSelList": [],
+                                "maxPendReq": 80,
+                                "maxPendData": 80000
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
