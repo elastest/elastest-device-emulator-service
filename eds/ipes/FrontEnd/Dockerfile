@@ -45,8 +45,9 @@ EXPOSE 6065
 #create default directory
 RUN mkdir -p /var/log/eds
 
+ADD . /eds
 
 # entry point
-ENTRYPOINT ["/bin/bash"]
+#ENTRYPOINT ["/bin/sh"]
 CMD [""]
 

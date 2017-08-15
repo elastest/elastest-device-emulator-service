@@ -44,8 +44,10 @@ EXPOSE 5001
 #create default directory
 RUN mkdir -p /var/log/eds
 
-
+ADD . /eds
 # entry point
-ENTRYPOINT ["/usr/local/bin/eds"]
+#ENTRYPOINT ["/bin/sh"]
+#ENTRYPOINT ["/usr/local/bin/"]
+
 CMD [""]
 
