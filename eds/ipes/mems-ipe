@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-cd $(dirname ${0})
-
-. ZigBeeIPE/prep-env.sh
-
-cd MemsIPE
-
-PYTHONPATH=${PYTHONPATH}:src exec python -m memsipe $@
