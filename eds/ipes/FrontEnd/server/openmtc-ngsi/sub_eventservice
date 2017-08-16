@@ -1,0 +1,5 @@
+#!/bin/sh
+# Triggers a subscription for notifying the event service.
+reference=`grep "EventServiceIP" config.cfg | cut -d'"' -f4`
+sleep 10
+curl -X POST -H 'Content-type: text/xml' -d '<?xml version="1.0" encoding="UTF-8"?>   <subscribeContextRequest>     <entityIdList>       <entityId isPattern="True"><id>.*</id>  </entityId>   </entityIdList>     <attributeList>   </attributeList>     <restriction>       <attributeExpression>       </attributeExpression>       <scope>         <operationScope>           <scopeType></scopeType>           <scopeValue></scopeValue>         </operationScope>       </scope>     </restriction>     <reference>http://'$reference'/NGSI10/updateContext</reference>   </subscribeContextRequest>' localhost:5050/NGSI10/subscribeContext
