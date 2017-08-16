@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd $(dirname ${0})
+
+. prep-env.sh
+
+
+#stty -echo -echok -echoke -echoe -echonl < /dev/ttyACM0
+
+PYTHONPATH=${PYTHONPATH}:src exec python -m memsipe $@

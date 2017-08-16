@@ -2,7 +2,7 @@
 import smbus
 import time
 import os
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
  
 # Define a class called Accel
 class Accel():
