@@ -2,3 +2,4 @@ eds/build/
 eds/dist/
 .idea/
 *.pyc
+.tox/py27
