@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/FrontEnd/openmtc-app/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/FrontEnd/openmtc-app/doc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/FrontEnd/futile/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/FrontEnd/common/openmtc/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/FrontEnd/common/openmtc/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/FrontEnd/common/openmtc-etsi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/FrontEnd/common/openmtc-onem2m/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/common/openmtc/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/common/openmtc/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/common/openmtc-etsi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/common/openmtc-onem2m/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/futile/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/openmtc-app/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/openmtc-gevent/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/openmtc-gevent/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/openmtc-gevent/etc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/openmtc-gevent/certs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/openmtc-gevent/bin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/server/openmtc-cse/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/server/openmtc-ngsi/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/server/openmtc-ngsi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eds/ipes/ZigBeeIPE/server/openmtc-ngsi/tests" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/eds/server/openmtc-ngsi/openmtc-ngsi-pylibs/flask/testsuite/templates" />
+      </list>
+    </option>
+  </component>
+  <component name="TestRunnerService">
+    <option name="projectConfiguration" value="Nosetests" />
+    <option name="PROJECT_TEST_RUNNER" value="Nosetests" />
+  </component>
+</module>
