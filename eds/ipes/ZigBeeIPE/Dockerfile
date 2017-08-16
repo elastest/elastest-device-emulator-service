@@ -44,7 +44,7 @@ EXPOSE 5001
 #create default directory
 RUN mkdir -p /var/log/eds
 
-ADD . /eds
+ADD . /eds/zigbeeipe
 # entry point
 #ENTRYPOINT ["/bin/sh"]
 #ENTRYPOINT ["/usr/local/bin/"]
