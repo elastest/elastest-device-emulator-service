@@ -3,7 +3,7 @@ from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 from openmtc_app.flask_runner import FlaskRunner as Runner
 from openmtc_app.util import prepare_app, get_value
 
-from eds.ipes.FrontEnd.src.frontend.front_end import MotorGUI
+from .front_end import FrontEnd
 
 # defaults
 default_name = 'FrontEnd'
@@ -11,7 +11,7 @@ default_ep = 'http://localhost:6000'
 
 # args parser
 parser = ArgumentParser(
-    description="App for motor demo that subscribes to contains and displays "
+    description="App for ElasTest Device Emulator Service that subscribes to contains and displays "
                 "sensor data on web page",
     prog="FrontEnd",
     formatter_class=ArgumentDefaultsHelpFormatter)
