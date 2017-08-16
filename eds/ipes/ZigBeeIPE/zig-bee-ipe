@@ -2,10 +2,9 @@
 
 cd $(dirname ${0})
 
-. ./prep-env.sh
+. prep-env.sh
 
-cd ZigBeeIPE
 
-stty -echo -echok -echoke -echoe -echonl < /dev/ttyACM0
+#stty -echo -echok -echoke -echoe -echonl < /dev/ttyACM0
 
 PYTHONPATH=${PYTHONPATH}:src exec python -m zigbeeipe $@
