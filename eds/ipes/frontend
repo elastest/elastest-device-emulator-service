@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-cd $(dirname ${0})
-
-. FrontEnd/prep-env.sh
-
-cd FrontEnd
-
-PYTHONPATH=${PYTHONPATH}:src exec python -m frontend $@
