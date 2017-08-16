@@ -2,4 +2,4 @@ eds/build/
 eds/dist/
 .idea/
 *.pyc
-.tox/py27
+eds/.tox/py27

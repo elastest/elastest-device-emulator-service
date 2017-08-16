@@ -1,1 +1,0 @@
-sudo chmod a+rwx -R ./docker/docker-files/sdk-amd64
