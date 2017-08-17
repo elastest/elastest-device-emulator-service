@@ -39,9 +39,6 @@ RUN printf "Starting update...\n" && \
     printf "Installation and cleanup finished.\n"
 
 
-# Install any needed packages specified in requirements.txt
-#RUN pip install -r requirements.txt
-
 
 
 # Expose the default port
@@ -51,7 +48,7 @@ EXPOSE 5050
 RUN mkdir -p /var/log/eds
 RUN chmod +x /var/log/eds
 
-ADD . /eds/ZigBeeIPE
+ADD . /eds/MemsIPE
 
 # entry point
 ENTRYPOINT ["/bin/sh"]

@@ -13,6 +13,10 @@ MAINTAINER sathi@tu-berlin.de
 # Update the repository sources list
 RUN apt-get update
 RUN apt-get install -y python-pip python-dev build-essential
+
+# Install app dependencies
+RUN pip install Flask==0.9.0
+
 RUN pip install --upgrade pip
 
 # install packages and clean up
@@ -45,9 +49,9 @@ EXPOSE 6065
 #create default directory
 RUN mkdir -p /var/log/eds
 
-ADD . /eds
+ADD . /eds/frontend
 
 # entry point
-#ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/bin/sh"]
 CMD [""]
 
