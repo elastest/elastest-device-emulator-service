@@ -6,13 +6,19 @@
 FROM ubuntu:16.04
 
 # Set the file maintainer
-MAINTAINER v.gowtham@tu-berlin.de
+MAINTAINER v.gowtham@tu-berlin.de/sathi
 
 
 # Update the repository sources list
 RUN apt-get update
-RUN apt-get install -y python-pip python-dev build-essential
+RUN apt-get install -y python2.7 python-pip python-dev build-essential
+
+
+# Install app dependencies
+RUN pip install Flask==0.9.0
+
 RUN pip install --upgrade pip
+
 
 # install packages and clean up
 RUN printf "Starting update...\n" && \
@@ -43,10 +49,12 @@ EXPOSE 5050
 
 #create default directory
 RUN mkdir -p /var/log/eds
+RUN chmod +x /var/log/eds
 
-ADD . /eds
+ADD . /eds/ZigBeeIPE
+
 # entry point
-#ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/bin/sh"]
 
 CMD [""]
 
