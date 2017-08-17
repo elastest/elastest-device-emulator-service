@@ -19,17 +19,17 @@ node('docker'){
 
             stage "build zigbee image"
                  //here we use only the build for zigbeeipe
-                  def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ZigBeeIPE/Dockerfile")
+                  def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe", "./eds/ZigBeeIPE")
 
 
             stage "build memsipe image"
              //here we use only the build for memsipe
-                def memsipe_image = docker.build("elastest/eds-memsipe -f ./eds/MemsIPE/Dockerfile")
+                def memsipe_image = docker.build("elastest/eds-memsipe", "./eds/MemsIPE")
 
 
             stage "build frontend image"
                 //here we use only the build for frontend
-                 def frontend_image = docker.build("elastest/eds-frontend -f ./eds/FrontEnd/Dockerfile")
+                 def frontend_image = docker.build("elastest/eds-frontend", "./eds/FrontEnd")
 
             stage "publish"
                echo ("publishing..")
