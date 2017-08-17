@@ -48,6 +48,6 @@ RUN mkdir -p /var/log/eds
 ADD . /eds
 
 # entry point
-#ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/bin/sh"]
 CMD [""]
 
