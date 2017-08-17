@@ -2,7 +2,7 @@ node('docker'){
    stage "Container initialize"
          echo("the node is up")
          //the new image is working!!!
-         def mycontainer = docker.image('elastest/docker-compose-siblings')
+         def mycontainer = docker.image('elastest/ci-docker-compose-siblings')
          mycontainer.pull()
          mycontainer.inside("-u jenkins -v /var/run/docker.sock:/var/run/docker.sock:rw") {
 
