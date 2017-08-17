@@ -13,26 +13,21 @@ node('docker'){
          //sh 'exec unitary tests' ==> OBVIOUSLY this doesn't work you should use the command you would use in a normal bash
          //if you execute tests you can delete the following line it is not delete as it isn't allowed empty stages.
          sh 'which docker'
-  //  stage "build base image"
-         //here we use only the build for zigbeeip
-        //  def base_image = docker.build("elastest/eds-zigbeeipe -f ./eds/docker/docker-files/base-amd64")
-    //stage "build sdk image"
-         //here we use only the build for zigbeeip
-      //    def sdk_image = docker.build("elastest/eds-zigbeeipe -f ./eds/docker/docker-files/sdk-amd64")
+
 
     stage "build zigbee image"
-         //here we use only the build for zigbeeip
-          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ipes/ZigBeeIPE/Dockerfile")
+         //here we use only the build for zigbeeipe
+          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ZigBeeIPE/Dockerfile")
 
 
      stage "build memsipe image"
-         //here we use only the build for zigbeeip
-          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ipes/MemsIPE/Dockerfile")
+         //here we use only the build for memsipe
+          def memsipe_image = docker.build("elastest/eds-memsipe -f ./eds/MemsIPE/Dockerfile")
 
 
       stage "build frontend image"
-         //here we use only the build for zigbeeip
-          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe -f ./eds/ipes/FrontEnd/Dockerfile")
+         //here we use only the build for frontend
+          def frontend_image = docker.build("elastest/eds-frontend -f ./eds/FrontEnd/Dockerfile")
 
     stage "publish"
           echo ("publishing..")
@@ -44,6 +39,8 @@ node('docker'){
                  sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
                         //here your code
                  zigbeeipe_image.push()
+                 memsipe_image.push()
+                 frontend_image.push()
                     }
 
 
