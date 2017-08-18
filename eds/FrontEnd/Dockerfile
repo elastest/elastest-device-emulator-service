@@ -7,7 +7,7 @@ FROM ubuntu:16.04
 
 
 # Set the file maintainer
-MAINTAINER sathi@tu-berlin.de
+MAINTAINER {sathi,v.gowtham}@tu-berlin.de
 
 
 # Update the repository sources list

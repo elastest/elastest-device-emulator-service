@@ -6,13 +6,15 @@
 FROM ubuntu:16.04
 
 # Set the file maintainer
-MAINTAINER v.gowtham@tu-berlin.de/sathi
+MAINTAINER {v.gowtham,sathi}@tu-berlin.de
 
 
 # Update the repository sources list
 RUN apt-get update
 RUN apt-get install -y python2.7 python-pip python-dev build-essential
 
+WORKDIR /home/elastest/eds/MemsIPE
+ADD . /home/elastest/eds/MemsIPE
 
 # Install app dependencies
 RUN pip install Flask==0.9.0
@@ -40,7 +42,7 @@ RUN printf "Starting update...\n" && \
 
 
 # Install any needed packages specified in requirements.txt
-#RUN pip install -r requirements.txt
+RUN pip install -r /home/elastest/eds/MemsIPE/requirements.txt
 
 
 
@@ -51,10 +53,7 @@ EXPOSE 5050
 RUN mkdir -p /var/log/eds
 RUN chmod +x /var/log/eds
 
-ADD . /eds/ZigBeeIPE
 
 # entry point
-ENTRYPOINT ["/bin/sh"]
-
-CMD [""]
+ENTRYPOINT ["/bin/sh",  "/home/elastest/eds/MemsIPE/exec-memsipe.sh"]
 
