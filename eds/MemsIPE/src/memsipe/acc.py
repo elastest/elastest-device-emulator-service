@@ -1,5 +1,5 @@
 #program for testing the acceleration in G-force I2C
-import smbus
+import smbus2
 import time
 import os
 #import RPi.GPIO as GPIO
@@ -8,7 +8,7 @@ import os
 class Accel():
          
     myBus=1
-    b = smbus.SMBus(myBus)
+    b = smbus2.SMBus(myBus)
     def setUp(self):
         self.b.write_byte_data(0x19,0x20,0x9F) # Setup the Mode
         self.b.write_byte_data(0x19,0x21,0x01) # Calibrate
