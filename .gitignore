@@ -3,3 +3,7 @@ eds/dist/
 .idea/
 *.pyc
 eds/.tox/py27
+FrontEnd/test/.coverage
+ZigBeeIPE/test/.coverage
+nosetests.xml
+.coverage
