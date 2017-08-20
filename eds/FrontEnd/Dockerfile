@@ -5,19 +5,14 @@
 # Set the base image to use
 FROM ubuntu:16.04
 
-
 # Set the file maintainer
 MAINTAINER {sathi,v.gowtham}@tu-berlin.de
 
-
 # Update the repository sources list
 RUN apt-get update
-RUN apt-get install -y python-pip python-dev build-essential
 
-# Install app dependencies
-RUN pip install Flask==0.9.0
-
-RUN pip install --upgrade pip
+WORKDIR /home/elastest/eds/FrontEnd
+ADD . /home/elastest/eds/FrontEnd
 
 # install packages and clean up
 RUN printf "Starting update...\n" && \
@@ -33,14 +28,16 @@ RUN printf "Starting update...\n" && \
     iproute2 \
     python-pip \
     python-dev \
+    libev-dev \
+    gcc \
+    make \
+    automake \
     jq > /dev/null && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
 
-
-# Install any needed packages specified in requirements.txt
-#RUN pip install -r requirements.txt
-
+# Install any needed packages specified in dependencies.txt
+RUN pip install -r /home/elastest/eds/FrontEnd/openmtc-gevent/dependencies.txt
 
 
 # Expose the default port
@@ -48,10 +45,7 @@ EXPOSE 6065
 
 #create default directory
 RUN mkdir -p /var/log/eds
-
-ADD . /eds/frontend
+RUN chmod +x /var/log/eds
 
 # entry point
-ENTRYPOINT ["/bin/sh"]
-CMD [""]
-
+ENTRYPOINT ["/bin/sh",  "/home/elastest/eds/FrontEnd/exec-frontend.sh"]
