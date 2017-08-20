@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. common/prep-env.sh
+sh common/prep-env.sh
 
 PYTHONPATH=${PYTHONPATH}:$(readlink -f openmtc-app/src)
 

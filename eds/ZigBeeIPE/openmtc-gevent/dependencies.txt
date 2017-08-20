@@ -23,3 +23,5 @@ simplejson
 ujson
 pymongo
 paho-mqtt
+pyserial
+xbee
