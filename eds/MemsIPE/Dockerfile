@@ -36,12 +36,16 @@ RUN printf "Starting update...\n" && \
     iproute2 \
     python-pip \
     python-dev \
+    libev-dev \
+    gcc \
+    make \
+    automake \
     jq > /dev/null && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r /home/elastest/eds/MemsIPE/requirements.txt
+RUN pip install -r /home/elastest/eds/MemsIPE/openmtc-gevent/dependencies.txt
 
 
 # Expose the default port
