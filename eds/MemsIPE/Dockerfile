@@ -8,19 +8,11 @@ FROM ubuntu:16.04
 # Set the file maintainer
 MAINTAINER {v.gowtham,sathi}@tu-berlin.de
 
-
 # Update the repository sources list
 RUN apt-get update
-RUN apt-get install -y python2.7 python-pip python-dev build-essential
 
 WORKDIR /home/elastest/eds/MemsIPE
 ADD . /home/elastest/eds/MemsIPE
-
-# Install app dependencies
-RUN pip install Flask==0.9.0
-
-RUN pip install --upgrade pip
-
 
 # install packages and clean up
 RUN printf "Starting update...\n" && \
@@ -44,7 +36,7 @@ RUN printf "Starting update...\n" && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
 
-# Install any needed packages specified in requirements.txt
+# Install any needed packages specified in dependencies.txt
 RUN pip install -r /home/elastest/eds/MemsIPE/openmtc-gevent/dependencies.txt
 
 
@@ -55,8 +47,5 @@ EXPOSE 5050
 RUN mkdir -p /var/log/eds
 RUN chmod +x /var/log/eds
 
-ADD . /eds/MemsIPE
-
 # entry point
 ENTRYPOINT ["/bin/sh",  "/home/elastest/eds/MemsIPE/exec-memsipe.sh"]
-
