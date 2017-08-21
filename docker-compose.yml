@@ -8,7 +8,7 @@ services:
     ports:
       - 5001:5001
     networks:
-      - build-image-network
+      - build-eds-network
 
   frontend:
     container_name: frontend
@@ -18,7 +18,7 @@ services:
     ports:
       - 6065:6065
     networks:
-      - build-image-network
+      - build-eds-network
 
   memsipe:
     container_name: memsipe
@@ -28,8 +28,8 @@ services:
     ports:
       - 5050:5050
     networks:
-      - build-image-network
+      - build-eds-network
 
 networks:
-  build-image-network:
+  build-eds-network:
     driver: bridge
