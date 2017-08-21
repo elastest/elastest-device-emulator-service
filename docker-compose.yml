@@ -3,33 +3,40 @@ services:
   zigbeeipe:
     container_name: zigbeeipe
     image: elastest/eds-zigbeeipe
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
       - 5001
     ports:
       - 5001:5001
     networks:
-      - build-image-network
+      - build-eds-network
 
   frontend:
     container_name: frontend
     image: elastest/eds-frontend
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
       - 6065
     ports:
       - 6065:6065
     networks:
-      - build-image-network
+      - build-eds-network
 
   memsipe:
     container_name: memsipe
     image: elastest/eds-memsipe
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
+
     expose:
       - 5050
     ports:
       - 5050:5050
     networks:
-      - build-image-network
+      - build-eds-network
 
 networks:
-  build-image-network:
+  build-eds-network:
     driver: bridge
