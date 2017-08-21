@@ -3,6 +3,8 @@ services:
   zigbeeipe:
     container_name: zigbeeipe
     image: elastest/eds-zigbeeipe
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
       - 5001
     ports:
@@ -13,6 +15,8 @@ services:
   frontend:
     container_name: frontend
     image: elastest/eds-frontend
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
       - 6065
     ports:
@@ -23,6 +27,9 @@ services:
   memsipe:
     container_name: memsipe
     image: elastest/eds-memsipe
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
+
     expose:
       - 5050
     ports:
