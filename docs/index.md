@@ -7,10 +7,14 @@
 Copyright © 2017-2019 [Universidad Rey Juan Carlos]. Licensed under
 [Apache 2.0 License].
 
-elastest-device-emulator-service
+ElasTest Device Emulator Service
 ==============================
 
 ElasTest Device-emulator Service (EDS) is responsible for emulation of device(sensor, actuator and smart devices) behaviors.
+
+Features
+-----------------------------
+
 
 Clone the Project
 -----------------
