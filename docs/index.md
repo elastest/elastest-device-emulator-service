@@ -15,6 +15,13 @@ ElasTest Device-emulator Service (EDS) is responsible for emulation of device(se
 Features
 -----------------------------
 
+How to run
+-----------------------------
+
+
+Basic usage
+-------------------------------
+
 
 Clone the Project
 -----------------
@@ -60,6 +67,10 @@ In order to create a docker image for each service we need to as follow:
 Please note that all the Dockerfile for our service is named after the micro-services/applications. For example-
 Instead of having one Dockerfile we have zigbeeipe-amd64, memsipe-. All the docker files resides under _../eds/docker/docker-files_.
 
+
+
+Development documentation
+--------------------------------------------------------------------------------------------------------------
 
 
 
