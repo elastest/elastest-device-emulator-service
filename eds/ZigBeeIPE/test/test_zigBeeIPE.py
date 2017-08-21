@@ -14,7 +14,7 @@ class TestZigBeeIPE():
     def test__on_shutdown(self):
         self.zigbee.usb_device = "/dev/ttyUSB0"
         self.zigbee.coordinator = ZigBeeCoordinator(self.zigbee.usb_device)
-        shut = self.zigbee .coordinator.shutdown
+        shut = self.zigbee.coordinator.shutdown
         assert shut
         # pass
     def test__on_register(self):

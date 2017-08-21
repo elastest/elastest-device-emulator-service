@@ -7,10 +7,21 @@
 Copyright © 2017-2019 [Universidad Rey Juan Carlos]. Licensed under
 [Apache 2.0 License].
 
-elastest-device-emulator-service
+ElasTest Device Emulator Service
 ==============================
 
 ElasTest Device-emulator Service (EDS) is responsible for emulation of device(sensor, actuator and smart devices) behaviors.
+
+Features
+-----------------------------
+
+How to run
+-----------------------------
+
+
+Basic usage
+-------------------------------
+
 
 Clone the Project
 -----------------
@@ -56,6 +67,10 @@ In order to create a docker image for each service we need to as follow:
 Please note that all the Dockerfile for our service is named after the micro-services/applications. For example-
 Instead of having one Dockerfile we have zigbeeipe-amd64, memsipe-. All the docker files resides under _../eds/docker/docker-files_.
 
+
+
+Development documentation
+--------------------------------------------------------------------------------------------------------------
 
 
 
