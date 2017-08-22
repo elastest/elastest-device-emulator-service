@@ -8,14 +8,14 @@ is an example of building a swagger-enabled Flask server.
 This example uses the [Connexion](https://github.com/zalando/connexion) library on top of Flask.
 
 ## Requirements
-Python 3.5.2+
+Python 2.7+
 
 ## Usage
 To run the server, please execute the following from the root directory:
 
 ```
-pip3 install -r requirements.txt
-python3 -m eds_api
+pip install -r requirements.txt
+python -m api
 ```
 
 and open your browser to here:
@@ -42,8 +42,8 @@ To run the server on a Docker container, please execute the following from the r
 
 ```bash
 # building the image
-docker build -t eds_api .
+docker build -t api .
 
 # starting up a container
-docker run -p 8080:8080 eds_api
+docker run -p 8080:8080 api
 ```

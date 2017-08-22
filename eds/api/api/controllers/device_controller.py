@@ -1,5 +1,5 @@
 import connexion
-from eds_api.models.device_registration_info import DeviceRegistrationInfo
+from api.models.device_registration_info import DeviceRegistrationInfo
 from datetime import date, datetime
 from typing import List, Dict
 from six import iteritems

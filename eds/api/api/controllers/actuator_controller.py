@@ -1,6 +1,6 @@
 import connexion
-from eds_api.models.api_response import ApiResponse
-from eds_api.models.device_state import DeviceState
+from api.models.api_response import ApiResponse
+from api.models.device_state import DeviceState
 from datetime import date, datetime
 from typing import List, Dict
 from six import iteritems

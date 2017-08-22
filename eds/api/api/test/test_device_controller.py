@@ -2,7 +2,7 @@
 
 from __future__ import absolute_import
 
-from eds_api.models.device_registration_info import DeviceRegistrationInfo
+from api.models.device_registration_info import DeviceRegistrationInfo
 from . import BaseTestCase
 from six import BytesIO
 from flask import json

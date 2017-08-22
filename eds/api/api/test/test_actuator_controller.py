@@ -2,8 +2,8 @@
 
 from __future__ import absolute_import
 
-from eds_api.models.api_response import ApiResponse
-from eds_api.models.device_state import DeviceState
+from api.models.api_response import ApiResponse
+from api.models.device_state import DeviceState
 from . import BaseTestCase
 from six import BytesIO
 from flask import json
