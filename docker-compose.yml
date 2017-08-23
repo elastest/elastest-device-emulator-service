@@ -37,6 +37,20 @@ services:
     networks:
       - build-eds-network
 
+  api:
+    container_name: api
+    image: elastest/eds-gateway
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
+
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    networks:
+      - build-eds-network
+
+
 networks:
   build-eds-network:
     driver: bridge
