@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Emulators for the sensor, actuator and smart devices behaviors"
-  version: "1.0.0"
+  version: '2.12'
   title: "ElasTest Device Emulator service(EDS)"
   contact:
     email: "rowshan@tu-berlin.de"
@@ -46,7 +46,7 @@ paths:
               type: "string"
               format: "uri"
               example: "http://localhost:8000"
-      x-swagger-router-controller: "api.controllers.device_controller"
+      x-swagger-router-controller: "eds_api.controllers.device_controller"
     post:
       tags:
       - "Device"
@@ -60,46 +60,46 @@ paths:
       responses:
         200:
           description: "successfully registered device"
-      x-swagger-router-controller: "api.controllers.device_controller"
-  /actuator/{deviceName}:
-    get:
-      tags:
-      - "Actuator"
-      operationId: "get_switch_state"
-      parameters:
-      - name: "deviceName"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "response"
-          schema:
-            $ref: "#/definitions/DeviceState"
-      x-swagger-router-controller: "Actuator"
-  /actuator/{deviceName}/{value}:
-    post:
-      tags:
-      - "Actuator"
-      operationId: "set_switch"
-      parameters:
-      - name: "deviceName"
-        in: "path"
-        required: true
-        type: "string"
-      - name: "value"
-        in: "path"
-        required: true
-        type: "string"
-        enum:
-        - "true"
-        - "false"
-      responses:
-        200:
-          description: "response"
-          schema:
-            $ref: "#/definitions/ApiResponse"
-      x-swagger-router-controller: "Actuator"
+      x-swagger-router-controller: "eds_api.controllers.device_controller"
+#  /actuator/{deviceName}:
+#    get:
+#      tags:
+#      - "Actuator"
+#      operationId: "get_switch_state"
+#      parameters:
+#      - name: "deviceName"
+#        in: "path"
+#        required: true
+#        type: "string"
+#      responses:
+#        200:
+#          description: "response"
+#          schema:
+#            $ref: "#/definitions/DeviceState"
+#      x-swagger-router-controller: "Actuator"
+#  /actuator/{deviceName}/{value}:
+#    post:
+#      tags:
+#      - "Actuator"
+#      operationId: "set_switch"
+#      parameters:
+#      - name: "deviceName"
+#        in: "path"
+#        required: true
+#        type: "string"
+#      - name: "value"
+#        in: "path"
+#        required: true
+#        type: "string"
+#        enum:
+#        - "true"
+#        - "false"
+#      responses:
+#        200:
+#          description: "response"
+#          schema:
+#            $ref: "#/definitions/ApiResponse"
+#      x-swagger-router-controller: "Actuator"
   /temperature:
     get:
       tags:
@@ -111,7 +111,7 @@ paths:
           description: "ok"
           schema:
             $ref: "#/definitions/TemperatureSummary"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
     post:
       tags:
       - "Shopfloor"
@@ -127,37 +127,37 @@ paths:
           description: "response"
           schema:
             $ref: "#/definitions/ApiResponse"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
     x-swagger-router-controller: "Shopfloor"
-  /humidity:
-    get:
-      tags:
-      - "Shopfloor"
-      operationId: "humidity_summary"
-      parameters: []
-      responses:
-        200:
-          description: "ok"
-          schema:
-            $ref: "#/definitions/HumiditySummary"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
-    post:
-      tags:
-      - "Shopfloor"
-      operationId: "set_humidity"
-      parameters:
-      - in: "body"
-        name: "humidity"
-        required: false
-        schema:
-          $ref: "#/definitions/HumiditySummary"
-      responses:
-        200:
-          description: "response"
-          schema:
-            $ref: "#/definitions/ApiResponse"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
-    x-swagger-router-controller: "Shopfloor"
+#  /humidity:
+#    get:
+#      tags:
+#      - "Shopfloor"
+#      operationId: "humidity_summary"
+#      parameters: []
+#      responses:
+#        200:
+#          description: "ok"
+#          schema:
+#            $ref: "#/definitions/HumiditySummary"
+#      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+#    post:
+#      tags:
+#      - "Shopfloor"
+#      operationId: "set_humidity"
+#      parameters:
+#      - in: "body"
+#        name: "humidity"
+#        required: false
+#        schema:
+#          $ref: "#/definitions/HumiditySummary"
+#      responses:
+#        200:
+#          description: "response"
+#          schema:
+#            $ref: "#/definitions/ApiResponse"
+#      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+#    x-swagger-router-controller: "Shopfloor"
   /pressure:
     get:
       tags:
@@ -169,7 +169,7 @@ paths:
           description: "ok"
           schema:
             $ref: "#/definitions/PressureSummary"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
     post:
       tags:
       - "Shopfloor"
@@ -185,7 +185,7 @@ paths:
           description: "response"
           schema:
             $ref: "#/definitions/ApiResponse"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
     x-swagger-router-controller: "Shopfloor"
   /brightness:
     get:
@@ -198,7 +198,7 @@ paths:
           description: "ok"
           schema:
             $ref: "#/definitions/BrightnessSummary"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
     post:
       tags:
       - "Shopfloor"
@@ -214,32 +214,32 @@ paths:
           description: "response"
           schema:
             $ref: "#/definitions/ApiResponse"
-      x-swagger-router-controller: "api.controllers.shopfloor_controller"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
     x-swagger-router-controller: "Shopfloor"
-  /temperature/{device}/actuator/{state}:
-    post:
-      tags:
-      - "Shopfloor"
-      description: "turns the actuator on or off"
-      operationId: "set_heater_state"
-      parameters:
-      - name: "device"
-        in: "path"
-        required: true
-        type: "string"
-      - name: "state"
-        in: "path"
-        required: true
-        type: "string"
-        enum:
-        - "false"
-        - "true"
-      responses:
-        200:
-          description: "Status of the operation"
-          schema:
-            $ref: "#/definitions/ApiResponse"
-      x-swagger-router-controller: "Shopfloor"
+#  /temperature/{device}/actuator/{state}:
+#    post:
+#      tags:
+#      - "Shopfloor"
+#      description: "turns the actuator on or off"
+#      operationId: "set_heater_state"
+#      parameters:
+#      - name: "device"
+#        in: "path"
+#        required: true
+#        type: "string"
+#      - name: "state"
+#        in: "path"
+#        required: true
+#        type: "string"
+#        enum:
+#        - "false"
+#        - "true"
+#      responses:
+#        200:
+#          description: "Status of the operation"
+#          schema:
+#            $ref: "#/definitions/ApiResponse"
+#      x-swagger-router-controller: "Shopfloor"
 definitions:
   TemperatureSummary:
     type: "object"

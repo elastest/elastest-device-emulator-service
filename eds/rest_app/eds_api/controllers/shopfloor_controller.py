@@ -1,9 +1,9 @@
 import connexion
-from api.models.api_response import ApiResponse
-from api.models.brightness_summary import BrightnessSummary
-from api.models.humidity_summary import HumiditySummary
-from api.models.pressure_summary import PressureSummary
-from api.models.temperature_summary import TemperatureSummary
+from eds_api.models.api_response import ApiResponse
+from eds_api.models.brightness_summary import BrightnessSummary
+from eds_api.models.humidity_summary import HumiditySummary
+from eds_api.models.pressure_summary import PressureSummary
+from eds_api.models.temperature_summary import TemperatureSummary
 from datetime import date, datetime
 from typing import List, Dict
 from six import iteritems
