@@ -2,11 +2,11 @@
 
 from __future__ import absolute_import
 
-from api.models.api_response import ApiResponse
-from api.models.brightness_summary import BrightnessSummary
-from api.models.humidity_summary import HumiditySummary
-from api.models.pressure_summary import PressureSummary
-from api.models.temperature_summary import TemperatureSummary
+from eds_api.models.api_response import ApiResponse
+from eds_api.models.brightness_summary import BrightnessSummary
+from eds_api.models.humidity_summary import HumiditySummary
+from eds_api.models.pressure_summary import PressureSummary
+from eds_api.models.temperature_summary import TemperatureSummary
 from . import BaseTestCase
 from six import BytesIO
 from flask import json

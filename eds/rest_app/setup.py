@@ -3,7 +3,7 @@
 import sys
 from setuptools import setup, find_packages
 
-NAME = "api"
+NAME = "eds_api"
 VERSION = "1.0.0"
 
 # To install the library, run the following
@@ -19,7 +19,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="ElasTest Device Emulator service(EDS)",
-    author_email="rowshan@tu-berlin.de",
+    author_email="sathi@tu-berlin.de",
     url="",
     keywords=["Swagger", "ElasTest Device Emulator service(EDS)"],
     install_requires=REQUIRES,
