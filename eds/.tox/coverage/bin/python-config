@@ -1,4 +1,4 @@
-#!/home/sro/Desktop/ElasTest/elastest-device-emulator-service/eds/.tox/coverage/bin/python
+#!/home/sro/swagger-codegen/elastest_service/elastest-device-emulator-service/eds/.tox/coverage/bin/python
 
 import sys
 import getopt

@@ -1,15 +1,17 @@
 swagger: '2.0'
 info:
-  version: 1.0.0
+  version: '2.12'
   title: ElasTest Device Emulator service(EDS)
   description: Emulators for the sensor, actuator and smart devices behaviors 
   contact:
-    email: rowshan@tu-berlin.de
+    email: sathi@tu-berlin.de
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
  
-  
+schemes:
+  - http
+  - https
 consumes:
   - application/json
 produces:
@@ -378,8 +380,8 @@ definitions:
         type: string
         format: uuid
         example: '0729a580-2240-11e6-9eb5-0002a5d5c51b'
-# Added by API Auto Mocking Plugin
-host: virtserver.swaggerhub.com
-basePath: /rowshan/eds/1.0.0
-schemes:
- - https
+## Added by API Auto Mocking Plugin
+#host: virtserver.swaggerhub.com
+#basePath: /rowshan/eds/2.12
+#schemes:
+# - https
