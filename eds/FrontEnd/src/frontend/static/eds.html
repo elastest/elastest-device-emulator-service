@@ -1,0 +1,148 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Device Emulator Service | ElasTest/TUB IIoT</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/nv.d3.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/vendor/modernizr.js"></script>
+</head>
+
+
+
+<div id="header">
+    <div class="row expanded" id="title">
+        <img class="logo" src="img/elastest_vert.png" alt="elastest">
+    </div>
+    <div class="row expanded" id="subtitle">
+        <h3>
+            <a href="index.html">
+                <img class="columns small-12" src="img/openiotfog-icon-n.png">
+            </a> / ElasTest Device Emulator Service
+        </h3>
+    </div>
+</div>
+<div class="page-content">
+    <div class="row align-center expanded city">
+
+
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h5>MOTOR ON/OFF  </h5>
+                        <div class="device column" id="device-column-top-left">
+                        </div>
+                        <div class="sensor column" id="sensor-column-top-left">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-section" id="card-top-left"></div>
+            </div>
+        </div>
+
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h3>MOTOR SPEED</h3>
+                        <div class="device column" id="device-column-top-middle">
+                        </div>
+                        <div class="sensor column" id="sensor-column-top-middle">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section" id="card-top-middle"></div>
+            </div>
+        </div>
+
+
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h3>ZIGBEE DATA</h3>
+                        <div class="device column" id="device-column-top-right">
+                        </div>
+                        <div class="sensor column" id="sensor-column-top-right">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section" id="card-top-right"></div>
+            </div>
+        </div>
+
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h3>MEMS DATA</h3>
+                        <div class="device column" id="device-column-bottom-left">
+                        </div>
+                        <div class="sensor column" id="sensor-column-bottom-left">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section" id="card-bottom-left"></div>
+            </div>
+        </div>
+
+
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h3>MEMS DATA</h3>
+                        <div class="device column" id="device-column-bottom-middle">
+                        </div>
+                        <div class="sensor column" id="sensor-column-bottom-middle">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-section" id="card-bottom-middle">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h3>MEMS DATA</h3>
+                        <div class="device column" id="device-column-bottom-right">
+                        </div>
+                        <div class="sensor column" id="sensor-column-bottom-right">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section" id="card-bottom-right">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<body>
+<script src="js/vendor/socket.io.js"></script>
+<script src="js/vendor/d3.min.js"></script>
+<script src="js/vendor/nv.d3.min.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/foundation.js"></script>
+<script src="js/vendor/highlight.pack.js"></script>
+<script src="js/vendor/underscore-min.js"></script>
+<script src="js/helper.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/dash-board.js"></script>
+<script src="js/motor.js"></script>
+
+
+</body>
+
+</html>
