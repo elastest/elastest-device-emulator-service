@@ -16,13 +16,13 @@
 
 <div id="header">
     <div class="row expanded" id="title">
-        <img class="logo" src="img/elastest_logo2.png" alt="Logo_Digitale">
+        <img class="logo" src="img/elastest_vert.png" alt="elastest">
     </div>
     <div class="row expanded" id="subtitle">
         <h3>
             <a href="index.html">
                 <img class="columns small-12" src="img/openiotfog-icon-n.png">
-            </a> ElasTest Device Emulator Service
+            </a> / ElasTest Device Emulator Service
         </h3>
     </div>
 </div>
@@ -42,8 +42,6 @@
 
                     </div>
                 </div>
-
-
                 <div class="card-section" id="card-top-left"></div>
             </div>
         </div>
@@ -76,6 +74,7 @@
                 <div class="card-section" id="card-top-right"></div>
             </div>
         </div>
+
         <div class="column medium-4">
             <div class="card scale-in-top">
                 <div class="card-divider">
@@ -86,49 +85,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-section" id="card-bottom-left-up"></div>
+                <div class="card-section" id="card-bottom-left"></div>
             </div>
         </div>
-    </div>
-
-    <div class="column medium-4">
-        <div class="card scale-in-top">
-            <div class="card-divider">
-                <div class="sensorinfo row expanded"><h3>MEMS DATA</h3>
-                    <div class="device column" id="device-column-bottom-right">
-                    </div>
-                    <div class="sensor column" id="sensor-column-bottom-left-down">
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="card-section" id="card-bottom-left-down">
-
-            </div>
-        </div>
-    </div>
 
 
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h3>MEMS DATA</h3>
+                        <div class="device column" id="device-column-bottom-middle">
+                        </div>
+                        <div class="sensor column" id="sensor-column-bottom-middle">
+                        </div>
 
-    <div class="column medium-4">
-        <div class="card scale-in-top">
-            <div class="card-divider">
-                <div class="sensorinfo row expanded"><h3>MEMS DATA</h3>
-                    <div class="device column" id="device-column-bottom-right">
-                    </div>
-                    <div class="sensor column" id="sensor-column-bottom-right">
                     </div>
                 </div>
+                <div class="card-section" id="card-bottom-middle">
+                </div>
             </div>
-
         </div>
+
+
+
+        <div class="column medium-4">
+            <div class="card scale-in-top">
+                <div class="card-divider">
+                    <div class="sensorinfo row expanded"><h3>MEMS DATA</h3>
+                        <div class="device column" id="device-column-bottom-right">
+                        </div>
+                        <div class="sensor column" id="sensor-column-bottom-right">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section" id="card-bottom-right">
+                </div>
+            </div>
+        </div>
+
     </div>
+</div>
 
 
-</div>
-</div>
-</div>
 
 <body>
 <script src="js/vendor/socket.io.js"></script>
@@ -142,14 +140,9 @@
 <script src="js/helper.js"></script>
 <script src="js/chart.js"></script>
 <script src="js/dash-board.js"></script>
-<script src="js/city.js"></script>
+<script src="js/motor.js"></script>
 
-<script type="text/javascript" src="js/jsmpeg.min.js"></script>
-<script type="text/javascript">
-    var canvas = document.getElementById('video-canvas');
-    var url = 'ws://'+document.location.hostname+':8082/';
-    var player = new JSMpeg.Player(url, {canvas: canvas});
-</script>
+
 </body>
 
 </html>

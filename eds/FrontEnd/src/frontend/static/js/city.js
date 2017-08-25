@@ -3,9 +3,9 @@ var configuredSensorList = {
     'top-middle':  '/mn-cse-1/onem2m/OPCUAIPE/plc_2/sensor_data/actual_speed',
    // 'top-right': '/mn-cse-1/onem2m/MotorTemperatureSimulation/Motor/MotorTemperature',
     'top-right': '/mn-cse-1/onem2m/MemsIPE/Motor/sensor_data/z',
-    'bottom-left-up':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
-    'bottom-left-down':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
-    'bottom-middle': null,
+    'bottom-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
+    'bottom-middle':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
+    //'bottom-middle': null,
     'bottom-right': null
 };
 

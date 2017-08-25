@@ -3,9 +3,9 @@
     "ep": "http://localhost:8000",
     "cse_base": "onem2m",
     "host": "auto",
-    "port": 6060,
+    "port": 5001,
     "usb_device": "/dev/ttyACM0",
-    "sim": false,
+    "sim": true,
     "sim_period": 300,
     "logging": {
         "level": "INFO",
