@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/sro/Desktop/ElasTest/elastest-device-emulator-service/eds/.tox/coverage"
+VIRTUAL_ENV="/home/sro/swagger-codegen/elastest_service/elastest-device-emulator-service/eds/.tox/coverage"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
