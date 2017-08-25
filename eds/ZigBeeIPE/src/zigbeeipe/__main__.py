@@ -36,7 +36,7 @@ ep = get_value("ep", (unicode, str), default_ep, args, config)
 host = config.get("host", "auto")
 port = int(config.get("port"))
 device = get_value('usb_device', (unicode, str), default_device, args, config)
-s = config.get("sim", False)
+s = config.get("sim",True)
 p = int(config.get("sim_period"))
 
 # start

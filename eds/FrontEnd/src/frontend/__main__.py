@@ -1,7 +1,6 @@
-from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
-
-from openmtc_app.flask_runner import FlaskRunner as Runner
 from openmtc_app.util import prepare_app, get_value
+from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
+from openmtc_app.flask_runner import FlaskRunner as Runner
 
 from .front_end import FrontEnd
 
@@ -11,7 +10,7 @@ default_ep = 'http://localhost:6000'
 
 # args parser
 parser = ArgumentParser(
-    description="App for ElasTest Device Emulator Service that subscribes to contains and displays "
+    description="App for EDS frontend that subscribes to contains and displays "
                 "sensor data on web page",
     prog="FrontEnd",
     formatter_class=ArgumentDefaultsHelpFormatter)
