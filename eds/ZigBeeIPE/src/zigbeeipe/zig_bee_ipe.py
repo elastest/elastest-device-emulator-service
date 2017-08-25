@@ -23,7 +23,7 @@ class ZigBeeIPE(XAE):
         'IRMS': 'mA'
     }
 
-    def __init__(self, usb_device="/dev/ttyUSB0", sim=False, sim_period=300,
+    def __init__(self, usb_device="/dev/ttyUSB0", sim=True, sim_period=300,
                  *args, **kw):
         super(ZigBeeIPE, self).__init__(*args, **kw)
         self.usb_device = usb_device

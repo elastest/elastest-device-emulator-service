@@ -3,7 +3,7 @@
     "ep": "http://localhost:8000",
     "cse_base": "onem2m",
     "host": "auto",
-    "port": 7060,
+    "port": 6065,
     "logging": {
         "level": "INFO",
         "file": "/var/log/openmtc/frontend.log"

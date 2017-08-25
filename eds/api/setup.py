@@ -19,7 +19,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="ElasTest Device Emulator service(EDS)",
-    author_email="rowshan@tu-berlin.de",
+    author_email="sathi@tu-berlin.de",
     url="",
     keywords=["Swagger", "ElasTest Device Emulator service(EDS)"],
     install_requires=REQUIRES,
