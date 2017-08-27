@@ -67,7 +67,7 @@ paths:
           description: "ok"
           schema:
             $ref: "#/definitions/ZigbeeIPE"
-      x-swagger-router-controller: "ZigbeeIPE"
+      x-swagger-router-controller: "swagger_server.controllers.zigbee_controller"
   /MemsIPE:
     get:
       tags:
@@ -79,7 +79,7 @@ paths:
           description: "ok"
           schema:
             $ref: "#/definitions/MemsData"
-      x-swagger-router-controller: "MemsIPE"
+      x-swagger-router-controller: "swagger_server.controllers.mems_controller"
 definitions:
   DeviceRegistrationInfo:
     type: "object"

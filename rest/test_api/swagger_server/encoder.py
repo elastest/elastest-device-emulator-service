@@ -1,7 +1,7 @@
 from six import iteritems
 from connexion.decorators import produces
 
-from models.base_model_ import Model
+from swagger_server.models.base_model_ import Model
 from connexion.apps.flask_app import FlaskJSONEncoder
 
 class JSONEncoder(FlaskJSONEncoder):
