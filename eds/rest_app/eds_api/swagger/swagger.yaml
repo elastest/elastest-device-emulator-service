@@ -1,0 +1,407 @@
+---
+swagger: "2.0"
+info:
+  description: "Emulators for the sensor, actuator and smart devices behaviors"
+  version: '2.12'
+  title: "ElasTest Device Emulator service(EDS)"
+  contact:
+    email: "rowshan@tu-berlin.de"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/rowshan/eds/1.0.0"
+schemes:
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /devices:
+    get:
+      tags:
+      - "Device"
+      description: "returns all registered devices"
+      operationId: "get_devices"
+      parameters:
+      - name: "skip"
+        in: "query"
+        description: "number of records to skip"
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "limit"
+        in: "query"
+        description: "max number of records to return"
+        required: false
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "All the devices"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+              format: "uri"
+              example: "http://localhost:8000"
+      x-swagger-router-controller: "eds_api.controllers.device_controller"
+    post:
+      tags:
+      - "Device"
+      operationId: "register"
+      parameters:
+      - in: "body"
+        name: "device"
+        required: false
+        schema:
+          $ref: "#/definitions/DeviceRegistrationInfo"
+      responses:
+        200:
+          description: "successfully registered device"
+      x-swagger-router-controller: "eds_api.controllers.device_controller"
+#  /actuator/{deviceName}:
+#    get:
+#      tags:
+#      - "Actuator"
+#      operationId: "get_switch_state"
+#      parameters:
+#      - name: "deviceName"
+#        in: "path"
+#        required: true
+#        type: "string"
+#      responses:
+#        200:
+#          description: "response"
+#          schema:
+#            $ref: "#/definitions/DeviceState"
+#      x-swagger-router-controller: "Actuator"
+#  /actuator/{deviceName}/{value}:
+#    post:
+#      tags:
+#      - "Actuator"
+#      operationId: "set_switch"
+#      parameters:
+#      - name: "deviceName"
+#        in: "path"
+#        required: true
+#        type: "string"
+#      - name: "value"
+#        in: "path"
+#        required: true
+#        type: "string"
+#        enum:
+#        - "true"
+#        - "false"
+#      responses:
+#        200:
+#          description: "response"
+#          schema:
+#            $ref: "#/definitions/ApiResponse"
+#      x-swagger-router-controller: "Actuator"
+  /temperature:
+    get:
+      tags:
+      - "Shopfloor"
+      operationId: "temperature_summary"
+      parameters: []
+      responses:
+        200:
+          description: "ok"
+          schema:
+            $ref: "#/definitions/TemperatureSummary"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+    post:
+      tags:
+      - "Shopfloor"
+      operationId: "set_temperature"
+      parameters:
+      - in: "body"
+        name: "temperature"
+        required: false
+        schema:
+          $ref: "#/definitions/TemperatureSummary"
+      responses:
+        200:
+          description: "response"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+    x-swagger-router-controller: "Shopfloor"
+#  /humidity:
+#    get:
+#      tags:
+#      - "Shopfloor"
+#      operationId: "humidity_summary"
+#      parameters: []
+#      responses:
+#        200:
+#          description: "ok"
+#          schema:
+#            $ref: "#/definitions/HumiditySummary"
+#      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+#    post:
+#      tags:
+#      - "Shopfloor"
+#      operationId: "set_humidity"
+#      parameters:
+#      - in: "body"
+#        name: "humidity"
+#        required: false
+#        schema:
+#          $ref: "#/definitions/HumiditySummary"
+#      responses:
+#        200:
+#          description: "response"
+#          schema:
+#            $ref: "#/definitions/ApiResponse"
+#      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+#    x-swagger-router-controller: "Shopfloor"
+  /pressure:
+    get:
+      tags:
+      - "Shopfloor"
+      operationId: "pressure_summary"
+      parameters: []
+      responses:
+        200:
+          description: "ok"
+          schema:
+            $ref: "#/definitions/PressureSummary"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+    post:
+      tags:
+      - "Shopfloor"
+      operationId: "set_pressure"
+      parameters:
+      - in: "body"
+        name: "pressure"
+        required: false
+        schema:
+          $ref: "#/definitions/PressureSummary"
+      responses:
+        200:
+          description: "response"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+    x-swagger-router-controller: "Shopfloor"
+  /brightness:
+    get:
+      tags:
+      - "Shopfloor"
+      operationId: "brightness_summary"
+      parameters: []
+      responses:
+        200:
+          description: "ok"
+          schema:
+            $ref: "#/definitions/BrightnessSummary"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+    post:
+      tags:
+      - "Shopfloor"
+      operationId: "set_brightness"
+      parameters:
+      - in: "body"
+        name: "brightness"
+        required: false
+        schema:
+          $ref: "#/definitions/BrightnessSummary"
+      responses:
+        200:
+          description: "response"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      x-swagger-router-controller: "eds_api.controllers.shopfloor_controller"
+    x-swagger-router-controller: "Shopfloor"
+#  /temperature/{device}/actuator/{state}:
+#    post:
+#      tags:
+#      - "Shopfloor"
+#      description: "turns the actuator on or off"
+#      operationId: "set_heater_state"
+#      parameters:
+#      - name: "device"
+#        in: "path"
+#        required: true
+#        type: "string"
+#      - name: "state"
+#        in: "path"
+#        required: true
+#        type: "string"
+#        enum:
+#        - "false"
+#        - "true"
+#      responses:
+#        200:
+#          description: "Status of the operation"
+#          schema:
+#            $ref: "#/definitions/ApiResponse"
+#      x-swagger-router-controller: "Shopfloor"
+definitions:
+  TemperatureSummary:
+    type: "object"
+    properties:
+      nm:
+        type: "string"
+        example: "ZBS122S000001"
+      u:
+        type: "string"
+        example: "cel"
+      v:
+        type: "number"
+        format: "float"
+      t:
+        type: "string"
+        format: "date-time"
+        description: "the timestamp when the temperature was measured"
+      n:
+        type: "string"
+        example: "temperature"
+      lbl:
+        type: "string"
+        example: "openmtc:sensor_data"
+    description: "ok"
+    example:
+      t: "2000-01-23T04:56:07.000+00:00"
+      u: "cel"
+      v: 0.8008282
+      lbl: "openmtc:sensor_data"
+      n: "temperature"
+      nm: "ZBS122S000001"
+  HumiditySummary:
+    type: "object"
+    properties:
+      nm:
+        type: "string"
+        example: "ZBS122S000001"
+      u:
+        type: "string"
+        example: "%RH"
+      v:
+        type: "number"
+        format: "float"
+      t:
+        type: "string"
+        format: "date-time"
+        description: "the timestamp when the humidity was measured"
+      n:
+        type: "string"
+        example: "humidity"
+      lbl:
+        type: "string"
+        example: "openmtc:sensor_data"
+    description: "ok"
+    example:
+      t: "2000-01-23T04:56:07.000+00:00"
+      u: "%RH"
+      v: 0.8008282
+      lbl: "openmtc:sensor_data"
+      n: "humidity"
+      nm: "ZBS122S000001"
+  PressureSummary:
+    type: "object"
+    properties:
+      nm:
+        type: "string"
+        example: "ZBS122S000001"
+      u:
+        type: "string"
+        example: "hPa"
+      v:
+        type: "number"
+        format: "float"
+      t:
+        type: "string"
+        format: "date-time"
+        description: "the timestamp when the pressure was measured"
+      n:
+        type: "string"
+        example: "pressure"
+      lbl:
+        type: "string"
+        example: "openmtc:sensor_data"
+    description: "ok"
+    example:
+      t: "2000-01-23T04:56:07.000+00:00"
+      u: "hPa"
+      v: 0.8008282
+      lbl: "openmtc:sensor_data"
+      n: "pressure"
+      nm: "ZBS122S000001"
+  BrightnessSummary:
+    type: "object"
+    properties:
+      nm:
+        type: "string"
+        example: "ZBS122S000001"
+      u:
+        type: "string"
+        example: "lx"
+      v:
+        type: "number"
+        format: "float"
+      t:
+        type: "string"
+        format: "date-time"
+        description: "the timestamp when the brightness was measured"
+      n:
+        type: "string"
+        example: "brightness"
+      lbl:
+        type: "string"
+        example: "openmtc:sensor_data"
+    description: "ok"
+    example:
+      t: "2000-01-23T04:56:07.000+00:00"
+      u: "lx"
+      v: 0.8008282
+      lbl: "openmtc:sensor_data"
+      n: "brightness"
+      nm: "ZBS122S000001"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+        example: "everything is ok"
+    example:
+      code: 0
+      message: "everything is ok"
+  DeviceState:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      lastUpdate:
+        type: "string"
+        format: "date-time"
+      level:
+        type: "integer"
+        format: "int32"
+    example:
+      level: 0
+      lastUpdate: "2000-01-23T04:56:07.000+00:00"
+      name: "name"
+      id: "id"
+  DeviceRegistrationInfo:
+    type: "object"
+    properties:
+      uri:
+        type: "string"
+        format: "uri"
+        example: "http://localhost:8000"
+      id:
+        type: "string"
+        format: "uuid"
+        example: "0729a580-2240-11e6-9eb5-0002a5d5c51b"
+    example:
+      id: "0729a580-2240-11e6-9eb5-0002a5d5c51b"
+      uri: "http://localhost:8000"
