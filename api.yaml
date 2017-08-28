@@ -1,21 +1,25 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
 swagger: '2.0'
+
+# This is your document metadata
 info:
-  version: '2.12'
-  title: ElasTest Device Emulator service(EDS)
-  description: Emulators for the sensor, actuator and smart devices behaviors 
-  contact:
-    email: sathi@tu-berlin.de
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
- 
-schemes:
-  - http
-  - https
+  version: "2.12"
+  title: ElasTest Device Emulator API
 consumes:
   - application/json
 produces:
   - application/json
+  
+#host: virtserver.swaggerhub.com
+host: localhost:8080
+basePath: /eds
+
+# Describe your paths here
+schemes:
+ - https
+ - http 
 paths:
   /devices:
     get:
@@ -25,15 +29,10 @@ paths:
       operationId: getDevices
       parameters:
       - in: query
-        name: skip
-        type: integer
-        format: int32
-        description: number of records to skip
-      - in: query
-        name: limit
-        type: integer
-        format: int32
-        description: max number of records to return
+        name: deviceName
+        type: string
+        format: string
+        description: Zigbee sensor information 
       responses:
         200:
           description: All the devices
@@ -42,7 +41,7 @@ paths:
             items:
               type: string
               format: uri
-              example: http://localhost:8000
+              example: http://10.0.0.225:8080
     post:
       tags:
       - Device
@@ -56,332 +55,337 @@ paths:
       responses:
         200:
           description: successfully registered device
+          
+  /ZigbeeIPE:
+      get:
+        tags:
+        - Zigbee
+        operationId: getSensorData
+        parameters: 
+        - in: query
+          name: deviceName
+          type: string
+          format: string
+          description: name of device exists
 
- 
-  
-  /actuator/{deviceName}:
-    get:
-      tags:
-      - Actuator
-      operationId: getSwitchState
-      parameters:
-      - name: deviceName
-        in: path
-        required: true
-        type: string
-      responses:
-        200:
-          description: response
-          schema:
-            $ref: '#/definitions/DeviceState'
-      x-swagger-router-controller: Actuator
-  /actuator/{deviceName}/{value}:
-    post:
-      tags:
-      - Actuator
-      operationId: setSwitch
-      parameters:
-      - name: deviceName
-        in: path
-        required: true
-        type: string
-      - name: value
-        in: path
-        required: true
-        type: string
-        enum:
-        - true
-        - false
-      responses:
-        200:
-          description: response
-          schema:
-            $ref: '#/definitions/ApiResponse'
-      x-swagger-router-controller: Actuator
-       
-  /temperature:
-    get:
-      tags:
-      - Shopfloor
-      operationId: temperatureSummary
-      parameters: []
-      responses:
-        200:
-          description: ok
-          schema:
-            $ref: '#/definitions/TemperatureSummary'
+        responses:
+          200:
+            description: ok
+            schema:
+              $ref: '#/definitions/ZigbeeIPE'
+        x-swagger-router-controller: ZigbeeIPE
       
-  
-  
-    post:
-     tags:
-     - Shopfloor
-     operationId: setTemperature
-     parameters:
-      - in: body
-        name: temperature
-        required: false
-        schema:
-          $ref: '#/definitions/TemperatureSummary'
-     responses:
-      200:
-       description: response
-       schema:
-            $ref: '#/definitions/ApiResponse'
-    x-swagger-router-controller: Shopfloor
-   
-      
-  /humidity:
-    get:
-      tags:
-      - Shopfloor
-      operationId: humiditySummary
-      parameters: []
-      responses:
-        200:
-          description: ok
-          schema:
-            $ref: '#/definitions/HumiditySummary'
-     
-      
-    post:
-     tags:
-     - Shopfloor
-     operationId: setHumidity
-     parameters:
-      - in: body
-        name: humidity
-        required: false
-        schema:
-          $ref: '#/definitions/HumiditySummary'
-     responses:
-      200:
-       description: response
-       schema:
-            $ref: '#/definitions/ApiResponse'
-    x-swagger-router-controller: Shopfloor
-  /pressure:
-    get:
-      tags:
-      - Shopfloor
-      operationId: pressureSummary
-      parameters: []
-      responses:
-        200:
-          description: ok
-          schema:
-            $ref: '#/definitions/PressureSummary'
-     
-      
-    post:
-     tags:
-     - Shopfloor
-     operationId: setPressure
-     parameters:
-      - in: body
-        name: pressure
-        required: false
-        schema:
-          $ref: '#/definitions/PressureSummary'
-     responses:
-      200:
-       description: response
-       schema:
-            $ref: '#/definitions/ApiResponse'
-    x-swagger-router-controller: Shopfloor  
-  /brightness:
-    get:
-      tags:
-      - Shopfloor
-      operationId: brightnessSummary
-      parameters: []
-      responses:
-        200:
-          description: ok
-          schema:
-            $ref: '#/definitions/BrightnessSummary'
-     
-      
-    post:
-     tags:
-     - Shopfloor
-     operationId: setBrightness
-     parameters:
-      - in: body
-        name: brightness
-        required: false
-        schema:
-          $ref: '#/definitions/BrightnessSummary'
-     responses:
-      200:
-       description: response
-       schema:
-            $ref: '#/definitions/ApiResponse'
-    x-swagger-router-controller: Shopfloor  
-      
-      
-      
+  /MemsIPE:
+      get:
+        tags:
+        - Mems
+        operationId: getMemsdata
+        parameters: []
+        responses:
+          200:
+            description: ok
+            schema:
+              $ref: '#/definitions/MemsData'
+        x-swagger-router-controller: MemsIPE
 
-  /temperature/{device}/actuator/{state}:
-    post:
-      tags:
-      - Shopfloor
-      description: turns the actuator on or off
-      operationId: setHeaterState
-      parameters:
-      - name: device
-        in: path
-        required: true
-        type: string
-      - name: state
-        in: path
-        required: true
-        type: string
-        enum:
-        - false
-        - true
-      responses:
-        200:
-          description: Status of the operation
-          schema:
-            $ref: '#/definitions/ApiResponse'
-      x-swagger-router-controller: Shopfloor
- 
-  
+          
 definitions:
-  TemperatureSummary:
-    type: object
-    properties:
-      nm: 
-        type: string 
-        example: "ZBS122S000001" 
-      u:
-        type: string
-        example: "cel"
-      v:
-        type: number
-        format: float
-      t:
-        type: string
-        format: date-time
-        description: the timestamp when the temperature was measured  
-      n:
-        type: string
-        example: "temperature"  
-      lbl:
-        type: string
-        example: "openmtc:sensor_data" 
-    description: ok
-  HumiditySummary:
-    type: object
-    properties:
-      nm: 
-        type: string 
-        example: "ZBS122S000001" 
-      u:
-        type: string
-        example: "%RH"
-      v:
-        type: number
-        format: float
-      t:
-        type: string
-        format: date-time
-        description: the timestamp when the humidity was measured  
-      n:
-        type: string
-        example: "humidity"
-        
-      lbl:
-        type: string
-        example: "openmtc:sensor_data" 
-    description: ok
-  PressureSummary:
-    type: object
-    properties:
-      nm: 
-        type: string 
-        example: "ZBS122S000001" 
-      u:
-        type: string
-        example: "hPa"
-      v:
-        type: number
-        format: float
-      t:
-        type: string
-        format: date-time
-        description: the timestamp when the pressure was measured  
-      n:
-        type: string
-        example: "pressure"
-        
-      lbl:
-        type: string
-        example: "openmtc:sensor_data" 
-    description: ok
-    
-  BrightnessSummary:
-    type: object
-    properties:
-      nm: 
-        type: string 
-        example: "ZBS122S000001" 
-      u:
-        type: string
-        example: "lx"
-      v:
-        type: number
-        format: float
-      t:
-        type: string
-        format: date-time
-        description: the timestamp when the brightness was measured  
-      n:
-        type: string
-        example: "brightness"
-        
-      lbl:
-        type: string
-        example: "openmtc:sensor_data" 
-    description: ok
- 
-  ApiResponse:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-        example: 'everything is ok'
-  DeviceState:
-    type: object
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-      lastUpdate:
-        type: string
-        format: date-time
-      level:
-        type: integer
-        format: int32
-
+   
   DeviceRegistrationInfo:
-    type: object
-    properties:
-      uri:
-        type: string
-        format: uri
-        example: http://localhost:8000
-      id:
-        type: string
-        format: uuid
-        example: '0729a580-2240-11e6-9eb5-0002a5d5c51b'
-## Added by API Auto Mocking Plugin
-#host: virtserver.swaggerhub.com
-#basePath: /rowshan/eds/2.12
-#schemes:
-# - https
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          example: http://10.0.0.220:8080
+        deviceName:
+          type: string
+          format: string
+          example: "ZBS122S000001"
+
+  
+  ZigbeeIPE:
+      type: object
+      required:
+      - deviceName
+      properties:
+        deviceName:
+          type: string
+          format: string
+          example: "ZBS122S000001"
+        sensor_data:
+          $ref: '#/definitions/SensorData'
+  
+        
+  SensorData:
+      type: object
+      properties:    
+        temperature:
+          $ref: '#/definitions/Temperature'
+        brightness:
+          $ref: '#/definitions/Brightness'
+        pressure:
+          $ref: '#/definitions/Pressure'
+        movement:
+          $ref: '#/definitions/Movement'
+        humidity:
+          $ref: '#/definitions/Humidity'
+        vibration:
+          $ref: '#/definitions/Vibration'
+        
+  MemsData:
+      type: object
+      properties:
+         x:
+          $ref: '#/definitions/X'  
+         y:
+          $ref: '#/definitions/Y'  
+         z:
+          $ref: '#/definitions/Z'  
+  Brightness:
+      type: object
+      properties:
+        nm: 
+          type: string 
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "lx"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "brightness"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+          description: ok
+  Humidity:
+      type: object
+      properties:
+        nm: 
+          type: string 
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "%RH"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "brightness"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok
+    
+  
+  
+  Temperature:
+      type: object
+      properties:
+        nm: 
+          type: string 
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "cel"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "brightness"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok
+  Pressure:
+      type: object
+      properties:
+        nm: 
+          type: string 
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "hPa"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "pressure"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok
+      
+  Movement:
+      type: object
+      properties:
+        nm: 
+          type: string 
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "lx"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "movement"
+         
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok
+    
+  Vibration:
+      type: object
+      properties:
+        nm: 
+          type: string 
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "lx"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "vibration"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok
+ 
+ 
+     
+  X:
+      type: object
+      properties:
+        bn: 
+          type: string 
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+       
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "x"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok 
+   
+
+  Y:
+      type: object
+      properties:
+        bn: 
+          type: string 
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+       
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "y"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok 
+   
+  Z:
+      type: object
+      properties:
+        bn: 
+          type: string 
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+       
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured  
+        n:
+          type: string
+          example: "z"
+        
+        lbl:
+          type: string
+          example: "openmtc:sensor_data" 
+      description: ok 
+
+ 
