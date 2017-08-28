@@ -8,7 +8,7 @@
     "sim": true,
     "sim_period": 300,
     "logging": {
-        "level": "ERROR",
+        "level": "DEBUG",
         "file": null
     }
 }
