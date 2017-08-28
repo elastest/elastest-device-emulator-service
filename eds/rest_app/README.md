@@ -15,19 +15,19 @@ To run the server, please execute the following from the root directory:
 
 ```
 pip install -r requirements.txt
-python -m eds_api
+python -m swagger_server
 ```
 
 and open your browser to here:
 
 ```
-http://localhost:8080/rowshan/eds/1.0.0/ui/
+http://localhost:8080/eds/ui/
 ```
 
 Your Swagger definition lives here:
 
 ```
-http://localhost:8080/rowshan/eds/1.0.0/swagger.json
+http://localhost:8080/eds/swagger.json
 ```
 
 To launch the integration tests, use tox:
@@ -42,8 +42,8 @@ To run the server on a Docker container, please execute the following from the r
 
 ```bash
 # building the image
-docker build -t eds_api .
+docker build -t swagger_server .
 
 # starting up a container
-docker run -p 8080:8080 eds_api
+docker run -p 8080:8080 swagger_server
 ```

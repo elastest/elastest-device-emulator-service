@@ -1,8 +1,4 @@
-connexion
+connexion == 1.1.9
 python_dateutil == 2.6.0
 typing == 3.5.2.2
 setuptools >= 21.0.0
-pykube
-daiquiri
-healthcheck
-tornado
