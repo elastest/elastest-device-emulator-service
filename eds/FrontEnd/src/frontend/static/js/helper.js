@@ -7,7 +7,7 @@ function getConfigFromList(configuredSensorList) {
       tile: val,
       created: false
     }
-  }).value();
+  }).cd ();
 }
 
 function setSensorColumn(tile, name) {
