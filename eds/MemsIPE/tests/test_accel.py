@@ -1,5 +1,5 @@
 #program for testing the acceleration in G-force I2C
-import smbus
+#import smbus
 import time
 import os
 #import RPi.GPIO as GPIO
