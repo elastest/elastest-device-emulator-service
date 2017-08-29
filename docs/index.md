@@ -68,13 +68,15 @@ It is important for MemsIPE to have "/dev/i2c-1" device node available on the
 host machine. 
 
 # Basic usage
-The Frontend gateway accepts curl requests to return the simulated sensor data 
-posted by MemsIPE and ZigBeeIPE in the JSON format on port 8000. The usage is
-as follows:
+The Frontend operates a gateway which accepts curl requests to return the 
+simulated sensor data posted by MemsIPE and ZigBeeIPE in the JSON format on port 8000.
+All the data that follows are simulated through EDS.
 
-Curl request to show registered oneM2M IPEs:
+Request to show registered oneM2M IPEs:
+
 ```shell
 $ curl http://localhost:8000/onem2m/ -s | jq '.'
+
 {
   "m2m:cb": {
     "ch": [
@@ -117,7 +119,165 @@ $ curl http://localhost:8000/onem2m/ -s | jq '.'
 }
 
 ```
-## Requests to ZigBeeIPE
+### Requests to ZigBeeIPE
+
+Request to access ZigBeeIPE:
+
+```shell
+$ curl http://localhost:8000/onem2m/ZigBeeIPE -s | jq '.'
+
+{
+  "m2m:ae": {
+    "ri": "ae1",
+    "nl": "dummy",
+    "rr": false,
+    "ty": 2,
+    "et": "2017-08-29T16:45:39.003547+00:00",
+    "ch": [
+      {
+        "typ": 3,
+        "nm": "devices",
+        "val": "cnt0"
+      }
+    ],
+    "lt": "2017-08-29T16:25:39.012676+00:00",
+    "api": "dummy",
+    "aei": "CZigBeeIPE",
+    "pi": "cb0",
+    "rn": "ZigBeeIPE",
+    "poa": [
+      "http://10.50.0.2:5001"
+    ],
+    "ct": "2017-08-29T15:26:39.806291+00:00"
+  }
+}
+
+```
+
+Request to show available devices on ZigBeeIPE:
+
+```shell
+$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices -s | jq '.'
+
+{
+  "m2m:cnt": {
+    "ch": [
+      {
+        "typ": 3,
+        "nm": "ZBS122S000001",
+        "val": "cnt1"
+      },
+      {
+        "typ": 3,
+        "nm": "ZBS122S000000",
+        "val": "cnt6"
+      }
+    ],
+    "mni": 30,
+    "cr": "CZigBeeIPE",
+    "et": "2017-08-29T16:55:39.048780+00:00",
+    "ty": 3,
+    "lt": "2017-08-29T16:35:39.098708+00:00",
+    "rn": "devices",
+    "ct": "2017-08-29T15:26:39.900545+00:00",
+    "ri": "cnt0",
+    "cni": 0,
+    "cbs": 0,
+    "pi": "ae1",
+    "st": "0"
+  }
+}
+
+```
+Request to access list of sensors in ID ZBS122S000001. This returns available
+sensors namely light, pressure, movement, humidity and temperature.
+
+```shell
+$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data -s | jq '.'
+
+{
+  "m2m:cnt": {
+    "ch": [
+      {
+        "typ": 3,
+        "nm": "brightness",
+        "val": "cnt17"
+      },
+      {
+        "typ": 3,
+        "nm": "pressure",
+        "val": "cnt19"
+      },
+      {
+        "typ": 3,
+        "nm": "movement",
+        "val": "cnt21"
+      },
+      {
+        "typ": 3,
+        "nm": "humidity",
+        "val": "cnt20"
+      },
+      {
+        "typ": 3,
+        "nm": "temperature",
+        "val": "cnt18"
+      }
+    ],
+    "mni": 30,
+    "cr": "CZigBeeIPE",
+    "et": "2017-08-29T17:05:50.104399+00:00",
+    "ty": 3,
+    "lt": "2017-08-29T16:45:50.148437+00:00",
+    "rn": "sensor_data",
+    "ct": "2017-08-29T15:26:50.508627+00:00",
+    "ri": "cnt16",
+    "cni": 0,
+    "cbs": 0,
+    "pi": "cnt1",
+    "st": "0"
+  }
+}
+
+```
+
+Request to receive latest data from the temperature sensor. Please note that the 
+reply from the curl request is base64 decoded.
+
+```shell
+
+$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/temperature/latest -s | jq -r '.["m2m:cin"].con' | base64 -d | jq '.'
+
+[
+  {
+    "bn": "urn:dev:xbee:ZBS122S000001",
+    "v": 17.5,
+    "u": "Cel",
+    "t": "1504025850.892",
+    "n": "temperature"
+  }
+]
+
+```
+Request to receive latest data from the humidity sensor. Please note that the 
+reply from the curl request is base64 decoded. Furthermore this can be repeated 
+for the remaining sensors.
+
+```shell
+
+$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/humidity/latest -s | jq -r '.["m2m:cin"].con' | base64 -d | jq '.'
+
+[
+  {
+    "bn": "urn:dev:xbee:ZBS122S000001",
+    "v": 84,
+    "u": "%RH",
+    "t": "1504026051.652",
+    "n": "humidity"
+  }
+]
+
+```
 
 
 Main heading, organization of the software
