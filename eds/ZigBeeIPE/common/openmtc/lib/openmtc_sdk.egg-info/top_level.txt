@@ -1,9 +1,6 @@
 aplus
-coap
 futile
 openmtc
 openmtc_app
-openmtc_etsi
 openmtc_onem2m
-openmtc_utils
 pyio

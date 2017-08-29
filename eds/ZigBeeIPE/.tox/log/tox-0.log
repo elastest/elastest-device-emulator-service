@@ -1,9 +1,0 @@
-actionid: tox
-msg: packaging
-cmdargs: ['/usr/bin/python', local('/home/sro/Desktop/ElasTest/elastest-device-emulator-service/eds/ZigBeeIPE/setup.py'), 'sdist', '--formats=zip', '--dist-dir', local('/home/sro/Desktop/ElasTest/elastest-device-emulator-service/eds/ZigBeeIPE/.tox/dist')]
-env: None
-
-Traceback (most recent call last):
-  File "setup.py", line 15, in <module>
-    pkg = __import__(NAME)
-ImportError: No module named zigbeeipe

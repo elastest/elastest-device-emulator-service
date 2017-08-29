@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 python setup-sdk.py install
 #sh openmtc-gevent/run_gscl &
