@@ -8,6 +8,7 @@ from xbee import ZigBee
 
 from futile.logging import LoggerMixin
 from zigbeeipe.devices import Device, ZBS110, ZBS121, ZBS122
+from zigbeeipe.zig_bee_coordinator import ZigBeeCoordinator
 
 class TestZigBeeCoordinator():
 	def test_get_simulated_device(self):
