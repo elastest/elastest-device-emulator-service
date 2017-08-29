@@ -4,7 +4,7 @@ var configuredSensorList = {
     'top-right': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/temperature',
     'bottom-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
     'bottom-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
-    'bottom-right': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/brightness',
+    'bottom-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z'
 
 };
 
