@@ -8,7 +8,7 @@ Copyright © 2017-2019 Technische Universitaet Berlin. Licensed under [Apache 2.
 [![Documentation badge](https://img.shields.io/badge/docs-latest-brightgreen.svg)](http://elastest.io/docs/api/eds/)
 [![codecov](https://codecov.io/gh/elastest/elastest-device-emulator-service/branch/master/graph/badge.svg)](https://codecov.io/gh/elastest/elastest-device-emulator-service)
 
-This is the elastest device emulator service which works as an emulator for data from sensor devices and helps to visualize the obtained data.  
+This is the Elastest Device-Emulator Service (EDS) which works as an emulating device behavior. The emulated devices include sensors, actuators and smart devices. 
 It's an implementation of the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker), v2.12, 
 with further extensions ([See the spec for further details](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/elastest/elastest-service-manager/master/api.yaml)).
 

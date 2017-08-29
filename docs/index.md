@@ -1,31 +1,48 @@
-
-[![License badge](https://img.shields.io/badge/license-Apache2-orange.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Documentation badge](https://img.shields.io/badge/docs-latest-brightgreen.svg)](http://elastest.io/docs/)
-
 [![][ElasTest Logo]][ElasTest]
 
-Copyright © 2017-2019 [Universidad Rey Juan Carlos]. Licensed under
+Copyright © 2017-2019 [Technishce Universitaet Berlin]. Licensed under
 [Apache 2.0 License].
 
 ElasTest Device Emulator Service
 ==============================
 
-ElasTest Device-emulator Service (EDS) is responsible for emulation of device(sensor, actuator and smart devices) behaviors.
+This is the Elastest Device-Emulator Service (EDS) which works as an emulating 
+device behavior. The emulated devices include sensors, actuators and smart 
+devices.
 
 Features
 -----------------------------
+EDS follows a Service Oriented Architecture (SOA). The service in this context
+ is a light-weight micro-service. Furthermore, several micro-services are 
+linked together to achieve the goals of EDS. The aim of a micro-service in EDS
+is to run the functions of an emulator for a device which could be a sensor,
+actuator or a smart device.
+  
+Additionally a micro-service called FrontEnd connects to the other 
+micro-services to provide a common interface for the user to access all micro-
+services. 
 
-How to run
------------------------------
+The micro-services use [oneM2M](http://onem2m.org) for communication. Furthermore
+an Interworking Proxy (IPE) is used to transfer date from a non-oneM2M domain 
+to oneM2M domain. The available micro-services supporting oneM2M in the present
+release of EDS are:
+* ZigBeeIPE : Provides simulated data from brightness, pressure, movement,
+humidity, temperature sensors. 
+* MemsIPE : Provides simulate data from the accelerometer sensor containing 
+values for x, y and z axes. 
+* FrontEnd : Provides a user interface to interact with MemsIPE and ZigBeeIPE.
+An GUI displays the data from micro-services. 
+* rest_app : Provides an interaction UI using RESTful API.In order to use the 
+facility of the service manager, its API is used. The API is based upon the 
+latest (2.12) version of the Open Service Broker API. To this there are some 
+specific ElasTest extensions added.
 
-
-Basic usage
--------------------------------
-
+EDS runs each micro-service in a docker container, the containers are linked 
+together to link the micro-services.
 
 Clone the Project
 -----------------
-```
+```shell
 #Clone the project to your system
 #Alternatively, you can download the zip file from Github and unzip it
 git clone git@github.com:elastest/elastest-device-emulator-service.git
@@ -34,16 +51,31 @@ git clone git@github.com:elastest/elastest-device-emulator-service.git
 cd elastest-device-emulator-service
 ```
 
-Installation of Basic Software
--------------------------------
+How to run
+-----------------------------
+Run EDS using docker-compose: This method allows docker to setup containers
+and network them in a custom network.
 
-```  
-sudo apt-get install -y python-pip python-dev
-
-# Install dependent Python packages for OpenMTC Gateway
-pip install -r openmtc-gevent/dependencies.txt
-
+Start EDS using:  
+```shell
+chmod +x script/*
+./script/startup-linux.sh
 ```
+To stop EDS:
+```shell
+./script/teardown-linux.sh
+```
+It is important for MemsIPE to have "/dev/i2c-1" device node available on the 
+host machine.
+
+Basic usage
+-------------------------------
+The Frontend opens up for interaction on localhost:8000, where curl requests
+can be sent to receive sensor data from MemsIPE and ZigBeeIPE. 
+
+Main heading, organization of the software
+
+
 Test Environment Setup
 ----------------------
 In order to test the services/application under EDS (SuT) we use **nose** for unit testing and **tox** for integration testing. the directory configuration is as follows:
@@ -58,15 +90,6 @@ In order to test the services/application under EDS (SuT) we use **nose** for un
 
 Creating Docker Image
 ---------------------
-For our service we have containerized setup. Therefore, for each service we have separate docker image and Dockerfile. 
-In order to create a docker image for each service we need to as follow:
-```  
-#cd eds
-#./create-binary-docker  zigbeeipe
-```  
-Please note that all the Dockerfile for our service is named after the micro-services/applications. For example-
-Instead of having one Dockerfile we have zigbeeipe-amd64, memsipe-. All the docker files resides under _../eds/docker/docker-files_.
-
 
 
 Development documentation
