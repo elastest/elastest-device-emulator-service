@@ -1,12 +1,11 @@
 var configuredSensorList = {
-    'top-left': '/mn-cse-1/onem2m/OPCUAIPE/plc_2/actuator_data/CW1_Bit00_OFF1',
-    'top-middle':  '/mn-cse-1/onem2m/OPCUAIPE/plc_2/sensor_data/actual_speed',
-   // 'top-right': '/mn-cse-1/onem2m/MotorTemperatureSimulation/Motor/MotorTemperature',
-    'top-right': '/mn-cse-1/onem2m/MemsIPE/Motor/sensor_data/z',
+    'top-left': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/brightness',
+    'top-middle': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/humidity',
+    'top-right': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/temperature',
     'bottom-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
-    'bottom-middle':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
-    //'bottom-middle': null,
-    'bottom-right': null
+    'bottom-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
+    'bottom-right': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/brightness',
+
 };
 
 

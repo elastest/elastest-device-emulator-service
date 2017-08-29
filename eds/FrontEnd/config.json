@@ -6,7 +6,7 @@
     "port": 6065,
     "sim": true,
     "logging": {
-        "level": "ERROR",
+        "level": "DEBUG",
         "file": null
     }
 }

@@ -37,7 +37,8 @@ RUN printf "Starting update...\n" && \
     printf "Installation and cleanup finished.\n"
 
 # Install any needed packages specified in dependencies.txt
-RUN pip install -r /home/elastest/eds/ZigBeeIPE/openmtc-gevent/dependencies.txt
+RUN pip install -r openmtc-gevent/dependencies.txt
+RUN python setup-sdk.py install
 
 
 # Expose the default port
