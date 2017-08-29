@@ -1,8 +1,7 @@
 #program for testing the acceleration in G-force I2C
-import smbus2
+import smbus
 import time
 import os
-
 
 class TestAccel():
 	def test_setUp(self):
