@@ -49,8 +49,9 @@ cd elastest-device-emulator-service
 ```
 
 # How to run
-Run EDS using docker-compose: This method allows docker to setup containers
-and connect them in a custom network.
+* Run EDS using docker-compose: This method allows docker to setup containers
+and connect them in a custom network. All the IPEs register after 10 seconds with 
+FrontEnd.
 
 Start EDS using:  
 ```shell
@@ -61,11 +62,16 @@ To stop EDS:
 ```shell
 ./script/teardown-linux.sh
 ```
+* Run EDS on local machine : This is explained in the development documenation, as
+it requires changing the default network configuration.
+
 The EDS FrontEnd UI can be accessed from port 6065, FrontEnd gateway from port
 8000 and Swagger UI on port 8080. 
 
 It is important for MemsIPE to have "/dev/i2c-1" device node available on the 
-host machine. 
+host machine. Please make sure to stop and remove the stale containers. If running using
+docker compose, it is advisable to remove docker bridge with name "build_eds_netowrk" 
+before running startup-linux.sh script.
 
 # Basic usage
 The Frontend operates a gateway which accepts curl requests to return the 
@@ -246,7 +252,8 @@ reply from the curl request is base64 decoded.
 
 ```shell
 
-$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/temperature/latest -s | jq -r '.["m2m:cin"].con' | base64 -d | jq '.'
+$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/temperature/latest \
+-s | jq -r '.["m2m:cin"].con' | base64 -d | jq '.'
 
 [
   {
@@ -265,7 +272,8 @@ for the remaining sensors.
 
 ```shell
 
-$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/humidity/latest -s | jq -r '.["m2m:cin"].con' | base64 -d | jq '.'
+$ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/humidity/latest \
+-s | jq -r '.["m2m:cin"].con' | base64 -d | jq '.'
 
 [
   {
@@ -278,44 +286,92 @@ $ curl http://localhost:8000/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/
 ]
 
 ```
+### Requests to MemsIPE
 
+Request to show available sensors in MemsIPE:
 
-Main heading, organization of the software
+```shell
+$ curl http://localhost:8000/onem2m/MemsIPE/sensor_data/ -s | jq '.'
 
+{
+  "m2m:cnt": {
+    "ch": [
+      {
+        "typ": 3,
+        "nm": "x",
+        "val": "cnt3"
+      },
+      {
+        "typ": 3,
+        "nm": "y",
+        "val": "cnt4"
+      },
+      {
+        "typ": 3,
+        "nm": "z",
+        "val": "cnt5"
+      }
+    ],
+    "mni": 10,
+    "cr": "CMemsIPE",
+    "et": "2017-08-29T17:15:39.122764+00:00",
+    "lbl": [
+      "sensor_data",
+      "openmtc:device"
+    ],
+    "ty": 3,
+    "lt": "2017-08-29T16:55:39.171379+00:00",
+    "rn": "sensor_data",
+    "ct": "2017-08-29T15:26:39.996691+00:00",
+    "ri": "cnt2",
+    "cni": 0,
+    "cbs": 0,
+    "pi": "ae2",
+    "st": "0"
+  }
+}
 
-Test Environment Setup
-In order to test the services/application under EDS (SuT) we use **nose** for unit testing and **tox** for integration testing. the directory configuration is as follows:
-```  
-  eds: 
-     -ipes:
-          -ZigBeeIPE:
-                   -test:
-                     test_zigbeeIPE.py                            
+```
+Request to receive the latest reading from the z axis of the accelerometer. 
+Please note that the returned value is to be base64 decoded. A similar approach
+can be followed for x and y axes.
 
-```  
+```shell
 
-# Creating Docker Image
+curl http://localhost:8000/onem2m/MemsIPE/sensor_data/z/latest -s | jq -r '.["m2m:cin"].con' | base64 -d | jq '.'
 
+[
+  {
+    "bn": "urn:dev1:memsipe",
+    "v": 0.016461689528667167,
+    "u": "g",
+    "t": "1504026602.834",
+    "n": "z"
+  }
+]
+
+```
+
+### Access EDS FrontEnd user interface
+
+This user interface displays plots in real time the data received from various 
+senors of the ZigBeeIPE and MemsIPE. This can be accessed on a browser using the 
+link:
+
+```shell
+http://localhost:6065/static/eds.html
+```
+
+### Access Swagger UI 
+Swagger UI provides the RESTful API available with EDS. The linking of API to 
+different IPE is to be done. 
+
+```shell
+http://localhost:8080/eds/ui/
+```
 
 # Development documentation
-
-
-
-# What is ElasTest
-
-This repository is part of [ElasTest], which is a flexible open source testing
-platform aimed to simplify the end-to-end testing processes for different types
-of applications, including web and mobile, among others.
-
-The objective of ElasTest is to provide advance testing capabilities aimed to
-increase the scalability, robustness, security and quality of experience of
-large distributed systems. All in all, ElasTest will make any software
-development team capable of delivering software faster and with fewer defects.
-
-# Documentation
-
-The ElasTest project provides detailed [documentation][ElasTest Doc] including
-tutorials, installation and development guide.
+TBD
 
 # Source
 
