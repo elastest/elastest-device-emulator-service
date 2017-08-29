@@ -22,6 +22,7 @@ services:
       - 8000
     ports:
       - 6065:6065
+      - 8000:8000
     networks:
       build-eds-network:
         ipv4_address: 10.50.0.3
