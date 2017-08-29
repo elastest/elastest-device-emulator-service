@@ -1,10 +1,9 @@
 {
     "name": "FrontEnd",
-    "ep": "http://localhost:8000",
+    "ep": "http://10.50.0.3:8000",
     "cse_base": "onem2m",
     "host": "auto",
     "port": 6065,
-    "sim": true,
     "logging": {
         "level": "DEBUG",
         "file": null

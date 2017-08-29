@@ -5,7 +5,7 @@
     "host": "auto",
     "port": 5050,
     "sim": true,
-    "sim_period": 300,
+    "sim_period": 3,
     "logging": {
         "level": "DEBUG",
         "file": null
