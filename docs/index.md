@@ -1,17 +1,15 @@
 [![][ElasTest Logo]][ElasTest]
 
-Copyright © 2017-2019 [Technishce Universitaet Berlin]. Licensed under
+Copyright © 2017-2019 Technishce Universitaet Berlin. Licensed under
 [Apache 2.0 License].
 
-ElasTest Device Emulator Service
-==============================
+# ElasTest Device Emulator Service
 
 This is the Elastest Device-Emulator Service (EDS) which works as an emulating 
 device behavior. The emulated devices include sensors, actuators and smart 
 devices.
 
 Features
------------------------------
 EDS follows a Service Oriented Architecture (SOA). The service in this context
  is a light-weight micro-service. Furthermore, several micro-services are 
 linked together to achieve the goals of EDS. The aim of a micro-service in EDS
@@ -40,8 +38,7 @@ specific ElasTest extensions added.
 EDS runs each micro-service in a docker container, the containers are linked 
 together to link the micro-services.
 
-Clone the Project
------------------
+# Clone the Project
 ```shell
 #Clone the project to your system
 #Alternatively, you can download the zip file from Github and unzip it
@@ -51,10 +48,9 @@ git clone git@github.com:elastest/elastest-device-emulator-service.git
 cd elastest-device-emulator-service
 ```
 
-How to run
------------------------------
+# How to run
 Run EDS using docker-compose: This method allows docker to setup containers
-and network them in a custom network.
+and connect them in a custom network.
 
 Start EDS using:  
 ```shell
@@ -65,19 +61,69 @@ To stop EDS:
 ```shell
 ./script/teardown-linux.sh
 ```
-It is important for MemsIPE to have "/dev/i2c-1" device node available on the 
-host machine.
+The EDS FrontEnd UI can be accessed from port 6065, FrontEnd gateway from port
+8000 and Swagger UI on port 8080. 
 
-Basic usage
--------------------------------
-The Frontend opens up for interaction on localhost:8000, where curl requests
-can be sent to receive sensor data from MemsIPE and ZigBeeIPE. 
+It is important for MemsIPE to have "/dev/i2c-1" device node available on the 
+host machine. 
+
+# Basic usage
+The Frontend gateway accepts curl requests to return the simulated sensor data 
+posted by MemsIPE and ZigBeeIPE in the JSON format on port 8000. The usage is
+as follows:
+
+Curl request to show registered oneM2M IPEs:
+```shell
+$ curl http://localhost:8000/onem2m/ -s | jq '.'
+{
+  "m2m:cb": {
+    "ch": [
+      {
+        "typ": 2,
+        "nm": "ZigBeeIPE",
+        "val": "ae1"
+      },
+      {
+        "typ": 2,
+        "nm": "FrontEnd",
+        "val": "ae0"
+      },
+      {
+        "typ": 2,
+        "nm": "MemsIPE",
+        "val": "ae2"
+      }
+    ],
+    "csi": "/mn-cse-1",
+    "ri": "cb0",
+    "ty": 5,
+    "lt": "2017-08-29T15:26:31.813938+00:00",
+    "srt": [
+      16,
+      23,
+      4,
+      5,
+      3,
+      2
+    ],
+    "cst": 2,
+    "rn": "onem2m",
+    "ct": "2017-08-29T15:26:31.813938+00:00",
+    "poa": [
+      "http://127.0.0.1:8000",
+      "http://10.50.0.3:8000"
+    ]
+  }
+}
+
+```
+## Requests to ZigBeeIPE
+
 
 Main heading, organization of the software
 
 
 Test Environment Setup
-----------------------
 In order to test the services/application under EDS (SuT) we use **nose** for unit testing and **tox** for integration testing. the directory configuration is as follows:
 ```  
   eds: 
@@ -88,18 +134,14 @@ In order to test the services/application under EDS (SuT) we use **nose** for un
 
 ```  
 
-Creating Docker Image
----------------------
+# Creating Docker Image
 
 
-Development documentation
---------------------------------------------------------------------------------------------------------------
-
+# Development documentation
 
 
 
-What is ElasTest
------------------
+# What is ElasTest
 
 This repository is part of [ElasTest], which is a flexible open source testing
 platform aimed to simplify the end-to-end testing processes for different types
@@ -110,30 +152,25 @@ increase the scalability, robustness, security and quality of experience of
 large distributed systems. All in all, ElasTest will make any software
 development team capable of delivering software faster and with fewer defects.
 
-Documentation
--------------
+# Documentation
 
 The ElasTest project provides detailed [documentation][ElasTest Doc] including
 tutorials, installation and development guide.
 
-Source
-------
+# Source
 
 Source code for other ElasTest projects can be found in the [GitHub ElasTest
 Group].
 
-News
-----
+# News
 
 Check the [ElasTest Blog] and follow us on Twitter [@elastestio][ElasTest Twitter].
 
-Issue tracker
--------------
+# Issue tracker
 
 Issues and bug reports should be posted to the [GitHub ElasTest Bugtracker].
 
-Licensing and distribution
---------------------------
+# Licensing and distribution
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -147,8 +184,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Contribution policy
--------------------
+# Contribution policy
 
 You can contribute to the ElasTest community through bug-reports, bug-fixes,
 new code or new documentation. For contributing to the ElasTest community,
@@ -169,8 +205,7 @@ value. In your contributions, you must comply with the following guidelines
   before it being incorporated into the ElasTest code-base. You must be ready
   to addressing all these kind of concerns before having your code approved.
 
-Support
--------
+# Support
 
 The ElasTest project provides community support through the [ElasTest Public
 Mailing List] and through [StackOverflow] using the tag *elastest*.
