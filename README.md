@@ -6,6 +6,7 @@ Copyright © 2017-2019 Technische Universitaet Berlin. Licensed under [Apache 2.
 
 [![License badge](https://img.shields.io/badge/license-Apache2-orange.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Documentation badge](https://img.shields.io/badge/docs-latest-brightgreen.svg)](http://elastest.io/docs/api/eds/)
+[![Build Status](https://ci.elastest.io/jenkins/buildStatus/icon?job=elastest-device-emulator-service/eds)](https://ci.elastest.io/jenkins/job/elastest-device-emulator-service/eds)
 [![codecov](https://codecov.io/gh/elastest/elastest-device-emulator-service/branch/master/graph/badge.svg)](https://codecov.io/gh/elastest/elastest-device-emulator-service)
 
 This is the Elastest Device-Emulator Service (EDS) which works as an emulating device behavior. The emulated devices include sensors, actuators and smart devices. 
