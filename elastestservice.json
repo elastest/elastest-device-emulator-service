@@ -74,7 +74,7 @@
 
 		    }
 
-	    }
+	    },
 	    "Gateway": {
 		    "description": "Service to receive device data in JSON format with appropriate paths",
 		    "main": "false",
