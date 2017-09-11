@@ -5,11 +5,10 @@ Copyright © 2017-2019 Technishce Universitaet Berlin. Licensed under
 
 # ElasTest Device Emulator Service
 
-This is the Elastest Device-Emulator Service (EDS) which works as an emulating 
-device behavior. The emulated devices include sensors, actuators and smart 
+This is the Elastest Device-Emulator Service (EDS) which provides to emulates 
+sensor devices. The emulated devices include sensors, actuators and smart 
 devices.
 
-Features
 EDS follows a Service Oriented Architecture (SOA). The service in this context
  is a light-weight micro-service. Furthermore, several micro-services are 
 linked together to achieve the goals of EDS. The aim of a micro-service in EDS
@@ -21,18 +20,18 @@ micro-services to provide a common interface for the user to access all micro-
 services. 
 
 The micro-services use [oneM2M](http://onem2m.org) for communication. Furthermore
-an Interworking Proxy (IPE) is used to transfer date from a non-oneM2M domain 
+an Interworking Proxy (IPE) is used to transfer data from a non-oneM2M domain 
 to oneM2M domain. The available micro-services supporting oneM2M in the present
 release of EDS are:
 * ZigBeeIPE : Provides simulated data from brightness, pressure, movement,
 humidity, temperature sensors. 
-* MemsIPE : Provides simulate data from the accelerometer sensor containing 
-values for x, y and z axes. 
+* MemsIPE : Provides simulated data from the accelerometer sensor containing 
+values for x, y and z components of acceleration. 
 * FrontEnd : Provides a user interface to interact with MemsIPE and ZigBeeIPE.
-An GUI displays the data from micro-services. 
+A user interface (UI) displays the data from micro-services. 
 * rest_app : Provides an interaction UI using RESTful API.In order to use the 
-facility of the service manager, its API is used. The API is based upon the 
-latest (2.12) version of the Open Service Broker API. To this there are some 
+facility of the EDS, its API is used. The API is based upon the 
+latest (2.12) version of the Open Service Broker API. To this end there are some 
 specific ElasTest extensions added.
 
 EDS runs each micro-service in a docker container, the containers are linked 

@@ -40,7 +40,7 @@
   },
   "manifest": {
     "id": "b1c59b9c-5c7d-48c3-bb40-2c4c2cdd57c7",
-    "manifest_content": "version: '2'</br></br>services:</br>  eds-frontend:</br>   eds-memsipe:</br>  eds-zigbeeipe:</br>    image: elastest/eds-frontend</br>  image: elastest/eds-memsipe</br>    image: elastest/eds-zigbeeipe</br>  container_name: zigbeeipe</br> container_name: memsipe</br> container_name: frontend</br> container_name: api</br> ports:</br> - 8080:8080</br> - 6065:6065</br></br>",
+    "manifest_content": "version: '2'</br></br>services:</br>  eds-frontend:</br>   eds-memsipe:</br>  eds-zigbeeipe:</br>    image: elastest/eds-frontend</br>  image: elastest/eds-memsipe</br>    image: elastest/eds-zigbeeipe</br>  container_name: zigbeeipe</br> container_name: memsipe</br> container_name: frontend</br> container_name: api</br> ports:</br> - 8080:8080</br> - 6065:6065</br> - 8000:8000</br></br>",
     "manifest_type": "docker-compose",
     "plan_id": "cd315c0c-8b84-43b8-97b0-2b2b90ba1bf1",
     "service_id": "b496c232-f4a6-4966-9187-34ccb7d8760c",
@@ -64,7 +64,7 @@
 			    "path": "/eds/ui"
 		    }
             },
-	    "dashbord": {
+	    "DashBord": {
 		    "description": "Service to show emulated sensor data in the form of plots",
 		    "main": "false",
 		    "gui": {
@@ -72,6 +72,16 @@
 			    "port": 6065,
 			    "path": "/static/eds.html"
 
+		    }
+
+	    }
+	    "Gateway": {
+		    "description": "Service to receive device data in JSON format with appropriate paths",
+		    "main": "false",
+		    "api":{
+			    "protocol": "http",
+			    "port": 8000,
+			    "path": "/onem2m/"
 		    }
 
 	    }
