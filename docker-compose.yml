@@ -32,7 +32,7 @@ services:
     image: elastest/eds-memsipe
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
-    devices: ["/dev/i2c-1"]
+#    devices: ["/dev/i2c-1"]
     expose:
       - 5050
     networks:
