@@ -1,18 +1,15 @@
 version: '2'
 services:
   zigbeeipe:
-    container_name: zigbeeipe
     image: elastest/eds-zigbeeipe
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
       - 5001
     networks:
-      build-eds-network:
-        ipv4_address: 10.50.0.2
+      - elastest_elastest
 
   frontend:
-    container_name: frontend
     image: elastest/eds-frontend
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
@@ -20,42 +17,27 @@ services:
       - 4000
       - 6065
       - 8000
-    ports:
-      - 6065:6065
-      - 8000:8000
     networks:
-      build-eds-network:
-        ipv4_address: 10.50.0.3
+      - elastest_elastest
 
   memsipe:
-    container_name: memsipe
     image: elastest/eds-memsipe
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
-#    devices: ["/dev/i2c-1"]
     expose:
       - 5050
     networks:
-      build-eds-network:
-        ipv4_address: 10.50.0.4
+      - elastest_elastest
 
   api:
-   container_name: api
-   image: elastest/eds-gateway
-   environment:
-     - ci_env=`bash <(curl -s https://codecov.io/env)`
-   expose:
-     - 8080
-   ports:
-     - 8080:8080
-   networks:
-     build-eds-network:
-       ipv4_address: 10.50.0.5
+    image: elastest/eds-gateway
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
+    expose:
+      - 8080
+    networks:
+      - elastest_elastest
 
 networks:
-  build-eds-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.50.0.0/16
-          gateway: 10.50.0.1
+  elastest_elastest:
+    external: true
