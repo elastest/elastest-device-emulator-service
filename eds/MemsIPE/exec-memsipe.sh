@@ -1,6 +1,4 @@
 #!/bin/bash
 
-python setup-sdk.py install
-#sh openmtc-gevent/run_gscl &
-#sleep 1
+sleep 10
 sh mems-ipe

@@ -1,5 +1,5 @@
 from random import random
-from acc import Accel
+#from acc import Accel
 import time
 
 # import gevent
@@ -15,7 +15,7 @@ class MemsIPE(XAE):
         super(MemsIPE, self).__init__(*args, **kw)
         self.interval = 10 # in seconds!
         self._is_simulation = is_simulation
-        acc = Accel()
+        #acc = Accel()
 
     def _create_base_label_container(self):
         label = 'sensor_data'
