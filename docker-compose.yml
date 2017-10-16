@@ -30,7 +30,7 @@ services:
       - elastest_elastest
 
   api:
-    image: elastest/eds-gateway:0.5.0-alpha1
+    image: elastest/eds-api:0.5.0-alpha1
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
