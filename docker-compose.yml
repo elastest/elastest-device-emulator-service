@@ -29,7 +29,7 @@ services:
     networks:
       - elastest_elastest
 
-  api:
+  rest_app:
     image: elastest/eds-api:0.5.0-alpha1
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
