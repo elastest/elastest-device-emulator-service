@@ -79,7 +79,7 @@
 			"zigbeeipe": {
 				"description": "Service to emulate zigbee data",
 				"main": "false",
-				"api": {
+				"zigbee": {
 					"protocol": "http",
 					"port": 5001,
 					"path": "/onem2m/"
@@ -88,7 +88,7 @@
 			"memsipe": {
 				"description": "Service to emulate mems data",
 				"main": "false",
-				"api": {
+				"mems": {
 					"protocol": "http",
 					"port": 5050,
 					"path": "/onem2m/"
