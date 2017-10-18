@@ -1,6 +1,6 @@
 {
     "name": "FrontEnd",
-    "ep": "http://FrontEnd:8000",
+    "ep": "http://frontend:8000",
     "cse_base": "onem2m",
     "host": "auto",
     "port": 6065,

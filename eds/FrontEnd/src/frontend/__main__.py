@@ -6,7 +6,7 @@ from .front_end import FrontEnd
 
 # defaults
 default_name = 'FrontEnd'
-default_ep = 'http://FrontEnd:6000'
+default_ep = 'http://frontend:6000'
 
 # args parser
 parser = ArgumentParser(
