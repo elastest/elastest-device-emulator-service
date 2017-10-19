@@ -6,7 +6,7 @@ from .mems_ipe import MemsIPE
 
 # defaults
 default_name = "MemsIPE"
-default_ep = "http://FrontEnd:8000"
+default_ep = "http://frontend:8000"
 
 # args parser
 parser = ArgumentParser(

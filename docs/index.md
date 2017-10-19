@@ -5,9 +5,8 @@ Copyright © 2017-2019 Technishce Universitaet Berlin. Licensed under
 
 # ElasTest Device Emulator Service
 
-This is the Elastest Device-Emulator Service (EDS) which provides to emulates 
-sensor devices. The emulated devices include sensors, actuators and smart 
-devices.
+Elastest Device-Emulator Service (EDS) emulates the behaviors of 
+sensors, actuators and smart devices. 
 
 EDS follows a Service Oriented Architecture (SOA). The service in this context
  is a light-weight micro-service. Furthermore, several micro-services are 
@@ -65,7 +64,7 @@ To stop EDS:
 it requires changing the default network configuration.
 
 The EDS FrontEnd UI can be accessed from port 6065, FrontEnd gateway from port
-8000 and Swagger UI on port 8080. 
+8000 and rest_app on port 8080. 
 
 It is important for MemsIPE to have "/dev/i2c-1" device node available on the 
 host machine. Please make sure to stop and remove the stale containers. If running using
@@ -361,7 +360,7 @@ link:
 http://localhost:6065/static/eds.html
 ```
 
-### Access Swagger UI 
+### Access API UI 
 Swagger UI provides the RESTful API available with EDS. The linking of API to 
 different IPE is to be done. 
 

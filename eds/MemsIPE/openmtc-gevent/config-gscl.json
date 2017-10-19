@@ -30,7 +30,7 @@
         "etsi_compatibility": "1.1",
         "scl_type": "GSCL",
         "scl_id": "gscl",
-        "scl_base_uri": "http://localhost:5000/m2m",
+        "scl_base_uri": "http://frotnend:5000/m2m",
         "default_content_type": "application/json"
     },
     "onem2m": {
@@ -55,13 +55,13 @@
                     "connectors": [
                         {
                             "interface": "",
-                            "host": "localhost",
+                            "host": "frontend",
                             "port": 4000,
                             "is_wan": false
                         },
                         {
                             "interface": "",
-                            "host": "localhost",
+                            "host": "frontend",
                             "port": 5000,
                             "is_wan": true
                         }
@@ -236,10 +236,10 @@
                         {
                             "cse_id": "in-cse-1",
                             "poa": [
-                                "http://localhost:18000"
+                                "http://frontend:18000"
                             ],
                             "own_poa": [
-                                "http://localhost:8000"
+                                "http://frontend:8000"
                             ],
                             "cse_base": "onem2m",
                             "cse_type": "IN_CSE"

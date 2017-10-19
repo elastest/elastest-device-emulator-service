@@ -82,7 +82,7 @@
 				"api": {
 					"protocol": "http",
 					"port": 5001,
-					"path": "/onem2m/"
+					"path": "/ZigbeeIPE"
 				}
 			},
 			"memsipe": {
@@ -91,7 +91,7 @@
 				"api": {
 					"protocol": "http",
 					"port": 5050,
-					"path": "/onem2m/"
+					"path": "/MemsIPE"
 				}
 			}
 		}
