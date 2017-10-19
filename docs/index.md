@@ -6,7 +6,7 @@ Copyright © 2017-2019 Technishce Universitaet Berlin. Licensed under
 # ElasTest Device Emulator Service
 
 Elastest Device-Emulator Service (EDS) emulates the behaviors of 
-sensors, actuators and smart devices. 
+the sensors, actuators and smart devices. 
 
 EDS follows a Service Oriented Architecture (SOA). The service in this context
  is a light-weight micro-service. Furthermore, several micro-services are 
@@ -48,7 +48,7 @@ cd elastest-device-emulator-service
 
 # How to run
 * Run EDS using docker-compose: This method allows docker to setup containers
-and connect them in a custom network. All the IPEs register after 10 seconds with 
+and connect them in a custom network named **elastest_elastest**. All the IPEs register after 10 seconds with 
 FrontEnd.
 
 Start EDS using:  
@@ -58,7 +58,65 @@ chmod +x script/*
 ```
 To stop EDS:
 ```shell
-./script/teardown-linux.sh
+./script/teardown-linux.sh 
+```
+To check the IPs for the services running in the docker  do the following:
+```docker network inspect elastest_elastest```
+It gives the following output:
+``` shell
+[
+    {
+        "Name": "elastest_elastest",
+        "Id": "5309f972799c6a61fefc073b0d51a04aeddf0d49c129412526deaa472bcda426",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Containers": {
+            "4fa0d8acfa556e28760522caa56219248336fb4b8c69277b00744bcb299eec15": {
+                "Name": "eds_zigbeeipe_1",
+                "EndpointID": "235f27a5214e66fb8a9afde11d7257f8beb7c0f85a4345e021682fa1d82cc982",
+                "MacAddress": "02:42:ac:12:00:05",
+                "IPv4Address": "172.18.0.5/16",
+                "IPv6Address": ""
+            },
+            "788a38e739834e1befb86441900be503d6d021d6762ad766acfa25a96b6c5504": {
+                "Name": "eds_frontend_1",
+                "EndpointID": "ec928f6ebb4c4fa355cf1422c2aa17e9088e1e5b8d0f58e4e5c39a7bdbf93fa8",
+                "MacAddress": "02:42:ac:12:00:04",
+                "IPv4Address": "172.18.0.4/16",
+                "IPv6Address": ""
+            },
+            "a0fc7d243e17e54fb08ee44dd3f7054babc7d9db47abc90945c84efbef55294e": {
+                "Name": "eds_rest_app_1",
+                "EndpointID": "5e9fd7857e8a79cd17f4f6c1fd48c09694d760c34d33813050ce3b605697f2af",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "e442540c2a448a1eb4c4bb1739db3862de762069ae9d0164056b297407a6226d": {
+                "Name": "eds_memsipe_1",
+                "EndpointID": "90827aae65f32a6fb0bfccf56b0fa56b5671261164d9cbee1bfac871323b1922",
+                "MacAddress": "02:42:ac:12:00:03",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]
 ```
 * Run EDS on local machine : This is explained in the development documenation, as
 it requires changing the default network configuration.
@@ -79,7 +137,8 @@ All the data that follows are simulated through EDS.
 Request to show registered oneM2M IPEs:
 
 ```shell
-$ curl http://localhost:8000/onem2m/ -s | jq '.'
+$ curl http://172.18.0.5:8000/onem2m -s | jq '.'
+
 
 {
   "m2m:cb": {
@@ -87,7 +146,7 @@ $ curl http://localhost:8000/onem2m/ -s | jq '.'
       {
         "typ": 2,
         "nm": "ZigBeeIPE",
-        "val": "ae1"
+        "val": "ae2"
       },
       {
         "typ": 2,
@@ -97,13 +156,13 @@ $ curl http://localhost:8000/onem2m/ -s | jq '.'
       {
         "typ": 2,
         "nm": "MemsIPE",
-        "val": "ae2"
+        "val": "ae1"
       }
     ],
     "csi": "/mn-cse-1",
     "ri": "cb0",
     "ty": 5,
-    "lt": "2017-08-29T15:26:31.813938+00:00",
+    "lt": "2017-10-19T09:54:35.095747+00:00",
     "srt": [
       16,
       23,
@@ -114,13 +173,15 @@ $ curl http://localhost:8000/onem2m/ -s | jq '.'
     ],
     "cst": 2,
     "rn": "onem2m",
-    "ct": "2017-08-29T15:26:31.813938+00:00",
+    "ct": "2017-10-19T09:54:35.095747+00:00",
     "poa": [
       "http://127.0.0.1:8000",
-      "http://10.50.0.3:8000"
+      "http://[::1]:8000",
+      "http://172.18.0.5:8000"
     ]
   }
 }
+
 
 ```
 ### Requests to ZigBeeIPE
@@ -129,7 +190,7 @@ Request to access ZigBeeIPE:
 
 ```shell
 $ curl http://localhost:8000/onem2m/ZigBeeIPE -s | jq '.'
-
+Output:
 {
   "m2m:ae": {
     "ri": "ae1",
