@@ -1,0 +1,152 @@
+{
+    "global": {
+        "etsi_version": "2.1.1",
+        "etsi_compatibility": "1.1",
+        "ignore_extra_attributes": true,
+        "disable_retargeting": false,
+        "scl_type": "GSCL",
+        "scl_id": "gscl",
+        "aPocHandling": "DEEP",
+        "scl_base": "http://localhost:5000/m2m",
+        "default_lifetime": 2000,
+        "require_auth": false
+    },
+    "database": {
+        "driver": "pyscl.methoddomain.db.nodb2.NoDB2"
+    },
+    "plugins": [
+        {
+            "name": "HTTPTransportPlugin",
+            "package": "pyscl.plugins.transport_gevent_http",
+            "disabled": false,
+            "config": {
+                "endpoints": [
+                    {
+                        "personality": "dIa",
+                        "interface": "127.0.0.1",
+                        "port": 4000
+                    },
+                    {
+                        "personality": "mId",
+                        "interface": "0.0.0.0",
+                        "port": 5000
+                    }
+                ]
+            }
+        },
+        {
+            "name": "COAPTransportPlugin",
+            "package": "pyscl.plugins.transport_gevent_coap",
+            "disabled": false,
+            "config": {
+                "client-port": 5684,
+                "endpoints": [
+                    {
+                        "personality": "dIa",
+                        "interface": "127.0.0.1",
+                        "port": 5682
+                    },
+                    {
+                        "personality": "mId",
+                        "interface": "0.0.0.0",
+                        "port": 5680
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ExpirationTimeHandler",
+            "package": "pyscl.plugins.ExpirationTimeHandler",
+            "disabled": true,
+            "config": {
+                "default_lifetime": 10000
+            }
+        },
+        {
+            "name": "NotificationHandler",
+            "package": "pyscl.plugins.notificationhandler",
+            "disabled": false
+        },
+        {
+            "name": "GSCLRegistrationPlugin",
+            "disabled": false,
+            "config": {
+                "scl_type": "GSCL",
+                "gscl_id": "gscl",
+                "link": "http://localhost:4000/m2m",
+                "nscl_uri": "coap://127.0.0.1:8089/m2m",
+                "nscl_id": "nscl",
+                "interval": 3600,
+                "subscription_id": "001011234567890"
+            }
+        },
+        {
+            "name": "IntentTransportPlugin",
+            "package": "pyscl.plugins.transport_android_intent",
+            "disabled": false,
+            "config": {
+                "endpoints": [
+                    {
+                        "personality": "dIa",
+                        "interface": "eu.fistar.conn_service"
+                    },
+                    {
+                        "personality": "mId",
+                        "interface": "eu.fistar.conn_service"
+                    }
+                ],
+                "enable_activate": false,
+                "activate_path": "intent://eu.fistar.sdcs.pa",
+                "activate_payload": {
+                    "operation": "activateAll"
+                },
+                "enable_intent": true,
+                "enable_ngsi": false,
+                "enable_test": false,
+                "enable_store_and_forward": {
+                    "correlation_id": true,
+                    "rcat": true,
+                    "trpdt": true,
+                    "contact_uri": false
+                },
+                "Issuer": "eu.fistar.conn_service",
+                "listenActions": "eu.fistar.conn_service",
+                "ngsiActions": [
+                    "eu.fistar.sdcs.ngsi",
+                    "eu.fistar.sdcs.ngsi9",
+                    "eu.fistar.sdcs.ngsi10"
+                ],
+                "allowedIssuers": "eu.fistar.sdcs.pa,eu.fistar.notification,org.openmtc.ga"
+            }
+        },
+        {
+            "name": "ConnectivityManagementM2MGWPlugin",
+            "package": "pyscl.plugins.conn_mgm_m2m_gw",
+            "disabled": false,
+            "config": {
+                "platform": {
+                    "android": {
+                        "enabled": true
+                    }
+                },
+                "wifi": {
+                    "enabled": true,
+                    "default_network": "guest_open",
+                    "networks": [
+                        {
+                            "ssid": "guest_open",
+                            "auth_method": "open_system",
+                            "rcat": 0
+                        },
+                        {
+                            "ssid": "guest_wpa_preshared",
+                            "auth_method": "WPA",
+                            "password": "12345678",
+                            "rcat": 0
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
