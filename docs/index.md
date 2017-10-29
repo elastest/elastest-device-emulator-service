@@ -59,65 +59,7 @@ To stop EDS:
 ```shell
 ./script/teardown-linux.sh 
 ```
-To check the IPs for the services running in the docker  do the following:
-``` shell docker network inspect elastest_elastest```
 
-It gives the following output:
-``` 
-[
-    {
-        "Name": "elastest_elastest",
-        "Id": "5309f972799c6a61fefc073b0d51a04aeddf0d49c129412526deaa472bcda426",
-        "Scope": "local",
-        "Driver": "bridge",
-        "EnableIPv6": false,
-        "IPAM": {
-            "Driver": "default",
-
-            "Options": {},
-            "Config": [
-                {
-                    "Subnet": "172.18.0.0/16",
-                    "Gateway": "172.18.0.1"
-                }
-            ]
-        },
-        "Internal": false,
-        "Containers": {
-            "4fa0d8acfa556e28760522caa56219248336fb4b8c69277b00744bcb299eec15": {
-                "Name": "eds_zigbeeipe_1",
-                "EndpointID": "235f27a5214e66fb8a9afde11d7257f8beb7c0f85a4345e021682fa1d82cc982",
-                "MacAddress": "02:42:ac:12:00:05",
-                "IPv4Address": "172.18.0.5/16",
-                "IPv6Address": ""
-            },
-            "788a38e739834e1befb86441900be503d6d021d6762ad766acfa25a96b6c5504": {
-                "Name": "eds_frontend_1",
-                "EndpointID": "ec928f6ebb4c4fa355cf1422c2aa17e9088e1e5b8d0f58e4e5c39a7bdbf93fa8",
-                "MacAddress": "02:42:ac:12:00:04",
-                "IPv4Address": "172.18.0.4/16",
-                "IPv6Address": ""
-            },
-            "a0fc7d243e17e54fb08ee44dd3f7054babc7d9db47abc90945c84efbef55294e": {
-                "Name": "eds_rest_app_1",
-                "EndpointID": "5e9fd7857e8a79cd17f4f6c1fd48c09694d760c34d33813050ce3b605697f2af",
-                "MacAddress": "02:42:ac:12:00:02",
-                "IPv4Address": "172.18.0.2/16",
-                "IPv6Address": ""
-            },
-            "e442540c2a448a1eb4c4bb1739db3862de762069ae9d0164056b297407a6226d": {
-                "Name": "eds_memsipe_1",
-                "EndpointID": "90827aae65f32a6fb0bfccf56b0fa56b5671261164d9cbee1bfac871323b1922",
-                "MacAddress": "02:42:ac:12:00:03",
-                "IPv4Address": "172.18.0.3/16",
-                "IPv6Address": ""
-            }
-        },
-        "Options": {},
-        "Labels": {}
-    }
-]
-```
 * Run EDS on local machine : This is explained in the development documenation, as
 it requires changing the default network configuration.
 
@@ -137,7 +79,7 @@ All the data that follows are simulated through EDS.
 Request to show registered oneM2M IPEs:
 
 ```shell
-$ curl http://172.18.0.5:8000/onem2m -s | jq '.'
+$ curl http://frontend:8000/onem2m -s | jq '.'
 
 
 {
