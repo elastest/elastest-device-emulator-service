@@ -11,4 +11,4 @@ if __name__ == '__main__':
     app.add_api('resty-api.yaml',
                 arguments={'title': 'RestyResolver Example'},
                 resolver=RestyResolver('api'))
-    app.run(port=9090)
+    app.run(port=8080)
