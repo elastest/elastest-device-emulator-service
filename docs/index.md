@@ -60,9 +60,10 @@ To stop EDS:
 ./script/teardown-linux.sh 
 ```
 To check the IPs for the services running in the docker  do the following:
-```docker network inspect elastest_elastest```
+``` shell docker network inspect elastest_elastest```
+
 It gives the following output:
-``` shell
+``` 
 [
     {
         "Name": "elastest_elastest",
