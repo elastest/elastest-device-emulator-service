@@ -1,0 +1,68 @@
+swagger: "2.0"
+
+info:
+  title: "{{title}}"
+  version: "1.0"
+
+basePath: /v1.0
+
+paths:
+  /devices:
+    get:
+      responses:
+        '200':
+          description: 'Fetch a list of devices'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Device'
+    post:
+      parameters:
+        - in: body
+          name: device
+          required: true
+          schema:
+            $ref: '#/definitions/DeviceRegistration'
+      responses:
+        '201':
+          description: 'Register a new device'
+
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '204':
+          description: 'Delete a device by ID'
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Fetch a device by PAN ID'
+          schema:
+            $ref: '#/definitions/Device'
+            
+definitions:
+  DeviceRegistration:
+    type: object
+    properties:
+      deviceName: { type: string, example: "ZBS122S000001"}
+
+
+
+  Device:
+    type: object
+    properties:
+      id:
+        type: string
+        format: string
+      name: { type: string }
+      registered:
+        type: string
+        format: date-time

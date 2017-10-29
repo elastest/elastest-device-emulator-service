@@ -1,0 +1,393 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "2.12"
+  title: ElasTest Device Emulator API
+consumes:
+  - application/json
+produces:
+  - application/json
+
+#host: virtserver.swaggerhub.com
+host: localhost:8080
+basePath: /eds
+
+# Describe your paths here
+schemes:
+ - https
+ - http
+paths:
+  /devices:
+    get:
+      tags:
+      - Device
+      description: returns all registered devices
+      parameters:
+      - in: query
+        name: deviceName
+        type: string
+        format: string
+        description: Zigbee sensor information
+      responses:
+        200:
+          description: All the devices
+          schema:
+            type: array
+            items:
+              type: string
+              format: uri
+              example: http://localhost:8080
+    post:
+      tags:
+      - Device
+      parameters:
+      - in: body
+        name: device
+        required: false
+        schema:
+          $ref: '#/definitions/DeviceRegistrationInfo'
+      responses:
+        200:
+          description: successfully registered device
+
+  /ZigbeeIPE/{id}:
+      get:
+        tags:
+        - Zigbee
+        parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+
+
+        responses:
+          200:
+            description: ok
+            schema:
+              $ref: '#/definitions/ZigbeeIPE'
+  /MemsIPE:
+      get:
+        tags:
+        - Mems
+        parameters: []
+        responses:
+          200:
+            description: ok
+            schema:
+              $ref: '#/definitions/MemsData'
+
+
+definitions:
+
+  DeviceRegistrationInfo:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          example: http://localhost:8080
+        deviceName:
+          type: string
+          format: string
+          example: "Zigbee"
+
+
+  ZigbeeIPE:
+      type: object
+      required:
+      - deviceName
+      - id
+      properties:
+        deviceName:
+          type: string
+          format: string
+          example: "Zigbee"
+        id:
+          type: string
+          format: string
+          example: "ZBS122S000001"
+        sensor_data:
+          $ref: '#/definitions/SensorData'
+
+
+  SensorData:
+      type: object
+      properties:
+        temperature:
+          $ref: '#/definitions/Temperature'
+        brightness:
+          $ref: '#/definitions/Brightness'
+        pressure:
+          $ref: '#/definitions/Pressure'
+        movement:
+          $ref: '#/definitions/Movement'
+        humidity:
+          $ref: '#/definitions/Humidity'
+        vibration:
+          $ref: '#/definitions/Vibration'
+
+  MemsData:
+      type: object
+      properties:
+        deviceName:
+          type: string
+          format: string
+          example: "Mems"
+        x:
+          $ref: '#/definitions/X'
+        y:
+          $ref: '#/definitions/Y'
+        z:
+          $ref: '#/definitions/Z'
+  Brightness:
+      type: object
+      properties:
+        nm:
+          type: string
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "lx"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "brightness"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+          description: ok
+  Humidity:
+      type: object
+      properties:
+        nm:
+          type: string
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "%RH"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "brightness"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+
+
+
+  Temperature:
+      type: object
+      properties:
+        nm:
+          type: string
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "cel"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "brightness"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+  Pressure:
+      type: object
+      properties:
+        nm:
+          type: string
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "hPa"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "pressure"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+  Movement:
+      type: object
+      properties:
+        nm:
+          type: string
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "lx"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "movement"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+  Vibration:
+      type: object
+      properties:
+        nm:
+          type: string
+          enum:
+          - "ZBS122S000001"
+          - "ZBS122S000000"
+        u:
+          type: string
+          example: "lx"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "vibration"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+
+
+  X:
+      type: object
+      properties:
+        bn:
+          type: string
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "x"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+
+  Y:
+      type: object
+      properties:
+        bn:
+          type: string
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "y"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+  Z:
+      type: object
+      properties:
+        bn:
+          type: string
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "z"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
