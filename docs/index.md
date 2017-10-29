@@ -85,11 +85,7 @@ $ curl http://frontend:8000/onem2m -s | jq '.'
 {
   "m2m:cb": {
     "ch": [
-      {
-        "typ": 2,
-        "nm": "ZigBeeIPE",
-        "val": "ae2"
-      },
+     
       {
         "typ": 2,
         "nm": "FrontEnd",
