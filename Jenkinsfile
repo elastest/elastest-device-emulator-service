@@ -27,17 +27,12 @@ node('docker'){
           sh 'cd eds/rest_app && exec tox'
           step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
-          echo ("Running Unit Tests for ZigBeeIPE")
-          sh 'cd eds/ZigBeeIPE && exec tox'
-          step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
          stage "build api image"
          //here we use only the build for api
           def api_image = docker.build("elastest/eds-api:${tag}", "./eds/rest_app")
 
-        stage "build zigbee image"
-         //here we use only the build for zigbeeip
-          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe:${tag}", "./eds/ZigBeeIPE")
+
 
         stage "build memsipe image"
          //here we use only the build for memsipe
