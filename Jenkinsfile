@@ -1,5 +1,5 @@
 node('docker'){
-   def tag = "0.5.0-alpha1"
+   def tag = "latest"
    stage "Container initialize"
          echo("the node is up")
          //the new image is working!!!
