@@ -1,4 +1,0 @@
-#!/bin/sh
-
-pkill -9 -f nscl_main.py
-
