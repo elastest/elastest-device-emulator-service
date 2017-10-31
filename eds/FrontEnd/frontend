@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-sh prep-env.sh
+#sh prep-env.sh
 
-
-PYTHONPATH=${PYTHONPATH}:src exec python -m frontend $@
+#PYTHONPATH=${PYTHONPATH}:src
+exec python -m frontend $@

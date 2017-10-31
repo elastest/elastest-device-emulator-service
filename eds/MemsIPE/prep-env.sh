@@ -2,7 +2,7 @@
 
 sh common/prep-env.sh
 
-PYTHONPATH=${PYTHONPATH}:$(readlink -f openmtc-app/src)
+#PYTHONPATH=${PYTHONPATH}:$(readlink -f openmtc-app/src)
 
 echo PYTHONPATH: ${PYTHONPATH}
 

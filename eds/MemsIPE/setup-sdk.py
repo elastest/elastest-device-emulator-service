@@ -29,9 +29,9 @@ SETUP_INSTALL_REQUIRES = [
 ]
 
 # packages
-PACKAGES = ["aplus", "openmtc", "openmtc_onem2m", "futile", "openmtc_app"]
+PACKAGES = [ "openmtc", "openmtc_onem2m", "futile", "openmtc_app"]
 PACKAGE_DIR = {
-    "": "common/openmtc/lib",
+  #  "": "common/openmtc/lib",
     "openmtc": "common/openmtc/src/openmtc",
     "openmtc_onem2m": "common/openmtc-onem2m/src/openmtc_onem2m",
     "openmtc_app": "openmtc-app/src/openmtc_app",
@@ -46,6 +46,7 @@ SETUP_SCRIPTS = []
 
 # package data
 PACKAGE_DATA = {NAME: []}
+
 
 # data files
 DATA_FILES = []
