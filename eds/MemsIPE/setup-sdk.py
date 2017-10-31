@@ -2,7 +2,7 @@
 
 from setuptools import setup
 from distutils.core import setup
-from utils import get_packages, OpenMTCSdist
+#from utils import get_packages, OpenMTCSdist
 
 # name and version
 NAME = "sdk"
@@ -29,13 +29,13 @@ SETUP_INSTALL_REQUIRES = [
 ]
 
 # packages
-PACKAGES = [ "openmtc", "openmtc_onem2m", "futile", "openmtc_app"]
-PACKAGE_DIR = {
-  #  "": "common/openmtc/lib",
-    "openmtc": "common/openmtc/src/openmtc",
-    "openmtc_onem2m": "common/openmtc-onem2m/src/openmtc_onem2m",
-    "openmtc_app": "openmtc-app/src/openmtc_app",
-    "futile": "futile/src/futile"
+# PACKAGES = [ "openmtc", "openmtc_onem2m", "futile", "openmtc_app"]
+# PACKAGE_DIR = {
+#   #  "": "common/openmtc/lib",
+#     "openmtc": "common/openmtc/src/openmtc",
+#     "openmtc_onem2m": "common/openmtc-onem2m/src/openmtc_onem2m",
+#     "openmtc_app": "openmtc-app/src/openmtc_app",
+#     "futile": "futile/src/futile"
 }
 all_packages = []
 for package in PACKAGES:
