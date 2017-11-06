@@ -193,3 +193,4 @@ class FrontEnd(XAE):
                 'n': actuator_path.split('/')[-1]
             }
             self.emit('newActuator', self._discovered_actuators[actuator_path])
+
