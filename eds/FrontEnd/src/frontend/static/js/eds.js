@@ -1,10 +1,7 @@
 var configuredSensorList = {
-    'top-left': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/brightness',
-    'top-middle': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/humidity',
-    'top-right': '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/temperature',
-    'bottom-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
-    'bottom-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
-    'bottom-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z'
+    'top-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
+    'top-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
+    'top-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z'
 
 };
 

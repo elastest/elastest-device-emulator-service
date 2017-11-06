@@ -21,7 +21,6 @@ services:
       - elastest_elastest
 
   rest_app:
-
     image: elastest/eds-api:latest
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
