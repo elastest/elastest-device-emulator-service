@@ -1,7 +1,7 @@
 version: '2'
 services:
   frontend:
-    image: elastest/eds-frontend:0.5.0-alpha1
+    image: elastest/eds-frontend:latest
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
@@ -12,7 +12,7 @@ services:
       - elastest_elastest
 
   memsipe:
-    image: elastest/eds-memsipe:0.5.0-alpha1
+    image: elastest/eds-memsipe:latest
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
@@ -21,7 +21,8 @@ services:
       - elastest_elastest
 
   rest_app:
-    image: elastest/eds-api:0.5.0-alpha1
+
+    image: elastest/eds-api:latest
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
