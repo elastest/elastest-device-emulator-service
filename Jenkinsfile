@@ -17,16 +17,16 @@ node('docker'){
           echo ("Running Unit Test ...")
          //if you have unitary tests execute them here:
           echo ("Running Unit Tests for FrontEnd")
-          //sh 'cd eds/FrontEnd && exec tox'
-          //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+            sh 'cd eds/FrontEnd && exec tox'
+            step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
           echo ("Running Unit Tests for MemsIPE")
-          //sh 'cd eds/MemsIPE && exec tox'
-          //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+            sh 'cd eds/MemsIPE && exec tox'
+            step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
           echo ("Running Unit Tests for Rest App")
-          //sh 'cd eds/rest_app && exec tox'
-          //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+            sh 'cd eds/rest_app && exec tox'
+            step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
 
          stage "build api image"
