@@ -1,4 +1,0 @@
-!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
-default	/home/vgo/develop/api/elastest-device-emulator-service/rest/test_api/swagger_server/encoder.py	/^    def default(self, o):$/;"	m	language:Python	class:JSONEncoder
-include_nulls	/home/vgo/develop/api/elastest-device-emulator-service/rest/test_api/swagger_server/encoder.py	/^    include_nulls = False$/;"	v	language:Python	class:JSONEncoder
-JSONEncoder	/home/vgo/develop/api/elastest-device-emulator-service/rest/test_api/swagger_server/encoder.py	/^class JSONEncoder(FlaskJSONEncoder):$/;"	c	language:Python
