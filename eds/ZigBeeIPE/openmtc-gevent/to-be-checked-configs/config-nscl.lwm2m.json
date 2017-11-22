@@ -1,0 +1,244 @@
+{
+    "global": {
+        "ignore_extra_attributes": true,
+        "disable_retargeting": false,
+        "default_lifetime": 2000,
+        "additional_hostnames": [],
+        "aPocHandling": "DEEP",
+        "require_auth": false,
+        "default_content_type": "application/json"
+    },
+    "database": {
+        "driver": "openmtc_scl.methoddomain.db.nodb2.NoDB2",
+        "dropDB": true,
+        "backend": "sqlite3",
+        "connectionstring": "/tmp/nscl.db",
+        "concurrency": 1
+    },
+    "logging": {
+        "level": "INFO",
+        "file": null
+    },
+    "etsi": {
+        "scl_base": "m2m",
+        "mIa": {
+        },
+        "mId": {
+        },
+        "etsi_version": "2.1.1",
+        "etsi_compatibility": "1.1",
+        "scl_type": "NSCL",
+        "scl_id": "nscl",
+        "scl_base_uri": "http://localhost:15000/m2m",
+        "default_content_type": "application/json"
+    },
+    "onem2m": {
+        "cse_base": "onem2m",
+        "interfaces": [
+            {
+                "personality": "dIa",
+                "endpoints": "*"
+            }
+        ]
+    },
+    "plugins": [
+        {
+            "name": "HTTPTransportPlugin",
+            "package": "openmtc_scl.plugins.transport_gevent_http",
+            "disabled": false,
+            "config": {
+                "connectors": [
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 14000,
+                        "is_wan": false
+                    },
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 15000,
+                        "is_wan": true
+                    },
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 16000,
+                        "is_wan": true,
+                        "key": "certs/CA_signed_certs/http_server_localhost/server-keycert.pem",
+                        "crt": "certs/CA_signed_certs/http_server_localhost/server-cert.pem"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "COAPTransportPlugin",
+            "package": "openmtc_scl.plugins.transport_gevent_coap",
+            "disabled": false,
+            "config": {
+                "client-port": 6684,
+                "connectors": [
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 14000,
+                        "is_wan": false
+                    },
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 15000,
+                        "is_wan": true
+                    },
+                    {
+                        "interface": "",
+                        "port": 16000,
+                        "is_wan": true,
+                        "key": "certs/CA_signed_certs/dtls_server/server-keycert.pem",
+                        "crt": "certs/CA_signed_certs/dtls_server/server-cert.pem"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ExpirationTimeHandler",
+            "package": "openmtc_scl.plugins.ExpirationTimeHandler",
+            "disabled": true,
+            "config": {
+                "default_lifetime": 10000
+            }
+        },
+        {
+            "name": "NotificationHandler",
+            "package": "openmtc_scl.plugins.notificationhandler",
+            "disabled": false
+        },
+        {
+            "name": "NotificationHandlerOneM2M",
+            "package": "openmtc_scl.plugins.notification_handler_onem2m",
+            "disabled": false
+        },
+        {
+            "name": "ETSIRetargetingHandler",
+            "package": "openmtc_scl.plugins.etsi_retargeting_handler",
+            "disabled": false
+        },
+        {
+            "name": "OneM2MRetargetingHandler",
+            "package": "openmtc_scl.plugins.onem2m_retargeting_handler",
+            "disabled": false
+        },
+        {
+            "name": "NotificationChannelHandler",
+            "disabled": true,
+            "config": {
+                "long_polling_timeout": 60
+            }
+        },
+        {
+            "name": "AnnouncementHandler",
+            "package": "openmtc_scl.plugins.announcement_handler",
+            "disabled": true,
+            "config": {
+                "auto_announce": false
+            }
+        },
+        {
+            "name": "NSCLm2mPocHandler",
+            "package": "openmtc_scl.plugins.NSCLm2mPocHandler",
+            "disabled": true,
+            "config": {
+                
+            }
+        },
+	{
+	    "name" : "nscl_dm_adapter",
+	    "package": "openmtc_scl.plugins.nscl_dm_adapter",
+	    "disabled" : false,
+	    "config": {
+		"lwm2m_dm_server_ip" : "127.0.0.1",
+		"lwm2m_dm_server_port" : 5684,
+		"nscl_dm_adapter_listener_ip" : "127.0.0.1",
+		"nscl_dm_adapter_listener_port" : 5911,
+		"nscl_dm_adapter_client_ip" : "127.0.0.1",
+		"nscl_dm_adapter_client_port" : 35000,
+		"enable_test": true
+	    }
+	},
+	{
+	    "name" : "lwm2m_dm_server",
+	    "package": "openmtc_scl.plugins.lwm2m_dm_server",
+	    "disabled" : false,
+	    "config" : {
+		"lwm2m_dm_server_ip" : "127.0.0.1",
+		"lwm2m_dm_server_port" : 5684,
+		"client_ip" : "127.0.0.1",
+		"client_port" : 38000
+	    }
+	}
+    ],
+    "transport": {
+        "etsiSclMo": {
+            "safPolicySetCollection": [
+                {
+                    "policyScope": [
+                        "default"
+                    ],
+                    "m2mSpPolicy": {
+                        "defaultRcatValue": 0,
+                        "rcatParamListCollection": [
+                            {
+                                "rcatValue": 0,
+                                "anSelList": [],
+                                "maxPendReq": 10,
+                                "maxPendData": 10000
+                            },
+                            {
+                                "rcatValue": 1,
+                                "anSelList": [],
+                                "maxPendReq": 20,
+                                "maxPendData": 20000
+                            },
+                            {
+                                "rcatValue": 2,
+                                "anSelList": [],
+                                "maxPendReq": 30,
+                                "maxPendData": 30000
+                            },
+                            {
+                                "rcatValue": 3,
+                                "anSelList": [],
+                                "maxPendReq": 40,
+                                "maxPendData": 40000
+                            },
+                            {
+                                "rcatValue": 4,
+                                "anSelList": [],
+                                "maxPendReq": 50,
+                                "maxPendData": 50000
+                            },
+                            {
+                                "rcatValue": 5,
+                                "anSelList": [],
+                                "maxPendReq": 60,
+                                "maxPendData": 60000
+                            },
+                            {
+                                "rcatValue": 6,
+                                "anSelList": [],
+                                "maxPendReq": 70,
+                                "maxPendData": 70000
+                            },
+                            {
+                                "rcatValue": 7,
+                                "anSelList": [],
+                                "maxPendReq": 80,
+                                "maxPendData": 80000
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
