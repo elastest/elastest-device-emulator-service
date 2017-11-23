@@ -1,0 +1,616 @@
+<?xml version="1.0" ?>
+<!-- 
+Copyright Notification
+
+No part of this document may be reproduced, in an electronic retrieval system or otherwise, except as authorized by written permission.
+The copyright and the foregoing restriction extend to reproduction in all media.
+(c)2014, oneM2M Partners Type 1 (ARIB, ATIS, CCSA, ETSI, TIA, TTA, TTC). All rights reserved.
+
+Notice of Disclaimer & Limitation of Liability 
+
+The information provided in this document is directed solely to professionals who have the appropriate degree of experience to understand 
+and interpret its contents in accordance with generally accepted engineering or other professional standards and applicable regulations. 
+No recommendation as to products or vendors is made or should be implied. 
+
+NO REPRESENTATION OR WARRANTY IS MADE THAT THE INFORMATION IS TECHNICALLY ACCURATE OR SUFFICIENT OR CONFORMS TO ANY STATUTE, 
+GOVERNMENTAL RULE OR REGULATION, AND FURTHER, NO REPRESENTATION OR WARRANTY IS MADE OF MERCHANTABILITY OR FITNESS FOR ANY 
+PARTICULAR PURPOSE OR AGAINST INFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS. 
+NO oneM2M PARTNER TYPE 1 SHALL BE LIABLE, BEYOND THE AMOUNT OF ANY SUM RECEIVED IN PAYMENT BY THAT PARTNER FOR THIS DOCUMENT, WITH RESPECT TO 
+ANY CLAIM, AND IN NO EVENT SHALL oneM2M BE LIABLE FOR LOST PROFITS OR OTHER INCIDENTAL OR CONSEQUENTIAL DAMAGES. 
+oneM2M EXPRESSLY ADVISES ANY AND ALL USE OF OR RELIANCE UPON THIS INFORMATION PROVIDED IN THIS DOCUMENT IS AT THE RISK OF THE USER.
+
+-->
+
+<xs:schema
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:m2m="http://www.onem2m.org/xml/protocols"
+        targetNamespace="http://www.onem2m.org/xml/protocols"
+        elementFormDefault="unqualified"
+        >
+
+    <xs:simpleType name="resourceType">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- accessControlPolicy -->
+            <xs:enumeration value="1"/>
+            <!-- AE -->
+            <xs:enumeration value="2"/>
+            <!-- container -->
+            <xs:enumeration value="3"/>
+            <!-- contentInstance -->
+            <xs:enumeration value="4"/>
+            <!-- CSEBase -->
+            <xs:enumeration value="5"/>
+            <!-- delivery -->
+            <xs:enumeration value="6"/>
+            <!-- eventConfig -->
+            <xs:enumeration value="7"/>
+            <!-- execInstance -->
+            <xs:enumeration value="8"/>
+            <!-- fanOutPoint -->
+            <xs:enumeration value="9"/>
+            <!-- Group -->
+            <xs:enumeration value="10"/>
+            <!-- localPolicy -->
+            <xs:enumeration value="11"/>
+            <!-- m2mServiceSubscription -->
+            <xs:enumeration value="12"/>
+            <!-- mgmtCmd -->
+            <xs:enumeration value="13"/>
+            <!-- mgmtObj -->
+            <xs:enumeration value="14"/>
+            <!-- Node -->
+            <xs:enumeration value="15"/>
+            <!-- nodeInfo -->
+            <xs:enumeration value="16"/>
+            <!-- pollingChannel -->
+            <xs:enumeration value="17"/>
+            <!-- remoteCSE -->
+            <xs:enumeration value="18"/>
+            <!-- Request -->
+            <xs:enumeration value="19"/>
+            <!-- Schedule -->
+            <xs:enumeration value="20"/>
+            <!-- statsCollect -->
+            <xs:enumeration value="21"/>
+            <!-- statsConfig -->
+            <xs:enumeration value="22"/>
+            <!-- Subscription -->
+            <xs:enumeration value="23"/>
+            <!-- accessControlPolicyAnnc   -->
+            <xs:enumeration value="24"/>
+            <!-- AEAnnc -->
+            <xs:enumeration value="25"/>
+            <!-- containerAnnc -->
+            <xs:enumeration value="26"/>
+            <!-- contentInstanceAnnc -->
+            <xs:enumeration value="27"/>
+            <!-- GroupAnnc -->
+            <xs:enumeration value="28"/>
+            <!-- localPolicyAnnc -->
+            <xs:enumeration value="29"/>
+            <!-- remoteCSEAnnc -->
+            <xs:enumeration value="30"/>
+            <!-- ScheduleAnnc -->
+            <xs:enumeration value="31"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="cseTypeID">
+        <xs:annotation>
+            <xs:documentation>Used for cseType attribute of &lt;CSEBase&gt;
+                resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- IN-CSE -->
+            <xs:enumeration value="1"/>
+            <!-- MN-CSE -->
+            <xs:enumeration value="2"/>
+            <!-- AEN-CSE -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="locationSource">
+        <xs:annotation>
+            <xs:documentation>Used for locationSource attribute of &lt;locationPolicy&gt;
+                resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- Network-based -->
+            <xs:enumeration value="1"/>
+            <!-- Device-based -->
+            <xs:enumeration value="2"/>
+            <!-- Sharing-based -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="eventCatType">
+        <xs:annotation>
+            <xs:documentation>Used for ec parameter in request and eventCat
+                attribute of &lt;delivery&gt; resource and cmdh policy resource
+                types.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- Default -->
+            <xs:enumeration value="1"/>
+            <!-- immediate -->
+            <xs:enumeration value="2"/>
+            <!-- bestEffort -->
+            <xs:enumeration value="3"/>
+            <!-- Latest -->
+            <xs:enumeration value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="operation">
+        <xs:annotation>
+            <xs:documentation>Used for rt parameter in request and operation
+                attribute in &lt;request&gt; resource
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- Create -->
+            <xs:enumeration value="1"/>
+            <!-- Retrieve -->
+            <xs:enumeration value="2"/>
+            <!-- Update -->
+            <xs:enumeration value="3"/>
+            <!-- Delete -->
+            <xs:enumeration value="4"/>
+            <!-- Notify -->
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="accessControlOperation">
+        <xs:annotation>
+            <xs:documentation>Shall be considered for access control policy
+                check by the CSE
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- Create -->
+            <xs:enumeration value="1"/>
+            <!-- Retrieve -->
+            <xs:enumeration value="2"/>
+            <!-- Update -->
+            <xs:enumeration value="3"/>
+            <!-- Delete -->
+            <xs:enumeration value="4"/>
+            <!-- Notify -->
+            <xs:enumeration value="5"/>
+            <!-- Discover -->
+            <xs:enumeration value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="countryCode">
+        <xs:annotation>
+            <xs:documentation>2-character country code</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- India -->
+            <xs:enumeration value="91"/>
+            <!-- United States of America -->
+            <xs:enumeration value="01"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="responseType">
+        <xs:annotation>
+            <xs:documentation>Used for rt parameter in request and operation
+                attribute in &lt;request&gt; resource
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- nonBlockingRequestSynch -->
+            <xs:enumeration value="1"/>
+            <!-- nonBlockingRequestAsynch -->
+            <xs:enumeration value="2"/>
+            <!-- blockingRequest -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="resultContent">
+        <xs:annotation>
+            <xs:documentation>Used for rc parameter in request.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="22"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="discResType">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- hierarchical -->
+            <xs:enumeration value="1"/>
+            <!-- Non-hierarchical -->
+            <xs:enumeration value="2"/>
+            <!-- cseID+resourceID -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- TODO: to be defined -->
+    <xs:simpleType name="statusCode">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="22"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- TODO: to be defined -->
+    <xs:simpleType name="requestStatus">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="22"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- TODO: to be defined -->
+    <xs:simpleType name="operationResult">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="22"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="memberType">
+        <xs:annotation>
+            <xs:documentation>Used for memberType attribute in &lt;member&gt;
+                resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- accessControlPolicy -->
+            <xs:enumeration value="1"/>
+            <!-- AE -->
+            <xs:enumeration value="2"/>
+            <!-- container -->
+            <xs:enumeration value="3"/>
+            <!-- contentInstance -->
+            <xs:enumeration value="4"/>
+            <!-- CSEBase -->
+            <xs:enumeration value="5"/>
+            <!-- delivery -->
+            <xs:enumeration value="6"/>
+            <!-- eventConfig -->
+            <xs:enumeration value="7"/>
+            <!-- execInstance -->
+            <xs:enumeration value="8"/>
+            <!-- fanOutPoint -->
+            <xs:enumeration value="9"/>
+            <!-- Group -->
+            <xs:enumeration value="10"/>
+            <!-- localPolicy -->
+            <xs:enumeration value="11"/>
+            <!-- m2mServiceSubscription -->
+            <xs:enumeration value="12"/>
+            <!-- mgmtCmd -->
+            <xs:enumeration value="13"/>
+            <!-- mgmtObj -->
+            <xs:enumeration value="14"/>
+            <!-- Node -->
+            <xs:enumeration value="15"/>
+            <!-- nodeInfo -->
+            <xs:enumeration value="16"/>
+            <!-- pollingChannel -->
+            <xs:enumeration value="17"/>
+            <!-- remoteCSE -->
+            <xs:enumeration value="18"/>
+            <!-- Request -->
+            <xs:enumeration value="19"/>
+            <!-- Schedule -->
+            <xs:enumeration value="20"/>
+            <!-- statsCollect -->
+            <xs:enumeration value="21"/>
+            <!-- statsConfig -->
+            <xs:enumeration value="22"/>
+            <!-- Subscription -->
+            <xs:enumeration value="23"/>
+            <!-- Mixed -->
+            <xs:enumeration value="24"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- TODO: to be defined -->
+    <xs:simpleType name="consistencyStrategy">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="22"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="cmdType">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- RESET -->
+            <xs:enumeration value="1"/>
+            <!-- REBOOT -->
+            <xs:enumeration value="2"/>
+            <!-- UPLOAD -->
+            <xs:enumeration value="3"/>
+            <!-- DOWNLOAD -->
+            <xs:enumeration value="4"/>
+            <!-- SOFTWAREINSTALL -->
+            <xs:enumeration value="5"/>
+            <!-- SOFTWAREUNINSTALL -->
+            <xs:enumeration value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="execModeType">
+        <xs:annotation>
+            <xs:documentation>Used for execModeType attribute in &lt;mgmtCmd&gt;
+                and &lt;execInstance&gt; resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- IMMEDIATEONCE -->
+            <xs:enumeration value="1"/>
+            <!-- IMMEDIATEREPEAT -->
+            <xs:enumeration value="2"/>
+            <!-- RANDOMONCE -->
+            <xs:enumeration value="3"/>
+            <!-- RANDOMREPEAT -->
+            <xs:enumeration value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="execStateType">
+        <xs:annotation>
+            <xs:documentation>Used for execStatusType attribute in &lt;execInstance&gt;
+                resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- INITIATED -->
+            <xs:enumeration value="1"/>
+            <!-- STARTED -->
+            <xs:enumeration value="2"/>
+            <!-- FINISHED -->
+            <xs:enumeration value="3"/>
+            <!-- CANCELLING -->
+            <xs:enumeration value="4"/>
+            <!-- CANCELLED -->
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="pendingNotification">
+        <xs:annotation>
+            <xs:documentation>This is used for pendingNotification attribute in
+                &lt;subscription&gt; resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- sendLatest -->
+            <xs:enumeration value="1"/>
+            <!-- sendAllPending -->
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="notificationContentType">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- modifiedAttributes -->
+            <xs:enumeration value="1"/>
+            <!-- wholeResource -->
+            <xs:enumeration value="2"/>
+            <!-- referenceOnly -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="notificationCongestionPolicy">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- TBD -->
+            <xs:enumeration value="1"/>
+            <!-- TBD -->
+            <xs:enumeration value="2"/>
+            <!-- TBD -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="resourceStatus">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- childCreated -->
+            <xs:enumeration value="1"/>
+            <!-- childDeleted -->
+            <xs:enumeration value="2"/>
+            <!-- updated -->
+            <xs:enumeration value="3"/>
+            <!-- deleted -->
+            <xs:enumeration value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="operationMonitor">
+        <xs:annotation>
+            <xs:documentation></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- Create -->
+            <xs:enumeration value="1"/>
+            <!-- Retrieve -->
+            <xs:enumeration value="2"/>
+            <!-- Update -->
+            <xs:enumeration value="3"/>
+            <!-- Delete -->
+            <xs:enumeration value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="status">
+        <xs:annotation>
+            <xs:documentation>This is used for [software], [firmware]
+                resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- Successful -->
+            <xs:enumeration value="1"/>
+            <!-- Failure -->
+            <xs:enumeration value="2"/>
+            <!-- In-Process -->
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="batteryStatus">
+        <xs:annotation>
+            <xs:documentation>This is used for [software], [firmware]
+                resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- NORMAL -->
+            <xs:enumeration value="1"/>
+            <!-- CHARGING -->
+            <xs:enumeration value="2"/>
+            <!-- CHARGING-COMPLETE -->
+            <xs:enumeration value="3"/>
+            <!-- DAMAGED -->
+            <xs:enumeration value="4"/>
+            <!-- LOW-BATTERY -->
+            <xs:enumeration value="5"/>
+            <!-- NOT-INSTALLED -->
+            <xs:enumeration value="6"/>
+            <!-- UNKNOWN -->
+            <xs:enumeration value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="mgmtDefinition">
+        <xs:annotation>
+            <xs:documentation>This is used for mgmtObj resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- firmware -->
+            <xs:enumeration value="1"/>
+            <!-- software -->
+            <xs:enumeration value="2"/>
+            <!-- memory -->
+            <xs:enumeration value="3"/>
+            <!-- areaNwkInfo -->
+            <xs:enumeration value="4"/>
+            <!-- areaNwkDeviceInfo -->
+            <xs:enumeration value="5"/>
+            <!-- battery -->
+            <xs:enumeration value="6"/>
+            <!-- deviceInfo -->
+            <xs:enumeration value="7"/>
+            <!-- deviceCapability -->
+            <xs:enumeration value="8"/>
+            <!-- reboot -->
+            <xs:enumeration value="9"/>
+            <!-- eventLog -->
+            <xs:enumeration value="10"/>
+            <!-- cmdhPolicy -->
+            <xs:enumeration value="11"/>
+            <!-- activeCmdhPolicy -->
+            <xs:enumeration value="12"/>
+            <!-- cmdhDefaults -->
+            <xs:enumeration value="13"/>
+            <!-- cmdhDefEcValue -->
+            <xs:enumeration value="14"/>
+            <!-- cmdhEcDefParamValues -->
+            <xs:enumeration value="15"/>
+            <!-- cmdhLimits -->
+            <xs:enumeration value="16"/>
+            <!-- cmdhNetworkAccessRules -->
+            <xs:enumeration value="17"/>
+            <!-- cmdhNwAccessRules -->
+            <xs:enumeration value="18"/>
+            <!-- cmdhBuffer -->
+            <xs:enumeration value="19"/>
+            <!-- dmServerInfo -->
+            <xs:enumeration value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="logTypeId">
+        <xs:annotation>
+            <xs:documentation>Used for the logTypeId attribute of [eventLog]
+                Management Resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- system -->
+            <xs:enumeration value="1"/>
+            <!-- security -->
+            <xs:enumeration value="2"/>
+            <!-- event -->
+            <xs:enumeration value="3"/>
+            <!-- trace -->
+            <xs:enumeration value="4"/>
+            <!-- panic -->
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="logStatus">
+        <xs:annotation>
+            <xs:documentation>Used for the logStatus attribute of [eventLog]
+                Management Resource.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <!-- Started -->
+            <xs:enumeration value="1"/>
+            <!-- Stopped -->
+            <xs:enumeration value="2"/>
+            <!-- Unknown -->
+            <xs:enumeration value="3"/>
+            <!-- NotPresent -->
+            <xs:enumeration value="4"/>
+            <!-- Error -->
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="encodingType">
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="1"/>
+            <!-- opaque -->
+            <xs:enumeration value="2"/>
+            <!-- base64Binary -->
+            <xs:enumeration value="3"/>
+            <!-- base64String -->
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

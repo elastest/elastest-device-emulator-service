@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd $(dirname ${0})
+
+. prep-env.sh
+
+exec python -m openmtc_utils.APocServer $@
