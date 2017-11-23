@@ -76,7 +76,6 @@ paths:
           description: 'Fetch a device by ID'
           schema:
             $ref: '#/definitions/Device'
-
 definitions:
   DeviceRegistration:
     type: object
