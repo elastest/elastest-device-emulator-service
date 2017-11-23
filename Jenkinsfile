@@ -1,5 +1,4 @@
 node('docker'){
-
    def tag = "0.5.0"
    stage "Container initialize"
          echo("the node is up")
@@ -17,27 +16,35 @@ node('docker'){
           echo ("Running Unit Test ...")
          //if you have unitary tests execute them here:
           echo ("Running Unit Tests for FrontEnd")
-           // sh 'cd eds/FrontEnd && exec tox'
-           // step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+          // sh 'cd eds/FrontEnd && exec tox'
+           //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
           echo ("Running Unit Tests for MemsIPE")
-          //  sh 'cd eds/MemsIPE && exec tox'
-          //  step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+            //  sh 'cd eds/MemsIPE && exec tox'
+            //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+
+           echo ("Running Unit Tests for ZigBeeIPE")
+            //  sh 'cd eds/ZigBeeIPE && exec tox'
+            //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
           echo ("Running Unit Tests for Rest App")
-           // sh 'cd eds/rest_app && exec tox'
-          //  step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+           //sh 'cd eds/rest_app && exec tox'
+           //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
+
 
 
          stage "build api image"
-         //here we use only the build for api
+         //here we use only the build for zigbeeip
           def api_image = docker.build("elastest/eds-api:${tag}", "./eds/rest_app")
 
 
-
         stage "build memsipe image"
-         //here we use only the build for memsipe
+         //here we use only the build for zigbeeip
           def memsipe_image = docker.build("elastest/eds-memsipe:${tag}", "./eds/MemsIPE")
+
+        stage "build zigbeeipe image"
+         //here we use only the build for zigbeeip
+          def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe:${tag}", "./eds/ZigBeeIPE")
 
         stage "build frontend image"
          //here we use only the build for zigbeeip
@@ -60,6 +67,7 @@ node('docker'){
                         //here your code
                  memsipe_image.push()
                  frontend_image.push()
+                 zigbeeipe_image.push()
                  api_image.push()
 
 
