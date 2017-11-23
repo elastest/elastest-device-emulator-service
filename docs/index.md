@@ -372,8 +372,8 @@ http://localhost:8080/eds/ui/
 ### Using the Health API
 There are two endpoints that are available to check the health of the EDS
 
-* `http://$localhost:$EDS_CHECK_PORT/healthcheck`: this current performs a very simple check. It will be extended to provide a light weight check on the ESM's Store and Resource Managers.
-* `http://$localhost:$EDS_CHECK_PORT/environment`: returns environment settings which the ESM is loaded with.
+* `http://$localhost:$EDS_CHECK_PORT/healthcheck`: this current performs a very simple check. 
+* `http://$localhost:$EDS_CHECK_PORT/environment`: returns environment settings which the EDS is loaded with.
 
 Both endpoints only support GET. Below is the output of issuing the HTTP GET to each endpoint.
 
