@@ -20,6 +20,15 @@ services:
     networks:
       - elastest_elastest
 
+  zigbeeipe:
+    image: elastest/eds-zigbeeipe:0.5.0
+    environment:
+      - ci_env=`bash <(curl -s https://codecov.io/env)`
+    expose:
+      - 5001
+    networks:
+      - elastest_elastest
+
   rest_app:
     image: elastest/eds-api:0.5.0
     environment:
