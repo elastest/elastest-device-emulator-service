@@ -69,3 +69,7 @@ target/
 .ipynb_checkpoints
 *./tox
 **/nosetests.xml
+
+#zigbeeipe
+eds/ZigBeeIPE/tox
+eds/ZigBeeIPE/build
