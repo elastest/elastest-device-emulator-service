@@ -23,5 +23,4 @@ simplejson
 ujson
 pymongo
 paho-mqtt
-pyserial
-xbee
+smbus2
