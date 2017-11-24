@@ -34,20 +34,20 @@ node('docker'){
 
 
          stage "build api image"
-         //here we use only the build for zigbeeip
+         //here we use only the build for api
           def api_image = docker.build("elastest/eds-api:${tag}", "./eds/rest_app")
 
 
         stage "build memsipe image"
-         //here we use only the build for zigbeeip
+         //here we use only the build for memsipe
           def memsipe_image = docker.build("elastest/eds-memsipe:${tag}", "./eds/MemsIPE")
 
         stage "build zigbeeipe image"
-         //here we use only the build for zigbeeip
+         //here we use only the build for zigbeeipe
           def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe:${tag}", "./eds/ZigBeeIPE")
 
         stage "build frontend image"
-         //here we use only the build for zigbeeip
+         //here we use only the build for frontend
           def frontend_image = docker.build("elastest/eds-frontend:${tag}", "./eds/FrontEnd")
 
 
