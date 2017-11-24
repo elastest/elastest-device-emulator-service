@@ -73,3 +73,6 @@ target/
 #zigbeeipe
 eds/ZigBeeIPE/tox
 eds/ZigBeeIPE/build
+
+../FrontEnd/common/openmtc/lib/openmtc_sdk.egg-info/PKG-INFO
+../MemsIPE/common/openmtc/lib/openmtc_sdk.egg-info/PKG-INFO
