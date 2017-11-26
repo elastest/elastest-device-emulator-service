@@ -23,4 +23,4 @@ simplejson
 ujson
 pymongo
 paho-mqtt
-smbus2
+coapthon
