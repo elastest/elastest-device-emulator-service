@@ -14,7 +14,7 @@ from .zig_bee_ipe import ZigBeeIPE
 
 # defaults
 default_name = "ZigBeeIPE"
-default_ep = "http://frontend:8000"
+default_ep = "http://localhost:8000"
 default_device = "/dev/ttyACM0"
 
 # args parser
