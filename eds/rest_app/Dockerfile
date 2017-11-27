@@ -9,8 +9,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /usr/src/app
 
-ENV ESM_PORT 8080
-ENV ESM_CHECK_PORT 9090
+ENV EDS_PORT 8080
+ENV EDS_CHECK_PORT 9090
 
 EXPOSE 8080
 EXPOSE 9090
