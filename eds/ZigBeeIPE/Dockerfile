@@ -36,7 +36,7 @@ RUN printf "Starting update...\n" && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
 
-ADD setup-sdk.py
+ADD setup-sdk.py /
 
 
 # Install any needed packages specified in dependencies.txt
