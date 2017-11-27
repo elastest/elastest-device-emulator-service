@@ -9,7 +9,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /usr/src/app
 
-EXPOSE 8080 9090
+EXPOSE 8080
+EXPOSE 9090
 
 ENTRYPOINT ["python"]
 
