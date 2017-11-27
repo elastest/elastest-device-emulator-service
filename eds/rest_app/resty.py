@@ -66,5 +66,5 @@ if __name__ == '__main__':
     #check_port = os.environ.get('EDS_CHECK_PORT', 5000)
     #check_server = HTTPServer(WSGIContainer(check_app))
     #check_server.listen(address='0.0.0.0', port=check_port)
-    app.run(host='0.0.0.0', port=9090)
+    app.run(host='0.0.0.0', port=8080)
     check_app.run(host='0.0.0.0', port=2020)
