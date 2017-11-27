@@ -4,10 +4,15 @@ import connexion
 from connexion.resolver import RestyResolver
 from flask import Flask
 
+import signal
+
 from healthcheck import HealthCheck, EnvironmentDump
 import os
 from tornado.httpserver import HTTPServer
 from tornado.wsgi import WSGIContainer
+from tornado.ioloop import IOLoop
+
+from threading import Thread
 
 import logging
 
@@ -44,27 +49,39 @@ def add_check_api():
     return app
 
 
-# def create_api():
-#     app = connexion.FlaskApp(__name__, port=9090, specification_dir='./')
-#     eds_app = app.add_api('api.yaml',
-#                           arguments={'title': 'ElasTest Device Emulator API'},
-#                           resolver=RestyResolver('api'))
-#     return eds_app
-
-
-if __name__ == '__main__':
-    app = connexion.App(__name__)
-    app.add_api('api.yaml',
+def create_api():
+    app = connexion.FlaskApp(__name__, port=9090)
+    eds_app = app.add_api('api.yaml',
                           arguments={'title': 'ElasTest Device Emulator API'},
                           resolver=RestyResolver('api'))
 
-    check_app = add_check_api()
-    #eds_port = os.environ.get('EDS_PORT', 9090)
-    #eds_server = HTTPServer(WSGIContainer(app))
-    #eds_server.listen(address='0.0.0.0', port=eds_port)
+    return eds_app
 
-    #check_port = os.environ.get('EDS_CHECK_PORT', 5000)
-    #check_server = HTTPServer(WSGIContainer(check_app))
-    #check_server.listen(address='0.0.0.0', port=check_port)
-    app.run(host='0.0.0.0', port=8080)
-    check_app.run(host='0.0.0.0', port=2020)
+def shutdown_handler(signum=None, frame=None):
+  #  LOG.info('Shutting down...')
+    IOLoop.instance().stop()
+
+
+if __name__ == '__main__':
+    #app = connexion.App(__name__)
+    #app.add_api('api.yaml',
+     #                     arguments={'title': 'ElasTest Device Emulator API'},
+      #                    resolver=RestyResolver('api'))
+    app = create_api
+
+    check_app = add_check_api()
+    eds_port = os.environ.get('EDS_PORT', 8080)
+    eds_server = HTTPServer(WSGIContainer(app))
+    eds_server.listen(address='0.0.0.0', port=eds_port)
+	#
+    check_port = os.environ.get('EDS_CHECK_PORT', 9090)
+    check_server = HTTPServer(WSGIContainer(check_app))
+    check_server.listen(address='0.0.0.0', port=check_port)
+
+    for sig in [signal.SIGTERM, signal.SIGINT, signal.SIGHUP, signal.SIGQUIT]:
+        signal.signal(sig, shutdown_handler)
+
+    IOLoop.instance().start()
+    # app.run(host='0.0.0.0', port=8080)
+    #  sleep 5
+   # check_app.run(host='0.0.0.0', port=9090)
