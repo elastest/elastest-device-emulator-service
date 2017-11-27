@@ -34,7 +34,7 @@ services:
     environment:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
-      - 9090
+      - 8080
     networks:
       - elastest_elastest
 
