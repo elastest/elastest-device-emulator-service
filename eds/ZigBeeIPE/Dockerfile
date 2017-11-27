@@ -40,8 +40,8 @@ RUN printf "Starting update...\n" && \
 
 # Install any needed packages specified in dependencies.txt
 RUN pip install -r openmtc-gevent/dependencies.txt
-ADD setup-sdk.py /
-RUN python setup-sdk.py install
+#ADD setup-sdk.py /
+#RUN python setup-sdk.py install
 
 
 # Expose the default port
