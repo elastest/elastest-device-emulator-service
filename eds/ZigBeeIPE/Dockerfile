@@ -36,6 +36,9 @@ RUN printf "Starting update...\n" && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
 
+ADD setup-sdk.py
+
+
 # Install any needed packages specified in dependencies.txt
 RUN pip install -r openmtc-gevent/dependencies.txt
 RUN python setup-sdk.py install
