@@ -37,7 +37,7 @@
 import json
 import logging
 import os
-import queue
+import Queue
 
 from pykafka import KafkaClient
 
@@ -102,7 +102,7 @@ class SentinelLogHandler(logging.Handler):
         try:
             msg_dict = dict()
             if isinstance(record, dict):
-                msg_dict = {**msg_dict, **record}
+                msg_dict = {msg_dict, record}
             else:
                 msg = self.format(record)
                 msg_dict['msg'] = msg
