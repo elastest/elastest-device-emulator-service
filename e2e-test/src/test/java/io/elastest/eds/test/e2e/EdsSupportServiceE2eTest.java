@@ -36,19 +36,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 
-import io.elastest.eds.test.base.EusBaseTest;
+import io.elastest.eds.test.base.EdsBaseTest;
 import io.github.bonigarcia.SeleniumExtension;
 
 /**
- * E2E EUS test.
+ * E2E EDS test.
  *
  * @author Boni Garcia (boni.garcia@urjc.es)
  * @since 0.1.1
  */
 @Tag("e2e")
-@DisplayName("E2E tests of EUS through TORM")
+@DisplayName("E2E tests of EDS through TORM")
 @ExtendWith(SeleniumExtension.class)
-public class EusSupportServiceE2eTest extends EusBaseTest {
+public class EdsSupportServiceE2eTest extends EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.elastest.eus.test.e2e;
+package io.elastest.eds.test.e2e;
 
 import static java.lang.invoke.MethodHandles.lookup;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -32,24 +32,24 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 
-import io.elastest.eus.test.base.EusBaseTest;
+import io.elastest.eds.test.base.EdsBaseTest;
 import io.github.bonigarcia.SeleniumExtension;
 
 /**
- * E2E EUS test.
+ * E2E EDS test.
  *
  * @author Boni Garcia (boni.garcia@urjc.es)
  * @since 0.1.1
  */
 @Tag("e2e")
-@DisplayName("E2E tests of EUS through TORM")
+@DisplayName("E2E tests of EDS through TORM")
 @ExtendWith(SeleniumExtension.class)
-public class EusTJobE2eTest extends EusBaseTest {
+public class EdsTJobE2eTest extends EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 
     @Test
-    @DisplayName("EUS in a TJob")
+    @DisplayName("EDS in a TJob")
     void testTJob(ChromeDriver driver) throws InterruptedException {
         this.driver = driver;
 
@@ -59,30 +59,30 @@ public class EusTJobE2eTest extends EusBaseTest {
         driver.get(tormUrl);
         createNewProject(driver, "my-test-project");
 
-        log.info("Create new TJob using EUS");
+        log.info("Create new TJob using EDS");
         driver.findElement(By.xpath("//button[contains(string(), 'New TJob')]"))
                 .click();
         driver.findElement(By.name("tJobName")).sendKeys("my-test-tjob");
         driver.findElement(By.name("tJobImageName"))
                 .sendKeys("elastest/ci-docker-e2e");
         driver.findElement(By.name("resultsPath")).sendKeys(
-                "/home/jenkins/elastest-user-emulator-service/tjob-test/target/surefire-reports/TEST-io.elastest.eus.test.e2e.TJobEusTest.xml");
+                "/home/jenkins/elastest-user-emulator-service/tjob-test/target/surefire-reports/TEST-io.elastest.eds.test.e2e.TJobEdsTest.xml");
         driver.findElement(By.className("mat-select-trigger")).click();
         driver.findElement(By.xpath("//md-option[contains(string(), 'None')]"))
                 .click();
         driver.findElement(By.name("commands")).sendKeys(
                 "git clone https://github.com/elastest/elastest-user-emulator-service; cd elastest-user-emulator-service/tjob-test; mvn test;");
-        driver.findElement(By.xpath("//md-checkbox[contains(string(), 'EUS')]"))
+        driver.findElement(By.xpath("//md-checkbox[contains(string(), 'EDS')]"))
                 .click();
         driver.findElement(By.xpath("//button[contains(string(), 'SAVE')]"))
                 .click();
 
-        log.info("Run TJob and wait for EUS GUI");
+        log.info("Run TJob and wait for EDS GUI");
         driver.findElement(By.xpath("//button[@title='Run TJob']")).click();
-        By eusCard = By
-                .xpath("//md-card-title[contains(string(), 'elastest-eus')]");
-        WebDriverWait waitEus = new WebDriverWait(driver, 60);
-        waitEus.until(visibilityOfElementLocated(eusCard));
+        By edsCard = By
+                .xpath("//md-card-title[contains(string(), 'elastest-eds')]");
+        WebDriverWait waitEds = new WebDriverWait(driver, 60);
+        waitEds.until(visibilityOfElementLocated(edsCard));
 
         log.info("Wait for build sucess traces");
         WebDriverWait waitLogs = new WebDriverWait(driver, 180);
