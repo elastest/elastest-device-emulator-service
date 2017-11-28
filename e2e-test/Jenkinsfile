@@ -6,7 +6,7 @@ node('docker') {
       mycontainer.pull()
       mycontainer.inside("-u jenkins -v /var/run/docker.sock:/var/run/docker.sock:rw -v /dev/shm:/dev/shm") {
          sh '/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &'
-         git 'https://github.com/elastest/elastest-user-emulator-service.git'
+         git 'https://github.com/elastest/elastest-device-emulator-service.git'
 
          stage('ElasTest starting'){
             sh "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform stop" 
