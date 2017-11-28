@@ -4,11 +4,8 @@ This project contains several end-to-end (E2E) test aimes to verify the correctn
 
 In order to implement these test we use [Selenium WebDriver], which is an web testing framework to automate the navigation and verification of web applications using a given test logic. In this case, we use Java to implement the test, and [JUnit 5] as base testing framework. In order to ease the management on web browsers in the tests, we use an open source JUnit 5 extension called [selenium-jupiter].
 
-Two different E2E are going to be implemented:
+ E2E are going to be implemented as the use of EDS as support service.
 
-1. Use of EDS as support service.
-
-2. Use of EDS as TJob.
 
 The following sections of this document summarizes the main parts of these tests.
 
@@ -116,56 +113,7 @@ Notice also that a method of the parent class is called at the end of this snipp
 
 The rest of the test follows the same guidelines, i.e. the use of WebDriver API to interact with the GUI, explicit waits when needed, and logging screenshots for debugging purposes. 
 
-## Use of EDS as TJob
 
-This test follows the same approach that the previous one. Inspecting the code of the test (class [EdsTJobE2eTest.java]) we can see three parts. First, we open the TORM URL and use the method `createNewProject` (defined in the parent class, [EusBaseTest.java]) to create a new project in TORM: 
-
-```java
-        log.info("Navigate to TORM and start new project");
-        driver.manage().window().setSize(new Dimension(1024, 1024));
-        driver.manage().timeouts().implicitlyWait(5, SECONDS);
-        driver.get(tormUrl);
-        createNewProject(driver, "my-test-project");
-```
-
-Then we create a new TJob filling the form with test values:
-
-```java
-        log.info("Create new TJob using EUS");
-        driver.findElement(By.xpath("//button[contains(string(), 'New TJob')]"))
-                .click();
-        driver.findElement(By.name("tJobName")).sendKeys("my-test-tjob");
-        driver.findElement(By.name("tJobImageName"))
-                .sendKeys("elastest/ci-docker-e2e");
-        driver.findElement(By.name("resultsPath")).sendKeys(
-                "/home/jenkins/elastest-user-emulator-service/tjob-test/target/surefire-reports/TEST-io.elastest.eus.test.e2e.TJobEusTest.xml");
-        driver.findElement(By.className("mat-select-trigger")).click();
-        driver.findElement(By.xpath("//md-option[contains(string(), 'None')]"))
-                .click();
-        driver.findElement(By.className("mat-slide-toggle-bar")).click();
-        driver.findElement(By.name("commands")).sendKeys(
-                "git clone https://github.com/elastest/elastest-user-emulator-service; cd elastest-user-emulator-service/tjob-test; mvn test;");
-        driver.findElement(By.xpath("//md-checkbox[contains(string(), 'EUS')]"))
-                .click();
-        driver.findElement(By.xpath("//button[contains(string(), 'SAVE')]"))
-                .click();
-```
-
-Finally we execute the TJob, asserting that the the EDS GUI is present, and also the proper traces in the logging view. These operations can be time-consuming, and therefore, we need to implement explicit wait using the WebDriver API (`WebDriverWait`):
-
-```java
-        log.info("Run TJob and wait for EUS GUI");
-        driver.findElement(By.xpath("//button[@title='Run TJob']")).click();
-        By eusCard = By
-                .xpath("//md-card-title[contains(string(), 'elastest-eus')]");
-        WebDriverWait waitEus = new WebDriverWait(driver, 60);
-        waitEus.until(visibilityOfElementLocated(eusCard));
-
-        log.info("Wait for build sucess traces");
-        WebDriverWait waitLogs = new WebDriverWait(driver, 120);
-        waitLogs.until(textToBePresentInElementLocated(By.tagName("logs-view"),
-                "BUILD SUCCESS"));
-```
 
 [Selenium WebDriver]: http://www.seleniumhq.org/projects/webdriver/
 [JUnit 5]: http://junit.org/junit5/docs/current/user-guide/

@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.elastest.eus.test.base;
+package io.elastest.eds.test.base;
 
 import static java.lang.System.getProperty;
 import static java.lang.invoke.MethodHandles.lookup;
@@ -34,12 +34,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 
 /**
- * Parent for E2E EUS tests.
+ * Parent for E2E EDS tests.
  *
  * @author Boni Garcia (boni.garcia@urjc.es)
  * @since 0.1.1
  */
-public class EusBaseTest {
+public class EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 

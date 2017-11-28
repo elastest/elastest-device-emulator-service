@@ -9,7 +9,7 @@ Copyright © 2017-2019 [Universidad Rey Juan Carlos]. Licensed under
 e2e-test
 ========
 
-End-to-end tests for EUS through TORM.
+End-to-end tests for EDS through TORM.
 
 
 What is ElasTest
