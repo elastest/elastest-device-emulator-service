@@ -4,10 +4,7 @@ This project contains several end-to-end (E2E) test aimes to verify the correctn
 
 In order to implement these test we use [Selenium WebDriver], which is an web testing framework to automate the navigation and verification of web applications using a given test logic. In this case, we use Java to implement the test, and [JUnit 5] as base testing framework. In order to ease the management on web browsers in the tests, we use an open source JUnit 5 extension called [selenium-jupiter].
 
- E2E are going to be implemented as the use of EDS as support service.
-
-
-The following sections of this document summarizes the main parts of these tests.
+E2E tests for EDS are going to be implemented as support service. The following sections of this document summarizes the main parts of these tests.
 
 ## Use of EDS as support service
 
@@ -31,7 +28,7 @@ stage ("E2E tests") {
    try {
       sh "cd e2e-test; mvn -B clean test -DetEmpApi=http://${etEmpApi}:8091/"
    } catch(e) {
-      sh 'docker ps | awk "{print $NF}" | grep eus | xargs docker logs'
+      sh 'docker ps | awk "{print $NF}" | grep eds | xargs docker logs'
    }
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
@@ -42,14 +39,14 @@ The structure of the actual test (method annotated with JUnit 5's annotation `@T
 
 ```java
 @Tag("e2e")
-@DisplayName("E2E tests of EUS through TORM")
+@DisplayName("E2E tests of EDS through TORM")
 @ExtendWith(SeleniumExtension.class)
-public class EusSupportServiceE2eTest extends EusBaseTest {
+public class EdsSupportServiceE2eTest extends EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 
     @Test
-    @DisplayName("EUS as support service")
+    @DisplayName("EDS as support service")
     void testSupportService(ChromeDriver driver) throws Exception {
         // Test logic
     }
@@ -66,10 +63,10 @@ Regarding the test logic, it is basically an specific application of Selenium We
         driver.manage().window().setSize(new Dimension(1024, 1024));
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // implicit wait
         driver.get(tormUrl);
-        startTestSupportService(driver, "EUS");
+        startTestSupportService(driver, "EDS");
 ```
 
-In this snippet, we see that we force the size of the browser windows, we configure a global implicit wait of 5 seconds (to wait for elements to be located by WebDriver), then we open the TORM URL, and then we use the parent method `startTestSupportService` to start the support service identified by the label `EUS`.
+In this snippet, we see that we force the size of the browser windows, we configure a global implicit wait of 5 seconds (to wait for elements to be located by WebDriver), then we open the TORM URL, and then we use the parent method `startTestSupportService` to start the support service identified by the label `EDS`.
 
 The next part is specific for the EDS GUI. First, we click on the Chrome radio button and start a live session:
 
@@ -84,7 +81,7 @@ Then we need to create an explicit wait for the iframe to be available. This ope
 
 ```java
         log.info("Wait to load browser");
-        By iframe = By.id("eus_iframe");
+        By iframe = By.id("eds_iframe");
         WebDriverWait waitBrowser = new WebDriverWait(driver, 240); // seconds
         waitBrowser.until(visibilityOfElementLocated(iframe));
         driver.switchTo().frame(driver.findElement(iframe));
