@@ -158,8 +158,8 @@ class SentinelLogHandler(logging.Handler):
 
 if __name__ == '__main__':
     kafka_host = 'kafka.demonstrator.info:9092'
-    topic = 'user-1-cyclops'
-    series_name = 'app-logs'
+    topic = 'user-2-tubeds'
+    series_name = 'edslogs'
 
     logger = logging.getLogger(__name__)
     logger.setLevel('WARN')
