@@ -17,9 +17,9 @@ The entire application EDS consists of many services such as- zigbeeipe, memsipe
  Install the following development tools:
  - [PyCharm IDE](https://www.jetbrains.com/pycharm/download/#section=linux)
  - [Python 2.7 and 3+](http://docs.python-guide.org/en/latest/starting/install3/linux/)
- -
+ - [OpenMTC code]
  
- Last, Last, clone the repositories in a local folder:
+ Last, clone the repositories in a local folder:
 
 ```
 git clone https://github.com/elastest/elastest-device-emulator-service
@@ -29,4 +29,17 @@ git clone https://github.com/elastest/elastest-monitoring-platform.git
  
 
 
- 
+  * Using  *PyCharm IDE*:
+    * Load/open the projects from IDE:
+      * Import *EDS* project from local repository using File > Open --> select the project name elastest-device-emulator-service
+      *
+      
+   * From *IDE and console*:
+     * Run *prep-env.sh* from the console to install all openmtc dependencies and to create the environment for zigbeeipe,memsipe and frontend services.
+     * Go to the rest_app directory and run foolowing:
+      ```
+      pip install -r requirements.txt
+      
+      ```
+     This is install all the dependencies to run the service properly and even to integrate the service with other Elastest component such as EMP and ESM.
+     
