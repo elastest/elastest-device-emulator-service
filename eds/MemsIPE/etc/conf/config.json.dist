@@ -1,10 +1,11 @@
 {
    "name": "MemsIPE",
-    "ep": "http://localhost:8000",
+    "ep": "http://frontend:8000",
     "cse_base": "onem2m",
     "host": "auto",
-    "sim":
+    "sim": true,
     "port": 5050,
+    "sim_period": 3,
     "logging": {
         "level": "DEBUG",
         "file": null

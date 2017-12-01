@@ -22,7 +22,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
+eds/eggs
 #eds/build/
 eds/dist/
 .idea/
