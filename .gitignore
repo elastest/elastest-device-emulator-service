@@ -24,7 +24,7 @@ var/
 .installed.cfg
 *.egg
 
-eds/build/
+#eds/build/
 eds/dist/
 .idea/
 *.pyc
@@ -71,8 +71,8 @@ target/
 **/nosetests.xml
 
 #zigbeeipe
-eds/ZigBeeIPE/tox
-eds/ZigBeeIPE/build
+#eds/ZigBeeIPE/tox
+#eds/ZigBeeIPE/build
 
 ../FrontEnd/common/openmtc/lib/openmtc_sdk.egg-info/PKG-INFO
 ../MemsIPE/common/openmtc/lib/openmtc_sdk.egg-info/PKG-INFO
