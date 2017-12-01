@@ -47,7 +47,7 @@ def add_check_api():
 
 
 def create_api():
-    app = connexion.FlaskApp(__name__, port=9090)
+    app = connexion.FlaskApp(__name__)
     eds_app = app.add_api('api.yaml',
                           arguments={'title': 'ElasTest Device Emulator API'},
                           resolver=RestyResolver('api'))
