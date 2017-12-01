@@ -24,7 +24,6 @@ var/
 *.egg
 eds/eggs
 #eds/build/
-eds/dist/
 .idea/
 *.pyc
 eds/.tox/py27
