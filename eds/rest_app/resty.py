@@ -68,6 +68,7 @@ if __name__ == '__main__':
     app = create_api
 
     check_app = add_check_api()
+
     eds_port = os.environ.get('EDS_PORT', 8080)
     eds_server = HTTPServer(WSGIContainer(app))
     eds_server.listen(address='0.0.0.0', port=eds_port)
