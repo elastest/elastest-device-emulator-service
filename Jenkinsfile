@@ -33,9 +33,9 @@ node('docker'){
 
 
 
-        stage "build api image"
+        //stage "build api image"
          //here we use only the build for zigbeeip
-             def api_image = docker.build("elastest/eds-api:${tag}", "./eds/rest_app")
+         //    def api_image = docker.build("elastest/eds-api:${tag}", "./eds/rest_app")
 
 
         stage "build memsipe image"
@@ -68,7 +68,7 @@ node('docker'){
                  memsipe_image.push()
                  frontend_image.push()
                  zigbeeipe_image.push()
-                 api_image.push()
+                // api_image.push()
 
 
                     }
