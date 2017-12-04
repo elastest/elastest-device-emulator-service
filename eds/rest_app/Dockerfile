@@ -15,6 +15,6 @@ ENV EDS_CHECK_PORT 9090
 EXPOSE 8080
 EXPOSE 9090
 
-#ENTRYPOINT ["python"]
+ENTRYPOINT ["python"]
 
-CMD ["/bin/sh","resty.py"]
+CMD ["resty.py"]
