@@ -60,23 +60,6 @@
 
 
 			},
-			"rest_app": {
-				"description": "Service to receive device data in JSON format with appropriate paths as well as UI for api",
-				"main": "false",
-				"api": [
-					{
-						"name": "swagger api",
-						"protocol": "http",
-						"port": 8080,
-						"path": "/eds/ui/"
-					},
-					{
-						"protocol": "http",
-						"port": 8080,
-						"path": "/eds"
-					}
-				]
-			},
 
 			"memsipe": {
 				"description": "Service to emulate mems data",
