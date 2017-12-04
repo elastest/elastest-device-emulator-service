@@ -107,10 +107,10 @@ class OpenMTCSdist(distutils.command.sdist.sdist):
 
         script_name = os.path.basename(sys.argv[0])
 
-        if script_name != "setup.py":
-            os.rename(base_dir + "/" + script_name, base_dir + "/setup.py")
+        if script_name != "setup-zigbeeipe.py":
+            os.rename(base_dir + "/" + script_name, base_dir + "/setup-zigbeeipe.py")
             self.filelist.files.remove(script_name)
-            self.filelist.files.append("setup.py")
+            self.filelist.files.append("setup-zigbeeipe.py")
 
 
 class OpenMTCSdistBinary(OpenMTCSdist, object):
