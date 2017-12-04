@@ -69,7 +69,7 @@
 					"port": 5001,
 					"path": "/ZigBeeIPE"
 				}
-			}
+			},
 
 			"memsipe": {
 				"description": "Service to emulate mems data",
