@@ -40,7 +40,7 @@ RUN printf "Starting update...\n" && \
 
 # Install any needed packages specified in dependencies.txt
 RUN pip install -r openmtc-gevent/dependencies.txt
-RUN pip install pyserial xbee
+RUN pip install --upgrade pyserial xbee
 RUN python setup-sdk.py install
 
 

@@ -32,12 +32,14 @@ services:
   rest_app:
     image: elastest/eds-api:0.5.0
     environment:
-      - EDS_PORT=19089
+      - EDS_PORT=80081
+      - ET_EMP_API=http://eim:37001/
+      - ET_EDS_API=http://eim:80081/
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
-      - 19089
+      - 80081
     ports:
-     - 19089:19089
+     - 80081:80081
     networks:
       - elastest_elastest
 
