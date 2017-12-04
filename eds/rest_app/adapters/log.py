@@ -48,8 +48,8 @@ def get_logger(name=None, log_level=logging.DEBUG):
 
     kafka_host = os.getenv('SENTINEL_KAFKA_EP', None)
     if kafka_host is not None:
-        topic = os.getenv('SENTINEL_TOPIC', 'user-1-cyclops')
-        series_name = os.getenv('SENTINEL_SERIES_NAME', 'app-logs')
+        topic = os.getenv('SENTINEL_TOPIC', 'user-2-tubeds')
+        series_name = os.getenv('SENTINEL_SERIES_NAME', 'edslogs')
 
         if topic is None or series_name is None:
             logger.error('Sentinel application logging configuration error. '
