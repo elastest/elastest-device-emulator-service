@@ -6,7 +6,6 @@ WORKDIR /usr/src/app
 COPY requirements.txt /usr/src/app/
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install pykafka
 COPY . /usr/src/app
 
 ENV EDS_PORT 8080
