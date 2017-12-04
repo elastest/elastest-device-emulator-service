@@ -17,4 +17,4 @@ EXPOSE 9090
 
 #ENTRYPOINT ["python"]
 
-CMD ["/usr/bin/python3","resty.py"]
+CMD ["/bin/sh","resty.py"]
