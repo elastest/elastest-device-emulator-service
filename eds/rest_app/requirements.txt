@@ -4,6 +4,7 @@ typing == 3.5.2.2
 setuptools >= 21.0.0
 healthcheck
 tornado
+pykafka
 docker-compose
 docker
 tox
