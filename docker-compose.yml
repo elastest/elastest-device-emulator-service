@@ -29,20 +29,6 @@ services:
     networks:
       - elastest_elastest
 
-  rest_app:
-    image: elastest/eds-api:latest
-    environment:
-      - EDS_PORT=37010
-      - ET_EMP_API=http://eim:37001/
-      - ET_EDS_API=http://eim:37010/
-      - ci_env=`bash <(curl -s https://codecov.io/env)`
-    expose:
-      - 37010
-    ports:
-     - 37010:37010
-    networks:
-      - elastest_elastest
-
 networks:
   elastest_elastest:
     external: true
