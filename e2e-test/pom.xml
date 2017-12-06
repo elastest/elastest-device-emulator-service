@@ -57,9 +57,9 @@
 
     <!-- Source code manager -->
     <scm>
-        <url>https://github.com/elastest/elastest-eds</url>
-        <connection>scm:git:https://github.com/elastest/elastest-eds</connection>
-        <developerConnection>scm:git://git@github.com:elastest/elastest-eds</developerConnection>
+        <url>https://github.com/elastest/elastest-eus</url>
+        <connection>scm:git:https://github.com/elastest/elastest-eus</connection>
+        <developerConnection>scm:git://git@github.com:elastest/elastest-eus</developerConnection>
         <tag>develop</tag>
     </scm>
 
@@ -127,7 +127,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
