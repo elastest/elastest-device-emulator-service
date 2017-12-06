@@ -52,7 +52,7 @@ cd elastest-device-emulator-service
 # How to run
 * Run EDS using docker-compose: This method allows docker to setup containers
 and connect them in a custom network named **elastest_elastest**. In order to run the docker-compose file at first we need to 
-  create the custom network and All the IPEs register after 10 seconds with 
+  create the custom network. All the sensors register after 10 seconds with 
 FrontEnd. 
 
 Create custom network:
@@ -179,28 +179,43 @@ $ curl http://localhost:8000/onem2m/ZigBeeIPE/devices -s | jq '.'
       {
         "typ": 3,
         "nm": "ZBS122S000001",
-        "val": "cnt1"
+        "val": "cnt6"
       },
       {
         "typ": 3,
         "nm": "ZBS122S000000",
-        "val": "cnt6"
+        "val": "cnt1"
+      },
+      {
+        "typ": 3,
+        "nm": "ZBS122S000003",
+        "val": "cnt18"
+      },
+      {
+        "typ": 3,
+        "nm": "ZBS122S000002",
+        "val": "cnt7"
+      },
+      {
+        "typ": 3,
+        "nm": "ZBS122S000004",
+        "val": "cnt17"
       }
     ],
     "mni": 30,
     "cr": "CZigBeeIPE",
-    "et": "2017-08-29T16:55:39.048780+00:00",
+    "et": "2017-12-06T17:50:42.948107+00:00",
     "ty": 3,
-    "lt": "2017-08-29T16:35:39.098708+00:00",
+    "lt": "2017-12-06T16:50:42.987074+00:00",
     "rn": "devices",
-    "ct": "2017-08-29T15:26:39.900545+00:00",
+    "ct": "2017-12-06T16:50:42.987074+00:00",
     "ri": "cnt0",
     "cni": 0,
     "cbs": 0,
     "pi": "ae1",
     "st": "0"
   }
-}
+
 
 ```
 Request to access list of sensors in ID ZBS122S000001. This returns available
