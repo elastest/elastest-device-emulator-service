@@ -63,50 +63,84 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
         driver.get(tormUrl);
         startTestSupportService(driver, "EDS");
 
-        log.info("Select Chrome as browser and start session");
-        driver.findElement(By.id("chrome_radio")).click();
-        driver.findElement(By.id("start_session")).click();
+        // Get EBS Service Spark Docker Container Id
+        String edsInstances = driver.findElement(By.xpath("//div[contains(string(), 'Instance Id:')]")).getText();
+        String[] lines = edsInstances.split("\\r?\\n");
+        Boolean tagJustFound = false;
+        String containerId = "";
+        String tag = "Instance Id:";
+        for (String line : lines) {
+                // First find a tag line containing the literal "Instance Id" used in the GUI
+                if(line.contains(tag)) tagJustFound = true;
+                // The next line after the tag line is the value of service Id
+                if(!line.contains(tag) && tagJustFound) {
+                        tagJustFound = false;
+                        // Construct the docker container Id based on the service instance Id
+                        containerId = line.replace("-", "")+"_eds_1";
+                }
+        }
 
-        log.info("Wait to load browser");
-        By iframe = By.id("eds_iframe");
-        WebDriverWait waitBrowser = new WebDriverWait(driver, 240); // seconds
-        waitBrowser.until(visibilityOfElementLocated(iframe));
-        driver.switchTo().frame(driver.findElement(iframe));
+        // Test that the container id has been found
+        Boolean containerFound = !containerId.equals("");
+        if (containerFound) {
+                log.info("*** EBS Container Id = ["+containerId+"]");
+        } else {
+                log.error("*** EBS Container Id not found !!!");
+        }
+        assertTrue(containerFound);
 
-        log.info("Click browser navigation bar and navigate");
-        WebElement canvas = driver.findElement(By.id("noVNC_canvas"));
-        new Actions(driver).moveToElement(canvas, 142, 45).click().build()
-                .perform();
-        canvas.sendKeys("elastest.io" + RETURN);
-        int navigationTimeSec = 5;
-        log.info("Waiting {} secons (simulation of manual navigation)",
-                navigationTimeSec);
-        sleep(SECONDS.toMillis(navigationTimeSec));
-        log.info("Screenshot (in Base64) after manual navigation:\n{}",
-                getBase64Screenshot(driver));
+        // We will execute a command inside the EDS docker container
+        boolean success = false;
+        try {
+                String fileName = "test_" + new SimpleDateFormat("yyyyMMddHHmm'.txt'").format(new Date());
 
-        log.info("Close browser and wait to dispose iframe");
-        driver.switchTo().defaultContent();
-        driver.findElement(By.id("close_dialog")).click();
-        WebDriverWait waitElement = new WebDriverWait(driver, 30); // seconds
-        waitElement.until(invisibilityOfElementLocated(
-                By.cssSelector("md-dialog-container")));
+                // Start a process to execute the command
+                String[] command = {"docker", "exec", "-i", containerId, "eds", "fs", "copyFromLocal"+fileName};
+                ProcessBuilder pb = new ProcessBuilder(command);
+                Process p = pb.start();
 
-        log.info("View recording");
-        driver.findElement(By.id("view_recording")).click();
-        sleep(SECONDS.toMillis(navigationTimeSec));
-        log.info("Screenshot (in Base64) after view recording:\n{}",
-                getBase64Screenshot(driver));
-        driver.findElement(By.id("close_dialog")).click();
-        waitElement.until(invisibilityOfElementLocated(
-                By.cssSelector("md-dialog-container")));
+                // Get output from the process
+                InputStream is = p.getInputStream();
+                InputStreamReader isr = new InputStreamReader(is);
+                BufferedReader processOutput = new BufferedReader(isr);
 
-        log.info("Delete recording");
-        By deleteRecording = By.id("delete_recording");
-        driver.findElement(deleteRecording).click();
-        waitElement.until(invisibilityOfElementLocated(deleteRecording));
-        log.info("Screenshot (in Base64) at the end of test:\n{}",
-                getBase64Screenshot(driver));
+                InputStream errorStream = p.getErrorStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(errorStream);
+                BufferedReader processErrorOutput = new BufferedReader(inputStreamReader);
+
+                String output;
+
+                while( processErrorOutput.ready() &&
+                   (output = processErrorOutput.readLine()) != null) {
+                        log.info("*** ERROR OUTPUT  : "+output);
+                }
+
+                while ((output = processOutput.readLine()) != null) {
+                        log.info("*** NORMAL OUTPUT : "+output);
+                        //if (output.contains("Copied file:///opt/spark/README.md to /hdfs")) success = true;
+                }
+
+                // Wait for the process to finish
+                p.waitFor();
+
+                // Clean up
+                processErrorOutput.close();
+                processOutput.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // Log test result
+            if (success) {
+                log.info("*** Test Result: Write to EDS SUCCEEDED");
+            } else {
+                log.info("*** Test Result: Write to EDS FAILED");
+            }
+
+            // Check test result
+            assertTrue(success);
+
     }
 
 }
