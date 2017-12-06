@@ -45,7 +45,7 @@ public class EdsBaseTest {
 
     protected String tormUrl = "http://localhost:37006/"; // local by default
 
-    protected WebDriver driver;
+    //protected WebDriver driver;
 
     @BeforeEach
     void setup() {
@@ -56,13 +56,13 @@ public class EdsBaseTest {
         log.info("Using URL {} to connect to TORM", tormUrl);
     }
 
-    @AfterEach
-    void teardown() throws IOException {
-        if (driver != null) {
-            log.info("Screenshot (in Base64) at the end of the test:\n{}",
-                    getBase64Screenshot(driver));
-        }
-    }
+   // @AfterEach
+    //void teardown() throws IOException {
+     //   if (driver != null) {
+       //     log.info("Screenshot (in Base64) at the end of the test:\n{}",
+         //           getBase64Screenshot(driver));
+       // }
+   // }
 
     protected void createNewProject(WebDriver driver, String projectName) {
         driver.findElement(
