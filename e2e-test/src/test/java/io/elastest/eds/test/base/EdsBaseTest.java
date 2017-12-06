@@ -43,9 +43,9 @@ public class EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 
-    protected String tormUrl = "http://localhost:37000/"; // local by default
+    protected String tormUrl = "http://localhost:37006/"; // local by default
 
-    protected WebDriver driver;
+    //protected WebDriver driver;
 
     @BeforeEach
     void setup() {
