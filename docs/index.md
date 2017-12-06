@@ -25,7 +25,7 @@ release of EDS are:
 
 * ZigBeeIPE: Provides simulated zigbee device data containing the sensor data for
  temperature, brightness, movement, pressure, humidity and vibration. Currently, 
-our zigbee application provides two simulated zigbee sensors and It is also possible
+our zigbee application provides five(5) simulated zigbee sensors and It is also possible
  to increase the number of simulated zigbee device.    
 * MemsIPE : Provides simulated data from the accelerometer sensor containing 
 values for x, y and z components of acceleration. 
