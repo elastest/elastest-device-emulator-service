@@ -122,6 +122,5 @@ definitions:
          type: object
       humidity:
           type: object
-      vibration:
-          type: object
+
 
