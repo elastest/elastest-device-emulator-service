@@ -23,7 +23,10 @@ an Interworking Proxy (IPE) is used to transfer data from a non-oneM2M domain
 to oneM2M domain. The available micro-services supporting oneM2M in the present
 release of EDS are:
 
-
+* ZigBeeIPE: Provides simulated zigbee device data containing the sensor data for
+ temperature, brightness, movement, pressure, humidity and vibration. Currently, 
+our zigbee application provides two simulated zigbee sensors and It is also possible
+ to increase the number of simulated zigbee device.    
 * MemsIPE : Provides simulated data from the accelerometer sensor containing 
 values for x, y and z components of acceleration. 
 * FrontEnd : Provides a user interface to interact with MemsIPE and ZigBeeIPE.
