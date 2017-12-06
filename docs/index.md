@@ -50,7 +50,7 @@ cd elastest-device-emulator-service
 ```
 
 # How to run
-* Run EDS using docker-compose: This method allows docker to setup containers
+ Run EDS using docker-compose: This method allows docker to setup containers
 and connect them in a custom network named **elastest_elastest**. In order to run the docker-compose file at first we need to 
   create the custom network. All the sensors register after 10 seconds with 
 FrontEnd. 
