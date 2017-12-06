@@ -45,7 +45,7 @@ public class EdsBaseTest {
 
     protected String tormUrl = "http://localhost:37006/"; // local by default
 
-    //protected WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeEach
     void setup() {
