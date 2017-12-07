@@ -23,6 +23,7 @@ RUN printf "Starting update...\n" && \
     printf "Upgrade finished.\n" && \
     printf "Starting install...\n" && \
     apt-get install -y \
+    curl \
     build-essential \
     netbase \
     iproute2 \
