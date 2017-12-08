@@ -38,7 +38,7 @@ import org.slf4j.Logger;
  * @author Boni Garcia (boni.garcia@urjc.es)
  * @since 0.1.1
  */
-public class EDsBaseTest {
+public class EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 
