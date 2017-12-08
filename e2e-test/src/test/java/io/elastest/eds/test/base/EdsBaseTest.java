@@ -24,7 +24,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TakesScreenshot;
@@ -39,13 +38,11 @@ import org.slf4j.Logger;
  * @author Boni Garcia (boni.garcia@urjc.es)
  * @since 0.1.1
  */
-public class EdsBaseTest {
+public class EDsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 
     protected String tormUrl = "http://localhost:37006/"; // local by default
-
-    //protected WebDriver driver;
 
     @BeforeEach
     void setup() {
@@ -56,14 +53,6 @@ public class EdsBaseTest {
         log.info("Using URL {} to connect to TORM", tormUrl);
     }
 
-   // @AfterEach
-    //void teardown() throws IOException {
-     //   if (driver != null) {
-       //     log.info("Screenshot (in Base64) at the end of the test:\n{}",
-         //           getBase64Screenshot(driver));
-       // }
-   // }
-
     protected void createNewProject(WebDriver driver, String projectName) {
         driver.findElement(
                 By.xpath("//button[contains(string(), 'New Project')]"))
@@ -71,10 +60,9 @@ public class EdsBaseTest {
         driver.findElement(By.name("project.name")).sendKeys(projectName);
         driver.findElement(By.xpath("//button[contains(string(), 'SAVE')]"))
                 .click();
-        WebDriverWait waitElement = new WebDriverWait(driver, 3);
-        By projectNameElement = By.xpath("//div[.='" + projectName + "']");
-        waitElement.until(visibilityOfElementLocated(projectNameElement));
-        driver.findElement(projectNameElement).click();
+        driver.findElement(
+                By.xpath("//span[contains(string(), '" + projectName + "')]"))
+                .click();
     }
 
     protected void startTestSupportService(WebDriver driver,
