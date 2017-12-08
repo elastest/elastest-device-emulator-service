@@ -61,7 +61,7 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
         driver.get(tormUrl);
         startTestSupportService(driver, "EDS");
 
-        // Get EBS Service Spark Docker Container Id
+        // Get EDS Service  Docker Container Id
         String edsInstances = driver.findElement(By.xpath("//div[contains(string(), 'Instance Id:')]")).getText();
         String[] lines = edsInstances.split("\\r?\\n");
         Boolean tagJustFound = false;
@@ -81,9 +81,9 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
         // Test that the container id has been found
         Boolean containerFound = !containerId.equals("");
         if (containerFound) {
-                log.info("*** EBS Container Id = ["+containerId+"]");
+                log.info("*** EDS Container Id = ["+containerId+"]");
         } else {
-                log.error("*** EBS Container Id not found !!!");
+                log.error("*** EDS Container Id not found !!!");
         }
         assertTrue(containerFound);
 
