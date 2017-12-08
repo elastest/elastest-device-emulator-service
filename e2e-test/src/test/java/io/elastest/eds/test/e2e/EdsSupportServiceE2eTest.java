@@ -56,7 +56,7 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
         log.info("Navigate to TORM and start support service");
         driver.manage().window().setSize(new Dimension(1024, 1024));
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // implicit wait
-        # navigate to the application home page
+        //navigate to the application home page
         driver.get("http://www.google.com")
         driver.get(tormUrl);
         startTestSupportService(driver, "EDS");
