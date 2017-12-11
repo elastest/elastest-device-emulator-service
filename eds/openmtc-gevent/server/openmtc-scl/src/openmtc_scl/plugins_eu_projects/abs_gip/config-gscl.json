@@ -1,0 +1,173 @@
+{
+    "global": {
+        "ignore_extra_attributes": false,
+        "disable_retargeting": false,
+        "default_lifetime": 2000,
+        "additional_hostnames": [],
+        "aPocHandling": "DEEP",
+        "require_auth": false,
+        "default_content_type": "application/json"
+    },
+    "database": {
+        "driver": "openmtc_scl.methoddomain.db.nodb2.NoDB2",
+	"dropDB": true,
+        "backend": "sqlite3",
+        "connectionstring": "/tmp/nscl.db",
+        "concurrency": 1
+    },
+    "logging": {
+        "level": "ERROR",
+        "file": null
+    },
+    "etsi": {
+        "scl_base": "m2m",
+        "dIa": {
+        },
+        "mId": {
+        },
+        "etsi_version": "2.1.1",
+        "etsi_compatibility": "1.1",
+        "scl_type": "GSCL",
+        "scl_id": "gscl",
+        "scl_base_uri": "http://localhost:5000/m2m",
+        "default_content_type": "application/json",
+	"create_local_scl" : false
+    },
+    "onem2m": {
+        "cse_base": "onem2m",
+        "interfaces": [
+            {
+                "personality": "dIa",
+                "endpoints": "*"
+            }
+        ]
+    },
+    "plugins": [
+        {
+            "name": "HTTPTransportPlugin",
+            "package": "openmtc_scl.plugins.transport_gevent_http",
+            "disabled": false,
+            "config": {
+                "connectors": [
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 4000,
+                        "is_wan": false
+                    },
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 5000,
+                        "is_wan": true
+                    }
+                ]
+            }
+        },
+        {
+            "name": "COAPTransportPlugin",
+            "package": "openmtc_scl.plugins.transport_gevent_coap",
+            "disabled": false,
+            "config": {
+                "client-port": 6684,
+                "connectors": [
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 4000,
+                        "is_wan": false
+                    },
+                    {
+                        "interface": "",
+                        "host": "localhost",
+                        "port": 5000,
+                        "is_wan": true
+                    }
+                ]
+            }
+        },
+        { 
+        	"name": "ABS_GIP",
+            "package": "openmtc_scl.plugins_eu_projects.abs_gip",
+	    	"disabled": false,
+            "config":{
+		    	"app_name":"Smartcity",
+		    	"container_name":"ABSDevices",
+		    	"max_nr_of_instances": 30,
+		    	"listening_ip":"0.0.0.0",
+		    	"port": 8022
+	    		}
+        },
+	  	{  
+	  		"name": "NetworkManager",
+     	    "package": "openmtc_scl.plugins.networkmanager",
+	     	"disabled": true,
+            "config":{}
+        }
+        
+    ],
+    "transport": {
+        "etsiSclMo": {
+            "safPolicySetCollection": [
+                {
+                    "policyScope": [
+                        "default"
+                    ],
+                    "m2mSpPolicy": {
+                        "defaultRcatValue": 0,
+                        "rcatParamListCollection": [
+                            {
+                                "rcatValue": 0,
+                                "anSelList": [],
+                                "maxPendReq": 10,
+                                "maxPendData": 10000
+                            },
+                            {
+                                "rcatValue": 1,
+                                "anSelList": [],
+                                "maxPendReq": 20,
+                                "maxPendData": 20000
+                            },
+                            {
+                                "rcatValue": 2,
+                                "anSelList": [],
+                                "maxPendReq": 30,
+                                "maxPendData": 30000
+                            },
+                            {
+                                "rcatValue": 3,
+                                "anSelList": [],
+                                "maxPendReq": 40,
+                                "maxPendData": 40000
+                            },
+                            {
+                                "rcatValue": 4,
+                                "anSelList": [],
+                                "maxPendReq": 50,
+                                "maxPendData": 50000
+                            },
+                            {
+                                "rcatValue": 5,
+                                "anSelList": [],
+                                "maxPendReq": 60,
+                                "maxPendData": 60000
+                            },
+                            {
+                                "rcatValue": 6,
+                                "anSelList": [],
+                                "maxPendReq": 70,
+                                "maxPendData": 70000
+                            },
+                            {
+                                "rcatValue": 7,
+                                "anSelList": [],
+                                "maxPendReq": 80,
+                                "maxPendData": 80000
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
