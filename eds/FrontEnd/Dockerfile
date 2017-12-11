@@ -48,5 +48,6 @@ EXPOSE 6065
 RUN mkdir -p /var/log/eds
 RUN chmod +x /var/log/eds
 
+
 # entry point
 ENTRYPOINT ["/bin/sh",  "/home/elastest/eds/FrontEnd/exec-frontend.sh"]

@@ -5,6 +5,4 @@ sleep 1
 #  printf '.'
 #  sleep 1
 #done
-#sh frontend $@
-sh prep-env.sh
-PYTHONPATH=${PYTHONPATH}:src exec python -m frontend $@
+sh frontend $@
