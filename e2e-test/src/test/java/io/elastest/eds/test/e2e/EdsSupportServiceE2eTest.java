@@ -31,6 +31,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 
 import io.elastest.eds.test.base.EdsBaseTest;
+import io.github.bonigarcia.DriverCapabilities;
 import io.github.bonigarcia.SeleniumExtension;
 import java.io.BufferedReader;
 import java.io.InputStream;
