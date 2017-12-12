@@ -31,7 +31,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 
 import io.elastest.eds.test.base.EdsBaseTest;
-import io.github.bonigarcia.SeleniumExtension;import java.io.BufferedReader;
+import io.github.bonigarcia.SeleniumExtension;
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
