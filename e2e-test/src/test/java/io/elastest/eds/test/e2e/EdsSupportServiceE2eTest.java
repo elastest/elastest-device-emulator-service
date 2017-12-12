@@ -67,7 +67,7 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
         driver.manage().window().setSize(new Dimension(1024, 1024));
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // implicit wait
         //navigate to the application home page
-        driver.get("chromedriver.storage.googleapis.com");
+        //driver.get("chromedriver.storage.googleapis.com");
         driver.get(tormUrl);
         startTestSupportService(driver, "EDS");
 
