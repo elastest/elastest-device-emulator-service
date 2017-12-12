@@ -54,6 +54,9 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
     @DisplayName("EDS as support service")
     void testSupportService(ChromeDriver driver) throws Exception {
         log.info("Navigate to TORM and start support service");
+
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1024, 1024));
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // implicit wait
         //navigate to the application home page
