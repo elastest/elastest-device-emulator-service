@@ -30,7 +30,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.openqa.selenium.remote.Capabilities;
+//import static org.openqa.selenium.remote.Capabilities;
 
 import org.slf4j.Logger;
 
@@ -57,13 +57,6 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 
-     @DriverCapabilities
-    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-    {
-        LoggingPreferences logPrefs = new LoggingPreferences();
-        logPrefs.enable(BROWSER, ALL);
-        capabilities.setCapability(LOGGING_PREFS, logPrefs);
-    }
 
     @Test
     @DisplayName("EDS as support service")
