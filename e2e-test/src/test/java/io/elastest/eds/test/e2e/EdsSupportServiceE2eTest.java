@@ -69,7 +69,7 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
         //navigate to the application home page
         //driver.get("chromedriver.storage.googleapis.com");
         driver.get(tormUrl);
-        startTestSupportService(driver, "EDS");
+      //  startTestSupportService(driver, "EDS");
 
         // Get EDS Service  Docker Container Id
         String edsInstances = driver.findElement(By.xpath("//div[contains(string(), 'Instance Id:')]")).getText();
