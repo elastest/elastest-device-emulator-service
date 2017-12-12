@@ -51,6 +51,14 @@ public class EdsSupportServiceE2eTest extends EdsBaseTest {
 
     final Logger log = getLogger(lookup().lookupClass());
 
+     @DriverCapabilities
+    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+    {
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(BROWSER, ALL);
+        capabilities.setCapability(LOGGING_PREFS, logPrefs);
+    }
+
     @Test
     @DisplayName("EDS as support service")
     void testSupportService(ChromeDriver driver) throws Exception {
