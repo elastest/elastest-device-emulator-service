@@ -41,7 +41,7 @@ node('docker') {
          }
 
          stage ("E2E tests") {
-	    sh "cd e2e-test/src/python;python EdsE2eTest.py ${elastestURL}"
+	    sh "cd e2e-test;python EdsE2eTest.py ${elastestURL}"
          }
      }
   }
