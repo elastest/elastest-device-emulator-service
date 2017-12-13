@@ -1,34 +1,48 @@
-@Library('ciElastestConnect') _
+node('docker') {
 
-// initialization of the context for the library
-elastest_lib.setContext(this)
+   stage('Preparation') {
 
-// initialization of the runnable object to access elastest methods inside the pipeline
-def elastest= elastest_lib.getElastestMethods()
-
-// lite version of elastest
-// elastest_lib.setLite('')
-
-//elastest version
-//elastest_lib.setVersion('20171012') doesn't work the inspect --api
-
-// definition of nodes is managed by the library
-elastest_lib.pipeline({
-   stage "Container Prep"
-      def mycontainer = elastest.ctx.docker.image('elastest/ci-docker-e2e')
+      def mycontainer = docker.image('elastest/ci-docker-compose-py-siblings:latest')
       mycontainer.pull()
-      mycontainer.inside("-u jenkins -v /var/run/docker.sock:/var/run/docker.sock:rw -v /dev/shm:/dev/shm")  {
+      mycontainer.inside("-u jenkins -v /var/run/docker.sock:/var/run/docker.sock:rw -v /dev/shm:/dev/shm") {
          sh '/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &'
          git 'https://github.com/elastest/elastest-device-emulator-service.git'
 
-        stage "docker conf"
-           elastest.connect2ElastestNetwork()
+         stage('ElasTest starting'){
+            sh "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform stop" 
+            try {
+               sh "docker rm -f elastest-platform"
+            } catch(e) {
+               echo "Error: $e"
+            }
+
+            sh "docker run --name elastest-platform -d --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --mode experimental-lite"
+            sh "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform wait --running=240"
+            sh "docker logs elastest-platform"
+
+            containerId= sh (
+                script: 'cat /proc/self/cgroup | grep "docker" | sed s/\\\\//\\\\n/g | tail -1',
+                returnStdout: true
+            ).trim()
+
+            echo "containerId = ${containerId}"
+            sh "docker network connect elastest_elastest "+ containerId
+            etEmpApi= sh (
+                script: 'docker inspect --format=\\"{{.NetworkSettings.Networks.elastest_elastest.IPAddress}}\\" elastest_etm_1',
+                returnStdout: true
+            ).trim()
+            echo "ETM container IP=${etEmpApi}"
             
-        stage "E2E tests"
-            echo ("E2E tests")
-            def etEmpApi = elastest.getEtmUrl()
-            // sh "cd e2e-test; mvn clean test -DetEmpApi=${etEmpApi}"
-            sh "cd e2e-test; mvn -B clean test -DetEmpApi=${etEmpApi}"
-            step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-          }
-})
+            elastestURL= sh(
+                script: 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform wait --running=240 | grep available | sed "s/.*at //"',
+                returnStdout: true
+            ).trim()
+            echo "Elastest URL=${elastestURL}"
+         }
+
+         stage ("E2E tests") {
+	    sh "cd e2e-test/src/python;python EdsE2eTest.py ${elastestURL}"
+         }
+     }
+  }
+}
