@@ -169,7 +169,7 @@ def test_create_new_tjob(tormapicreatetjoburl):
 	payload = {
 		"id": 0,
 		"name": "E2E tjob",
-		"imageName": "dockernash/ess-e2e",
+		"imageName": "rowshan/eds_e2e",
 		"project": {
 			"id": projectId,
 			"name": "E2E test EDS",
