@@ -35,20 +35,24 @@ node('docker'){
 
         //stage "build api image"
          //here we use only the build for zigbeeip
-         //    def api_image = docker.build("elastest/eds-api:${tag}", "./eds/rest_app")
+         //    sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/rest_app . -t elastest/eds-api:${tag}' 
+         //    def api_image = docker.image("elastest/eds-api:${tag}")
 
 
         stage "build memsipe image"
          //here we use only the build for zigbeeip
-             def memsipe_image = docker.build("elastest/eds-memsipe:${tag}", "./eds/MemsIPE")
+             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/MemsIPE . -t elastest/eds-memsipe:${tag}' 
+             def memsipe_image = docker.image("elastest/eds-memsipe:${tag}")
 
         stage "build zigbeeipe image"
          //here we use only the build for zigbeeip
-             def zigbeeipe_image = docker.build("elastest/eds-zigbeeipe:${tag}", "./eds/ZigBeeIPE")
+             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/ZigBeeIPE . -t elastest/eds-zigbeeipe:${tag}' 
+             def zigbeeipe_image = docker.image("elastest/eds-zigbeeipe:${tag}")
 
         stage "build frontend image"
          //here we use only the build for zigbeeip
-             def frontend_image = docker.build("elastest/eds-frontend:${tag}", "./eds/FrontEnd")
+             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/FrontEnd . -t elastest/eds-frontend:${tag}' 
+             def frontend_image = docker.image("elastest/eds-frontend:${tag}")
 
 
         stage "Run EDS docker-compose"

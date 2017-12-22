@@ -8,6 +8,16 @@ FROM ubuntu:16.04
 # Set the file maintainer
 MAINTAINER {sathi,v.gowtham}@tu-berlin.de
 
+# Set Image Labels
+ARG GIT_COMMIT=unspecified
+LABEL git_commit=$GIT_COMMIT
+
+ARG COMMIT_DATE=unspecified
+LABEL commit_date=$COMMIT_DATE
+
+ARG VERSION=unspecified
+LABEL version=$VERSION 
+
 # Update the repository sources list
 RUN apt-get update
 
