@@ -1,10 +1,10 @@
-connexion == 1.1.9
-python_dateutil == 2.6.0
-typing == 3.5.2.2
+connexion
+python_dateutil
 setuptools
+pymongo
+docker-compose
+docker
+pykube
 healthcheck
 tornado
 pykafka
-docker-compose
-docker
-tox

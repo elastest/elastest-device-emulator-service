@@ -1,5 +1,8 @@
 FROM python:2-alpine
 
+# Set the file maintainer
+MAINTAINER sathi@tu-berlin.de
+
 # Set Image Labels
 ARG GIT_COMMIT=unspecified
 LABEL git_commit=$GIT_COMMIT

@@ -2,7 +2,7 @@ swagger: "2.0"
 
 info:
   title: "{{title}}"
-  version: "0.0.5"
+  version: "0.5.0"
 
 basePath: /eds
 
