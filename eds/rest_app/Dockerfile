@@ -26,4 +26,4 @@ EXPOSE 9090
 
 ENTRYPOINT ["python"]
 
-CMD ["resty.py"]
+CMD ["eds.py"]

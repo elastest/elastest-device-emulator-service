@@ -76,7 +76,6 @@ paths:
           description: 'Fetch a device by ID'
           schema:
             $ref: '#/definitions/Device'
-
 definitions:
   DeviceRegistration:
     type: object
@@ -90,10 +89,38 @@ definitions:
   Device:
     type: object
     properties:
-      name: { type: string }
-      id:
-        type: string
-        format: string
+      mems:
+        $ref: '#/definitions/Mems'
+      zigbee:
+         $ref: '#/definitions/Zigbee'
       registered:
         type: string
         format: date-time
+
+
+  Mems:
+    type: object
+    properties:
+      x:
+       type: object
+
+      y:
+       type: object
+      z:
+       type: object
+
+  Zigbee:
+    type: object
+    properties:
+      temperature:
+          type: object
+      brightness:
+          type: object
+      pressure:
+          type: object
+      movement:
+         type: object
+      humidity:
+          type: object
+
+
