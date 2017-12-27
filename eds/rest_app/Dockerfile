@@ -16,9 +16,14 @@ LABEL version=$VERSION
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+RUN apk add --no-cache gcc libc-dev
+
+
 COPY requirements.txt /usr/src/app/
 
 RUN pip install -r requirements.txt
+
+
 COPY . /usr/src/app
 
 ENV EDS_PORT 8080

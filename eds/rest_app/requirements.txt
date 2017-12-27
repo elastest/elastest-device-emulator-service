@@ -1,7 +1,6 @@
 connexion
 python_dateutil
 setuptools
-pymongo
 docker-compose
 docker
 pykube
