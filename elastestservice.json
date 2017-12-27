@@ -79,6 +79,15 @@
                     "port": 5050,
                     "path": "/MemsIPE"
                 }
+            },
+            "rest_app": {
+                "description": "Service to emulate mems data",
+                "main": false,
+                "api": {
+                    "protocol": "http",
+                    "port": 19089,
+                    "path": "/eds/ui/"
+                }
             }
 
         }
