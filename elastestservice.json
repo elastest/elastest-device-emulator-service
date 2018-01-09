@@ -85,7 +85,7 @@
                 "main": false,
                 "api": {
                     "protocol": "http",
-                    "port": 19089,
+                    "port": 8080,
                     "path": "/eds/ui/"
                 }
             }
