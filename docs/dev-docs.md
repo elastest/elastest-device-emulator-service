@@ -47,8 +47,8 @@ git clone https://github.com/elastest/elastest-monitoring-platform.git
 ###Docker images:
 The following docker images are currently used in order to make the EDS work successfully:
  - elastest/eds-frontend: a service used as a GUI or frontend inorder to show all the sensors data in a graph view 
- formate as well as has capability to actuate sesor and actuator. The image associated to this is accessible [here](https://hub.docker.com/r/elastest/eds-frontend/)
+ formate as well as has capability to actuate sesor and actuator. The image associated to this service is accessible [here](https://hub.docker.com/r/elastest/eds-frontend/)
  - elastest/eds-api: a service contain restfull api that communicate with the elastest component. This service is based on
- OpenAPI specification.
- - elastest/eds-memsipe: a service with uses accelometers data such as x,y and z axes
- - elastest/eds-zigbeeipe: a service for zigbee sensor protocol data such as vibration, temperature, movement etc.
+ OpenAPI specification.The image associated to this service is accessible [here](https://hub.docker.com/r/elastest/eds-api/)
+ - elastest/eds-memsipe: a service with uses accelometers data such as x,y and z axes. The image associated to this service is accessible [here](https://hub.docker.com/r/elastest/eds-zigbeeipe/)
+ - elastest/eds-zigbeeipe: a service for zigbee sensor protocol data such as vibration, temperature, movement etc. The image associated to this service is accessible [here](https://hub.docker.com/r/elastest/eds-memsipe/)
