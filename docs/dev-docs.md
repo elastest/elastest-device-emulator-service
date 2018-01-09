@@ -47,7 +47,7 @@ git clone https://github.com/elastest/elastest-monitoring-platform.git
 ###Docker images:
 The following docker images are currently used in order to make the EDS work successfully:
  - elastest/eds-frontend: a service used as a GUI or frontend inorder to show all the sensors data in a graph view 
- formate as well as has capability to actuate sesor and actuator
+ formate as well as has capability to actuate sesor and actuator. The image associated to this is accessible [here](https://hub.docker.com/r/elastest/eds-frontend/)
  - elastest/eds-api: a service contain restfull api that communicate with the elastest component. This service is based on
  OpenAPI specification.
  - elastest/eds-memsipe: a service with uses accelometers data such as x,y and z axes
