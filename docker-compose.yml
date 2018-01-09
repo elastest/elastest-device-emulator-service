@@ -36,12 +36,10 @@ services:
   rest_app:
     image: elastest/eds-api:latest
     environment:
-      - EDS_PORT=19089
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
-      - 19089
-    ports:
-     - 19089:19089
+      - 8080
+      - 9090
     networks:
       - elastest_elastest
 
