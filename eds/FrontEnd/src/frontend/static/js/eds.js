@@ -2,12 +2,12 @@ var configuredSensorList = {
     'top-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x/latest',
     'top-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y/latest',
     'top-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z/latest',
-    'bottom-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
-    'bottom-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
-    'bottom-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z',
-    'bottom-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x',
-    'bottom-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y',
-    'bottom-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z'
+    'bottom-left':  '/mn-cse-1/onem2m/ZigBeeIPE/devices/ZBS122S000001/sensor_data/brightness/latest',
+    'bottom-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y/latest',
+    'bottom-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z/latest',
+    'bottom-left':  '/mn-cse-1/onem2m/MemsIPE/sensor_data/x/latest',
+    'bottom-middle': '/mn-cse-1/onem2m/MemsIPE/sensor_data/y/latest',
+    'bottom-right': '/mn-cse-1/onem2m/MemsIPE/sensor_data/z/latest'
 
 
 };
