@@ -19,11 +19,17 @@ The entire application EDS consists of many services such as- zigbeeipe, memsipe
   * Using  *PyCharm IDE*:
     * Load/open the projects from IDE:
       * Import *EDS* project from local repository using File > Open --> select the project name elastest-device-emulator-service
-      *
+     
       
    * From *IDE and console*:
      * Run *prep-env.sh* from the console to install all openmtc dependencies and to create the environment for zigbeeipe,memsipe and frontend services.
-     * Go to the rest_app directory and run foolowing:
+          ```
+       $cd eds/FrontEnd/openmtc-gevent
+       $./prep-env.sh
+       
+          ```
+    
+   * Go to the rest_app directory and run foolowing:
       ```
       pip install -r requirements.txt
       
