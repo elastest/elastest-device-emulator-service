@@ -66,8 +66,8 @@
                 "main": false,
                 "api": {
                     "protocol": "http",
-                    "port": 5001,
-                    "path": "/ZigBeeIPE"
+                    "port": 8000,
+                    "path": "/onem2m/ZigBeeIPE"
                 }
             },
 
@@ -76,8 +76,8 @@
                 "main": false,
                 "api": {
                     "protocol": "http",
-                    "port": 5050,
-                    "path": "/MemsIPE/x/latest"
+                    "port": 8000,
+                    "path": "/onem2m/MemsIPE/sensor_data/"
                 }
             },
             "rest_app": {
