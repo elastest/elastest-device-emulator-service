@@ -17,6 +17,7 @@ services:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
       - 5050
+      - 8000
     links:
       - frontend
     networks:
@@ -28,6 +29,7 @@ services:
       - ci_env=`bash <(curl -s https://codecov.io/env)`
     expose:
       - 5001
+      - 8000
     links:
       - frontend
     networks:
