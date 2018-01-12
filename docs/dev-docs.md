@@ -7,12 +7,12 @@ The entire application EDS consists of many services such as- zigbeeipe, memsipe
  - Simple restfull communication based service or application
  
 ### Prepare development environment:
- First make sure that EDS can work with ESM  and EMP.
- Install the following development tools:
+
+First install the following development tools:
  - [PyCharm IDE](https://www.jetbrains.com/pycharm/download/#section=linux)
  - [Python 2.7 and 3+](http://docs.python-guide.org/en/latest/starting/install3/linux/)
  
-
+Now, clone the repository from [here](https://github.com/elastest/elastest-device-emulator-service/blob/master/).
  
 ### Development procedure:
 
@@ -36,7 +36,28 @@ The entire application EDS consists of many services such as- zigbeeipe, memsipe
       ```
      This will install all the dependencies to run the service properly and even to integrate the service with other Elastest component such as EMP and ESM.
    
-     
+### Locally:
+   ## Run the gateway
+    ```
+    $cd eds/FrontEnd/openmtc-gevent
+    $./run_gscl
+      
+          ```
+   ## Run the application/frontend
+    ```
+    $cd eds/FrontEnd
+    $./frontend
+      
+          ```
+   ## Run the sensor application/memsipe
+    ```
+    $cd eds/MemsIPE
+    $./mems-ipe
+      
+          ```  
+          
+   Open a browser and in the address bar write- localhost:6065/static/eds.html
+          
 ### Docker images:
 The following docker images are currently used in order to make the EDS work successfully:
  - elastest/eds-frontend: a service used as a GUI or frontend inorder to show all the sensors data in a graph view 
