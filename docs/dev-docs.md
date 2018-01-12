@@ -11,6 +11,7 @@ The entire application EDS consists of many services such as- zigbeeipe, memsipe
 First install the following development tools:
  - [PyCharm IDE](https://www.jetbrains.com/pycharm/download/#section=linux)
  - [Python 2.7 and 3+](http://docs.python-guide.org/en/latest/starting/install3/linux/)
+ - Latest version of [Docker](https://docs.docker.com/engine/installation/)
  
 Now, clone the repository from [here](https://github.com/elastest/elastest-device-emulator-service/blob/master/).
  
