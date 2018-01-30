@@ -23,9 +23,6 @@ node('docker'){
             //  sh 'cd eds/MemsIPE && exec tox'
             //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
-          echo ("Running Unit Tests for ZigBeeIPE")
-            //  sh 'cd eds/ZigBeeIPE && exec tox'
-            //step([$class: 'JUnitResultArchiver', testResults: '**/nosetests.xml'])
 
           echo ("Running Unit Tests for Rest App")
            //sh 'cd eds/rest_app && exec tox'
@@ -44,10 +41,10 @@ node('docker'){
              sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/MemsIPE . -t elastest/eds-memsipe:${tag}' 
              def memsipe_image = docker.image("elastest/eds-memsipe:${tag}")
 
-        stage "build zigbeeipe image"
+       // stage "build zigbeeipe image"
          //here we use only the build for zigbeeip
-             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/ZigBeeIPE . -t elastest/eds-zigbeeipe:${tag}' 
-             def zigbeeipe_image = docker.image("elastest/eds-zigbeeipe:${tag}")
+         //    sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/ZigBeeIPE . -t elastest/eds-zigbeeipe:${tag}'
+           //  def zigbeeipe_image = docker.image("elastest/eds-zigbeeipe:${tag}")
 
         stage "build frontend image"
          //here we use only the build for zigbeeip
@@ -71,7 +68,7 @@ node('docker'){
                         //here your code
                  memsipe_image.push()
                  frontend_image.push()
-                 zigbeeipe_image.push()
+                // zigbeeipe_image.push()
                 // api_image.push()
 
 
