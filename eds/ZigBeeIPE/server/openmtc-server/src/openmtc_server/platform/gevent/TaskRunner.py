@@ -1,1 +1,0 @@
-from openmtc_gevent.TaskRunner import GEventTaskRunner as AsyncTaskRunner
