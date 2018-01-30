@@ -30,10 +30,10 @@ node('docker'){
 
 
 
-        //stage "build api image"
+        stage "build api image"
          //here we use only the build for zigbeeip
-         //    sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/rest_app . -t elastest/eds-api:${tag}' 
-         //    def api_image = docker.image("elastest/eds-api:${tag}")
+            sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/rest_app . -t elastest/eds-api:${tag}'
+            def api_image = docker.image("elastest/eds-api:${tag}")
 
 
         stage "build memsipe image"
@@ -69,7 +69,7 @@ node('docker'){
                  memsipe_image.push()
                  frontend_image.push()
                 // zigbeeipe_image.push()
-                // api_image.push()
+                 api_image.push()
 
 
                     }
