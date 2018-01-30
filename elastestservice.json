@@ -60,17 +60,6 @@
 
 
             },
-
-            "zigbeeipe": {
-                "description": "Service to emulate mems data",
-                "main": false,
-                "api": {
-                    "protocol": "http",
-                    "port": 8000,
-                    "path": "/onem2m/ZigBeeIPE"
-                }
-            },
-
             "memsipe": {
                 "description": "Service to emulate mems data",
                 "main": false,
