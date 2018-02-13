@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenMTC EDSOrch
+After=network.target
+Wants=ntp.service
+
+[Service]
+ExecStart=/usr/local/bin/eds_orch
+
+[Install]
+WantedBy=multi-user.target
