@@ -51,24 +51,19 @@
             "frontend": {
                 "description": "Service to show emulated sensor data in the form of plots as well as to actuate sensors",
                 "main": true,
-                "gui":
-                {
+                "gui": {
                     "protocol": "http",
                     "port": 6065,
                     "path": "/static/eds.html"
-                }
-
-
-            },
-            "memsipe": {
-                "description": "Service to emulate mems data",
-                "main": false,
+                },
                 "api": {
+                    "name": "memsipe",
                     "protocol": "http",
                     "port": 8000,
                     "path": "/onem2m/MemsIPE/sensor_data/"
                 }
-            },
+
+            },           
             "rest_app": {
                 "description": "Service to emulate mems data",
                 "main": false,
