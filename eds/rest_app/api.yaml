@@ -13,15 +13,15 @@ paths:
        - in: query
          name: device
          type: string
-         enum: ["Zigbee", "Mems"]
+         enum: ["ZigBeeIPE", "MemsIPE"]
          description: "Enter sensor device name here."
-         required: true
+         #required: true
        - in: query
          name: id
          type: string
          enum: ["ZBS122S000001", "ZBS122S000000"]
          description: "Enter sensor device ID here."
-         required: true
+        # required: true
       responses:
         '200':
           description: 'Fetch a list of devices'
