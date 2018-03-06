@@ -2,6 +2,9 @@ from selenium import webdriver
 
 #from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import Select
+
+import time
 import unittest
 
 
@@ -25,19 +28,22 @@ import unittest
 
 
 class Tjobs(unittest.TestCase):
-
-	def Test_job(self):
+#open nightly and go to test support services
+	def Test_job1(self):
 		#show the location of web driver locally
 		self.driver = webdriver.Chrome('/usr/local/bin/chromedriver')
-		self.driver.implicitly_wait(10)
-		self.driver.set_page_load_timeout(30)
+		#self.driver.implicitly_wait(10)
+		self.driver.set_page_load_timeout(100000)
 		#self.driver.get("http://elastest.io:37000")
 		self.driver.get("http://nightly.elastest.io:37000")
 		self.driver.maximize_window()
 		assert self.driver.title, 'Elastest Home'
 		#		print(driver.title)
+		self.driver.find_element_by_xpath("nav_support_services").click()#send_keys("navigate to create eds instanced")
 		self.driver.save_screenshot('ETM.png')
-	   #self.driver.find_element_by_name()
+		#select EDS from dropdown list and create and instance
+
+	def Test_tjobs2(self):
 
 # create a test support service via etm
 
