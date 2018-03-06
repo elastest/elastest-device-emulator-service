@@ -32,10 +32,12 @@ class Tjobs(unittest.TestCase):
 		self.driver.implicitly_wait(10)
 		self.driver.set_page_load_timeout(30)
 		#self.driver.get("http://elastest.io:37000")
-		self.driver.get("http://elastest.io")
+		self.driver.get("http://nightly.elastest.io:37000")
 		self.driver.maximize_window()
 		assert self.driver.title, 'Elastest Home'
 		#		print(driver.title)
+		self.driver.save_screenshot('ETM.png')
+	   #self.driver.find_element_by_name()
 
 # create a test support service via etm
 
