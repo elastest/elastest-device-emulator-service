@@ -9,7 +9,7 @@ services:
       - 6065
       - 8000
     networks:
-      - elastest_elastest
+      - elastest
 
   memsipe:
     image: elastest/eds-memsipe:latest
@@ -21,7 +21,7 @@ services:
     links:
       - frontend
     networks:
-      - elastest_elastest
+      - elastest
 
   rest_app:
     image: elastest/eds-api:latest
@@ -33,8 +33,21 @@ services:
     links:
       - frontend
     networks:
-      - elastest_elastest
+      - elastest
+
+  eds:
+    image: elastest/eds:latest
+    container_name: eds
+    hostname: eds
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    expose:
+      - 16500
+    ports:
+      - "16500:16500"
+    networks:
+      - elastest
 
 networks:
-  elastest_elastest:
-    external: true
+  elastest:
+    driver: bridge
