@@ -3,6 +3,7 @@ from selenium import webdriver
 #from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by import By
 
 import time
 import unittest
@@ -52,14 +53,19 @@ class Tjobs(unittest.TestCase):
 		#select_eds = self.driver.find_element_by_class_name("mat-option mat-selected")
 
 
-
-		#print [o.text for o in select_eds.options]
-		select_eds= self.driver.find_element_by_id("md-option-5")
+		arrow = self.driver.find_element_by_xpath('//div[@class="cdk-overlay-container"]/div')
+		arrow.click()
+		dropdown = self.driver.find_elements(By.XPATH,'//div[@class = "mat-select-trigger"]/span[@class = "mat-select-value ng-tns-c12-0"]/span[@class= "mat-select-value-text"]')
+		create_instance =self.driver.find_element(By.XPATH,'//button[@id= "create_instance"]')
+		#dropclass = self.driver.find_element_by_class_name('//div[@class = "mat-select-content ng-trigger ng-trigger-fadeInContent"]/div')
+	#arr1 = arrow.find_element_by_xpath('//div[@class="mat-select-content ng-trigger ng-trigger-fadeInContent"]')  #print [o.text for o in select_eds.options]
+		#arrow = self.driver.find_element_by_xpath('//div[@class="cdk-overlay-container"]')  #print [o.text for o in select_eds.options]
+	#	select_eds= self.driver.find_element_by_id("md-option-0")
 
 		# select by visible text
-		select_eds.select_by_visible_text("EDS")
+		#select_eds.select_by_visible_text("EDS")
 		
-		select_eds.save_screenshot('ETM_select_eds.png')
+		self.driver.save_screenshot('ETM_select_eds.png')
 
 
 # create a test support service via etm
