@@ -41,6 +41,7 @@
         ]
     },
     "manifest": {
+        
         "id": "b1c59b9c-5c7d-48c3-bb40-2c4c2cdd57c7",
 
         "manifest_content": "version: '2.1'\nservices:\n  frontend:\n    image: elastest/eds-frontend:latest\n    environment:\n      - ci_env=`bash <(curl -s https://codecov.io/env)`\n    expose:\n      - 4000\n      - 6065\n      - 8000\n    networks:\n      - elastest_elastest\n\n  memsipe:\n    image: elastest/eds-memsipe:latest\n    environment:\n      - ci_env=`bash <(curl -s https://codecov.io/env)`\n    expose:\n      - 5050\n      - 8000\n    links:\n      - frontend\n    networks:\n      - elastest_elastest\n\n  rest_app:\n    image: elastest/eds-api:latest\n    environment:\n      - ci_env=`bash <(curl -s https://codecov.io/env)`\n    expose:\n      - 8080\n      - 9090\n    links:\n      - frontend\n    networks:\n      - elastest_elastest\n\nnetworks:\n  elastest_elastest:\n    external: true\n",
