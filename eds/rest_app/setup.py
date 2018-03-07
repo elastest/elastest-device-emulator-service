@@ -32,7 +32,6 @@ REQUIRES = [
     'connexion',
     'python_dateutil',
     'setuptools',
-    'pymongo',
     'docker-compose',
     'docker',
     'pykube',
@@ -54,7 +53,7 @@ setup(
     install_requires=REQUIRES,
     dependency_links=DEP_LINKS,
     packages=find_packages(),
-    package_data={'': ['eds/api.yaml']},
+    package_data={'': ['eds/api1.yaml']},
     include_package_data=True,
     long_description="""\
     This is the service manager API. It is an extension of the the Open Service Broker API. The Open Service Broker

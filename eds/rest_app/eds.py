@@ -13,8 +13,11 @@ from tornado.ioloop import IOLoop
 from tornado.wsgi import WSGIContainer
 
 from adapters import log
+import call
 
 LOG = log.get_logger(name=__name__)
+
+
 
 
 def add_check_api():
@@ -63,7 +66,7 @@ def shutdown_handler(signum=None, frame=None):
 
 if __name__ == '__main__':
     eds_app = connexion.FlaskApp(__name__)
-    eds_app.add_api('api.yaml',
+    eds_app.add_api('api1.yaml',
                 arguments={'title': 'ElasTest Device Emulator API'},
                 resolver=RestyResolver('api'))
 
@@ -84,6 +87,10 @@ if __name__ == '__main__':
 
     LOG.info('Press CTRL+C to quit.')
     IOLoop.instance().start()
+
+    eds_app.route('/eds/devices')
+    def get():
+        return call
 
     # app.run(port=9090)
     #add_check_api().run(host= '0.0.0.0', port=8080)
