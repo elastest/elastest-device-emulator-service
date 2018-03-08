@@ -73,8 +73,16 @@
                     "port": 8080,
                     "path": "/eds/ui/"
                 }
-            }
-
+            },
+	    "eds-base":{
+                "description": "Demonstrator application",
+		"main": false,
+		"api":{
+                    "protocol": "http",
+		    "port": 8000,
+		    "path": "/"
+		}
+	    }
         }
     }
 }
