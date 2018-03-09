@@ -80,7 +80,7 @@
 		"api":{
                     "protocol": "http",
 		    "port": 8000,
-		    "path": "/"
+		    "path": "/onem2m/"
 		}
 	    }
         }
