@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd $(dirname ${0})
+
+. ./prep-env.sh
+
+cd EDSOrch
+
+PYTHONPATH=${PYTHONPATH}:src exec python -m eds_orch $@
