@@ -37,8 +37,6 @@ services:
 
   eds-base:
     image: elastest/eds-base:latest
-    container_name: edsbase
-    hostname: edsbase
     expose:
       - 8000
     networks:
