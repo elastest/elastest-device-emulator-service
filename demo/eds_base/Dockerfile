@@ -39,7 +39,9 @@ RUN git clone ${openmtc_git} openmtc
 
 WORKDIR ${openmtc_path}
 
-RUN chmod +x create-binary-dist && ./create-binary-dist gateway
+RUN chmod +x create-binary-dist
+
+RUN ./create-binary-dist gateway
 
 RUN mkdir -p ${openmtc_path}/tmp
 
