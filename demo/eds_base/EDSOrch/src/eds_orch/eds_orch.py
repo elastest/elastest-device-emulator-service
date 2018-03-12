@@ -1,8 +1,10 @@
 from openmtc_app.onem2m import XAE
 from openmtc_onem2m.model import Container
 import time
-import docker
-import json
+import uuid
+import subprocess
+from threading import Timer
+import gevent
 
 class EDSOrch(XAE):
 
@@ -14,7 +16,6 @@ class EDSOrch(XAE):
         # {'app_ID': {'sensors':[list of sensor names],
         # 'actuators': {list of actuator names}}
         self.registered_apps = {}
-        self.base_path = 'onem2m/EDSOrch/'
         self.status = 'IDLE'
 
         # Holds the expected request templates for a request from the user
@@ -55,6 +56,8 @@ class EDSOrch(XAE):
         # actuator is added
         self.available_actuators = ['simple']
 
+        # contains the reference for process components
+        self.process_list = []
     def _on_register(self):
         # create the channels for orch by creating respective containers
 
@@ -65,7 +68,7 @@ class EDSOrch(XAE):
         self.orch_cnt = self.create_container(None, self.orch_cnt)
 
         #create request container
-        self.request_cnt = mContainer(resourceName='request',
+        self.request_cnt = Container(resourceName='request',
                 labels=['elastest:edsorch:request'],
                 maxNrOfInstances=5)
         self.request_cnt = self.create_container(self.orch_cnt,
@@ -93,14 +96,49 @@ class EDSOrch(XAE):
 
         # call each available sensor's corresponding script
         # also subscribe to their response channels
+        for sensor in self.available_sensors:
+            # execute the sensor script
+            script = "/home/vgo/develop/OpenMTC/apps/" + sensor + "-sensor"
+            component_path = "onem2m/" + sensor.title() + "Sensor/response"
+            component_name = sensor + "_sensor"
+            process = subprocess.Popen([script, "-v"])
+            self.process_list.append(process)
+            # add subscription after 5 seconds
+            #Timer(5, self.subscribe_component_response, [component_name,
+            #    component_path]).start()
+
+        for actuator in self.available_actuators:
+            # execute the actuator script
+            script = "/home/vgo/develop/OpenMTC/apps/" + actuator + "-actuator"
+            component_path = "onem2m/" + actuator.title() + "Actuator/response"
+            component_name = actuator + "_actuator"
+            subprocess.Popen([script, "-v"])
+            self.process_list.append(process)
+            # add subscription after 5 seconds
+            Timer(5, self.subscribe_component_response, [component_name,
+                component_path]).start()
 
         # start endless loop
         self.logger.info('all registration finished')
         time.sleep(1)
-        self.push_content('onem2m/EDSOrch/edsorch/request', [{"register":{'application':{'app_ID':0, 'request_ID': 0}}}])
+        self.push_content('onem2m/EDSOrch/edsorch/request', [{"register":{'application':{'app_ID':'some', 'request_ID': 'some'}}}])
         self.run_forever()
 
+    def subscribe_component_response(self, component_name, component_path):
+        # prepare a handle function
+        def add_handler(self, cnt, con):
+            self.push_content(self.response_cnt, con)
+        handler_name = "handle_" + component_name + "_response"
+        add_handler.__name__ = handler_name
+        setattr(self, add_handler.__name__, add_handler)
+        funcname = getattr(self, handler_name)
+        self.logger.info('executes timer handle')
+        self.add_container_subscription(component_path,
+               funcname)
+
     def _on_shutdown(self):
+        for process in self.process_list:
+            process.kill()
         pass
 
     def handle_response(self, cnt, con):
@@ -154,19 +192,13 @@ class EDSOrch(XAE):
                     # iterate over request_1
                     for key_1 in request_1:
                         if key_1 == 'application':
-                            request_response, response_1, error_string = \
                             self.handle_register_application(request)
                         elif key_1 == 'sensor':
-                            request_response, response_1, error_string = \
-                                    self.handle_register_sensor(request)
+                            self.handle_register_sensor(request)
                         elif key_1 == 'actuator':
-                            request_response, response_1, error_string = \
-                                    self.handle_register_actuator(request)
+                            self.handle_register_actuator(request)
                         else:
-                            request_response = 'FAIL'
-                            response_1 = {}
-                            response_string = error_string + 'component to \
-                                    register not recognized\n'
+                            self.logger.info("unknown component")
 
                 elif key == 'deregister':
                     request_1 = request[key]
@@ -174,15 +206,7 @@ class EDSOrch(XAE):
                         if key_1 == 'application':
                             request_response, response_1, error_string = \
                                     self.handle_deregister_application(request)
-                        else:
-                            request_response = 'FAIL'
-                            response_1 = {}
-                            response_string = error_string + 'component to \
-                                    deregister not recognized\n'
-                        reponse[key][key_1] = {'result': request_response,
-                                'response': response_1, 'error': error_string}
 
-            print response
             self.status = 'IDLE'
             status_data[0]['s'] = str(self.status)
             timestamp = format(round(time.time(), 3), '.3f')
@@ -190,11 +214,20 @@ class EDSOrch(XAE):
         self.push_content(_status_cnt, status_data)
 
     def handle_register_application(self, request):
+        # check if application name is already registered
+        app_ID = str(request['register']['application']['app_ID'])
+        request_ID = str(request['register']['application']['request_ID'])
+        if app_ID in self.registered_apps:
+            result = 'FAIL'
+            error_string = 'app_ID already registered with orchestrator'
+            reply = {'result': result, 'request_ID': request_ID, 'response': {},
+                    'error_string': error_string}
+            self.push_content(self.response_cnt, reply)
         # request format
         # {'register' : {'application' : {'app_ID':'uuid', 'request_ID': 'uuid'}}}
         label = 'elastest:application'
         # create a container with the name of app_ID
-        app_cnt = Container(resourceName=request['register']['application']['app_ID'],
+        app_cnt = Container(resourceName=app_ID,
                 labels=[label],
                 maxNrOfInstances=1)
         app_cnt = self.create_container(None, app_cnt)
@@ -203,52 +236,119 @@ class EDSOrch(XAE):
         sensors_cnt = Container(resourceName='sensors',
                 labels=[label],
                 maxNrOfInstances=1)
- # {'request_ID': 'uuid', 'result': 'SUCCESS', 'response': dict(response),
-        # 'error': 'error_string'}
         sensors_cnt = self.create_container(app_cnt, sensors_cnt)
-        # attach containers for all available sensors
-        # Sensors of a specific type attach to the sensor containers
-        for sensor in self.available_sensors:
-            label_1 = label + ':' + sensor
-            sensor_cnt = Container(resourceName=sensor,
-                    labels=[label_1],
-                    maxNrOfInstances=1)
-
         # create an actuators container
         label = 'elastest:application:actuators'
         actuators_cnt = Container(resourceName='actuators',
                 labels=[label],
-                maxNrOfInstance=1)
+                maxNrOfInstances=1)
         # attach containers for future possible types of actuators
-        for actuator in self.available_actuators:
-            label_1 = label + ':' + actuator
-            actuator_cnt = Container(resourceName=actuator,
-                    labels=[label_1],
-                    maxNrOfInstances=1)
         # reply format
         # {'request_ID': 'uuid', 'result': 'SUCCESS', 'response': dict(response),
         # 'error': 'error_string'}
-        request_ID = request['register']['application']['request_ID']
         result = 'SUCCESS'
         error_string = ''
         response = {'path' : app_cnt.path}
         reply = {'request_ID' : request_ID, 'result' : result, 'response' : response,
                 'error_string' : error_string}
-        self.registered_apps[app_ID] = {'path': app_container.path}
+        self.registered_apps[app_ID] = {'path': app_cnt.path}
+        self.registered_apps[app_ID] = {'sensors':[]}
+        self.registered_apps[app_ID] = {'actuators':[]}
         self.push_content(self.response_cnt, reply)
 
     def handle_register_sersor(self, request):
-        return "SUCCESS", {}, ""
+        app_ID = str(request['register']['sensor']['app_ID'])
+        request_ID = str(request['register']['sensor']['request_ID'])
+        sensor_type = str(equest['register']['sensor']['sensor_type'])
+        # check if the app is registered with the orchestrator
+        if app_ID not in self.registered_apps:
+            result = 'FAIL'
+            error_string = 'register:sensor:app not registered with orchestrator\n'
+            reply = {}
+            reply['request_ID'] = request_ID
+            reply['app_ID'] = app_ID
+            reply['result'] = result
+            reply['error_string'] = error_string
+            self.push_content(self.response_cnt, reply)
+
+        sensor_name = (uuid.uuid4().hex)[:8]
+        data_path = 'onem2m/EDSOrch/' + app_ID + '/sensors'
+        request = {'register':{'request_ID': request_ID,
+            'app_ID': app_ID}}
+        if sensor_type == 'temperature':
+            # add the sensor name to the application
+            sensor_name = 'temp_' + sensor_name
+            request['register']['name'] = sensor_name
+            data_path = data_path + '/temperature'
+            self.registered_apps[app_ID]['sensors'].append(sensor_name)
+            request_path = 'onem2m/TemperatureSensor/request'
+            self.push_content(request_path, request)
+
+        else:
+            result = 'FAIL'
+            error_string = 'register:sensor:required sensor not found in manifest\n'
+            reply = {'result': result, 'error_string': error_string,
+                    'request_ID': request_ID, 'app_ID':app_ID}
+            self.push_content(self.response_cnt, reply)
 
     def handle_register_actuator(self, request):
-        return "SUCCESS", {}, ""
+        app_ID = str(request['register']['actuator'['app_ID']])
+        request_ID = str(request['register']['actuator']['request_ID'])
+        actuator_type = str(request['register']['actuator']['actuator_type'])
+        #check if the app is registered with the orchestrator
+        if app_ID not in self.registered_apps:
+            result = 'FAIL'
+            error_string = 'register:actuator:app not registered with the orchestrator\n'
+            reply = {}
+            reply['request_ID'] = request_ID
+            reply['result'] = result
+            reply['error_string'] = error_string
+            reply['response'] = {}
+            self.push_content(self.response_cnt, reply)
 
-    def handle_deregister_application(request):
-        return "SUCCESS", {}, ""
+        actuator_name = (uuid.uuid4().hex)[:8]
+        data_path = 'onem2m/EDSOrch/' + app_ID + '/actuators'
+        request = {'register':{'request_ID': request_ID, 'app_ID':app_ID}}
+        if actuator_type == 'simple':
+            # add the actuator name to the application
+            actuator_name = 'simple_' + actuator_name
+            request['register']['name'] = actuator_name
+            data_path = data_path + '/simple'
+            self.registered_apps[app_ID]['actuators'].append(actuator_name)
+            request_path = 'onem2m/SimpleActuator/request'
+            self.push_content(request_path, request)
+        else:
+            result = 'FAIL'
+            error_string = 'register:actuator:required actuator not found in manifest\n'
+            reply = {'result': result, 'error_string':error_string,
+                    'request_ID':request_ID, 'app_ID': app_ID}
+            self.push_content(self.response_cnt, reply)
 
-    def _on_shutdown(self):
-        pass
+    def handle_deregister_application(self, request):
+        # check if the app is registered
+        app_ID = request['deregister']['application']['app_ID']
+        request_ID = request['deregister']['application']['request_ID']
+        if not app_ID in self.registered_apps:
+            result = 'FAIL'
+            error_string = 'deregister:application:app_ID not found to be registered with orchestrator\n'
+            reply = {'result':result, 'error_string': error_string, 'app_ID': app_ID,
+                    'request_ID': request_ID}
+            self.push_content(self.response_cnt, reply)
 
+        # app_ID was found to be registered
+        # deregister all the sensors, by sending shutdown to all sensors
+        for sensor_name in self.registered_apps[app_ID][sensors]:
+            request = {'modify':{'name':sensor_name, 'conf':{'shutdown':True},
+                'request_ID':request_ID, 'app_ID':app_ID}}
+            if 'temp' in sensor_name:
+                self.push_content('onem2m/TemperatureSensor/request', reply)
+
+        for actuator_name in self.registered_apps[app_ID][actuators]:
+            request = {'modify':{'name':actuator_name, 'request_ID':request_ID,
+                'app_ID': app_ID, 'conf':{'onoff':'OFF'}}}
+
+        # pop the app_ID from the registered apps
+        self.registered_apps.pop(app_ID)
 
     def check_request_content(self, con):
         request = con

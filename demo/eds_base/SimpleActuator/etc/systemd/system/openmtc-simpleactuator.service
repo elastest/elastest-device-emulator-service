@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenMTC SimpleActuator
+After=network.target
+Wants=ntp.service
+
+[Service]
+ExecStart=/usr/local/bin/simple-actuator
+
+[Install]
+WantedBy=multi-user.target

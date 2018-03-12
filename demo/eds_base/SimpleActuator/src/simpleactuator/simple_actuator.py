@@ -1,35 +1,35 @@
 from openmtc_app.onem2m import XAE
 from openmtc_onem2m.model import Container
 import time
-from threading import Timer
 from random import uniform
 
-class TemperatureSensor(XAE):
+
+class SimpleActuator(XAE):
 
     def __init__(self, *args, **kw):
-        super(TemperatureSensor, self).__init__(*args, **kw)
+        super(SimpleActuator, self).__init__(*args, **kw)
 
-        # request format has 2 keywords, register, modify
-        # from the keywords we operate on the sensors
+        # request format has 3 keywords register and modify
+        # from keywords we operate on the actuators
         # request format:
         # request format for register
-        # {'register' : {'name' : 'unique_sensorname', 'path' : 'attachpath',
-        # 'request_ID': 'uuid', 'app_ID': 'uuid'}}
+        # {'register':{'name': 'unique_actuator_name', 'conf': dict(conf),
+        # 'request_ID':'uuid', 'app_ID':'uuid}}
         # request format for modify
-        # {'modify' : {'name' : 'unique_sensorname', 'conf': dict(conf),
+        # {'modify': {'name':'unique_actuator_name', 'conf':dict(conf),
         # 'request_ID': 'uuid', 'app_ID':'uuid'}}
-        # holds entry of all registered sensors
-        # sensor names are mapped with their configurations added for example
-        # self.registered_sensors['sensorName'] = {'onoff' : 'OFF', 'period' : 1,
-        # 'shutdown' : 'NO', 'path' : 'sensor' registered path'}
+
+        # holds entry of all registered actuators
+        # actuator names are mapped with their configurations added for example
+        # self.registered_actuators['actuatorName'] = {'onoff':'OFF', 'delay': 1,
+        # 'path': 'actuator data paht'}
 
         # reply format:
-        # {'request_ID': 'uuid','result' : 'SUCCESS', 'response' : dict(conf),
-        # 'error_string': error_string}
+        # {'request_ID': 'uuid', 'result':'SUCCESS', 'response':dict(conf),
+        # 'error_string': error_string'}
 
-        self.registered_sensors = {}
-        self.default_conf = {'onoff': 'OFF', 'period' : 1, 'shutdown' : False,
-                'instance':None, 'timerinstance':None}
+        self.registered_actuators = {}
+        self.default_conf = {'onoff':'ON', 'delay':1}
         self.status = 'IDLE'
 
         # Holds the expected request templates for a request from the user
@@ -38,41 +38,41 @@ class TemperatureSensor(XAE):
         self.request_template['modify'] = ['name', 'conf', 'request_ID', 'app_ID']
 
     def _on_register(self):
-        #create a request channel
+        # create a request channel
         self.request_cnt = Container(resourceName='request',
-                labels=['elastest:sensor:temperature:request'],
+                labels=['elastest:actuator:simple:request'],
                 maxNrOfInstances=5)
         self.request_cnt = self.create_container(None, self.request_cnt)
         # subscribe to the request channel
         self.add_container_subscription(self.request_cnt, self.handle_request)
 
-        # create a response channel
+        # create response channel
         self.response_cnt = Container(resourceName='response',
-                labels=['elastest:sensor:temperature:response'],
+                labels=['elastest:actuator:simple:response'],
                 maxNrOfInstances=5)
         self.response_cnt = self.create_container(None, self.response_cnt)
 
-        # create a status channel
+        # create status channel
         self.status_cnt = Container(resourceName='status',
-                labels=['elastest:sensor:temperature:status'],
+                labels=['elastest:actuator:simple:status'],
                 maxNrOfInstances=5)
         self.status_cnt = self.create_container(None, self.status_cnt)
 
+        # start endless loop
         self.run_forever()
 
-    # con is a list. The index 0 element is a dictionary containing the request
     def handle_request(self, cnt, con):
         _response_cnt = self.response_cnt
         _status_cnt = self.status_cnt
-        timestamp = format(round(time.time))
-        status_data = [{'n': 'temperature_sensor',
+        timestamp = format(round(time.time()))
+        status_data = [{'n': 'simple_actuator',
             't': timestamp,
             's': str(self.status)}]
 
         if self.status == 'IDLE':
             self.status = 'BUSY'
             status_data[0]['s'] = self.status
-            self.push_content(_status_cnt, status_data)
+            self.push_content(_status_cnt, status_cnt)
 
             request = con[0]
             # analyze the incoming request
@@ -80,51 +80,46 @@ class TemperatureSensor(XAE):
 
             if not valid:
                 self.push_content(_response_cnt, {'result':'FAIL',
-                    'request_ID':'FFFFFFFF', 'error_string': error_string})
+                    'request_ID':'FFFFFFFF', 'error_string':error_string})
                 self.status = 'IDLE'
-                status_data[0]['s'] = str(dself.status)
+                status_data['0']['s'] = str(self.status)
                 timestamp = format(round(time.time(), 3), '.3f')
                 status_data[0]['t'] = timestamp
                 self.push_content(_status_cnt, status_data)
-                return
 
             # the request was valid
-            # at most two requests could be found in a request
-            # register or modify
-            # we iterate through the request
             for key in request:
                 if key == 'register':
                     request_1 = request[key]
-                    sensor_name = request_1['name']
+                    actuator_name = request_1['name']
                     path = request_1['path']
-                    self.registered_sensors[sensor_name] = self.default_conf
-                    self.add_sensor_method(path, sensor_name)
+                    self.registered_actuators[actuator_name] = self.default_conf
+                    self.add_actuator_method(path, actuator_name)
                     reply = {}
                     reply['app_ID'] = request_1['app_ID']
                     reply['request_ID'] = request_1['request_ID']
                     reply['result'] = 'SUCCESS'
-                    reply['conf'] = self.registered_sensors[sensor_name]
+                    reply['conf'] = self.registered_actuators[actuator_name]
                     self.push_content(_response_cnt, reply)
 
-                elif key == 'modify':
-                    # modify the sensor configuration
+                if key == 'modify':
                     request_1 = request[key]
-                    sensor_name = request_1['name']
+                    actuator_name = request_1['name']
                     reply = {}
                     reply['app_ID'] = request_1['app_ID']
                     reply['request_ID'] = request_1['request_ID']
-                    if sensor_name not in self.registered_sensors:
+                    if actuator_name not in self.registered_actuators:
                         reply['result'] = 'FAIL'
-                        error_string = sensor_name + ' sensor name not registered\n'
+                        error_string = actuator_name + ' actuator name is not registered\n'
                         reply['error_string'] = error_string
                         self.push_content(_response_cnt, reply)
                         continue
                     modify_conf = request_1['conf']
                     for key_2 in modify_conf:
-                        self.registered_sensors[sensor_name]['conf'][key_2] = \
+                        self.registered_actuators[actuator_name][key_2] = \
                                 modify_conf[key_2]
                     reply['result'] = 'SUCCESS'
-                    reply['conf'] = self.registered_sensors[sensor_name]
+                    reply['conf'] = self.registered_actuators[actuator_name]
                     self.push_content(_response_cnt, reply)
             self.status = 'IDLE'
             status_data[0]['s'] = str(self.status)
@@ -132,40 +127,39 @@ class TemperatureSensor(XAE):
             status_data[0]['t'] = timestamp
         self.push_content(_status_cnt, status_data)
 
-    def add_sensor_method(self, path, name):
+    def add_actuator_method(self, path, name):
         # containers on the given attach path
-        sensor_name = name
-        sensor_cnt = Container(resourceName=sensor_name,
-                labels=['elastest:sensor:temperature'],
+        actuator_name = name
+        actuator_cnt = Container(resourceName=actuator_name,
+                labels=['elastest:actuator:simple'],
                 maxNrOfInstances=1)
-        sensor_cnt = self.create_container(path, sensor_cnt)
-        # create a data container on top of sensor container
-        data_cnt = Container(resourceName='data',
-                labels=['elastest:sensor:temperature:data'],
+        actuator_cnt = self.create_container(path, actuator_cnt)
+
+        # create data in and data our containers
+        data_in_cnt = Container(resourceName='data_in',
+                labels=['elastest:actuator:simple:data_in'],
                 maxNrOfInstances=5)
-        data_cnt = self.create_container(sensor_cnt, data_cnt)
-        # create a class method to update sensor values
-        def add_update_method(self):
-            data = uniform(20,50)
-            self.push_content(data_cnt, str(data))
-        add_update_method.__name__ = sensor_name + '_func'
+        data_in_cnt = self.create_container(actuator_cnt, data_in_cnt)
+
+        data_out_cnt = Container(resourceName='data_out',
+                labels=['elastest:actuator:simple:data_out'],
+                maxNrOfInstances=5)
+
+        def add_actuator_method(self, cnt, con):
+            # forwards the data received on data in to data out with a delay
+            delay = self.register_actuators[actuator_name]['delay']
+            time.sleep(delay)
+            if self.registered_actuators[actuator_name]['onoff'] == 'ON':
+                self.push_content(data_out_cnt, con)
+        add_actuator_method.__name__ = actuator_name + '_func'
         setattr(self, add_update_method.__name__, add_update_method)
-        funcname = sensor_name + '_func'
-        sensorfunc = getattr(self, funcname)
-        self.registered_sensors[sensor_name]['instance'] = sensorfunc
-        self.registered_sensors[sensor_name]['path'] = data_cnt.path
-        self.call_timer(self, sensorfunc, name)
-
-
-    def call_timer(self, func, name):
-        sensorfunc = func
-        conf = self.registered_sensors[name]
-        if not conf['shutdown']:
-            Timer(float(conf['period']), self.call_timer, [func, name]).start()
-        if conf['onoff'] == 'ON':
-            sensorfunc()
-
-
+        funcname = actuator_name + '_func'
+        actuatorfunc = getattr(self, funcname)
+        self.add_container_subscription(data_in_cnt, actuatorfunc)
+        self.registered_actuators[actuator_name]['in_path'] = data_in_cnt.path
+        self.registered_actuators[actuator_name]['out_path'] = data_out_cnt.path
+        # finally subscribe to the incoming data
+        self.add_container_subscription(data_in_cnt, actuatorfunc)
 
     def check_request_content(self, con):
         request = con
@@ -175,9 +169,8 @@ class TemperatureSensor(XAE):
         if not isinstance(request, dict):
             return False, "Request is not a dictionary"
 
-        # check if the request is an empty dictionary
         if not request:
-            return False, 'Request dictionary is empty'
+            return False, "Request dictionary is empty"
 
         for key in request:
             if key not in ['register', 'modify']:
