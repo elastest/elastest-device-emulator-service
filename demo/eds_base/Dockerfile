@@ -26,6 +26,7 @@ RUN printf "Starting update...\n" && \
     iproute2 \
     python-pip \
     python-dev \
+    curl \
     git \
     jq > /dev/null && \
     apt-get clean && \
@@ -67,5 +68,9 @@ RUN mkdir -p /var/log/openmtc
 
 RUN cp docker/configure-gateway-and-start /usr/local/bin/configure-and-start
 
-ENTRYPOINT ["/usr/local/bin/configure-and-start"]
+COPY . /tmp/
+RUN cp /tmp/startup.sh ${openmtc_path}
+RUN chmod +x startup.sh
+
+ENTRYPOINT ["/usr/local/src/openmtc/startup.sh"]
 CMD [""]
