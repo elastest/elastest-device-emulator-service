@@ -19,7 +19,7 @@ cp /tmp/SimpleActuator/__init__.py ${openmtc_path}/apps/SimpleActuator/src/simpl
 cp /tmp/SimpleActuator/simple_actuator.py ${openmtc_path}/apps/SimpleActuator/src/simpleactuator/
 
 
-sh /usr/local/src/openmtc/openmtc-gevent/configure-and-start &
+sh /usr/local/src/openmtc/openmtc-gevent/run-gateway &
 
 sleep 1
 
