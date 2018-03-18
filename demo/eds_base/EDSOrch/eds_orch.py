@@ -340,7 +340,7 @@ class EDSOrch(XAE):
         # app_ID was found to be registered
         # deregister all the sensors, by sending shutdown to all sensors
         for sensor_name in self.registered_apps[app_ID]['sensors']:
-            request = [{'modify':{'name':sensor_name, 'conf':{'onoff':'OFF', 'shutdown': True},
+            request = [{'modify':{'name':sensor_name, 'conf':{'onoff':'OFF'},
                 'request_ID':request_ID, 'app_ID':app_ID}}]
             if 'temp' in sensor_name:
                 pass
@@ -348,7 +348,7 @@ class EDSOrch(XAE):
 
         for actuator_name in self.registered_apps[app_ID]['actuators']:
             request = [{'modify':{'name':actuator_name, 'request_ID':request_ID,
-                'app_ID': app_ID, 'conf':{'onoff': 'OFF'}}}]
+                'app_ID': app_ID, 'conf':{}}}]
             if 'simple' in actuator_name:
                 pass
                 self.push_content('onem2m/SimpleActuator/request', request)
