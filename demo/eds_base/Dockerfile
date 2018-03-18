@@ -32,6 +32,8 @@ RUN printf "Starting update...\n" && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
 
+EXPOSE 8000
+
 RUN mkdir -p ${base_path}
 
 WORKDIR ${base_path}
