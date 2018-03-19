@@ -2,7 +2,6 @@
 # Dockerfile for EDS Gateway
 #############################################################################
 
-# This Dockerfile concerns the EDS gateway
 # Set the base image to use debian
 FROM debian:jessie
 
@@ -27,10 +26,13 @@ RUN printf "Starting update...\n" && \
     iproute2 \
     python-pip \
     python-dev \
+    curl \
     git \
     jq > /dev/null && \
     apt-get clean && \
     printf "Installation and cleanup finished.\n"
+
+EXPOSE 8000
 
 RUN mkdir -p ${base_path}
 
@@ -40,7 +42,9 @@ RUN git clone ${openmtc_git} openmtc
 
 WORKDIR ${openmtc_path}
 
-RUN chmod +x create-binary-dist && ./create-binary-dist gateway
+RUN chmod +x create-binary-dist
+
+RUN ./create-binary-dist gateway
 
 RUN mkdir -p ${openmtc_path}/tmp
 
@@ -66,5 +70,9 @@ RUN mkdir -p /var/log/openmtc
 
 RUN cp docker/configure-gateway-and-start /usr/local/bin/configure-and-start
 
-ENTRYPOINT ["/usr/local/bin/configure-and-start"]
+COPY . /tmp/
+RUN cp /tmp/startup.sh ${openmtc_path}
+RUN chmod +x startup.sh
+
+ENTRYPOINT ["/usr/local/src/openmtc/startup.sh"]
 CMD [""]

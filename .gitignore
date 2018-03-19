@@ -74,3 +74,8 @@ target/
 
 ../FrontEnd/common/openmtc/lib/openmtc_sdk.egg-info/PKG-INFO
 ../MemsIPE/common/openmtc/lib/openmtc_sdk.egg-info/PKG-INFO
+
+# vim tags and temp files
+tags
+*.sw*
+
