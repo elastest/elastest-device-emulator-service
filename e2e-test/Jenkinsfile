@@ -22,12 +22,15 @@ elastest_lib.pipeline({
             stage ('prepare')
                 git 'https://github.com/elastest/elastest-device-emulator-service.git'
                 elastest.connect2ElastestNetwork()
-                def elastestURL = elastest.getEtmUrl()
+                def elastestUser = elastest.getElasTestUser()
+                def elastestPass = elastest.getElasTestPassword()
+                // def elastestURL = elastest.getEtmUrl() //TO BE REMOVED
+                def elastestURL = "http://" + elastestUser +":"+ elastestPass+"@"+elastest.getIp()+":"+elastest.getPort()
                 
             stage ("E2E tests")
                 //extra params are sent to java execution
                 //try {
-                 sh "cd tjob-test;python tjob_eds.py "+elastestURL
+                 sh "cd tjob-test;python tjob_eds.py ${elastestURL}"
                // } catch(e) {
                 //    sh 'docker ps | awk "{print $NF}" | grep ece | xargs docker logs'
                // }
