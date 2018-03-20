@@ -26,10 +26,10 @@ elastest_lib.pipeline({
                 
             stage ("E2E tests")
                 //extra params are sent to java execution
-                try {
-                    sh "cd tjob-test;python tjob_eds.py "+elastestURL
-                } catch(e) {
-                    sh 'docker ps | awk "{print $NF}" | grep ece | xargs docker logs'
-                }
+                //try {
+                 sh "cd tjob-test;python tjob_eds.py "+elastestURL
+               // } catch(e) {
+                //    sh 'docker ps | awk "{print $NF}" | grep ece | xargs docker logs'
+               // }
         }
   })
