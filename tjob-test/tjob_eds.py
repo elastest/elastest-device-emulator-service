@@ -45,7 +45,9 @@ class Tjobs(unittest.TestCase):
 		commands = """
 		git clone https://github.com/rowshan/eds_e2e.git
 		cd eds_e2e
-		sh run.sh
+		docker build -t rowshan/eds_e2e .
+		#Run the test_app image container
+		docker run -p 5022:5022 rowshan/eds_e2e
 		"""
 
 		#tjobimage = 'elastest/eds-frontend'
