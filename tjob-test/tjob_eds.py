@@ -19,6 +19,7 @@ class Tjobs(unittest.TestCase):
 	def Test_job1(self):
 		#show the location of web driver locally
 		#self.driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+		self.driver = webdriver.Chrome()
 		url = sys.argv[1]
 		self.driver.implicitly_wait(20)
 		self.driver.maximize_window()
