@@ -60,7 +60,7 @@ RUN cp tmp/gateway-dependencies.txt /tmp/requirements.txt
 
 RUN pip install --upgrade --requirement /tmp/requirements.txt
 
-RUN pip install --upgrade logstash
+RUN pip install --upgrade python-logstash
 
 RUN cp tmp/openmtc-gateway.tar.gz /tmp/openmtc-gateway.tar.gz
 
