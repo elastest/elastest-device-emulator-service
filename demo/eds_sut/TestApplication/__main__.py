@@ -24,7 +24,7 @@ nm = get_value("name", (unicode, str), default_name, args, config)
 cb = config.get("cse_base", "onem2m")
 #ep = get_value("ep", (unicode, str), default_ep, args, config)
 # get the eds-base API from the environment variable
-ep = os.environ["ET_EDS_EDS-BASE_API"][:-8]
+ep = "http://eds-base:8000"
 poas = config.get("poas", ["http://auto:20600"])
 originator_pre = config.get("originator_pre", "//openmtc.org/mn-cse-1")
 ssl_certs = config.get("ssl_certs", {})
