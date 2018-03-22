@@ -30,5 +30,6 @@ elastest_lib.pipeline({
                 
             stage ("E2E tests")
                  sh "cd tjob-test;python tjob_eds.py ${elastestURL}"
+                 }
 
   })
