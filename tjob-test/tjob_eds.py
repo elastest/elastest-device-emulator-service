@@ -20,7 +20,7 @@ class Tjobs(unittest.TestCase):
 		#show the location of web driver locally
 		#self.driver = webdriver.Chrome('/usr/local/bin/chromedriver')
 		self.driver = webdriver.Chrome()
-		#url = sys.argv[1]
+		url = sys.argv[1]
 		self.driver.implicitly_wait(20)
 		self.driver.maximize_window()
 
@@ -40,8 +40,8 @@ class Tjobs(unittest.TestCase):
 
 		#self.driver.get("http://elastest.io:37000")
 		self.driver.set_page_load_timeout(1000)
-		self.driver.get("http://nightly.elastest.io:37000")
-		#self.driver.get(url)
+		#self.driver.get("http://nightly.elastest.io:37000")
+		self.driver.get(url)
 		assert self.driver.title, 'Elastest Nightly Home'
 		sleep(1)
 

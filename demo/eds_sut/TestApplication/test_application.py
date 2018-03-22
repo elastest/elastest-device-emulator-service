@@ -2,7 +2,8 @@ from openmtc_app.onem2m import XAE
 from openmtc_onem2m.model import Container
 import gevent
 import uuid
-
+import os
+import signal
 
 class TestApplication(XAE):
 
@@ -115,7 +116,11 @@ class TestApplication(XAE):
 
         # stop the tjob after 5 minutes
         gevent.sleep(0)
-        gevent.spawn_later(300, self.shutdown)
+        gevent.spawn_later(300, self.app_shutdown)
+
+    def app_shutdown(self):
+        os.kill(os.getpid(), signal.SIGTERM)
+
     def handle_actuator_out(self, cnt, con):
         self.logger.info(':actuator:' + con)
         self.logger.info(cnt)
