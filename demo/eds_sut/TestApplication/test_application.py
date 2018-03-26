@@ -114,9 +114,9 @@ class TestApplication(XAE):
         self.add_container_subscription(self.requests_ID[actuator_request]['conf']['out_path'],
                self.handle_actuator_out)
 
-        # stop the tjob after 5 minutes
+        # stop the tjob after 1 minutes
         gevent.sleep(0)
-        gevent.spawn_later(300, self.app_shutdown)
+        gevent.spawn_later(60, self.app_shutdown)
 
     def app_shutdown(self):
         os.kill(os.getpid(), signal.SIGTERM)

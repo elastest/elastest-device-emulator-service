@@ -8,7 +8,7 @@ import sys
 
 url = sys.argv[1]
 res = requests.get(url)
-data = json.dumps({"id": 666, "name": "EDSSE2E"})
+data = json.dumps({"id": 667, "name": "EDSE2E"})
 headers = {'content-type': 'application/json'}
 res = requests.post(url+'/api/project', data=data, headers=headers)
 print(res.text)
