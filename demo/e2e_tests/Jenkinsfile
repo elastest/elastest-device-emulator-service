@@ -1,0 +1,32 @@
+@Library('ciElastestConnect') _
+
+elastest_lib.setVersion('dev')
+//initialization of the context for the library
+elastest_lib.setContext(this)
+elastest_lib.setAuthenticatedElastest(true)
+
+//initialization of the runnable object to access elastest methods inside the pipeline
+def elastest= elastest_lib.getElastestMethods()
+
+elastest_lib.setMode('experimental-lite')
+//definition of nodes is managed by the library. Just declare the steps of your pipeline
+//inside the elastest_lib.pipeline({...})
+
+elastest_lib.pipeline({
+    
+    stage ('docker container')
+        def mycontainer = elastest.ctx.docker.image('elastest/ci-docker-e2e-compose-py:latest')
+        mycontainer.pull()
+        mycontainer.inside("-u jenkins -v /var/run/docker.sock:/var/run/docker.sock:rw -v /dev/shm:/dev/shm")  {
+            sh '/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &'
+          
+            stage ('prepare')
+                git 'https://github.com/elastest/elastest-device-emulator-service.git'
+                elastest.connect2ElastestNetwork()
+                def elastestUser = elastest.getElasTestUser()
+                def elastestPass = elastest.getElasTestPassword()
+                def elastestURL = "http://" + elastestUser +":"+ elastestPass+"@"+elastest.getIp()+":"+elastest.getPort()
+            stage ("E2E API tests")
+        	    sh "cd demo/e2e_tests;python e2e_test_api.py ${elastestURL}"
+        }
+  })
