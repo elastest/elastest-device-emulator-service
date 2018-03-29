@@ -5,7 +5,7 @@ import sys
 
 url = sys.argv[1]
 projectname = 'EDSE2E_UI'
-tjobname = 'eds-base-tjob'
+tjobname = 'sampletjob'
 tjobimage = 'elastest/eds-base'
 
 COMMANDS = """
