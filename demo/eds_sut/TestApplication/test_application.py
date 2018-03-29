@@ -116,7 +116,7 @@ class TestApplication(XAE):
 
         # stop the tjob after 1 minutes
         gevent.sleep(0)
-        gevent.spawn_later(300, self.app_shutdown)
+        gevent.spawn_later(60, self.app_shutdown)
 
     def app_shutdown(self):
         os.kill(os.getpid(), signal.SIGTERM)
