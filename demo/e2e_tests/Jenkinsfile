@@ -27,8 +27,8 @@ elastest_lib.pipeline({
                 def elastestPass = elastest.getElasTestPassword()
                 def elastestURL = "http://" + elastestUser +":"+ elastestPass+"@"+elastest.getIp()+":"+elastest.getPort()
             stage ("E2E API tests")
-        	    sh "cd eds-e2e/e2e_tests;python e2e_test_api.py ${elastestURL}"
+        	    sh "cd e2e_tests;python e2e_test_api.py ${elastestURL}"
             stage ("E2E UI tests")
-              sh "cd eds-e2e/e22_tests;python e2e_test_ui.py ${elastestURL}"
+              sh "cd e2e_tests;python e2e_test_ui.py ${elastestURL}"
         }
   })
