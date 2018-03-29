@@ -21,14 +21,14 @@ elastest_lib.pipeline({
             sh '/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &'
           
             stage ('prepare')
-                git 'https://github.com/elastest/elastest-device-emulator-service.git'
+                git 'https://github.com/varungowtham/eds-e2e.git'
                 elastest.connect2ElastestNetwork()
                 def elastestUser = elastest.getElasTestUser()
                 def elastestPass = elastest.getElasTestPassword()
                 def elastestURL = "http://" + elastestUser +":"+ elastestPass+"@"+elastest.getIp()+":"+elastest.getPort()
             stage ("E2E API tests")
-        	    sh "cd demo/e2e_tests;python e2e_test_api.py ${elastestURL}"
+        	    sh "cd eds-e2e/e2e_tests;python e2e_test_api.py ${elastestURL}"
             stage ("E2E UI tests")
-              sh "cd demo/e2e_tests;python e2e_test_ui.py ${elastestURL}"
+              sh "cd eds-e2e/e22_tests;python e2e_test_ui.py ${elastestURL}"
         }
   })
