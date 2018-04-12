@@ -22,7 +22,7 @@ LOG = log.get_logger(name=__name__)
 
 def add_check_api():
     app = flask.Flask('check_api')
-    health = HealthCheck(app, "/healthcheck")
+    health = HealthCheck(app, "/health")
     envdump = EnvironmentDump(app, "/environment")
 
     def health_check():
