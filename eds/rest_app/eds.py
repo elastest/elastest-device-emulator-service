@@ -4,6 +4,8 @@ import os
 import requests
 import signal
 import flask
+from flask import Flask
+
 import connexion
 from connexion.resolver import RestyResolver
 import urllib
@@ -13,7 +15,7 @@ from tornado.ioloop import IOLoop
 from tornado.wsgi import WSGIContainer
 
 from adapters import log
-import call
+#import call
 
 LOG = log.get_logger(name=__name__)
 
@@ -89,8 +91,8 @@ if __name__ == '__main__':
     IOLoop.instance().start()
 
     eds_app.route('/eds/devices')
-    def get():
-        return call
+    #def get():
+     #   return call
 
     # app.run(port=9090)
     #add_check_api().run(host= '0.0.0.0', port=8080)
