@@ -72,6 +72,16 @@
                     "protocol": "http",
                     "port": 8080,
                     "path": "/eds/ui/"
+                },
+              "api": {
+                    "protocol": "http",
+                    "port": 9090,
+                    "path": "/health"
+                },
+              "api": {
+                    "protocol": "http",
+                    "port": 9090,
+                    "path": "/environment"
                 }
             },
 	    "eds-base":{
