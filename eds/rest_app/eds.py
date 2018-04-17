@@ -67,7 +67,7 @@ def shutdown_handler(signum=None, frame=None):
     IOLoop.instance().stop()
 
 if __name__ == '__main__':
-    eds_app = connexion.FlaskApp(__name__)
+    eds_app = connexion.App(__name__)
     eds_app.add_api('api1.yaml',
                 arguments={'title': 'ElasTest Device Emulator API'},
                 resolver=RestyResolver('api'))
