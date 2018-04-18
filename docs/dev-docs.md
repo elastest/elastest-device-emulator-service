@@ -1,9 +1,9 @@
 ### Architecture:
  ![EDS screenshot examaple](image/eds_arch.jpg)
 
-The entire application EDS consists of many services such as- zigbeeipe, memsipe, rest_app, and frontend. We devide the architecture as follows:
+The entire application EDS consists of many services such as- memsipe, rest_app, and frontend. We divide the architecture as follows:
  - sensor/actuator based services/application which uses m2m communication protocol.
- - Application to visualize all the data and metices coming from the sesor/actuator based services/application, which uses m2m communication protocol.
+ - Application to visualize all the data and metrics coming from the sensor/actuator based services/application, which uses m2m communication protocol.
  - Simple restfull communication based service or application
  
 ### Prepare development environment:
@@ -23,14 +23,14 @@ Now, clone the repository from [here](https://github.com/elastest/elastest-devic
      
       
    * From *IDE and console*:
-     * Run *prep-env.sh* from the console to install all openmtc dependencies and to create the environment for zigbeeipe,memsipe and frontend services.
+     * Run *prep-env.sh* from the console to install all OpenMTC dependencies and to create the environment for memsipe and frontend services.
           ```
        $cd eds/FrontEnd/openmtc-gevent
        $./prep-env.sh
        
           ```
     
-   * Go to the rest_app directory and run foolowing:
+   * Go to the rest_app directory and run following:
       ```
       pip install -r requirements.txt
       
@@ -153,7 +153,6 @@ The following docker images are currently used in order to make the EDS work suc
  - elastest/eds-api: a service contain restfull api that communicate with the elastest component. This service is based on
  OpenAPI specification.The image associated to this service is accessible [here](https://hub.docker.com/r/elastest/eds-api/)
  - elastest/eds-memsipe: a service with uses accelometers data such as x,y and z axes. The image associated to this service is accessible [here](https://hub.docker.com/r/elastest/eds-zigbeeipe/)
- - elastest/eds-zigbeeipe: a service for zigbee sensor protocol data such as vibration, temperature, movement etc. The image associated to this service is accessible [here](https://hub.docker.com/r/elastest/eds-memsipe/)
  
 ### Continuous Integration:
  * The Jenkins file for the EDS is accessible [here](https://github.com/elastest/elastest-device-emulator-service/blob/master/Jenkinsfile).
