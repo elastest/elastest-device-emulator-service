@@ -96,7 +96,8 @@ Now, clone the repository from [here](https://github.com/elastest/elastest-devic
 ```
 
 Get sensor data via swagger rest_app: 
-[here](https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api1.yaml)
+[here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/elastest/elastest-service-manager/master/api.yaml#/)
+[API](https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api1.yaml)
 
 ```
 $curl http://localhost:8080/eds/devices?device=MemsIPE
