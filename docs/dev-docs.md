@@ -56,15 +56,52 @@ Now, clone the repository from [here](https://github.com/elastest/elastest-devic
     $./mems-ipe
       
           ```  
-          
+   ## Run the rest api
+    ```
+    $cd eds/rest_app
+    $python eds.py
+      
+          ```  
    Open a browser and in the address bar write- localhost:6065/static/eds.html
+   For rest_api frontend write: localhost:8080/eds/ui
+   For api health check write localhost:9090/health
+   ```
+   {"status": "success", "timestamp": 1524044631.051784, "hostname": "c998dce9aceb", "results": [{"output": "up",
+    "checker": "health_check", "expires": 1524044658.05173, "passed": "status", "timestamp": 1524044631.05173}]}
    
+   ```
+   
+   For api environment check write: localhost:9090/environment
+```
+{"python": {"pythonpath": ["/usr/src/app", "/usr/local/lib/python27.zip", "/usr/local/lib/python2.7", 
+"/usr/local/lib/python2.7/plat-linux2", "/usr/local/lib/python2.7/lib-tk", "/usr/local/lib/python2.7/lib-old", 
+"/usr/local/lib/python2.7/lib-dynload", "/usr/local/lib/python2.7/site-packages"], 
+"executable": "/usr/local/bin/python", "version": "2.7.14 (default, Jan 10 2018, 05:41:02) \n[GCC 5.3.0]", 
+"packages": {"inflection": "0.3.1", "backports.ssl-match-hostname": "3.5.0.1", "Flask": "0.12.2", "kazoo": "2.4.0",
+ "cached-property": "1.4.2", "dockerpty": "0.4.1", "singledispatch": "3.4.0.3", "jsonschema": "2.6.0",
+  "Werkzeug": "0.14.1", "pip": "9.0.3", "clickclick": "1.2.2", "oauth2client": "4.1.2", "pykafka": "2.7.0", 
+  "tabulate": "0.8.2", "oauthlib": "2.0.7", "pykube": "0.15.0", "backports-abc": "0.5", "ipaddress": "1.0.22",
+   "six": "1.11.0", "pathlib": "1.0.1", "docker-pycreds": "0.2.2", "click": "6.7", "Jinja2": "2.10", "connexion": "1.4",
+    "typing": "3.6.4", "chardet": "3.0.4", "itsdangerous": "0.24", "swagger-spec-validator": "2.1.0",
+     "websocket-client": "0.47.0", "wheel": "0.30.0", "PyYAML": "3.12", "tornado": "5.0.2", "healthcheck": "1.3.2", 
+     "urllib3": "1.22", "rsa": "3.4.2", "MarkupSafe": "1.0", "pytz": "2018.4", "tzlocal": "1.5.1", "httplib2": "0.11.3",
+      "functools32": "3.2.3.post2", "python-dateutil": "2.7.2", "texttable": "0.9.1", "pyasn1-modules": "0.2.1",
+       "docker": "3.2.1", "certifi": "2018.4.16", "enum34": "1.1.6", "idna": "2.6", "futures": "3.2.0", 
+       "requests-oauthlib": "0.8.0", "setuptools": "39.0.1", "docker-compose": "1.21.0", "requests": "2.18.4", "docopt":
+        "0.6.2", "pyasn1": "0.4.2"}, "version_info": {"micro": 14, "major": 2, "releaselevel": "final", "serial": 0, "minor": 7}},
+         "process": {"environ": {"LANG": "C.UTF-8", "ci_env": "`bash <(curl -s https://codecov.io/env)`",
+          "GPG_KEY": "********", "PYTHON_VERSION": "2.7.14", "PYTHON_PIP_VERSION": "9.0.3", "HOSTNAME": "c998dce9aceb",
+           "EDS_PORT": "8080", "EDS_CHECK_PORT": "9090", "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "HOME": "/root"}, "pid": 1, "cwd": "/usr/src/app", "argv": ["eds.py"], "user": "root"}, "config": {"JSON_AS_ASCII": true, "SESSION_COOKIE_PATH": null, "LOGGER_NAME": "check_api", "SECRET_KEY": "********", "APPLICATION_ROOT": null, "SERVER_NAME": null, "PREFERRED_URL_SCHEME": "http", "TESTING": false, "TEMPLATES_AUTO_RELOAD": null, "JSONIFY_MIMETYPE": "application/json", "SESSION_REFRESH_EACH_REQUEST": true, "TRAP_HTTP_EXCEPTIONS": false, "USE_X_SENDFILE": false, "SESSION_COOKIE_SECURE": false, "SESSION_COOKIE_DOMAIN": null, "SESSION_COOKIE_NAME": "session", "LOGGER_HANDLER_POLICY": "always", "DEBUG": false, "EXPLAIN_TEMPLATE_LOADING": false, "MAX_CONTENT_LENGTH": null, "JSONIFY_PRETTYPRINT_REGULAR": true, "PROPAGATE_EXCEPTIONS": null, "TRAP_BAD_REQUEST_ERRORS": false, "JSON_SORT_KEYS": "********", "SESSION_COOKIE_HTTPONLY": true, "PRESERVE_CONTEXT_ON_EXCEPTION": null}, "os": {"platform": "linux2", "name": "posix", "uname": ["Linux", "c998dce9aceb", "4.4.0-79-generic", "#100-Ubuntu SMP Wed May 17 19:58:14 UTC 2017", "x86_64"]}, "application": {"maintainer": "ElasTest", "git_repo": "https://github.com/elastest/elastest-device-emulator-service"}}
+```
+
+
    
 ## Run from Docker:
  This method allows docker to setup containers
 and connect them in a custom network named **elastest_elastest**. In order to run the docker-compose file at first we need to 
   create the custom network. All the sensors register after 10 seconds with 
 FrontEnd. 
+
 
 Create custom network:
 ```shell
