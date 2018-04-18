@@ -39,29 +39,30 @@ Now, clone the repository from [here](https://github.com/elastest/elastest-devic
    
 ### Locally:
    ## Run the gateway
-    ```
+    
+    
     $cd eds/FrontEnd/openmtc-gevent
     $./run_gscl
       
-          ```
+    
    ## Run the application/frontend
-    ```
+    
     $cd eds/FrontEnd
     $./frontend
       
-          ```
+        
    ## Run the sensor application/memsipe
-    ```
+    
     $cd eds/MemsIPE
     $./mems-ipe
       
-          ```  
+           
    ## Run the rest api
-    ```
+    
     $cd eds/rest_app
     $python eds.py
       
-          ```  
+        
    Open a browser and in the address bar write- localhost:6065/static/eds.html
    For rest_api frontend write: localhost:8080/eds/ui
    For api health check write localhost:9090/health
