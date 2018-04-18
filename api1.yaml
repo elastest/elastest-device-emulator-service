@@ -13,14 +13,16 @@ paths:
        - in: query
          name: device
          type: string
-         example: "Mems"
+         enum: ["ZigBeeIPE", "MemsIPE"]
          description: "Enter sensor device name here."
-         required: true
-       - in: query
-         name: name
-         type: string
-         description: "Enter sensor device ID here."
-         required: true
+         #required: true
+       #- in: query
+        # name: id
+       #  type: string
+        # enum: ["MEMS01", "ZBS122S000000"]
+        # example: MEMS01
+        # description: "Enter sensor device ID here."
+         #required: true
       responses:
         '200':
           description: 'Fetch a list of devices'
@@ -31,7 +33,7 @@ paths:
     post:
       parameters:
         - in: body
-          name: device
+          name: name
           required: true
           schema:
             $ref: '#/definitions/DeviceRegistration'
@@ -40,7 +42,7 @@ paths:
           description: 'Register a new device'
 
 
-  '/devices/{id}':
+  '/devices/device':
     put:
       parameters:
         - in: body
@@ -58,12 +60,13 @@ paths:
     delete:
       parameters:
         - in: path
-          name: id
+          name: device
           required: true
           type: string
+          enum: ["ZigBeeIPE", "MemsIPE"]
       responses:
         '204':
-          description: 'Delete a device by ID'
+          description: 'Delete a device by device name'
     get:
       parameters:
         - in: path
@@ -88,8 +91,8 @@ definitions:
     properties:
       mems:
         $ref: '#/definitions/Mems'
-      zigbee:
-         $ref: '#/definitions/Zigbee'
+#      zigbee:
+#         $ref: '#/definitions/Zigbee'
       registered:
         type: string
         format: date-time
@@ -106,18 +109,18 @@ definitions:
       z:
        type: object
 
-  Zigbee:
-    type: object
-    properties:
-      temperature:
-          type: object
-      brightness:
-          type: object
-      pressure:
-          type: object
-      movement:
-         type: object
-      humidity:
-          type: object
+#  Zigbee:
+#    type: object
+#    properties:
+#      temperature:
+#          type: object
+#      brightness:
+#          type: object
+#      pressure:
+#          type: object
+#      movement:
+#         type: object
+#      humidity:
+#          type: object
 
 
