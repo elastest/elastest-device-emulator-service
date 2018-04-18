@@ -95,7 +95,7 @@ Now, clone the repository from [here](https://github.com/elastest/elastest-devic
            "EDS_PORT": "8080", "EDS_CHECK_PORT": "9090", "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "HOME": "/root"}, "pid": 1, "cwd": "/usr/src/app", "argv": ["eds.py"], "user": "root"}, "config": {"JSON_AS_ASCII": true, "SESSION_COOKIE_PATH": null, "LOGGER_NAME": "check_api", "SECRET_KEY": "********", "APPLICATION_ROOT": null, "SERVER_NAME": null, "PREFERRED_URL_SCHEME": "http", "TESTING": false, "TEMPLATES_AUTO_RELOAD": null, "JSONIFY_MIMETYPE": "application/json", "SESSION_REFRESH_EACH_REQUEST": true, "TRAP_HTTP_EXCEPTIONS": false, "USE_X_SENDFILE": false, "SESSION_COOKIE_SECURE": false, "SESSION_COOKIE_DOMAIN": null, "SESSION_COOKIE_NAME": "session", "LOGGER_HANDLER_POLICY": "always", "DEBUG": false, "EXPLAIN_TEMPLATE_LOADING": false, "MAX_CONTENT_LENGTH": null, "JSONIFY_PRETTYPRINT_REGULAR": true, "PROPAGATE_EXCEPTIONS": null, "TRAP_BAD_REQUEST_ERRORS": false, "JSON_SORT_KEYS": "********", "SESSION_COOKIE_HTTPONLY": true, "PRESERVE_CONTEXT_ON_EXCEPTION": null}, "os": {"platform": "linux2", "name": "posix", "uname": ["Linux", "c998dce9aceb", "4.4.0-79-generic", "#100-Ubuntu SMP Wed May 17 19:58:14 UTC 2017", "x86_64"]}, "application": {"maintainer": "ElasTest", "git_repo": "https://github.com/elastest/elastest-device-emulator-service"}}
 ```
 
-Get sensor data via swagger rest_app: 
+#Get sensor data via swagger rest_app: 
 [here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api1.yaml#/)
 
 [API YAML](https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api1.yaml)
