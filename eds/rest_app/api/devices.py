@@ -1,13 +1,15 @@
 import datetime
 import requests
-import json
+#import re
+import simplejson
 from base64 import b64decode
 from connexion import NoContent
 
-raw_data = requests.get("http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/x/latest/")
+raw_data = requests.get("http://localhost:8000/onem2m/MemsIPE/sensor_data/x/latest/")
+#print raw_data
 array = raw_data.content
 print array
-final_data = json.loads(array)
+final_data = simplejson.loads(str(array))
 print final_data
 devices = b64decode(final_data["m2m:cin"]["con"])
 print devices
@@ -33,7 +35,7 @@ def put(id, servicename):
     return devices[id]
 
 
-def delete(id, servicename):
+def delete(id):
     id = str(id)
     if devices.get(id) is None:
         return NoContent, 404
