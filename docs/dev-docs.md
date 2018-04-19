@@ -95,13 +95,31 @@ Now, clone the repository from [here](https://github.com/elastest/elastest-devic
            "EDS_PORT": "8080", "EDS_CHECK_PORT": "9090", "PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "HOME": "/root"}, "pid": 1, "cwd": "/usr/src/app", "argv": ["eds.py"], "user": "root"}, "config": {"JSON_AS_ASCII": true, "SESSION_COOKIE_PATH": null, "LOGGER_NAME": "check_api", "SECRET_KEY": "********", "APPLICATION_ROOT": null, "SERVER_NAME": null, "PREFERRED_URL_SCHEME": "http", "TESTING": false, "TEMPLATES_AUTO_RELOAD": null, "JSONIFY_MIMETYPE": "application/json", "SESSION_REFRESH_EACH_REQUEST": true, "TRAP_HTTP_EXCEPTIONS": false, "USE_X_SENDFILE": false, "SESSION_COOKIE_SECURE": false, "SESSION_COOKIE_DOMAIN": null, "SESSION_COOKIE_NAME": "session", "LOGGER_HANDLER_POLICY": "always", "DEBUG": false, "EXPLAIN_TEMPLATE_LOADING": false, "MAX_CONTENT_LENGTH": null, "JSONIFY_PRETTYPRINT_REGULAR": true, "PROPAGATE_EXCEPTIONS": null, "TRAP_BAD_REQUEST_ERRORS": false, "JSON_SORT_KEYS": "********", "SESSION_COOKIE_HTTPONLY": true, "PRESERVE_CONTEXT_ON_EXCEPTION": null}, "os": {"platform": "linux2", "name": "posix", "uname": ["Linux", "c998dce9aceb", "4.4.0-79-generic", "#100-Ubuntu SMP Wed May 17 19:58:14 UTC 2017", "x86_64"]}, "application": {"maintainer": "ElasTest", "git_repo": "https://github.com/elastest/elastest-device-emulator-service"}}
 ```
 
-## Get sensor data via swagger rest_app: 
-[here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api1.yaml#/)
+## Get sensor data 
+You can find the Swagger API [here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api.yaml#/) and yaml file
+[here](https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api.yaml)
 
-[API YAML](https://raw.githubusercontent.com/elastest/elastest-device-emulator-service/master/api1.yaml)
+Since the data is generated from the sensor therefore we can only make a get request by using the API to see the data.
 
 ```
-$curl http://localhost:8080/eds/devices?device=MemsIPE
+~/Desktop/final_eds/elastest-device-emulator-service$ curl -v -X GET http://localhost:8080/eds/devices -H 'X_Broker_Api_Version: 2.12'
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+> GET /eds/devices HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.47.0
+> Accept: */*
+> X_Broker_Api_Version: 2.12
+> 
+< HTTP/1.1 200 OK
+< Content-Length: 117
+< Content-Type: application/json
+< Server: TornadoServer/4.5.1
+< 
+"[{\"bn\": \"urn:dev1:memsipe\", \"v\": 0.2193706747115361, \"u\": \"g\", \"t\": \"1524138997.778\", \"n\": \"x\"}]"
+* Connection #0 to host localhost left intact
+
 ```
 Output:
 ```
