@@ -15,38 +15,38 @@ print devices
 #devices= final_data
 
 
-def post(name):
+def post(servicename):
     count = len(devices)
     print(count)
-    name['id'] = count + 1
-    name['registered'] = datetime.datetime.now()
-    devices[name['name']] = name
-    return name, 201
+    servicename['id'] = count + 1
+    servicename['registered'] = datetime.datetime.now()
+    devices[servicename['device']] = servicename
+    return servicename, 201
 
 
-def put(name):
-    name = str(name)
-    if devices.get(name) is None:
+def put(id, servicename):
+    id = str(id)
+    if devices.get(servicename) is None:
         return NoContent, 404
-        devices[name] = name
+        devices[servicename] = servicename
 
-    return devices[name]
+    return devices[servicename]
 
 
-def delete(name):
-    name = str(name)
-    if devices.get(name) is None:
+def delete(servicename):
+    id = str(id)
+    if devices.get(servicename) is None:
         return NoContent, 404
-    del devices[name]
+    del devices[servicename]
     return NoContent, 204
 
 
-def get(name):
-    name = str(name)
-    if devices.get(name) is None:
+def get(id,servicename):
+    id = str(id)
+    if devices.get(servicename) is None:
         return NoContent, 404
 
-    return devices[name]
+    return devices[servicename]
 
 
 def search():
