@@ -121,12 +121,48 @@ Note: Unnecessary use of -X or --request, GET is already inferred.
 * Connection #0 to host localhost left intact
 
 ```
-Output:
+
+Register Device:
+
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/problem+json' -d '{ \ 
+   "mems": { \ 
+     "axis": { \ 
+       "x": { \ 
+         "bn": "urn:dev1:memsipe", \ 
+         "lbl": "openmtc:sensor_data", \ 
+         "n": "x", \ 
+         "t": "2018-04-19T14:23:04.596Z", \ 
+         "u": "g", \ 
+         "v": 1582 \ 
+       }, \ 
+       "y": { \ 
+         "bn": "urn:dev1:memsipe", \ 
+         "lbl": "openmtc:sensor_data", \ 
+         "n": "y", \ 
+         "t": "2018-04-19T14:23:04.596Z", \ 
+         "u": "g", \ 
+         "v": 1520 \ 
+       }, \ 
+       "z": { \ 
+         "bn": "urn:dev1:memsipe", \ 
+         "lbl": "openmtc:sensor_data", \ 
+         "n": "z", \ 
+         "t": "2018-04-19T14:23:04.596Z", \ 
+         "u": "g", \ 
+         "v": 1000 \ 
+       } \ 
+     }, \ 
+     "id": "Mem01" \ 
+   }, \ 
+   "registered": "2018-04-19T14:23:04.596Z", \ 
+   "servicename": "MemsIPE" \ 
+ }' 'http://localhost:8080/eds/devices/Mem01'
+
 ```
 
-"[{\"bn\": \"urn:dev1:memsipe\", \"v\": 0.36022749792507164, \"u\": \"g\", \"t\": \"1524060591.222\", \"n\": \"x\"}]"
 
- ```  
+  
 ## Run from Docker:
  This method allows docker to setup containers
 and connect them in a custom network named **elastest_elastest**. In order to run the docker-compose file at first we need to 

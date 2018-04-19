@@ -26,27 +26,27 @@ def post(servicename):
 
 def put(id, servicename):
     id = str(id)
-    if devices.get(servicename) is None:
+    if devices.get(id) is None:
         return NoContent, 404
-        devices[servicename] = servicename
+    devices[id] = servicename
 
-    return devices[servicename]
+    return devices[id]
 
 
-def delete(servicename):
+def delete(id, servicename):
     id = str(id)
-    if devices.get(servicename) is None:
+    if devices.get(id) is None:
         return NoContent, 404
-    del devices[servicename]
+    del devices[id]
     return NoContent, 204
 
 
-def get(id,servicename):
+def get(id, servicename):
     id = str(id)
-    if devices.get(servicename) is None:
+    if devices.get(id) is None:
         return NoContent, 404
-
-    return devices[servicename]
+    devices[id] = servicename
+    return devices[id]
 
 
 def search():
