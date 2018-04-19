@@ -1,25 +1,22 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 import logging
 import os
 import requests
 import signal
 import flask
-from flask import Flask
 
 import connexion
 from connexion.resolver import RestyResolver
-import urllib
 from healthcheck import HealthCheck, EnvironmentDump
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
 from tornado.wsgi import WSGIContainer
 
 from adapters import log
-#import call
 
 LOG = log.get_logger(name=__name__)
 
-
+logging.basicConfig(level=logging.INFO)
 
 
 def add_check_api():
@@ -68,21 +65,21 @@ def shutdown_handler(signum=None, frame=None):
 
 if __name__ == '__main__':
     eds_app = connexion.App(__name__)
-    eds_app.add_api('api1.yaml',
+    eds_app.add_api('api.yaml',
                 arguments={'title': 'ElasTest Device Emulator API'},
-                resolver=RestyResolver('api'))
+               resolver=RestyResolver('api'))
 
     eds_ip = os.environ.get('EDS_IP', '0.0.0.0')
     eds_port = os.environ.get('EDS_PORT', 8080)
     eds_server = HTTPServer(WSGIContainer(eds_app))
     eds_server.listen(address=eds_ip, port=eds_port)
-    LOG.info('ESM available at http://{IP}:{PORT}'.format(IP=eds_ip, PORT=eds_port))
+    LOG.info('EDS available at http://{IP}:{PORT}'.format(IP=eds_ip, PORT=eds_port))
 
     check_ip = os.environ.get('EDS_CHECK_IP', '0.0.0.0')
     check_port = os.environ.get('EDS_CHECK_PORT', 9090)
     check_server = HTTPServer(WSGIContainer(add_check_api()))
     check_server.listen(address=check_ip, port=check_port)
-    LOG.info('ESM Health available at http://{IP}:{PORT}'.format(IP=check_ip, PORT=check_port))
+    LOG.info('EDS Health available at http://{IP}:{PORT}'.format(IP=check_ip, PORT=check_port))
 
     for sig in [signal.SIGTERM, signal.SIGINT, signal.SIGHUP, signal.SIGQUIT]:
         signal.signal(sig, shutdown_handler)
@@ -90,8 +87,9 @@ if __name__ == '__main__':
     LOG.info('Press CTRL+C to quit.')
     IOLoop.instance().start()
 
-    eds_app.route('/eds/devices')
+  #  eds_app.route('/eds/devices')
     #def get():
+
      #   return call
 
     # app.run(port=9090)
