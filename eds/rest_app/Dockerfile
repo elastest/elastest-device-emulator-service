@@ -13,8 +13,12 @@ LABEL commit_date=$COMMIT_DATE
 ARG VERSION=unspecified
 LABEL version=$VERSION 
 
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+
+
+RUN pip install --upgrade pip
 
 RUN apk add --no-cache gcc libc-dev
 
@@ -24,7 +28,7 @@ COPY requirements.txt /usr/src/app/
 RUN pip install -r requirements.txt
 
 
-COPY . /usr/src/app
+ADD . /usr/src/app
 
 ENV EDS_PORT 8080
 ENV EDS_CHECK_PORT 9090
