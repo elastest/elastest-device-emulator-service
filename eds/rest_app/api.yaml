@@ -115,13 +115,94 @@ definitions:
   Mems:
     type: object
     properties:
-      x:
-       type: object
+        x:
+          $ref: '#/definitions/X'
+        y:
+          $ref: '#/definitions/Y'
+        z:
+          $ref: '#/definitions/Z'
+  X:
+      type: object
+      properties:
+        bn:
+          type: string
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
 
-      y:
-       type: object
-      z:
-       type: object
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "x"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+
+  Y:
+      type: object
+      properties:
+        bn:
+          type: string
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "y"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
+  Z:
+      type: object
+      properties:
+        bn:
+          type: string
+          example: "urn:dev1:memsipe"
+          description: "basename of the mems sensor"
+
+        u:
+          type: string
+          example: "g"
+        v:
+          type: number
+          format: float
+        t:
+          type: string
+          format: date-time
+          description: the timestamp when the brightness was measured
+        n:
+          type: string
+          example: "z"
+
+        lbl:
+          type: string
+          example: "openmtc:sensor_data"
+      description: ok
+
 
 #  Zigbee:
 #    type: object
