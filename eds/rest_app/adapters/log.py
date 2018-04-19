@@ -73,7 +73,7 @@ class SentinelLogHandler(logging.Handler):
     """
 
     def setLevel(self, level):
-        super().setLevel(level)
+        self.super().setLevel(level)
 
     def __init__(self, hosts_list, topic, series_name, batch_size=10, backup_file=None):
         logging.Handler.__init__(self)

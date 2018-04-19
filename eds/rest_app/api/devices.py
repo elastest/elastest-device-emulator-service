@@ -11,30 +11,33 @@ final_data = json.loads(array)
 print final_data
 devices = b64decode(final_data["m2m:cin"]["con"])
 print devices
+
 #devices= final_data
-def post(device):
+
+
+def post(name):
     count = len(devices)
     print(count)
-    device['id'] = count + 1
-    device['registered'] = datetime.datetime.now()
-    devices[device['id']] = device
-    return device, 201
+    name['id'] = count + 1
+    name['registered'] = datetime.datetime.now()
+    devices[name['name']] = name
+    return name, 201
 
 
-def put(id, device):
-    id = str(id)
-    if devices.get(id) is None:
+def put(name):
+    name = str(name)
+    if devices.get(name) is None:
         return NoContent, 404
-        devices[id] = device
+        devices[name] = name
 
-    return devices[id]
+    return devices[name]
 
 
-def delete(id):
-    id = str(id)
-    if devices.get(id) is None:
+def delete(name):
+    name = str(name)
+    if devices.get(name) is None:
         return NoContent, 404
-    del devices[id]
+    del devices[name]
     return NoContent, 204
 
 
@@ -45,7 +48,7 @@ def get(name):
 
     return devices[name]
 
-#
+
 def search():
     # NOTE: we need to wrap it with list for Python 3 as dict_values is not JSON serializable
-   return devices
+    return devices
