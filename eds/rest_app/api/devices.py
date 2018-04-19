@@ -5,7 +5,7 @@ import simplejson
 from base64 import b64decode
 from connexion import NoContent
 
-raw_data = requests.get("http://localhost:8000/onem2m/MemsIPE/sensor_data/x/latest/")
+raw_data = requests.get("http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/x/latest/")
 #print raw_data
 array = raw_data.content
 print array
