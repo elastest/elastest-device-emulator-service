@@ -1,9 +1,13 @@
 connexion
 python_dateutil
-setuptools
+setuptools  #>=21.0.0
 docker-compose
 docker
 pykube
 healthcheck
 tornado
 pykafka
+flask
+jinja2
+six
+simplejson
