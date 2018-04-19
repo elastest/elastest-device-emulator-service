@@ -9,9 +9,10 @@ basePath: /eds
 paths:
   /devices:
     get:
+      #operationId: api.devices.get
       parameters:
        - in: query
-         name: device
+         name: name
          type: string
          enum: ["ZigBeeIPE", "MemsIPE"]
          description: "Enter sensor device name here."
@@ -30,37 +31,41 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Device'
-    post:
+   # post:
+    #  operationId: api.devices.post
+     # parameters:
+      #  - in: body
+       #   name: name
+        #  required: true
+         # schema:
+          #  $ref: '#/definitions/DeviceRegistration'
+      #responses:
+       # '201':
+        #  description: 'List of device'
+
+
+  /devices/{name}:
+    put:
+      #operationId: api.devices.put
       parameters:
         - in: body
           name: name
           required: true
           schema:
-            $ref: '#/definitions/DeviceRegistration'
-      responses:
-        '201':
-          description: 'Register a new device'
-
-
-  '/devices/device':
-    put:
-      parameters:
-        - in: body
-          name: device
-          required: true
-          schema:
             $ref: '#/definitions/Device'
         - in: path
-          name: id
+          name: name
           required: true
           type: string
+
+
       responses:
         '200':
           description: 'Update a device by ID'
     delete:
       parameters:
         - in: path
-          name: device
+          name: name
           required: true
           type: string
           enum: ["ZigBeeIPE", "MemsIPE"]
@@ -70,9 +75,10 @@ paths:
     get:
       parameters:
         - in: path
-          name: id
+          name: name
           required: true
           type: string
+          enum: ["ZigBeeIPE", "MemsIPE"]
       responses:
         '200':
           description: 'Fetch a device by ID'
@@ -84,11 +90,19 @@ definitions:
     properties:
       name:
        type: string
-       example: "Mems sensor"
+       example: "MemsIPE"
+
+      device:
+       $ref: '#/definitions/Device'
+
 
   Device:
     type: object
     properties:
+      #name:
+      # type: string
+       #example: "MemsIPE"
+
       mems:
         $ref: '#/definitions/Mems'
 #      zigbee:
