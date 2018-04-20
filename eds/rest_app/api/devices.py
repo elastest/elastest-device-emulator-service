@@ -30,26 +30,33 @@ raw_data = [m["m2m:cin"]["con"]for m in dic]
 
 data = [de.encode("utf-8") for de in raw_data]
 
-devices =[b64decode(pa) for pa in data]
-json = list()
+convert =[b64decode(pa) for pa in data]
+a = {}
+b = {}
+c = {}
 
-json = {'mems':
-               {'id': '', 'axis':
-                   {'x': {},
-                    'y': {},
-                    'z': {}
-                    }
-                },
-          'registered': "",
-          'servicename': ""
-          }
+a = convert[0]
+b = convert[1]
+c = convert[2]
 
-print len(devices)
+devices = {}
 
 
+devices['registered'] = ''
+devices['servicename'] = ''
+mems = {}
+axis = {}
 
-#if not covert['n'] = 'z':
+axis['x']= c
+axis['y']= b
+axis['z']= a
 
+
+mems['id']= ''
+mems['axis']= axis
+print mems
+devices['mems']= mems
+print devices
 
 def post(servicename):
     count = len(devices)
@@ -58,7 +65,7 @@ def post(servicename):
     servicename['registered'] = datetime.datetime.now()
     devices[servicename['device']] = servicename
     return servicename, 201
-    print servicename
+
 
 def put(id, servicename):
     id = str(id)
@@ -83,9 +90,6 @@ def get(id, servicename):
         return NoContent, 404
     devices[id] = servicename
     return devices[id]
-    print devices[id]
 
 def search():
-    # NOTE: we need to wrap it with list for Python 3 as dict_values is not JSON serializable
     return devices
-    print devices
