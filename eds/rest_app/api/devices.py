@@ -31,9 +31,24 @@ raw_data = [m["m2m:cin"]["con"]for m in dic]
 data = [de.encode("utf-8") for de in raw_data]
 
 devices =[b64decode(pa) for pa in data]
-print devices
+json = list()
+
+json = {'mems':
+               {'id': '', 'axis':
+                   {'x': {},
+                    'y': {},
+                    'z': {}
+                    }
+                },
+          'registered': "",
+          'servicename': ""
+          }
+
+print len(devices)
 
 
+
+#if not covert['n'] = 'z':
 
 
 def post(servicename):
