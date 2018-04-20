@@ -4,6 +4,7 @@ import requests
 import simplejson
 from base64 import b64decode
 from connexion import NoContent
+import itertools
 
 # raw_data = requests.get("http://localhost:8000/onem2m/MemsIPE/sensor_data/x/latest/" + "http://localhost:8000/onem2m/MemsIPE/sensor_data/y/latest/" )
 # #print raw_data
@@ -25,9 +26,9 @@ res = [requests.get(i) for i in url]
 d = [j.content for j in res]
 
 dic = [simplejson.loads(q) for q in d]
-
-raw_data = [m["m2m:cin"]["con"]for m in dic]
-
+#print dic
+raw_data = [m["m2m:cin"]["con"] for m in dic]
+registered = [k["m2m:cin"]["ct"] for k in dic]
 data = [de.encode("utf-8") for de in raw_data]
 
 convert =[b64decode(pa) for pa in data]
@@ -52,7 +53,7 @@ axis['y']= b
 axis['z']= a
 
 
-mems['id']= ''
+mems['id']= next(itertools.count(100))
 mems['axis']= axis
 print mems
 devices['mems']= mems
