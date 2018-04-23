@@ -7,9 +7,9 @@ from connexion import NoContent
 import itertools
 
 
-url1 = "http://localhost:8000/onem2m/MemsIPE/sensor_data/x/latest/"
-url2 = "http://localhost:8000/onem2m/MemsIPE/sensor_data/y/latest/"
-url3 = "http://localhost:8000/onem2m/MemsIPE/sensor_data/z/latest/"
+url1 = "http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/x/latest/"
+url2 = "http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/y/latest/"
+url3 = "http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/z/latest/"
 
 url = {url1, url2, url3}
 
