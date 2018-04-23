@@ -102,23 +102,34 @@ You can find the Swagger API [here](http://petstore.swagger.io/?url=https://raw.
 Since the data is generated from the sensor therefore we can only make a get request by using the API to see the data.
 
 ```
-~/Desktop/final_eds/elastest-device-emulator-service$ curl -v -X GET http://localhost:8080/eds/devices -H 'X_Broker_Api_Version: 2.12'
 Note: Unnecessary use of -X or --request, GET is already inferred.
 *   Trying 127.0.0.1...
 * Connected to localhost (127.0.0.1) port 8080 (#0)
-> GET /eds/devices HTTP/1.1
+> GET /eds/devices?servicename=MemsIPE HTTP/1.1
 > Host: localhost:8080
 > User-Agent: curl/7.47.0
 > Accept: */*
-> X_Broker_Api_Version: 2.12
+> X_Broker_Api_Version:2.12
 > 
 < HTTP/1.1 200 OK
-< Content-Length: 117
+< Content-Length: 512
 < Content-Type: application/json
 < Server: TornadoServer/4.5.1
 < 
-"[{\"bn\": \"urn:dev1:memsipe\", \"v\": 0.2193706747115361, \"u\": \"g\", \"t\": \"1524138997.778\", \"n\": \"x\"}]"
+{
+  "mems": {
+    "axis": {
+      "x": "[{\"bn\": \"urn:dev1:memsipe\", \"v\": 0.16435346480798613, \"u\": \"g\", \"t\": \"1524478264.280\", \"n\": \"x\"}]",
+      "y": "[{\"bn\": \"urn:dev1:memsipe\", \"v\": 0.38121114537110395, \"u\": \"g\", \"t\": \"1524478264.280\", \"n\": \"y\"}]",
+      "z": "[{\"bn\": \"urn:dev1:memsipe\", \"v\": 0.36686967015137484, \"u\": \"g\", \"t\": \"1524478264.280\", \"n\": \"z\"}]"
+    },
+    "id": 100
+  },
+  "registered": "2018-04-23T12:11:10.720931Z",
+  "servicename": ""
+}
 * Connection #0 to host localhost left intact
+
 
 ```
 

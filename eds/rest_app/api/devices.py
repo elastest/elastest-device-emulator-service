@@ -1,21 +1,12 @@
 import datetime
 import requests
-#import re
+from flask import Flask, render_template, flash, request
 import simplejson
 from base64 import b64decode
 from connexion import NoContent
 import itertools
 
-# raw_data = requests.get("http://localhost:8000/onem2m/MemsIPE/sensor_data/x/latest/" + "http://localhost:8000/onem2m/MemsIPE/sensor_data/y/latest/" )
-# #print raw_data
-# array = raw_data.content
-# print array
-# final_data = simplejson.loads(str(array))
-# print final_data
-# devices = b64decode(final_data["m2m:cin"]["con"])
-# print devices
 
-# Replace with the correct URL
 url1 = "http://localhost:8000/onem2m/MemsIPE/sensor_data/x/latest/"
 url2 = "http://localhost:8000/onem2m/MemsIPE/sensor_data/y/latest/"
 url3 = "http://localhost:8000/onem2m/MemsIPE/sensor_data/z/latest/"
@@ -42,9 +33,10 @@ c = convert[2]
 
 devices = {}
 
+app = Flask(__name__)
 
-devices['registered'] = ''
-devices['servicename'] = ''
+devices['registered'] = datetime.datetime.now()
+devices['servicename'] ='' #'MemsIPE'  #request.form['servicename']
 mems = {}
 axis = {}
 
@@ -55,16 +47,15 @@ axis['z']= a
 
 mems['id']= next(itertools.count(100))
 mems['axis']= axis
-print mems
 devices['mems']= mems
-print devices
+
 
 def post(servicename):
     count = len(devices)
     print(count)
     servicename['id'] = count + 1
     servicename['registered'] = datetime.datetime.now()
-    devices[servicename['device']] = servicename
+    devices[servicename['id']] = servicename
     return servicename, 201
 
 
