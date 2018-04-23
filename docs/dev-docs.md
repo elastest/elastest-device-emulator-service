@@ -168,7 +168,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
    }, \ 
    "registered": "2018-04-19T14:23:04.596Z", \ 
    "servicename": "MemsIPE" \ 
- }' 'http://localhost:8080/eds/devices/Mem01'
+ }' 'http://localhost:8080/eds/devices/100'
 
 ```
 
