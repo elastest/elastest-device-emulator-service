@@ -5,7 +5,6 @@ docker-compose
 docker
 pykube
 healthcheck
-json
 requests
 tornado
 pykafka
