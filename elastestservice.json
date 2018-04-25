@@ -73,12 +73,12 @@
                     "port": 8080,
                     "path": "/eds/ui/"
                 },
-              "api": {
+                "api": {
                     "protocol": "http",
                     "port": 9090,
                     "path": "/health"
                 },
-              "api": {
+                "api": {
                     "protocol": "http",
                     "port": 9090,
                     "path": "/environment"
