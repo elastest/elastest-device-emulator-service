@@ -32,6 +32,8 @@ services:
       - 9090
     links:
       - frontend
+    depends_on:
+      - memsipe
     networks:
       - elastest_elastest
 
