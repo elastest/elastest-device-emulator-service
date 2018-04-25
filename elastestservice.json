@@ -68,7 +68,7 @@
             "rest_app": {
                 "description": "Service to emulate mems data",
                 "main": false,
-                "api": {
+                "gui": {
                     "protocol": "http",
                     "port": 8080,
                     "path": "/eds/ui/"
