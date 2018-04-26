@@ -31,20 +31,19 @@ node('docker'){
 
         stage "build api image"
          //here we use only the build for api
-            //sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/rest_app/Dockerfile -t elastest/eds-api:0.9.0'
             def api_image = docker.build("elastest/eds-api:0.9.0", "./eds/rest_app")
 
 
         stage "build memsipe image"
          //here we use only the build for memsipe
-             //sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/MemsIPE/Dockerfile -t elastest/eds-memsipe:0.9.0' 
-             def memsipe_image = docker.image("elastest/eds-memsipe:0.9.0", "./eds/MemsIPE")
+             def memsipe_image = docker.build("elastest/eds-memsipe:0.9.0", "./eds/MemsIPE")
 
         stage "build frontend image"
          //here we use only the build for frontend
-             //sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/FrontEnd/Dockerfile -t elastest/eds-frontend:0.9.0' 
-             def frontend_image = docker.image("elastest/eds-frontend:0.9.0", "./eds/FrontEnd")
+             def frontend_image = docker.build("elastest/eds-frontend:0.9.0", "./eds/FrontEnd")
 
+        stage "build eds-base image"
+            def edsbase_image = docker.build("elastest/eds-base:0.9.0", "./demo/eds_base")
 
         stage "Run EDS docker-compose"
                 //sh 'modprobe i2c-dev'
@@ -63,7 +62,7 @@ node('docker'){
                  memsipe_image.push()
                  frontend_image.push()
                  api_image.push()
-
+                 edsbase_image.push()
 
                     }
 
