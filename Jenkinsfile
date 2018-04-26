@@ -1,5 +1,3 @@
-def tag = "0.9.0"
-
 node('docker'){
    stage "Container initialize"
          echo("the node is up")
@@ -32,25 +30,20 @@ node('docker'){
 
 
         stage "build api image"
-         //here we use only the build for zigbeeip
-            sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/rest_app . -t elastest/eds-api:${tag}'
-            def api_image = docker.image("elastest/eds-api:${tag}")
+         //here we use only the build for api
+            sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/rest_app . -t elastest/eds-api:0.9.0'
+            def api_image = docker.image("elastest/eds-api:0.9.0")
 
 
         stage "build memsipe image"
-         //here we use only the build for zigbeeip
-             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/MemsIPE . -t elastest/eds-memsipe:${tag}' 
-             def memsipe_image = docker.image("elastest/eds-memsipe:${tag}")
-
-       // stage "build zigbeeipe image"
-         //here we use only the build for zigbeeip
-         //    sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/ZigBeeIPE . -t elastest/eds-zigbeeipe:${tag}'
-           //  def zigbeeipe_image = docker.image("elastest/eds-zigbeeipe:${tag}")
+         //here we use only the build for memsipe
+             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/MemsIPE . -t elastest/eds-memsipe:0.9.0' 
+             def memsipe_image = docker.image("elastest/eds-memsipe:0.9.0")
 
         stage "build frontend image"
-         //here we use only the build for zigbeeip
-             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/FrontEnd . -t elastest/eds-frontend:${tag}' 
-             def frontend_image = docker.image("elastest/eds-frontend:${tag}")
+         //here we use only the build for frontend
+             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/FrontEnd . -t elastest/eds-frontend:0.9.0' 
+             def frontend_image = docker.image("elastest/eds-frontend:0.9.0")
 
 
         stage "Run EDS docker-compose"
@@ -69,7 +62,6 @@ node('docker'){
                         //here your code
                  memsipe_image.push()
                  frontend_image.push()
-                // zigbeeipe_image.push()
                  api_image.push()
 
 
