@@ -31,19 +31,19 @@ node('docker'){
 
         stage "build api image"
          //here we use only the build for api
-            def api_image = docker.build("elastest/eds-api:0.9.0", "./eds/rest_app")
+            def api_image = docker.build("elastest/eds-api:latest", "./eds/rest_app")
 
 
         stage "build memsipe image"
          //here we use only the build for memsipe
-             def memsipe_image = docker.build("elastest/eds-memsipe:0.9.0", "./eds/MemsIPE")
+             def memsipe_image = docker.build("elastest/eds-memsipe:latest", "./eds/MemsIPE")
 
         stage "build frontend image"
          //here we use only the build for frontend
-             def frontend_image = docker.build("elastest/eds-frontend:0.9.0", "./eds/FrontEnd")
+             def frontend_image = docker.build("elastest/eds-frontend:latest", "./eds/FrontEnd")
 
         stage "build eds-base image"
-            def edsbase_image = docker.build("elastest/eds-base:0.9.0", "./demo/eds_base")
+            def edsbase_image = docker.build("elastest/eds-base:latest", "./demo/eds_base")
 
         stage "Run EDS docker-compose"
                 //sh 'modprobe i2c-dev'
