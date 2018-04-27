@@ -1,22 +1,15 @@
 from selenium import webdriver
 import sys
 from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.common.by import By
 import selenium
 from time import sleep
-#import unittest
 
 
 
 #open nightly and go to test support services
 url = sys.argv[1]
-
-
 projectname = 'tjobs_eds_1'
 tjobname = 'test_tjobs'
-#env_docker_image = 'ubuntu:16.04'
 env_docker_image = 'rowshan/eds_e2e'
 commands = """
 		git clone https://github.com/rowshan/eds_e2e.git
@@ -26,21 +19,17 @@ commands = """
 		docker run -p 5022:5022 rowshan/eds_e2e
 		"""
 
-
-
-#driver = webdriver.Chrome()
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 driver = webdriver.Chrome(chrome_options=options)
 driver.get(url)
 assert driver.title, 'Elastest Nightly Home'
-sleep(1)
-
-#driver.implicitly_wait(20)
-#driver.maximize_window()
+sleep(5)
 
 
-web_element = driver.find_element_by_id("main_menu").click()
+
+
+driver.find_element_by_id("main_menu").click()
 sleep(1)
 ### navigate to the project in the side_nav
 project = driver.find_element_by_id('nav_projects').click()
@@ -49,7 +38,7 @@ project = driver.find_element_by_id('nav_projects').click()
 # 	web_element = driver.find_element_by_id("main_menu").click()
 # 	sleep(1)  # delay to allow menu animation to complete.
 # 	project.click()
-# sleep(2)
+sleep(2)
 
 # create new project and save it
 driver.find_element_by_xpath("//button[contains(string(), 'New Project')]").click()
