@@ -25,7 +25,6 @@ elastest_lib.pipeline({
                 elastest.connect2ElastestNetwork()
                 def elastestUser = elastest.getElasTestUser()
                 def elastestPass = elastest.getElasTestPassword()
-                // def elastestURL = elastest.getEtmUrl() //TO BE REMOVED
                 def elastestURL = "http://" + elastestUser +":"+ elastestPass+"@"+elastest.getIp()+":"+elastest.getPort()
                 
             stage ("E2E tests")
