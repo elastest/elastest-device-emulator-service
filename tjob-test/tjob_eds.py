@@ -12,14 +12,7 @@ from time import sleep
 
 #open nightly and go to test support services
 url = sys.argv[1]
-options = webdriver.ChromeOptions()
-options.add_argument('headless')
-driver = webdriver.Chrome(chrome_options=options)
-driver.get(url)
 
-
-driver.implicitly_wait(20)
-driver.maximize_window()
 
 projectname = 'tjobs_eds_1'
 tjobname = 'test_tjobs'
@@ -36,12 +29,16 @@ commands = """
 
 
 #driver = webdriver.Chrome()
-
-#self.driver.set_page_load_timeout(1000)
-#self.driver.get("http://nightly.elastest.io:37000")
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
+driver = webdriver.Chrome(chrome_options=options)
 driver.get(url)
 assert driver.title, 'Elastest Nightly Home'
 sleep(1)
+
+#driver.implicitly_wait(20)
+#driver.maximize_window()
+
 
 
 ### navigate to the project in the side_nav
