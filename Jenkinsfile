@@ -1,5 +1,4 @@
 node('docker'){
-   def tag = "0.9.0"
    stage "Container initialize"
          echo("the node is up")
          //the new image is working!!!
@@ -31,26 +30,20 @@ node('docker'){
 
 
         stage "build api image"
-         //here we use only the build for zigbeeip
-            sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/rest_app . -t elastest/eds-api:${tag}'
-            def api_image = docker.image("elastest/eds-api:${tag}")
+         //here we use only the build for api
+            def api_image = docker.build("elastest/eds-api:latest", "./eds/rest_app")
 
 
         stage "build memsipe image"
-         //here we use only the build for zigbeeip
-             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/MemsIPE . -t elastest/eds-memsipe:${tag}' 
-             def memsipe_image = docker.image("elastest/eds-memsipe:${tag}")
-
-       // stage "build zigbeeipe image"
-         //here we use only the build for zigbeeip
-         //    sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/ZigBeeIPE . -t elastest/eds-zigbeeipe:${tag}'
-           //  def zigbeeipe_image = docker.image("elastest/eds-zigbeeipe:${tag}")
+         //here we use only the build for memsipe
+             def memsipe_image = docker.build("elastest/eds-memsipe:latest", "./eds/MemsIPE")
 
         stage "build frontend image"
-         //here we use only the build for zigbeeip
-             sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y-%m-%dT%H:%M:%S) -f eds/FrontEnd . -t elastest/eds-frontend:${tag}' 
-             def frontend_image = docker.image("elastest/eds-frontend:${tag}")
+         //here we use only the build for frontend
+             def frontend_image = docker.build("elastest/eds-frontend:latest", "./eds/FrontEnd")
 
+        stage "build eds-base image"
+            def edsbase_image = docker.build("elastest/eds-base:latest", "./demo/eds_base")
 
         stage "Run EDS docker-compose"
                 //sh 'modprobe i2c-dev'
@@ -68,9 +61,8 @@ node('docker'){
                         //here your code
                  memsipe_image.push()
                  frontend_image.push()
-                // zigbeeipe_image.push()
                  api_image.push()
-
+                 edsbase_image.push()
 
                     }
 
