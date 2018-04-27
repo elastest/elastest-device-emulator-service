@@ -45,13 +45,13 @@ sleep(1)
 
 
 ### navigate to the project in the side_nav
-project = driver.find_element_by_id('nav_projects')
-
-if not project.is_displayed():
-	web_element = driver.find_element_by_id("main_menu").click()
-	sleep(1)  # delay to allow menu animation to complete.
-	project.click()
-sleep(1)
+project = driver.find_element_by_id('nav_projects').click()
+#
+# if not project.is_displayed():
+# 	web_element = driver.find_element_by_id("main_menu").click()
+# 	sleep(1)  # delay to allow menu animation to complete.
+# 	project.click()
+sleep(2)
 
 # create new project and save it
 driver.find_element_by_xpath("//button[contains(string(), 'New Project')]").click()
