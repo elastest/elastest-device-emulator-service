@@ -54,7 +54,7 @@ driver.find_element_by_xpath("//button[@title='Run TJob']").click()
 time.sleep(5)
 
 res = None
-MAX_WAIT = 30
+MAX_WAIT = 120
 i = 0
 while True:
     try:
