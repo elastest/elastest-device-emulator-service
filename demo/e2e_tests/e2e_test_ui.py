@@ -54,6 +54,8 @@ driver.find_element_by_xpath("//button[@title='Run TJob']").click()
 time.sleep(5)
 
 res = None
+MAX_WAIT = 30
+i = 0
 while True:
     try:
         res = driver.find_element_by_xpath("//etm-dashboard/div")
@@ -65,6 +67,9 @@ while True:
         print("waiting for tjob to finish")
         timesleep(20)
     time.sleep(5)
+    i += 1
+    if i > MAX_WAIT:
+        break
 
 if "SUCCESS" in res.text:
     print('TJob succeeded')
