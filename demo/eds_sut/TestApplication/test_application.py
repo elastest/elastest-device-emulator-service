@@ -17,7 +17,7 @@ class TestApplication(XAE):
         self.requests_ID = {}
         self.sensors = {}
         self.actuators = {}
-        self.app_ID = (uuid.uuid4().hex)[:8]
+        self.app_ID = "testapplication"
         self.requests = []
         self.setup = False
 
