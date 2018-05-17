@@ -208,6 +208,8 @@ class EDSOrch(XAE):
                     for key_1 in request_1:
                         if key_1 == 'application':
                             self.handle_deregister_application(request)
+                        else:
+                            self.logger.info("unknown component")    
 
             self.status = 'IDLE'
             status_data[0]['s'] = str(self.status)
@@ -437,4 +439,3 @@ class EDSOrch(XAE):
 
 
         return valid_request, error_string
-
