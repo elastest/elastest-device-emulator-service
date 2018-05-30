@@ -62,6 +62,30 @@ class SimpleActuator(XAE):
         # start endless loop
         self.run_forever()
 
+    def build_Reply_register_Request(request, self.registered_sensors[sensor_name]):
+        reply = {type: 'register:sensor', 'app_ID': request['app_ID'], 'result': request['request_ID'],
+        'conf': self.registered_sensors[sensor_name], 'result': 'SUCCESS'}
+        return reply
+
+
+    def build_Reply_modify_Request(request, self.registered_sensors[sensor_name]):
+        reply = {type: 'modify:acuator', 'app_ID': request_1['app_ID'], 'result': request_1['request_ID']}
+        if actuator_name not in self.registered_actuators:
+            reply['result'] = 'FAIL'
+            error_string = actuator_name + ' actuator name is not registered\n'
+            reply['error_string'] = error_string
+            self.push_content(_response_cnt, reply)
+            continue
+        modify_conf = request_1['conf']
+        for key_2 in modify_conf:
+            self.registered_actuators[actuator_name][key_2] = \
+            modify_conf[key_2]
+        reply['result'] = 'SUCCESS'
+        reply['conf'] = self.registered_actuators[actuator_name]
+        self.push_content(_response_cnt, reply)
+
+
+
     def handle_request(self, cnt, con):
         _response_cnt = self.response_cnt
         _status_cnt = self.status_cnt
@@ -96,33 +120,13 @@ class SimpleActuator(XAE):
                     path = request_1['path']
                     self.registered_actuators[actuator_name] = self.default_conf
                     self.add_actuator(path, actuator_name)
-                    reply = {}
-                    reply['typ'] = 'register:actuator'
-                    reply['app_ID'] = request_1['app_ID']
-                    reply['request_ID'] = request_1['request_ID']
-                    reply['result'] = 'SUCCESS'
-                    reply['conf'] = self.registered_actuators[actuator_name]
-                    self.push_content(_response_cnt, reply)
-
+                    replyReq = build_Reply_Register_Request(request_1, self.registered_sensors[sensor_name])
+                    self.push_content(_response_cnt, replyReq)
+                    
                 if key == 'modify':
                     request_1 = request[key]
                     actuator_name = request_1['name']
-                    reply = {}
-                    reply['type'] = 'modify:actuator'
-                    reply['app_ID'] = request_1['app_ID']
-                    reply['request_ID'] = request_1['request_ID']
-                    if actuator_name not in self.registered_actuators:
-                        reply['result'] = 'FAIL'
-                        error_string = actuator_name + ' actuator name is not registered\n'
-                        reply['error_string'] = error_string
-                        self.push_content(_response_cnt, reply)
-                        continue
-                    modify_conf = request_1['conf']
-                    for key_2 in modify_conf:
-                        self.registered_actuators[actuator_name][key_2] = \
-                                modify_conf[key_2]
-                    reply['result'] = 'SUCCESS'
-                    reply['conf'] = self.registered_actuators[actuator_name]
+                    modify_req = build_Reply_modify_Request(request_1, self.registerd_sensors[sensor_name])
                     self.push_content(_response_cnt, reply)
             self.status = 'IDLE'
             status_data[0]['s'] = str(self.status)
@@ -166,7 +170,16 @@ class SimpleActuator(XAE):
         # finally subscribe to the incoming data
         self.add_container_subscription(data_in_cnt, actuatorfunc)
 
-    def check_request_content(self, con):
+
+
+    def decision(result):
+        if result == 1:
+            return "continue"
+        else:
+            return pass
+
+
+   def check_request_content(self, con):
         request = con
         error_string = ''
         valid_request = True
@@ -177,13 +190,21 @@ class SimpleActuator(XAE):
         if not request:
             return False, "Request dictionary is empty"
 
-        for key in request:
-            if key not in ['register', 'modify']:
-                valid_request = False
-                error_string = error_string + key + ' is not a valid request key\n'
-                continue
-
+        def check_request(request):
+            f = lambda key: (False, error_string + key + ' is not a valid request key\n') if key not in ['register',
+            'modify'] else (True, "")
+            g = lambda result: 1 if result == False else 0
+            valid, error = (f(key))
+            decision(g(valid))
             request_1 = request[key]
+
+
+            new_request = filter(test_func, request)
+            return new_request["valid_request"], new_request["error_string"]
+
+
+        for key in request:
+
             if not isinstance(request_1, dict):
                 valid_request = False
                 error_string = error_string + 'the element of ' + key + ' not a dictionary\n'

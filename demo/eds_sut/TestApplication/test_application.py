@@ -4,6 +4,7 @@ import gevent
 import uuid
 import os
 import signal
+import wrapperForrequest as wrpr
 
 class TestApplication(XAE):
 
@@ -40,10 +41,14 @@ class TestApplication(XAE):
 
         self.run_forever()
 
+    def _generate_request_uuid():
+        x = (uuid.uuid4().hex)[:12]
+        return x
+
     def _on_shutdown(self):
         # deregister the application - 4
-        request_ID = (uuid.uuid4().hex)[:12]
-        request_ID = str('deregister_'+ request_ID)
+        #request_ID = (uuid.uuid4().hex)[:12]
+        request_ID = str('deregister_'+ _generate_request_uuid())
         request = [{'deregister':{'application':{'app_ID':self.app_ID, 'request_ID':
             request_ID}}}]
         request_path = self.orch_path + 'request'
@@ -52,20 +57,21 @@ class TestApplication(XAE):
 
     def send_requests(self):
         # register the application - 0
-        request_ID = (uuid.uuid4().hex)[:12]
+        #request_ID = (uuid.uuid4().hex)[:12]
+        #request_ID = str('app_' + _generate_request_uuid())
         # append the request to requests
-        request_ID = str('app_' + request_ID)
-        request = [{'register':{'application':{'app_ID':self.app_ID,
-            'request_ID':request_ID}}}]
-        request_path = self.orch_path + 'request'
-        self.push_content(request_path, request)
-        self.requests.append(request_ID)
-        self.logger.info('sent request to register application')
-        gevent.sleep(3)
+        #request = [{'register':{'application':{'app_ID':self.app_ID,
+        #    'request_ID':request_ID}}}]
+        #request_path = self.orch_path + 'request'
+        #self.push_content(request_path, request)
+        #self.requests.append(request_ID)
+        #self.logger.info('sent request to register application')
+        #gevent.sleep(3)
+        wrpr.register_App()
 
         # register the sensor - 1
-        request_ID = (uuid.uuid4().hex)[:12]
-        request_ID = str('sensor_temp_' + request_ID)
+        #request_ID = (uuid.uuid4().hex)[:12]
+        request_ID = str('sensor_temp_' + _generate_request_uuid())
         request = [{'register':{'sensor':{'app_ID':self.app_ID,
             'request_ID':request_ID, 'sensor_type':'temperature'}}}]
         self.push_content(request_path, request)
@@ -74,8 +80,8 @@ class TestApplication(XAE):
         gevent.sleep(3)
 
         # register the actuator - 2
-        request_ID = (uuid.uuid4().hex)[:12]
-        request_ID = str('actuator_simple_' + request_ID)
+        #request_ID = (uuid.uuid4().hex)[:12]
+        request_ID = str('actuator_simple_' + _generate_request_uuid())
         request = [{'register':{'actuator':{'app_ID':self.app_ID,
             'request_ID':request_ID, 'actuator_type':'simple'}}}]
         self.push_content(request_path, request)
@@ -84,8 +90,8 @@ class TestApplication(XAE):
         gevent.sleep(3)
 
         # switch on the temperature sensor - 3
-        request_ID = (uuid.uuid4().hex)[:12]
-        request_ID = str('modify_' + request_ID)
+        #request_ID = (uuid.uuid4().hex)[:12]
+        request_ID = str('modify_' + _generate_request_uuid())
         sensor_name = self.requests_ID[self.requests[1]]['conf']['name']
         self.requests.append(request_ID)
         request = [{'modify':{'app_ID':self.app_ID, 'request_ID':
@@ -93,8 +99,8 @@ class TestApplication(XAE):
         request_path = self.sensor_temp_path + 'request'
         self.push_content(request_path, request)
 
-        request_ID = (uuid.uuid4().hex)[:12]
-        request_ID = str('modify_' + request_ID)
+        #request_ID = (uuid.uuid4().hex)[:12]
+        request_ID = str('modify_' + _generate_request_uuid())
         actuator_name = self.requests_ID[self.requests[2]]['conf']['name']
         self.requests.append(request_ID)
         request = [{'modify':{'app_ID':self.app_ID, 'request_ID':
@@ -154,7 +160,7 @@ class TestApplication(XAE):
         else:
             self.logger.info('received message not for this app')
 
-    def handle_temp_response(self, cnt, con):
+   def handle_temp_response(self, cnt, con):
         reply = con
         if 'app_ID' in reply and reply['app_ID'] == self.app_ID:
             if 'result' in reply and reply['result'] == 'SUCCESS':
@@ -181,5 +187,3 @@ class TestApplication(XAE):
                 self.logger.info(request_ID + ' did not succeed')
         else:
             self.logger.info('received message not for this app')
-
-

@@ -1,4 +1,4 @@
-from openmtc_app.onem2m import XAE
+_from openmtc_app.onem2m import XAE
 from openmtc_onem2m.model import Container
 import time
 import uuid
@@ -194,22 +194,25 @@ class EDSOrch(XAE):
                     request_1 = request[key]
                     # iterate over request_1
                     for key_1 in request_1:
-                        if key_1 == 'application':
+                        lambda key_1: self.handle_register_application(request) if key_1 == 'application'
+                        else (self.handle_register_sensor(request) if key_1 = 'sensor'
+                        else (self.handle_register_actuator(request) if key_1 = 'actuator')
+                        else self.logger.info("unknown component"))
+
+                        '''if key_1 == 'application':
                             self.handle_register_application(request)
                         elif key_1 == 'sensor':
                             self.handle_register_sensor(request)
                         elif key_1 == 'actuator':
                             self.handle_register_actuator(request)
                         else:
-                            self.logger.info("unknown component")
+                            self.logger.info("unknown component")'''
 
                 elif key == 'deregister':
                     request_1 = request[key]
                     for key_1 in request_1:
                         if key_1 == 'application':
                             self.handle_deregister_application(request)
-                        else:
-                            self.logger.info("unknown component")    
 
             self.status = 'IDLE'
             status_data[0]['s'] = str(self.status)
@@ -260,6 +263,10 @@ class EDSOrch(XAE):
                 'actuators':[]}
         self.push_content(self.response_cnt, reply)
 
+    def _generate_request_uuid():
+        x = (uuid.uuid4().hex)[:12]
+        return x
+
     def handle_register_sensor(self, request):
         app_ID = str(request['register']['sensor']['app_ID'])
         request_ID = str(request['register']['sensor']['request_ID'])
@@ -275,7 +282,7 @@ class EDSOrch(XAE):
             reply['error_string'] = error_string
             self.push_content(self.response_cnt, reply)
 
-        sensor_name = (uuid.uuid4().hex)[:12]
+        sensor_name = _generate_request_uuid()
         data_path = 'onem2m/EDSOrch/' + app_ID + '/sensors'
         request = {'register':{'request_ID': request_ID,
             'app_ID': app_ID}}
@@ -310,7 +317,7 @@ class EDSOrch(XAE):
             reply['conf'] = {}
             self.push_content(self.response_cnt, reply)
 
-        actuator_name = (uuid.uuid4().hex)[:12]
+        actuator_name = _generate_request_uuid()
         data_path = 'onem2m/EDSOrch/' + app_ID + '/actuators'
         request = {'register':{'request_ID': request_ID, 'app_ID':app_ID}}
         if actuator_type == 'simple':
@@ -364,29 +371,38 @@ class EDSOrch(XAE):
         #response = promise.get()
         #self.logger.info(str(response.response_status_code))
 
+    def decision(result):
+        if result == 1:
+            return "continue"
+        else:
+            return pass
+
     def check_request_content(self, con):
         request = con
         error_string = ''
         valid_request = True
+
+        # check if the request is an empty dictionary
         if not isinstance(request, dict):
             return False, "Request is not a dictionary"
-        # check if the request is an empty dictionary
-        if not request:
+        if bool(request) == False:
             return False, "Request dictionary is empty"
-
         self.logger.debug('check_request: Non-empty request dictionary received')
 
         # check if the first element is register or deregister, else continue
-        # this loop can iterate twice if register and deregister are present
-        for key in request:
+       # this loop can iterate twice if register and deregister are present
+        def test_func(element):
             # if available key is not register or deregister flag an error
             # update error string and valid_request
-            if key not in ['register', 'deregister']:
-                valid_request = False
-                error_string = error_string + key + 'is not a valid request key \n'
-                continue
-            self.logger.debug('check_request: Valid first level key found')
+            f = lambda key: (False, "valid first key not found") if key not in ['register', 'deregister'] else (
+            True, "")
+            g = lambda result: 1 if result == False else 0
+            # decision = [continue, pass]
+            valid, error = (f(key))
+            if decision(g(valid)) ==
+                self.logger.debug('check_request: Valid first level key found')
             request_1 = request[key]
+
             # A register or deregister key word was found
             # check if the key holds a dictionary, else up date error and continue
             if not isinstance(request_1, dict):
@@ -400,42 +416,46 @@ class EDSOrch(XAE):
                 error_string = error_string + 'the dictionary of ' + key + ' is empty\n'
                 continue
             self.logger.debug('check_request: element of first level key is not empty')
-            # the dictionary element can have three maximum, therefore need to
-            # iterate over each one of them
-            for key_1 in request_1:
-                request_2 = request_1[key_1]
 
-                # check if key_1 is a valid key
-                if key == 'register' and key_1 not in ['application', 'sensor', 'actuator']:
-                    valid_request = False
-                    error_string = error_string + key_1 + ' not a valid component\n'
-                    continue
-                elif key == 'deregister' and key_1 not in ['application']:
-                    valid_request = False
-                    error_string = error_string + key_1 + ' not a valid component\n'
-                    continue
-                self.logger.debug('check_request: valid component key found')
-                # check if the key dictionary element of key_1 is a dictionary
-                # and not empty
-                if not isinstance(request_2, dict):
+            if not isinstance(request_2, dict):
                     valid_request = False
                     error_string = error_string + 'element of ' + key_1 + ' is not a dictionary\n'
                     continue
-                if not request_2:
-                    valid_request = False
-                    error_string = error_string + 'dictionary of ' + key_1 + ' is an empty dictionary\n'
-                    continue
-                self.logger.debug('check_request: element of component key is a non empty dictionary')
-                # The dictionary component was found to be not empty
-                # check if required fields are present in the dictionary
-                diff = set(self.request_template[key][key_1]) - set(request_2.keys())
 
-                if len(diff) > 0 :
-                    self.logger.debug('check_request: Not all required fields present in the component request')
-                    valid_request = False
-                    for field in diff:
-                        error_string = error_string + key + ':' + key_1 + ':' + \
-                        field + ' not found in request\n'
+            request_2 = request_1[key_1]
+            rgstr = lambda key, key_1: (False, error_string + key_1 + ' not a valid application')
+            if (key == 'register' and key_1 not in ['application', 'sensor', 'actuator']) else (True, "")
+            dergstr = lambda key, key_1: (False, error_string + key_1 + ' not a valid application')
+            if (key == 'deregister' and key_1 not in ['application']) else (True, "")
+            g = lambda result: 1 if result == False else 0
+            # decision = [continue, pass]
+            valid, error = (rgstr(key))
+            valid, error = (dergstr(key))
+            decision(g(valid))
+            # check if key_1 is a valid key
+            self.logger.debug('check_request: valid component key found')
+            # check if the key dictionary element of key_1 is a dictionary
+            # and not empty
+            if not isinstance(request_2, dict):
+                valid_request = False
+                error_string = error_string + 'element of ' + key_1 + ' is not a dictionary\n'
+                continue
+            if not request_2:
+                valid_request = False
+                error_string = error_string + 'dictionary of ' + key_1 + ' is an empty dictionary\n'
+                continue
+            self.logger.debug('check_request: element of component key is a non empty dictionary')
 
+            # The dictionary component was found to be not empty
+            # check if required fields are present in the dictionary
+            diff = set(self.request_template[key][key_1]) - set(request_2.keys())
 
-        return valid_request, error_string
+            if len(diff) > 0:
+                self.logger.debug('check_request: Not all required fields present in the component request')
+                valid_request = False
+                for field in diff:
+                    error_string = error_string + key + ':' + key_1 + ':' + \
+                                   field + ' not found in request\n'
+
+        new_request = filter(test_func, request)
+        return new_request["valid_request"], new_request["error_string"]

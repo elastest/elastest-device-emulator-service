@@ -61,7 +61,31 @@ class TemperatureSensor(XAE):
 
         self.run_forever()
 
-    # con is a list. The index 0 element is a dictionary containing the request
+
+     def build_Reply_register_Request(request, self.registered_sensors[sensor_name]):
+            reply = {type : 'register:sensor', 'app_ID' : request['app_ID'], 'result' : request['request_ID'] , 'conf' : self.registered_sensors[sensor_name], 'result' : 'SUCCESS'}
+            return reply
+
+
+        def build_Reply_modify_Request(request, self.registered_sensors[sensor_name]):
+             reply = {type: 'modify:sensor', 'app_ID': request_1['app_ID'], 'result': request_1['request_ID'], 'conf': self.registered_sensors[sensor_name], 'result': 'SUCCESS'}
+         if sensor_name not in self.registered_sensors:
+            reply['result'] = 'FAIL'
+            error_string = sensor_name + ' sensor name not registered\n'
+            reply['error_string'] = error_string
+            self.push_content(_response_cnt, reply)
+            continue
+            modify_conf = request_1['conf']
+            for key_2 in modify_conf:
+                self.registered_sensors[sensor_name][key_2] = \
+                modify_conf[key_2]
+                reply['result'] = 'SUCCESS'
+                reply['conf'] = self.registered_sensors[sensor_name]
+            return reply
+
+
+
+     # con is a list. The index 0 element is a dictionary containing the request
     def handle_request(self, cnt, con):
         _response_cnt = self.response_cnt
         _status_cnt = self.status_cnt
@@ -87,48 +111,27 @@ class TemperatureSensor(XAE):
                 timestamp = format(round(time.time(), 3), '.3f')
                 status_data[0]['t'] = timestamp
                 self.push_content(_status_cnt, status_data)
-                return
 
             # the request was valid
-            # at most two requests could be found in a request
+            # at most two requests/commands could be found in a request
             # register or modify
             # we iterate through the request
-            for key in request:
-                if key == 'register':
-                    request_1 = request[key]
-                    sensor_name = request_1['name']
-                    path = request_1['path']
-                    self.registered_sensors[sensor_name] = self.default_conf
-                    self.add_sensor_method(path, sensor_name)
-                    reply = {}
-                    reply['type'] = 'register:sensor'
-                    reply['app_ID'] = request_1['app_ID']
-                    reply['request_ID'] = request_1['request_ID']
-                    reply['result'] = 'SUCCESS'
-                    reply['conf'] = self.registered_sensors[sensor_name]
-                    self.push_content(_response_cnt, reply)
+        for key in request:
+            if key == 'register':
+                request_1 = request[key]
+                sensor_name = request_1['name']
+                path = request_1['path']
+                self.registered_sensors[sensor_name] = self.default_conf
+                self.add_sensor_method(path, sensor_name)go
+                replyRegister_= build_Reply_register_Request(request, sensor. registerd_sensor)
+                self.push_content(_response_cnt, replyRegister_)
 
                 elif key == 'modify':
                     # modify the sensor configuration
                     request_1 = request[key]
                     sensor_name = request_1['name']
-                    reply = {}
-                    reply['type'] = 'modify:sensor'
-                    reply['app_ID'] = request_1['app_ID']
-                    reply['request_ID'] = request_1['request_ID']
-                    if sensor_name not in self.registered_sensors:
-                        reply['result'] = 'FAIL'
-                        error_string = sensor_name + ' sensor name not registered\n'
-                        reply['error_string'] = error_string
-                        self.push_content(_response_cnt, reply)
-                        continue
-                    modify_conf = request_1['conf']
-                    for key_2 in modify_conf:
-                        self.registered_sensors[sensor_name][key_2] = \
-                                modify_conf[key_2]
-                    reply['result'] = 'SUCCESS'
-                    reply['conf'] = self.registered_sensors[sensor_name]
-                    self.push_content(_response_cnt, reply)
+                    modifyReply_ = build_Reply_modify_Request(request, sensor.registerd_sensor)
+                    self.push_content(_response_cnt, modifyReply)
             self.status = 'IDLE'
             status_data[0]['s'] = str(self.status)
             timestamp = format(round(time.time(), 3), '.3f')
@@ -173,8 +176,6 @@ class TemperatureSensor(XAE):
         if conf['onoff'] == 'ON':
             sensorfunc()
 
-
-
     def check_request_content(self, con):
         request = con
         error_string = ''
@@ -187,11 +188,18 @@ class TemperatureSensor(XAE):
         if not request:
             return False, 'Request dictionary is empty'
 
-        for key in request:
-            if key not in ['register', 'modify']:
-                valid_request = False
-                error_string = error_string + key + ' is not a valid request key\n'
-                continue
+         def check_request(request):
+            f = lambda key: (False, error_string + key + ' is not a valid request key\n') if key not in ['register','modify'] else (True, "")
+            g = lambda result: 1 if result == False else 0
+            valid, error = (f(key))
+            decision(g(valid))
+            request_1 = request[key]
+
+        new_request = filter(test_func, request)
+        return new_request["valid_request"], new_request["error_string"]
+
+
+       for key in request:
 
             request_1 = request[key]
             if not isinstance(request_1, dict):
