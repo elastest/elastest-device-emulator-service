@@ -122,12 +122,12 @@ class SimpleActuator(XAE):
                     self.add_actuator(path, actuator_name)
                     replyReq = build_Reply_Register_Request(request_1, self.registered_sensors[sensor_name])
                     self.push_content(_response_cnt, replyReq)
-                    
+
                 if key == 'modify':
                     request_1 = request[key]
                     actuator_name = request_1['name']
                     modify_req = build_Reply_modify_Request(request_1, self.registerd_sensors[sensor_name])
-                    self.push_content(_response_cnt, reply)
+                    self.push_content(_response_cnt, modify_reqreply)
             self.status = 'IDLE'
             status_data[0]['s'] = str(self.status)
             timestamp = format(round(time.time(), 3), '.3f')
@@ -170,15 +170,6 @@ class SimpleActuator(XAE):
         # finally subscribe to the incoming data
         self.add_container_subscription(data_in_cnt, actuatorfunc)
 
-
-
-    def decision(result):
-        if result == 1:
-            return "continue"
-        else:
-            return pass
-
-
    def check_request_content(self, con):
         request = con
         error_string = ''
@@ -193,18 +184,13 @@ class SimpleActuator(XAE):
         def check_request(request):
             f = lambda key: (False, error_string + key + ' is not a valid request key\n') if key not in ['register',
             'modify'] else (True, "")
-            g = lambda result: 1 if result == False else 0
             valid, error = (f(key))
-            decision(g(valid))
-            request_1 = request[key]
+            valid_request = valid
 
-
-            new_request = filter(test_func, request)
-            return new_request["valid_request"], new_request["error_string"]
+        return f(request), valid_request
 
 
         for key in request:
-
             if not isinstance(request_1, dict):
                 valid_request = False
                 error_string = error_string + 'the element of ' + key + ' not a dictionary\n'

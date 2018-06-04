@@ -190,17 +190,17 @@ class TemperatureSensor(XAE):
 
          def check_request(request):
             f = lambda key: (False, error_string + key + ' is not a valid request key\n') if key not in ['register','modify'] else (True, "")
-            g = lambda result: 1 if result == False else 0
             valid, error = (f(key))
-            decision(g(valid))
-            request_1 = request[key]
-
-        new_request = filter(test_func, request)
-        return new_request["valid_request"], new_request["error_string"]
+            valid_request = valid
+        return f(request), valid_request
 
 
        for key in request:
-
+            f, valid_req = check_request_content(key)
+            if not valid_req:
+                continue
+            else:
+                pass
             request_1 = request[key]
             if not isinstance(request_1, dict):
                 valid_request = False
