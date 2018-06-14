@@ -4,6 +4,8 @@ from openmtc_onem2m.client.http import OneM2MHTTPClient
 from openmtc_onem2m.transport import OneM2MRequest
 import time
 import os
+import gevent
+
 class TestJob(XAE):
     
     def __init__(self, *args, **kw):
@@ -47,8 +49,12 @@ class TestJob(XAE):
         self.add_container_subscription(sensor_data, self.handle_sensor_data)
         self.add_container_subscription(actuator_data_out, self.handle_actuator_out)
 
+        gevent.sleep(0)
+        gevent.spawn_later(120, self.app_shutdown)
 
-        self.run_forever()
+    def app_shutdown(self):
+        os.logger.info("FINAL VERDICT" + str(self.verdict))
+        os.kill(os.getpid(), signal.SIGTERM)
 
     def handle_sensor_data(self, cnt, con):
         self.sensor_data = con
@@ -75,8 +81,8 @@ class TestJob(XAE):
         trigger_time = actuator_trigger_time - self.sensor_trigger_time
         if trigger_time < 0:
             self.logger.info("FAIL: Actuator trigger too late or obsolete")
-            self.verdict = Faslse
-        elif (trigger_time > (self.trigger_duration - 0.05)) and (trigger_time < (self.trigger_duration + 0.05)):
+            self.verdict = False
+        elif (trigger_time > (self.trigger_duration - 0.2)) and (trigger_time < (self.trigger_duration + 0.2)):
             self.logger.info("PASS: Actuator triggered in the correct time window")
         else:
             self.logger.info("FAIL: Actuator behaviour unknown")
