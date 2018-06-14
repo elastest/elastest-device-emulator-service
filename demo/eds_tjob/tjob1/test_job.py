@@ -50,10 +50,10 @@ class TestJob(XAE):
         self.add_container_subscription(actuator_data_out, self.handle_actuator_out)
 
         gevent.sleep(0)
-        gevent.spawn_later(120, self.app_shutdown)
+        gevent.spawn_later(90, self.app_shutdown)
 
     def app_shutdown(self):
-        os.logger.info("FINAL VERDICT" + str(self.verdict))
+        self.logger.info("FINAL VERDICT" + str(self.verdict))
         os.kill(os.getpid(), signal.SIGTERM)
 
     def handle_sensor_data(self, cnt, con):
@@ -82,7 +82,7 @@ class TestJob(XAE):
         if trigger_time < 0:
             self.logger.info("FAIL: Actuator trigger too late or obsolete")
             self.verdict = False
-        elif (trigger_time > (self.trigger_duration - 0.2)) and (trigger_time < (self.trigger_duration + 0.2)):
+        elif self.actuator_trigger and (trigger_time > (self.trigger_duration - 1)) and (trigger_time < (self.trigger_duration + 1)):
             self.logger.info("PASS: Actuator triggered in the correct time window")
         else:
             self.logger.info("FAIL: Actuator behaviour unknown")
