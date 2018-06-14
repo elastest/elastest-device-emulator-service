@@ -5,6 +5,7 @@ from openmtc_onem2m.transport import OneM2MRequest
 import time
 import os
 import gevent
+import signal
 
 class TestJob(XAE):
     
