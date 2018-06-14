@@ -29,7 +29,7 @@
                               "unit": "instance-hour"
                             	},
                             	{
-                              "meter_name": "gw_message_received",
+                              "meter_name": "gw_msg_rx",
                               "meter_type": "cumulative",
                               "unit_cost": 0.0125,
                               "unit": "kb"
