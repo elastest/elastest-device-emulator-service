@@ -3,7 +3,7 @@ from openmtc_onem2m.model import AE, Container, ContentInstance
 from openmtc_onem2m.client.http import OneM2MHTTPClient
 from openmtc_onem2m.transport import OneM2MRequest
 import time
-
+import os
 class TestJob(XAE):
     
     def __init__(self, *args, **kw):
