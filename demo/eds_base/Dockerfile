@@ -34,6 +34,8 @@ RUN printf "Starting update...\n" && \
 
 EXPOSE 8000
 
+RUN python -m pip install --upgrade pip setuptools wheel
+
 RUN mkdir -p ${base_path}
 
 WORKDIR ${base_path}
