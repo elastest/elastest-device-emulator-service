@@ -6,11 +6,14 @@ from base64 import b64decode
 from connexion import NoContent
 import logging
 import itertools
+import os
 
+frontend = os.environ["ET_EDS_FRONTEND_HOST"]
+ep = "http://" + frontend + ":8000"
 
-url1 = "http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/x/latest/"
-url2 = "http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/y/latest/"
-url3 = "http://172.18.0.2:8000/onem2m/MemsIPE/sensor_data/z/latest/"
+url1 = ep + "/onem2m/MemsIPE/sensor_data/x/latest/"
+url2 = ep + "/onem2m/MemsIPE/sensor_data/y/latest/"
+url3 = ep + "/onem2m/MemsIPE/sensor_data/z/latest/"
 
 url = {url1, url2, url3}
 

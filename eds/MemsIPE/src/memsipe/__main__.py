@@ -3,7 +3,7 @@ from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 from openmtc_app.util import prepare_app, get_value
 from openmtc_app.flask_runner import SimpleFlaskRunner as Runner
 from .mems_ipe import MemsIPE
-
+import os
 # defaults
 default_name = "MemsIPE"
 default_ep = "http://frontend:8000"
@@ -22,7 +22,9 @@ args, config = prepare_app(parser, __loader__, __name__, "config.json")
 # variables
 nm = get_value("name", (unicode, str), default_name, args, config)
 cb = config.get("cse_base", "onem2m")
-ep = get_value("ep", (unicode, str), default_ep, args, config)
+#ep = get_value("ep", (unicode, str), default_ep, args, config)
+frontend = os.environ["ET_EDS_FRONTEND_HOST"]
+ep = "http://" + frontend + ":8000"
 host = config.get("host", "auto")
 port = int(config.get("port"))
 
