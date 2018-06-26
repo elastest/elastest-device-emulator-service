@@ -1,4 +1,4 @@
-from gevent.wsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 from socket import getservbyname
 
 from openmtc_cse import OneM2MEndPoint
