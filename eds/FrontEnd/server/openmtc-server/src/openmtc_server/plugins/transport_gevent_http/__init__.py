@@ -1,5 +1,5 @@
 from gevent.pywsgi import Input
-from gevent.wsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 from urlparse import urlparse
 from netifaces import ifaddresses, interfaces
 from socket import getnameinfo, gaierror, getservbyname, AF_INET, AF_INET6
