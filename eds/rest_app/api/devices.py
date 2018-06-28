@@ -8,8 +8,8 @@ import logging
 import itertools
 import os
 
-frontend = os.environ["ET_EDS_FRONTEND_HOST"]
-ep = "http://" + frontend + ":8000"
+#frontend = os.environ["ET_EDS_FRONTEND_HOST"]
+ep = "http://frontend:8000"
 
 url1 = ep + "/onem2m/MemsIPE/sensor_data/x/latest/"
 url2 = ep + "/onem2m/MemsIPE/sensor_data/y/latest/"
