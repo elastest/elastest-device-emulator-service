@@ -57,7 +57,7 @@
         "endpoints": {
             "frontend": {
                 "description": "Service to show emulated sensor data in the form of plots as well as to actuate sensors",
-                "main": false,
+                "main": true,
                 "api": {
                     "name": "memsipe",
                     "protocol": "http",
