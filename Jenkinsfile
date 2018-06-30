@@ -31,16 +31,16 @@ node('docker'){
 
         stage "build api image"
          //here we use only the build for api
-            def api_image = docker.build("elastest/eds-api:latest", "./eds/rest_app")
+         //   def api_image = docker.build("elastest/eds-api:latest", "./eds/rest_app")
 
 
         stage "build memsipe image"
          //here we use only the build for memsipe
-             def memsipe_image = docker.build("elastest/eds-memsipe:latest", "./eds/MemsIPE")
+         //    def memsipe_image = docker.build("elastest/eds-memsipe:latest", "./eds/MemsIPE")
 
         stage "build frontend image"
          //here we use only the build for frontend
-             def frontend_image = docker.build("elastest/eds-frontend:latest", "./eds/FrontEnd")
+         //    def frontend_image = docker.build("elastest/eds-frontend:latest", "./eds/FrontEnd")
 
         stage "build eds-base image"
             def edsbase_image = docker.build("elastest/eds-base:latest", "./demo/eds_base")
@@ -59,9 +59,9 @@ node('docker'){
                 passwordVariable: 'PASSWORD']]) {
                  sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
                         //here your code
-                 memsipe_image.push()
-                 frontend_image.push()
-                 api_image.push()
+           //      memsipe_image.push()
+           //      frontend_image.push()
+           //      api_image.push()
                  edsbase_image.push()
 
                     }
