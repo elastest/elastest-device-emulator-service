@@ -19,9 +19,9 @@ print(json.loads(res.text))
 COMMANDS = """
 git clone https://github.com/elastest/elastest-device-emulator-service.git /tmp/eds
 ./create-app-structure -d TestApplication
-cp /tmp/eds/demo/eds_sut/TestApplication/__init__.py apps/TestApplication/src/testapplication/
-cp /tmp/eds/demo/eds_sut/TestApplication/__main__.py apps/TestApplication/src/testapplication/
-cp /tmp/eds/demo/eds_sut/TestApplication/test_application.py apps/TestApplication/src/testapplication/
+cp /tmp/eds/demo/e2e_tests/TestApplication/__init__.py apps/TestApplication/src/testapplication/
+cp /tmp/eds/demo/e2e_tests/TestApplication/__main__.py apps/TestApplication/src/testapplication/
+cp /tmp/eds/demo/e2e_tests/TestApplication/test_application.py apps/TestApplication/src/testapplication/
 
 ./apps/test-application -v
 """
