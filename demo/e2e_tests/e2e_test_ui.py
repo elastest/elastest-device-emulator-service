@@ -27,7 +27,6 @@ driver.get(url)
 
 time.sleep(5)
 # Click the main menu
-print "main menu"
 elemProjects = driver.find_element_by_id('nav_projects')
 if not elemProjects.is_displayed():
     elemMenu = driver.find_element_by_id("main_menu").click()
