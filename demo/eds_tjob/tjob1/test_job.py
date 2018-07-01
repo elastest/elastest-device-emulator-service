@@ -77,7 +77,11 @@ class TestJob(XAE):
 
     def _on_register(self):
         # start endless loop
-        client = OneM2MHTTPClient("http://localhost:8000", False)
+        eds_base = os.environ["ET_EDS_EDS_BASE_API"]
+        eds_base = eds_base[:-8]
+
+        client = OneM2MHTTPClient(eds_base, False)
+
         base_path = "onem2m/EDSOrch/testapplication/"
         sensors_path = base_path + "sensors/"
         onem2m_request = OneM2MRequest("retrieve", to=sensors_path)
