@@ -21,31 +21,42 @@ cp /tmp/eds/demo/e2e_tests/TestApplication/test_application.py apps/TestApplicat
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 driver = webdriver.Chrome(chrome_options=options)
+driver.maximize_window()
+driver.implicitly_wait(10)
 driver.get(url)
 
-time.sleep(10)
+time.sleep(5)
 # Click the main menu
-driver.find_element_by_id("main_menu").click()
-time.sleep(3)
-# Click on Projects
-driver.find_element_by_id("nav_projects").click()
-time.sleep(2)
+print "main menu"
+elemProjects = driver.find_element_by_id('nav_projects')
+if not elemProjects.is_displayed():
+    elemMenu = driver.find_element_by_id("main_menu").click()
+    time.sleep(1) # delay to allow menu animation to complete.
+elemProjects.click()
 
+time.sleep(5)
 # Create new project
 driver.find_element_by_xpath("//button[contains(string(), 'New Project')]").click()
-driver.find_element_by_name("project.name").send_keys(projectname)
-driver.find_element_by_xpath("//button[contains(string(), 'SAVE')]").click()
 time.sleep(2)
+driver.find_element_by_name("project.name").send_keys(projectname)
+time.sleep(2)
+driver.find_element_by_xpath("//button[contains(string(), 'SAVE')]").click()
+time.sleep(5)
 
 # Create a new TJob
 driver.find_element_by_xpath("//button[contains(string(), 'New TJob')]").click()
 time.sleep(2)
 driver.find_element_by_name("tJobName").send_keys(tjobname)
+time.sleep(2)
 driver.find_element_by_name("tJobSut").click()
+time.sleep(2)
 # driver.find_element_by_class_name("mat-select-trigger").click()
 driver.find_element_by_xpath("//md-option[contains(string(), 'None')]").click()
+time.sleep(2)
 driver.find_element_by_name("tJobImageName").send_keys(tjobimage)
+time.sleep(2)
 driver.find_element_by_name("commands").send_keys(COMMANDS)
+time.sleep(5)
 driver.find_element_by_xpath("//md-checkbox[@title='Select EDS']").click()
 driver.find_element_by_xpath("//button[contains(string(), 'SAVE')]").click()
 time.sleep(4)
