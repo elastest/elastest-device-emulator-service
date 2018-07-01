@@ -4,27 +4,80 @@ from openmtc_onem2m.client.http import OneM2MHTTPClient
 from openmtc_onem2m.transport import OneM2MRequest
 import time
 import os
+import unittest
+import xmlrunner
 import gevent
 import signal
+
+class AssertVariables():
+    actuator_trigger = False
+    actuator_data = 0
+    sensor_data = 0
+    sensor_trigger_time = 0
+    threshold = 30.00
+    trigger_duration = 3
+
+variables = AssertVariables()
+
+class TestSensorBehaviour(unittest.TestCase):
+
+    def test_sensor_trigger_time(self):
+        sensor_trigger_time = time.time()
+        trigger_time = sensor_trigger_time - variables.sensor_trigger_time
+        time_behaviour = trigger_time <= 6
+        self.assertTrue(time_behaviour, "Sensor trigger beyond expected interval")
+
+    def test_sensor_data(self):
+        data_behaviour = type(variables.sensor_data) == float
+        self.assertTrue(data_behaviour, "Sensor data is not float")
+class TestActuatorTrigger(unittest.TestCase):
+
+    def test_actuator_trigger(self):
+        if variables.actuator_trigger:
+            variables.actuator_trigger = False
+        self.assertFalse(variables.actuator_trigger, "Actuator was not \
+                         triggered")
+class TestActuatorDataBehaviour(unittest.TestCase):
+
+    def test_actuator_data(self):
+        self.assertEqual(variables.sensor_data, variables.actuator_data,
+                        "Received actuator data not equal to sensor data")
+
+class TestActuatorTimeBehaviour(unittest.TestCase):
+
+    def test_actuator_trigger_expected(self):
+        self.assertTrue(variables.actuator_trigger, "Actuator trigger not expected")
+        variables.actuator_trigger = False
+
+    def test_actuator_not_late(self):
+        actuator_trigger_time = time.time()
+        trigger_time = actuator_trigger_time - variables.sensor_trigger_time
+        self.assertGreater(trigger_time, 0, "Actuator trigger too late or \
+                        obsolete")
+
+    def test_actuator_behaviour_correct(self):
+        actuator_trigger_time = time.time()
+        trigger_time = actuator_trigger_time - variables.sensor_trigger_time        
+        behaviour = variables.actuator_trigger and (trigger_time > 
+                    (variables.trigger_duration - 1)) and (trigger_time < 
+                    (variables.trigger_duration + 1))
+        self.assertTrue(behaviour, "actuator behaviour unknown")
+        
+sensorBehavourSuite = unittest.TestLoader().loadTestsFromTestCase(TestSensorBehaviour)
+actuatorTriggerSuite = unittest.TestLoader().loadTestsFromTestCase(TestActuatorTrigger)
+actuatorDataBehaviourSuite = unittest.TestLoader().loadTestsFromTestCase(TestActuatorDataBehaviour)
+actuatorTimeBehaviourSuite = unittest.TestLoader().loadTestsFromTestCase(TestActuatorTimeBehaviour)
 
 class TestJob(XAE):
     
     def __init__(self, *args, **kw):
         super(TestJob, self).__init__(*args, **kw)
         
-        self.actuator_trigger = False
-        self.sensor_data = 0
-        self.sensor_trigger_time = 0
         self.verdict = True
-        self.threshold = 30
-        self.trigger_duration = 3
 
     def _on_register(self):
         # start endless loop
-        eds_base = os.environ["ET_EDS_EDS_BASE_API"]
-        eds_base = eds_base[:-8]
-
-        client = OneM2MHTTPClient(eds_base, False)
+        client = OneM2MHTTPClient("http://localhost:8000", False)
         base_path = "onem2m/EDSOrch/testapplication/"
         sensors_path = base_path + "sensors/"
         onem2m_request = OneM2MRequest("retrieve", to=sensors_path)
@@ -51,42 +104,26 @@ class TestJob(XAE):
         self.add_container_subscription(actuator_data_out, self.handle_actuator_out)
 
         gevent.sleep(0)
-        gevent.spawn_later(90, self.app_shutdown)
+        gevent.spawn_later(60, self.app_shutdown)
 
     def app_shutdown(self):
-        self.logger.info("FINAL VERDICT" + str(self.verdict))
-        os.kill(os.getpid(), signal.SIGTERM)
+        os.kill(os.getpid(),signal.SIGTERM)
 
     def handle_sensor_data(self, cnt, con):
-        self.sensor_data = con
-        self.sensor_trigger_time = time.time()
-
-        if self.actuator_trigger:
-            self.logger.info("FAIL: Actuator was not triggered")
-            self.actuator_trigger = False
-            self.verdict = False
+        variables.sensor_data = float(con)
+        # unittest.TextTestRunner(verbosity=2).run(sensorBehavourSuite)
+        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(sensorBehavourSuite)
+        variables.sensor_trigger_time = time.time()
+        # unittest.TextTestRunner(verbosity=2).run(actuatorTriggerSuite)
+        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(actuatorTriggerSuite)
+        if variables.sensor_data >= variables.threshold:
+            variables.actuator_trigger = True
         else:
-            self.logger.info("PASS: Actuator was properly triggered")
-        if self.sensor_data > self.threshold:
-            self.actuator_trigger = True
+            variables.actuator_trigger = False
 
     def handle_actuator_out(self, cnt, con):
-        actuator_data = con
-        if actuator_data == self.sensor_data:
-            self.logger.info("PASS: Actuator data == Sensor data")
-        else:
-            self.logger.info("FAIL: Actuator data != Sensor data")
-            self.verdict = False
-
-        actuator_trigger_time = time.time()
-        trigger_time = actuator_trigger_time - self.sensor_trigger_time
-        if trigger_time < 0:
-            self.logger.info("FAIL: Actuator trigger too late or obsolete")
-            self.verdict = False
-        elif self.actuator_trigger and (trigger_time > (self.trigger_duration - 1)) and (trigger_time < (self.trigger_duration + 1)):
-            self.logger.info("PASS: Actuator triggered in the correct time window")
-        else:
-            self.logger.info("FAIL: Actuator behaviour unknown")
-            self.verdict = False
-        self.actuator_trigger = False
-
+        variables.actuator_data = float(con)
+        #unittest.TextTestRunner(verbosity=2).run(actuatorDataBehaviourSuite)
+        #unittest.TextTestRunner(verbosity=2).run(actuatorTimeBehaviourSuite)
+        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(actuatorDataBehaviourSuite)
+        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(actuatorTimeBehaviourSuite)

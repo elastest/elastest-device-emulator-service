@@ -34,7 +34,7 @@ RUN printf "Starting update...\n" && \
 
 EXPOSE 8000
 
-RUN python -m pip install --upgrade pip setuptools wheel
+RUN python -m pip install --upgrade pip setuptools wheel xmlrunner
 
 RUN mkdir -p ${base_path}
 
@@ -61,8 +61,6 @@ RUN python -c "from importlib import import_module;\
 RUN cp tmp/gateway-dependencies.txt /tmp/requirements.txt
 
 RUN pip install --upgrade --requirement /tmp/requirements.txt
-
-RUN pip install --upgrade python-logstash
 
 RUN cp tmp/openmtc-gateway.tar.gz /tmp/openmtc-gateway.tar.gz
 
