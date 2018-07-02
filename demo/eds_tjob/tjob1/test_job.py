@@ -116,10 +116,10 @@ class TestJob(XAE):
     def handle_sensor_data(self, cnt, con):
         variables.sensor_data = float(con)
         # unittest.TextTestRunner(verbosity=2).run(sensorBehavourSuite)
-        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(sensorBehavourSuite)
+        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(sensorBehavourSuite)
         variables.sensor_trigger_time = time.time()
         # unittest.TextTestRunner(verbosity=2).run(actuatorTriggerSuite)
-        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(actuatorTriggerSuite)
+        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorTriggerSuite)
         if variables.sensor_data >= variables.threshold:
             variables.actuator_trigger = True
         else:
@@ -129,5 +129,5 @@ class TestJob(XAE):
         variables.actuator_data = float(con)
         #unittest.TextTestRunner(verbosity=2).run(actuatorDataBehaviourSuite)
         #unittest.TextTestRunner(verbosity=2).run(actuatorTimeBehaviourSuite)
-        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(actuatorDataBehaviourSuite)
-        xmlrunner.XMLTestRunner(output='/tmp/test-reports').run(actuatorTimeBehaviourSuite)
+        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorDataBehaviourSuite)
+        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorTimeBehaviourSuite)
