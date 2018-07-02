@@ -16,6 +16,7 @@ class AssertVariables():
     sensor_trigger_time = 0
     threshold = 30.00
     trigger_duration = 3
+    start = True
 
 variables = AssertVariables()
 
@@ -116,18 +117,23 @@ class TestJob(XAE):
     def handle_sensor_data(self, cnt, con):
         variables.sensor_data = float(con)
         # unittest.TextTestRunner(verbosity=2).run(sensorBehavourSuite)
-        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(sensorBehavourSuite)
+        if not variables.start:
+            xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(sensorBehavourSuite)
         variables.sensor_trigger_time = time.time()
         # unittest.TextTestRunner(verbosity=2).run(actuatorTriggerSuite)
-        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorTriggerSuite)
+        if not variables.start:
+            xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorTriggerSuite)
+
         if variables.sensor_data >= variables.threshold:
             variables.actuator_trigger = True
         else:
             variables.actuator_trigger = False
+        variables.start = False
 
     def handle_actuator_out(self, cnt, con):
         variables.actuator_data = float(con)
         #unittest.TextTestRunner(verbosity=2).run(actuatorDataBehaviourSuite)
         #unittest.TextTestRunner(verbosity=2).run(actuatorTimeBehaviourSuite)
-        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorDataBehaviourSuite)
-        xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorTimeBehaviourSuite)
+        if not variables.start:
+            xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorDataBehaviourSuite)
+            xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(actuatorTimeBehaviourSuite)
