@@ -135,7 +135,7 @@ print("Clicked on New TJob button")
 time.sleep(3)
 try:
     elem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobName")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 elem.send_keys(tjobname)
