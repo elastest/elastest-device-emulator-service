@@ -40,7 +40,7 @@ euspresent = False
 try:
     eusurl = os.environ["ET_EUS_API"]
     euspresent = True
-except Exception, e:
+except Exception as e:
     print("EUS URL not present")
     print(e)
 driver = None
@@ -63,14 +63,14 @@ driverWait = WebDriverWait(driver, WAIT_TIME)
 # Click the main menu
 try:
     elemProjects = driverWait.until(EC.presence_of_element_located((By.ID, "nav_projects")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 print("Found nav_projects button")
 if not elemProjects.is_displayed():
     try:
         elemMenu = driverWait.until(EC.presence_of_element_located((By.ID, "main_menu")))
-    except Exception, e:
+    except Exception as e:
         print(e)
     elemMenu.click()
 elemProjects.click()
@@ -99,7 +99,7 @@ time.sleep(5)
 # Create new project
 try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//button[contains(string(), 'New Project')]")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 clickElem.click()
@@ -107,7 +107,7 @@ print("clicked on New Project button")
 time.sleep(2)
 try:
     elem = driverWait.until(EC.presence_of_element_located((By.NAME, "project.name")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 elem.send_keys(projectname)
@@ -116,7 +116,7 @@ time.sleep(2)
 
 try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//button[contains(string(), 'SAVE')]")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 clickElem.click()
@@ -126,7 +126,7 @@ print("Saved project name")
 try:
 #    clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//button[contains(string(), 'New TJob')]")))
      clickElem = driverWait.until(EC.presence_of_element_located((By.ID, "newTJobBtn")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 clickElem.click()
@@ -144,7 +144,7 @@ time.sleep(2)
 
 try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobSut")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 clickElem.click()
@@ -154,7 +154,7 @@ time.sleep(2)
 # driver.find_element_by_class_name("mat-select-trigger").click()
 try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//md-option[contains(string(), 'None')]")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 clickElem.click()
@@ -163,7 +163,7 @@ time.sleep(2)
 
 try:
     elem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobImageName")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 elem.send_keys(tjobimage)
@@ -172,7 +172,7 @@ time.sleep(2)
 
 try:
     elem = driverWait.until(EC.presence_of_element_located((By.NAME, "commands")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 elem.send_keys(COMMANDS)
@@ -181,7 +181,7 @@ time.sleep(5)
 
 try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//md-checkbox[@title='Select EDS']")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 clickElem.click()
@@ -189,7 +189,7 @@ print("Select EDS as the TSS to be used for TJob")
 time.sleep(2)
 try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//button[contains(string(), 'SAVE')]")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 time.sleep(4)
@@ -198,7 +198,7 @@ print("Saved the TJob configuration")
 
 try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//button[@title='Run TJob']")))
-except Exception, e:
+except Exception as e:
     print(e)
 
 clickElem.click()
@@ -219,7 +219,7 @@ while True:
                 print("Unknown condition encountered")
         else:
             break
-    except:
+    except Exception as e:
         print("Elements not found")
     time.sleep(20)
     i += 1
