@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import sys
 import logging
+import os
 
 # create a custom logger
 logger = logging.getLogger(__name__)
