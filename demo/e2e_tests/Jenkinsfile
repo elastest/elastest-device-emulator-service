@@ -28,7 +28,7 @@ elastest_lib.pipeline({
                 def elastestURL = "http://" + elastestUser +":"+ elastestPass+"@"+elastest.getIp()+":"+elastest.getPort()
             stage ("E2E API tests")
             try {
-                   sh "cd demo/e2e_tests;python e2e_test_api.py ${elastestURL}"
+                   sh "cd demo/e2e_tests;python2 e2e_test_api.py ${elastestURL}"
                } catch(e) {
                    sh '''\
                        docker ps --all
@@ -39,6 +39,6 @@ elastest_lib.pipeline({
                }
         	  // sh "cd demo/e2e_tests;python e2e_test_api.py ${elastestURL}"
             stage ("E2E UI tests")
-              sh "cd demo/e2e_tests;python e2e_test_ui.py ${elastestURL}"
+              sh "cd demo/e2e_tests;python2 e2e_test_ui.py ${elastestURL}"
         }
   })
