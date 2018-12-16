@@ -34,12 +34,34 @@ cp /tmp/eds/demo/e2e_tests/TestApplication/test_application.py apps/TestApplicat
 ./apps/test-application -v
 """
 logging.debug("Entered into the execution")
-print("starting the driver")
-options = webdriver.ChromeOptions()
-options.add_argument('headless')
-driver = webdriver.Chrome(chrome_options=options)
-driver.maximize_window()
+# print("starting the driver")
+# options = webdriver.ChromeOptions()
+# options.add_argument('headless')
+# driver = webdriver.Chrome(chrome_options=options)
+# driver.maximize_window()
+# # driver.implicitly_wait(10)
+print os.environ
+print("Check if EUS URL is available")
+euspresent = False
+try:
+    eusurl = os.environ["ET_EUS_API"]
+    euspresent = True
+except Exception as e:
+    print("EUS URL not present")
+    print(e)
+driver = None
+if euspresent:
+    print("EUS present therefore using remote driver")
+    driver = webdriver.Remote(command_executor=eusurl, desired_capabilities=DesiredCapabilities.CHROME)
+else:
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    driver = webdriver.Chrome(chrome_options=options)
+    driver.maximize_window()
 # driver.implicitly_wait(10)
+if driver is None:
+    print("Driver not assigned as intended")
+    exit(-1)
 driver.get(url)
 
 time.sleep(5)
