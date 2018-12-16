@@ -41,7 +41,7 @@ logging.debug("Entered into the execution")
 # driver = webdriver.Chrome(chrome_options=options)
 # driver.maximize_window()
 # # driver.implicitly_wait(10)
-print os.environ
+print(os.environ)
 print("Check if EUS URL is available")
 euspresent = False
 try:
