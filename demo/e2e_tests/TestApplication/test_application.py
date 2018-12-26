@@ -4,6 +4,20 @@ import gevent
 import uuid
 import os
 import signal
+import unittest
+import xmlrunner
+
+class AssertVariables():
+    test_result = False
+
+
+variables = AssertVariables()
+
+
+class TestJob(unittest.TestCase):
+    def test_job_result(self):
+        self.assertTrue(variables.test_result, "Test result failed")
+
 
 class TestApplication(XAE):
 
@@ -119,6 +133,8 @@ class TestApplication(XAE):
         gevent.spawn_later(60, self.app_shutdown)
 
     def app_shutdown(self):
+        variables.test_result = True
+        xmlrunner.XMLTestRunner(verbosity=2, output="/tmp/test-reports").run(TestJob)
         os.kill(os.getpid(), signal.SIGTERM)
 
     def handle_actuator_out(self, cnt, con):
