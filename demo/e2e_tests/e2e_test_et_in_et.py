@@ -7,6 +7,8 @@ import time
 import sys
 import logging
 import os
+import unittest
+import xmlrunner
 
 # create a custom logger
 logger = logging.getLogger(__name__)
@@ -33,6 +35,7 @@ cp /tmp/eds/demo/e2e_tests/TestApplication/test_application.py apps/TestApplicat
 
 ./apps/test-application -v
 """
+resultpath = "/tmp/test-reports"
 logging.debug("Entered into the execution")
 print("starting the driver")
 print("Check if EUS URL is available")
@@ -143,6 +146,15 @@ print("Wrote TJob name")
 time.sleep(2)
 
 try:
+    elem = driverWait.until(EC.presence_of_element_located((By.NAME, "resultsPath")))
+except Exception as e:
+    print(e)
+
+elem.send_keys(resultpath)
+print("Wrote results path")
+time.sleep(3)
+
+try:
     clickElem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobSut")))
 except Exception as e:
     print(e)
@@ -208,6 +220,7 @@ print("Clicked on Run TJob")
 res = None
 MAX_WAIT = 120
 i = 0
+
 while True:
     try:
         res = driver.find_elements(By.TAG_NAME, "h4")
@@ -233,7 +246,7 @@ if "SUCCESS" in res[0].text:
 
 else:
     print('TJob failed')
-    print(res.text)
+    print(res[0].text)
     exit(1)
 
 driver.close()
