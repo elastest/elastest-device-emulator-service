@@ -265,6 +265,8 @@ else:
     variables.test_result = False
     exit(1)
 
-xmlrunner.XMLTestRunner(verbosity=2, output="/tmp/test-reports").run(testSuite)
+if __name__ == '__main__':
+    with open('/home/jenkins/elastest-user-emulator-service/tjob-test/target/surefire-reports/TEST-TJobEDSTest.xml', 'wb') as output:
+        xmlrunner.XMLTestRunner(verbosity=2, output=output).run(testSuite)
 
 driver.close()
