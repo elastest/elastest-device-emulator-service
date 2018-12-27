@@ -36,6 +36,20 @@ cp /tmp/eds/demo/e2e_tests/TestApplication/test_application.py apps/TestApplicat
 ./apps/test-application -v
 """
 resultpath = "/tmp/test-reports"
+
+class AssertVariables():
+    test_result = False
+
+
+variables = AssertVariables()
+
+
+class TestJob(unittest.TestCase):
+    def test_job_result(self):
+        self.assertTrue(variables.test_result, "Test result failed")
+
+testSuite = unittest.TestLoader().loadTestsFromTestCase(TestJob)
+
 logging.debug("Entered into the execution")
 print("starting the driver")
 print("Check if EUS URL is available")
@@ -242,11 +256,15 @@ while True:
 if "SUCCESS" in res[0].text:
     print('TJob succeeded')
     print(res[0].text)
+    variables.test_result = True
     exit(0)
 
 else:
     print('TJob failed')
     print(res[0].text)
+    variables.test_result = False
     exit(1)
+
+xmlrunner.XMLTestRunner(verbosity=2, output="/tmp/test-reports").run(testSuite)
 
 driver.close()
