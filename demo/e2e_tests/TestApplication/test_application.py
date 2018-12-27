@@ -135,6 +135,9 @@ class TestApplication(XAE):
     def app_shutdown(self):
         variables.test_result = True
         xmlrunner.XMLTestRunner(verbosity=2, output="/tmp/test-reports").run(TestJob)
+        print(50*"*")
+        print("Terminating the test")
+        print(50*"*")
         os.kill(os.getpid(), signal.SIGTERM)
 
     def handle_actuator_out(self, cnt, con):
