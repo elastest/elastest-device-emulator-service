@@ -18,6 +18,8 @@ class TestJob(unittest.TestCase):
     def test_job_result(self):
         self.assertTrue(variables.test_result, "Test result failed")
 
+testSuite = unittest.TestLoader().loadTestsFromTestCase(TestJob)
+
 
 class TestApplication(XAE):
 
@@ -134,7 +136,7 @@ class TestApplication(XAE):
 
     def app_shutdown(self):
         variables.test_result = True
-        xmlrunner.XMLTestRunner(verbosity=2, output="/tmp/test-reports").run(TestJob)
+        xmlrunner.XMLTestRunner(verbosity=2, output="/tmp/test-reports").run(testSuite)
         print(50*"*")
         print("Terminating the test")
         print(50*"*")
