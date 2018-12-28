@@ -257,13 +257,13 @@ if "SUCCESS" in res[0].text:
     print('TJob succeeded')
     print(res[0].text)
     variables.test_result = True
-    exit(0)
+    # exit(0)
 
 else:
     print('TJob failed')
     print(res[0].text)
     variables.test_result = False
-    exit(1)
+    # exit(1)
 
 xmlrunner.XMLTestRunner(verbosity=2, output='/tmp/test-reports').run(testSuite)
 # if __name__ == '__main__':
