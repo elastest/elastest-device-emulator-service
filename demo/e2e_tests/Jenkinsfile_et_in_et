@@ -1,0 +1,30 @@
+def elastest_url = ''
+node('et_in_et'){
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/test-reports/TEST-*.xml', project: 'ETinET', sut: 11) {        
+        stage ('docker container')
+            def mycontainer = docker.image('elastest/ci-docker-e2e-compose-py:latest')
+            mycontainer.pull()
+            mycontainer.inside()  {
+                sh 'env'
+                stage ('prepare test')
+                    git 'https://github.com/elastest/elastest-device-emulator-service.git'
+                    //DEV_USER = "elastest"
+                    //DEV_PASS = "3xp3r1m3nt47"
+                    elastest_url = env.ET_SUT_PROTOCOL + '://elastest:3xp3r1m3nt47@' + env.ET_SUT_HOST + ':' + env.ET_SUT_PORT 
+                    //elastest_url = 'http://elastest:3xp3r1m3nt47@nightly.elastest.io:37000'
+                    
+                stage ("Run tests")
+                    try {
+                        sh 'env'
+                        sh 'pwd'
+                        sh 'pip install --user xmlrunner'
+                        sh 'pip3 install --user xmlrunner'
+                        sh "cd demo/e2e_tests;python e2e_test_et_in_et.py ${elastest_url}"
+                    } catch(e) {
+                        echo 'Err: ' + e.toString()
+                    } finally {
+                        step([$class: 'JUnitResultArchiver', testDataPublishers: [[$class: 'AttachmentPublisher']], testResults: '**/test-reports/TEST-*.xml'])
+                    }
+            }
+    }
+}
