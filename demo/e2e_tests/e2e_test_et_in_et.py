@@ -206,7 +206,7 @@ print("Wrote the TJob commands")
 time.sleep(5)
 
 try:
-    clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//md-checkbox[@title='Select EDS']")))
+    clickElem = driverWait.until(EC.presence_of_element_located((By.ID, "serviceEDS")))
 except Exception as e:
     print(e)
 
