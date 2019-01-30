@@ -177,15 +177,15 @@ clickElem.click()
 print("Clicked on the tJobSuT")
 time.sleep(2)
 
-# driver.find_element_by_class_name("mat-select-trigger").click()
-try:
-    clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//md-option[contains(string(), 'None')]")))
-except Exception as e:
-    print(e)
+# # driver.find_element_by_class_name("mat-select-trigger").click()
+# try:
+#     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//md-option[contains(string(), 'None')]")))
+# except Exception as e:
+#     print(e)
 
-clickElem.click()
-print("Selected None as SuT for the TJob")
-time.sleep(2)
+# clickElem.click()
+# print("Selected None as SuT for the TJob")
+# time.sleep(2)
 
 try:
     elem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobImageName")))
