@@ -66,7 +66,7 @@ if euspresent:
     driver = webdriver.Remote(command_executor=eusurl, desired_capabilities=DesiredCapabilities.CHROME)
 else:
     options = webdriver.ChromeOptions()
-    options.add_argument('headless')
+    # options.add_argument('headless')
     driver = webdriver.Chrome(chrome_options=options)
     driver.maximize_window()
 # driver.implicitly_wait(10)
@@ -168,24 +168,25 @@ elem.send_keys(resultpath)
 print("Wrote results path")
 time.sleep(3)
 
-# try:
-#     clickElem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobSut")))
-# except Exception as e:
-#     print(e)
+try:
+    clickElem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobSut")))
+except Exception as e:
+    print(e)
 
-# clickElem.click()
-# print("Clicked on the tJobSuT")
-# time.sleep(2)
+clickElem.click()
+print("Clicked on the tJobSuT")
+time.sleep(2)
 
-# # driver.find_element_by_class_name("mat-select-trigger").click()
-# try:
-#     clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//md-option[contains(string(), 'None')]")))
-# except Exception as e:
-#     print(e)
+# driver.find_element_by_class_name("mat-select-trigger").click()
+try:
+    # clickElem = driverWait.until(EC.presence_of_element_located((By.XPATH, "//md-option[contains(string(), 'None')]")))
+    clickElem = driverWait.until(EC.presence_of_element_located((By.CLASS_NAME, "mat-option-text")))
+except Exception as e:
+    print(e)
 
-# clickElem.click()
-# print("Selected None as SuT for the TJob")
-# time.sleep(2)
+clickElem.click()
+print("Selected None as SuT for the TJob")
+time.sleep(2)
 
 try:
     elem = driverWait.until(EC.presence_of_element_located((By.NAME, "tJobImageName")))
