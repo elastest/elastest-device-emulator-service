@@ -22,7 +22,7 @@ class TemperatureSensor(XAE):
         # holds entry of all registered sensors
         # sensor names are mapped with their configurations added for example
         # self.registered_sensors['sensorName'] = {'onoff' : 'OFF', 'period' : 1,
-        # 'shutdown' : 'NO', 'path' : 'sensor' registered path'}
+        # 'shutdown' : 'NO', 'path' : 'sensor' registered path', min=20, max=30}
 
         # reply format:
         # {'request_ID': 'uuid','result' : 'SUCCESS', 'response' : dict(conf),
@@ -30,7 +30,7 @@ class TemperatureSensor(XAE):
 
         self.registered_sensors = {}
         self.default_conf = {'onoff': 'OFF', 'period' : 1, 'shutdown' : False,
-                'instance':None, 'timerinstance':None}
+                             'instance':None, 'timerinstance':None, 'min': 20, 'max': 30}
         self.status = 'IDLE'
 
         # Holds the expected request templates for a request from the user
@@ -149,8 +149,8 @@ class TemperatureSensor(XAE):
         data_cnt = self.create_container(sensor_cnt, data_cnt)
         # create a class method to update sensor values
         def add_update_method(func, name):
-            data = uniform(20,50)
             conf = self.registered_sensors[name]
+            data = uniform(float(conf['min']), float(conf['max']))
             if not conf['shutdown']:
                 gevent.spawn_later(float(conf['period']), func, func, name)
             if conf['onoff'] == 'ON':
