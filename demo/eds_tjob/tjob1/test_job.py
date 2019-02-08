@@ -91,6 +91,7 @@ class TestJob(XAE):
         onem2m_response = promise.get()
 
         children = onem2m_response.content.childResource
+        print(children)
         sensor_path = children[0].path
         sensor_data = sensors_path + sensor_path + "/data"
         
