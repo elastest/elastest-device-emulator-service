@@ -79,6 +79,8 @@ class TestJob(XAE):
     def _on_register(self):
         # start endless loop
         eds_base = os.environ["ET_EDS_EDS_BASE_API"]
+        print "output of variable eds_base"
+        print(eds_base)
         eds_base = eds_base[:-8]
 
         client = OneM2MHTTPClient(eds_base, False)
@@ -91,6 +93,8 @@ class TestJob(XAE):
         onem2m_response = promise.get()
 
         children = onem2m_response.content.childResource
+        print("printing children")
+        print(children)
         sensor_path = children[0].path
         sensor_data = sensors_path + sensor_path + "/data"
         
