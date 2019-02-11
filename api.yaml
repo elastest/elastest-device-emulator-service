@@ -1,126 +1,330 @@
 swagger: "2.0"
-
 info:
-  title: "{{title}}"
-  version: "0.0.5"
-
-basePath: /eds
-
+  description: "This is the documentation of the ElasTest Device Emulator Service (EDS), a Test Support Service (TSS) available in [ElasTest](www.elastet.io). The service is responsible in providing emulated devices such as sensors, actuators and smart devices used in the context of Industrial Internet of Things (IIoT). This documentation is written keeping in mind the ElasTest user writing an IIoT application, who can request the smart devices and wire them together to realize an application. EDS uses [OpenMTC](www.openmtc.org) as a middleware for communication. OpenMTC is a reference implementation of the [oneM2M](www.onem2m.org). The primary interaction methodology with OpenMTC is by using RESTful API. EDS is implemented as an application of OpenMTC which also uses REST API. EDS is composed primarily of EDS Orchestrator (EDSOrch) and associated device emulators. The method of interaction with them is documented here. EDS makes the devices accessible by paths generated in run time on the gateway (Common Service Entity (CSE)) of EDS."
+  version: "1.0.0"
+  title: "ElasTest Device Emulator Service API"
+  contact:
+    name: "ElasTest"
+    url: "https://github.com/elastest/bugtracker"
+    email: "elastest-users@googlegroups.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "<IP_addr_of_EDS>:8000"
+basePath: "/onem2m"
+tags:
+- name: "EDSOrch"
+  description: "EDS orchestrator (EDSOrch) provides primary mode of interaction for users to communicate with EDS. EDS accepts requests for registering new applications and providing new devices. The registered entities are accessible via REST API."
+- name: "Device Emulator : Temperature Sensor"
+  description: "EDS provides device emulators for specific type of sensor."
+schemes:
+- "http"
 paths:
-  /devices:
-    get:
-      parameters:
-       - in: query
-         name: device
-         type: string
-         enum: ["ZigBeeIPE", "MemsIPE"]
-         description: "Enter sensor device name here."
-         #required: true
-       #- in: query
-        # name: id
-       #  type: string
-        # enum: ["MEMS01", "ZBS122S000000"]
-        # example: MEMS01
-        # description: "Enter sensor device ID here."
-         #required: true
-      responses:
-        '200':
-          description: 'Fetch a list of devices'
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Device'
+  /EDSOrch/edsorch/request:
     post:
+      tags:
+      - "EDSOrch"
+      summary: "Request to register or deregister application or smart devices."
+      description: "Request channel accepts two types of requests: 
+      
+        * register: With this request type, it is possible to register a new user application and also attach required smart devices to the application.
+        * deregister: With this request type, it is possible to deregister a user application from EDS."
+      operationId: "_handle_request"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
       parameters:
-        - in: body
-          name: name
-          required: true
-          schema:
-            $ref: '#/definitions/DeviceRegistration'
+      - in: "body"
+        name: "body"
+        description: "Register user application or smart devices to the already existing user application."
+        required: true
+        schema: 
+          $ref: "#/definitions/request_1"
       responses:
-        '201':
-          description: 'Register a new device'
-
-
-  '/devices/device':
-    put:
-      parameters:
-        - in: body
-          name: device
-          required: true
-          schema:
-            $ref: '#/definitions/Device'
-        - in: path
-          name: id
-          required: true
-          type: string
-      responses:
-        '200':
-          description: 'Update a device by ID'
-    delete:
-      parameters:
-        - in: path
-          name: device
-          required: true
-          type: string
-          enum: ["ZigBeeIPE", "MemsIPE"]
-      responses:
-        '204':
-          description: 'Delete a device by device name'
+        201:
+          description: "Resource has been created"
+        400:
+          description: "Bad Request"
+  /EDSOrch/edsorch/response/{ContentInstance_ID}:
     get:
       parameters:
-        - in: path
-          name: id
-          required: true
-          type: string
+        - $ref: '#/parameters/ContentInstance_ID'
+      tags:
+      - "EDSOrch"
+      summary: "Response channel for subscribed user applications"
+      description: "User applications subscribed to response channel received notification from EDS orchestrator via response channel."
+      produces:
+      - "application/json"
       responses:
-        '200':
-          description: 'Fetch a device by ID'
+        200:
+          description: "Successful opration"
           schema:
-            $ref: '#/definitions/Device'
+            $ref: '#/definitions/EDSOrchresponse'
+  /EDSOrch/edsorch/status/{ContentInstance_ID}:
+    get:
+      parameters:
+        - $ref: '#/parameters/ContentInstance_ID'
+      tags:
+        - "EDSOrch"
+      summary: "Status channel to query if EDSOrch is busy"
+      description: "User application can query this channel with a GET request to check if EDS orchestrator is ready to accept requests. If another request is being processed by the orchestrator, then user application needs to wait."
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful opration"
+          schema:
+            $ref: '#/definitions/EDSOrchstatus'
+  /pet:
+    post:
+      tags:
+      - "pet"
+      summary: "Add a new pet to the store"
+      description: ""
+      operationId: "addPet"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Pet"
+      responses:
+        405:
+          description: "Invalid input"
+parameters:
+  ContentInstance_ID:
+    name: ContentInstance_ID
+    description: "Unique place holder ID of the content instance in a oneM2M container."
+    type: string
+    in: path
+    required: true
+
 definitions:
-  DeviceRegistration:
-    type: object
+  request_1:
+    type: "object"
+    required:
+      - "m2m:cin"
     properties:
+      m2m:cin:
+        $ref: '#/definitions/request_2'
+        
+  request_2:
+    type: "object"
+    required:
+      - "cnf"
+      - "con"
+    properties:
+      cnf:
+        type: "string"
+        example: "application/json:1"
+      con:
+        type: "array"
+        items:
+          $ref: '#/definitions/EDSOrchrequest'
+          
+  EDSOrchrequest:
+    type: "object"
+    properties:
+      register:
+        type: "object"
+        properties:
+          application:
+            type: "object"
+            required:
+              - "app_ID"
+              - "request_ID"
+            properties:
+              app_ID:
+                type: "string"
+                example: "testapplication"
+              request_ID:
+                type: "string"
+                example: "app_req_98781a77"
+          sensor:
+            type: "object"
+            required:
+              - "app_ID"
+              - "request_ID"
+              - "sensor_type"
+            properties:
+              app_ID:
+                type: "string"
+                example: "testapplication"
+              request_ID:
+                type: "string"
+                example: "sensor_req_5764ff7"
+              sensor_type:
+                type: "string"
+                example: "temperature"
+          actuator:
+            type: "object"
+            required:
+              - "app_ID"
+              - "request_ID"
+              - "actuator_type"
+            properties:
+              app_ID:
+                type: "string"
+                example: "testapplication"
+              request_ID:
+                type: "string"
+                example: "actuator_req_67654fa"
+      deregister:
+        type: "object"
+        properties:
+          application:
+            type: "object"
+            required:
+              - "app_ID"
+              - "request_ID"
+            properties:
+              app_ID:
+                type: "string"
+                example: "testapplication"
+              request_ID:
+                type: "string"
+                example: "app_dereg_1f547ab"
+  
+  EDSOrchresponse:
+    type: "object"
+    properties:
+      m2m:cin:
+        type: "object"
+        properties:
+          aa:
+            type: "string"
+            example:
+          ri:
+            type: "string"
+            example: "cin8"
+          ch:
+            type: "string"
+            enum:
+              - []
+          ty:
+            type: "integer"
+            example: 4
+          or:
+            type: "string"
+            example:
+          st:
+            type: "integer"
+            example: 0
+          cnf:
+            type: "string"
+            example: "application/json:1"
+          et:
+            type: "string"
+            example: "20190210T190902"
+          cs:
+            type: "integer"
+            example: 160
+          pi:
+            type: "string"
+            example: "cnt2"
+          rn:
+            type: "string"
+            example: "contentInstance-2BWJOmge3Osbvdiz"
+          con:
+            $ref: '#/definitions/EDSresponse'
+          cr:
+            type: "string"
+            example:
+          lbl:
+            type: "string"
+            enum:
+              - []
+          ct:
+            type: "string"
+            example:
+  EDSresponse:
+    type: "object"
+    properties:
+      error_string:
+        type: "string"
+        example: ""
+      result:
+        type: "string"
+        example: "SUCCESS or FAIL"
+      conf:
+        type: "object"
+        properties:
+          path:
+            type: "string"
+            example: "onem2m/EDSOrch/testapplication"
+          name:
+            type: "string"
+            example: "temp_c662e4bdd37a"
+          on_off:
+            type: "string"
+            example: "ON or OFF"
+          period:
+            type: "integer"
+            example: 5
+          min:
+            type: "integer"
+            example: 20
+          max:
+            type: "integer"
+            example: 50
+          in_path:
+            type: "string"
+            example: "onem2m/EDSOrch/testapplication/actuators/simple_4233f5479b47/data_in"
+          out_path:
+            type: "string"
+            example: "onem2m/EDSOrch/testapplication/actuators/simple_4233f5479b4t/data_out"
+          delay:
+            type: "integer"
+            example: 5
+      request_ID:
+        type: "string"
+        example: "actuator_req_67654fa"
+          
+  EDSOrchstatus:
+    type: "object"
+    properties:
+      n:
+        type: "string"
+        example: "orchestrator"
+      t:
+        type: "number"
+        example: 1549853630.557
+      s:
+        type: "string"
+        example: "BUSY or IDLE"
+  Pet:
+    type: "object"
+    required:
+    - "name"
+    - "photoUrls"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
       name:
-       type: string
-       example: "Mems sensor"
-
-  Device:
-    type: object
-    properties:
-      mems:
-        $ref: '#/definitions/Mems'
-#      zigbee:
-#         $ref: '#/definitions/Zigbee'
-      registered:
-        type: string
-        format: date-time
-
-
-  Mems:
-    type: object
-    properties:
-      x:
-       type: object
-
-      y:
-       type: object
-      z:
-       type: object
-
-#  Zigbee:
-#    type: object
-#    properties:
-#      temperature:
-#          type: object
-#      brightness:
-#          type: object
-#      pressure:
-#          type: object
-#      movement:
-#         type: object
-#      humidity:
-#          type: object
-
-
+        type: "string"
+        example: "doggie"
+      photoUrls:
+        type: "array"
+        xml:
+          name: "photoUrl"
+          wrapped: true
+        items:
+          type: "string"
+      status:
+        type: "string"
+        description: "pet status in the store"
+        enum:
+        - "available"
+        - "pending"
+        - "sold"
+    xml:
+      name: "Pet"
