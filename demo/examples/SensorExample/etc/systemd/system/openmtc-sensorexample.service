@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenMTC SensorExample
+After=network.target
+Wants=ntp.service
+
+[Service]
+ExecStart=/usr/local/bin/sensor-example
+
+[Install]
+WantedBy=multi-user.target

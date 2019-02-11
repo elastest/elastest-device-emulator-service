@@ -1,0 +1,18 @@
+{
+    "name": "SensorExample",
+    "ep": "http://localhost:8000",
+    "cse_base": "onem2m",
+    "poas": [
+        "http://auto:24545"
+    ],
+    "originator_pre": "//openmtc.org/mn-cse-1",
+    "ssl_certs": {
+        "cert_file": "/etc/openmtc/certs/sensorexample.cert.pem",
+        "key_file": "/etc/openmtc/certs/sensorexample.key.pem",
+        "ca_certs": "/etc/openmtc/certs/ca-chain.cert.pem"
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "/var/log/openmtc/sensorexample.log"
+    }
+}
