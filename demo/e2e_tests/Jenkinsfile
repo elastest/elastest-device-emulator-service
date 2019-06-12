@@ -38,7 +38,7 @@ elastest_lib.pipeline({
                        '''
                }
         	  // sh "cd demo/e2e_tests;python e2e_test_api.py ${elastestURL}"
-            stage ("E2E UI tests")
-              sh "cd demo/e2e_tests;python e2e_test_ui.py ${elastestURL}"
+            // stage ("E2E UI tests")
+            //  sh "cd demo/e2e_tests;python e2e_test_ui.py ${elastestURL}"
         }
   })
