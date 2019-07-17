@@ -7,6 +7,7 @@ from threading import Timer
 import gevent
 from openmtc_onem2m.client.http import OneM2MHTTPClient
 from openmtc_onem2m.transport import OneM2MRequest
+import ast
 
 class EDSOrch(XAE):
 
@@ -47,7 +48,7 @@ class EDSOrch(XAE):
         # this list is used to add all the available sensors that EDS can provide
         # when an application registers. This list needs to be updated when a new
         # sensor is added to manifest
-        self.available_sensors = ['temperature']
+        self.available_sensors = ['temperature', 'humidity', 'accelerometer']
         # this list is used to add all the available actuators that EDS can provide
         # when an application registers. This list needs to be update when a new
         # actuator is added
@@ -108,7 +109,7 @@ class EDSOrch(XAE):
 
         for actuator in self.available_actuators:
             # execute the actuator script
-            script = "/usr/local/src/openmtc/apps/" + actuator + "-actuator"
+            script = "/home/vgo/develop/OpenMTC/apps/" + actuator + "-actuator"
             component_path = "onem2m/" + actuator.title() + "Actuator/response"
             component_name = actuator + "_actuator"
             subprocess.Popen([script, "-v"])
@@ -151,6 +152,10 @@ class EDSOrch(XAE):
         self.logger.info(con)
 
     def _handle_request(self, cnt, con):
+        print con
+        con = str(con)
+        con = ast.literal_eval(con)
+        print "request type", type(con)
         _response_cnt = self.response_cnt
         _status_cnt = self.status_cnt
         timestamp = format(round(time.time(), 3), '.3f')
@@ -164,6 +169,7 @@ class EDSOrch(XAE):
             self.push_content(_status_cnt, status_data)
 
             request = con[0]
+            print request
             # analyze the incoming request
             # analyze if all the info is available already in the request,
             # based on the incoming request
@@ -285,7 +291,22 @@ class EDSOrch(XAE):
             self.registered_apps[app_ID]['sensors'].append(sensor_name)
             request_path = 'onem2m/TemperatureSensor/request'
             self.push_content(request_path, [request])
-
+        elif sensor_type == 'humidity':
+            # add the sensor name to the application
+            sensor_name = 'hum_' + sensor_name
+            request['register']['name'] = sensor_name
+            request['register']['path'] = data_path
+            self.registered_apps[app_ID]['sensors'].append(sensor_name)
+            request_path = 'onem2m/HumiditySensor/request'
+            self.push_content(request_path, [request])
+        elif sensor_type == 'accelerometer':
+            # add the sensor name to the application
+            sensor_name = 'hum_' + sensor_name
+            request['register']['name'] = sensor_name
+            request['register']['path'] = data_path
+            self.registered_apps[app_ID]['sensors'].append(sensor_name)
+            request_path = 'onem2m/AccelerometerSensor/request'
+            self.push_content(request_path, [request])
         else:
             result = 'FAIL'
             error_string = 'register:sensor:required sensor not found in manifest\n'
@@ -346,6 +367,14 @@ class EDSOrch(XAE):
                 pass
                 self.push_content('onem2m/TemperatureSensor/request', request)
 
+            if 'temp' in sensor_name:
+                pass
+                self.push_content('onem2m/HumiditySensor/request', request)
+
+            if 'temp' in sensor_name:
+                pass
+                self.push_content('onem2m/AccelerometerSensor/request', request)
+
         for actuator_name in self.registered_apps[app_ID]['actuators']:
             request = [{'modify':{'name':actuator_name, 'request_ID':request_ID,
                 'app_ID': app_ID, 'conf':{}}}]
@@ -366,6 +395,7 @@ class EDSOrch(XAE):
         request = con
         error_string = ''
         valid_request = True
+        print con
         if not isinstance(request, dict):
             return False, "Request is not a dictionary"
         # check if the request is an empty dictionary
