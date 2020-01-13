@@ -105,12 +105,12 @@ def delete_existing_project(driverWait, row):
     print("Confirmed to delete the project")
 
 # check if there exists already an EDSE2E project and delete it
-table = driverWait.until(EC.presence_of_element_located((By.ID, "projects")))
-rows = table.find_elements(By.TAG_NAME, "tr")
-for row in rows:
-    if projectname in row.text:
-        print("project name exists")
-        # delete_existing_project(driverWait, row)
+# table = driverWait.until(EC.presence_of_element_located((By.ID, "projects")))
+# rows = table.find_elements(By.TAG_NAME, "tr")
+# for row in rows:
+#     if projectname in row.text:
+#         print("project name exists")
+#         # delete_existing_project(driverWait, row)
 
 time.sleep(5)
 # Create new project
