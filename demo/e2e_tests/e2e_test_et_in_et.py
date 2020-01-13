@@ -155,6 +155,7 @@ try:
 except Exception as e:
     print(e)
 
+time.sleep(5)
 elem.send_keys(tjobname)
 print("Wrote TJob name")
 time.sleep(2)
