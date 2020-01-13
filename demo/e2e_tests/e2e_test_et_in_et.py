@@ -184,6 +184,7 @@ try:
 except Exception as e:
     print(e)
 
+time.sleep(5)
 clickElem.click()
 print("Selected None as SuT for the TJob")
 time.sleep(2)
@@ -193,6 +194,7 @@ try:
 except Exception as e:
     print(e)
 
+time.sleep(5)
 elem.send_keys(tjobimage)
 print("Wrote the tjobimage")
 time.sleep(2)
@@ -202,6 +204,7 @@ try:
 except Exception as e:
     print(e)
 
+time.sleep(5)
 elem.send_keys(COMMANDS)
 print("Wrote the TJob commands")
 time.sleep(5)
@@ -211,6 +214,7 @@ try:
 except Exception as e:
     print(e)
 
+time.sleep(5)
 clickElem.click()
 print("Select EDS as the TSS to be used for TJob")
 time.sleep(2)
