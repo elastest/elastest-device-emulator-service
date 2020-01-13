@@ -233,6 +233,7 @@ try:
 except Exception as e:
     print(e)
 
+time.sleep(5)
 clickElem.click()
 time.sleep(5)
 print("Clicked on Run TJob")
